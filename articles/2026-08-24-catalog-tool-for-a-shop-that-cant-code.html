@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I built a product catalog tool for shop owners who can't code — Shipped With AI</title>
+<meta name="description" content="A real build: two working prototypes for local shops whose websites don't show their products clearly, built with an AI coding assistant, before any client was confirmed.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="../index.html">Shipped <span>With AI</span></a>
+    <nav class="site-nav">
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Disclosure</a>
+      <a href="../privacy-policy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>I built a product catalog tool for shop owners who can't code</h1>
+  <div class="byline">August 24, 2026 · second post</div>
+
+  <div class="notice">
+    <strong>Status check, up front:</strong> what follows is a real prototype I built, not a client success
+    story. No shop has signed up yet at the time of writing. I'll say clearly in a future post whether that
+    changes.
+  </div>
+
+  <p>The problem I noticed is small and specific: a lot of local shops (I was looking at furniture and
+  handmade-accessory shops) already have a website, but the products themselves aren't really on it. There's a
+  homepage, maybe an Instagram link, but no page where you can actually see what they sell, one item at a time,
+  with a price.</p>
+
+  <p>That's not a technology problem in the usual sense — the shop owner isn't going to learn to code, and
+  they shouldn't have to. So instead of pitching "I'll build you a website," I built two working demos first,
+  using a made-up example shop, so an owner could see exactly what they'd be getting before agreeing to anything.</p>
+
+  <h2>Two versions, because "one size fits all" was wrong</h2>
+  <p>I built two different prototypes, aimed at two different kinds of shops:</p>
+  <ul>
+    <li><strong>A general goods shop version ("Yui"):</strong> one single page that works as both the public
+    catalog and the owner's own editing screen. Good fit for a shop with a lot of items that change often —
+    the owner needs to add, edit, or remove products quickly, without touching two separate files.</li>
+    <li><strong>A furniture/craft workshop version ("fushi"):</strong> the public catalog page and the owner's
+    update tool are two separate files. The update tool has its own live preview panel that reflects edits
+    instantly — but, as of this build, it doesn't push those changes to the separate public catalog file
+    automatically. That's a real limitation, not a design choice, and it's next on the list to fix. This version
+    puts more weight on material and size — the kind of detail that actually matters when you're deciding
+    whether a chair will fit your room.</li>
+  </ul>
+
+  <p>Both save data in the browser (localStorage) rather than needing a real backend or database, which kept
+  the whole thing to plain HTML files — no server to set up, no hosting bill, nothing that could break in a way
+  I couldn't debug myself.</p>
+
+  <h2>What building it with an AI assistant actually looked like</h2>
+  <p>This wasn't "describe an app, get an app." A few concrete things happened along the way:</p>
+  <ul>
+    <li>The first version of the photo gallery had an icon-overlap bug that only showed up once real product
+    photos (not placeholder emoji) were dropped in — caught and fixed during a review pass, not on the first try.</li>
+    <li>I initially assumed one catalog design would work for both shop types. It didn't: the "everything on one
+    page" approach that suited a shop with lots of fast-changing inventory felt wrong for a furniture workshop,
+    where a customer needs to slow down and look at material and dimensions. That's why there are two versions
+    instead of one.</li>
+    <li>Not everything carried over between the two versions on purpose — a "sold out, see similar items"
+    link made sense for the general-goods version (lots of similar items to redirect to) but wasn't implemented
+    the same way on the workshop version, because that catalog doesn't have the same kind of category browsing.</li>
+  </ul>
+
+  <h2>Where this actually stands</h2>
+  <p>Both prototypes work, and sales materials (a before/after comparison, a rough pricing hypothesis) exist to
+  show real shop owners. What hasn't happened yet, as of this post, is a confirmed client — that part depends
+  on actually walking into shops and having the conversation, not on the code. I'd rather report that honestly
+  than skip ahead to a result I don't have yet.</p>
+
+  <p>If you're trying something similar — building a real tool before you have a real client, to make the
+  pitch concrete instead of abstract — I think that order (prototype first, sales conversation second) was the
+  right call. It gave me something to actually show instead of describing an idea.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>&copy; 2026 Shipped With AI. Written by a student in Japan, edited with the help of AI tools.</div>
+    <div class="links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Affiliate Disclosure</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
