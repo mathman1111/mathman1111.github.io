@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What it's like to let Claude Code subagents run a company — Shipped With AI</title>
+<meta name="description" content="Seven Claude Code subagents — CEO, researcher, writer, and more — make the real decisions behind three small, zero-revenue projects, including this one.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="../index.html">Shipped <span>With AI</span></a>
+    <nav class="site-nav">
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Disclosure</a>
+      <a href="../privacy-policy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>What it's like to let Claude Code subagents run a company</h1>
+  <div class="byline">August 25, 2026 · fifth post</div>
+
+  <div class="notice">
+    <strong>Status check, up front:</strong> I currently run three small projects this way — a Japanese-language
+    blog, a subscription pitch to help local shops keep their online product listings updated, and this English
+    site. All three have made exactly $0 so far. This post is about the system, not a success story.
+  </div>
+
+  <p>The first four posts on this site were about specific tools I built: a pricing calculator, an image/PDF
+  processor, a product catalog for a local shop. This post is different. It's about the thing that decided I
+  should write those posts in the first place — and, in a fairly literal sense, wrote this one too.</p>
+
+  <h2>This isn't a metaphor</h2>
+  <p>I use Claude Code, an AI coding tool, for more than writing code. Inside the same project, I've defined
+  seven separate roles as "subagents" — each one is a written instruction file that tells that role what its job
+  is, what it's allowed to decide on its own, and what it has to check with me on. The seven roles are:</p>
+  <ul>
+    <li><strong>CEO</strong> — reads what the other roles produce, decides what the company should focus on next,
+    and writes the reasoning down in a decision log.</li>
+    <li><strong>Secretary</strong> — keeps track of where each project actually stands (what's been built, what's
+    been posted, what results exist) and reports that status at the start of a decision cycle.</li>
+    <li><strong>Researcher</strong> — looks up outside information before a decision gets made, instead of the
+    CEO role guessing. Search practices, market notes, whatever the decision actually needs.</li>
+    <li><strong>Writer</strong> — writes the post or page itself, following a brief from the CEO role.</li>
+    <li><strong>Designer</strong> — handles visual and tone consistency across pages.</li>
+    <li><strong>Marketer</strong> — settles on titles, tags, and how a piece should be framed before it goes out.</li>
+    <li><strong>Programmer</strong> — builds and ships the actual tools and site code.</li>
+  </ul>
+  <p>A decision moves through these roles in a set order: secretary reports status, researcher gathers whatever
+  outside facts are missing, the CEO role decides and writes down why, writer drafts, designer checks tone,
+  marketer finalizes framing, the CEO role reviews the finished piece, and secretary logs the outcome for next
+  time. It's slower than just typing a prompt and getting an article back. That's on purpose — more on why below.</p>
+
+  <div class="pipeline" aria-hidden="true">
+    <span class="pipeline-step">Secretary</span>
+    <span class="pipeline-arrow">&rarr;</span>
+    <span class="pipeline-step">Researcher</span>
+    <span class="pipeline-arrow">&rarr;</span>
+    <span class="pipeline-step">CEO (decide)</span>
+    <span class="pipeline-arrow">&rarr;</span>
+    <span class="pipeline-step">Writer</span>
+    <span class="pipeline-arrow">&rarr;</span>
+    <span class="pipeline-step">Designer</span>
+    <span class="pipeline-arrow">&rarr;</span>
+    <span class="pipeline-step">Marketer</span>
+    <span class="pipeline-arrow">&rarr;</span>
+    <span class="pipeline-step">CEO (review)</span>
+    <span class="pipeline-arrow">&rarr;</span>
+    <span class="pipeline-step">Secretary</span>
+  </div>
+  <p class="pipeline-caption">One decision cycle, in the order it actually runs — same steps as the paragraph above, laid out for skimming.</p>
+
+  <h2>Proof, not just a description: this post is the output</h2>
+  <p>I could describe this system in the abstract, but it's more honest to just point at what happened this
+  week. My status got summarized, a researcher pass looked at what's actually working across the three projects,
+  and the decision that came back was: focus more of the writing effort here, on this site, because — out of the
+  three projects — this is the one where the AI-run steps (researching, writing, checking facts, publishing to
+  GitHub Pages) can run end-to-end without me doing something manual in the middle. The other two projects still
+  depend on me personally sending messages, showing up to shops, or hitting publish on another platform. That
+  decision is what produced the brief for this exact post. You're reading the result of the workflow, made by
+  the workflow, about the workflow.</p>
+
+  <h2>The honest numbers: three projects, zero revenue</h2>
+  <p>I'd rather say this plainly than let the setup sound more impressive than the outcome. As of this post:</p>
+  <ul>
+    <li>The Japanese-language blog has a couple of posts up. Reach so far has been close to nothing.</li>
+    <li>The local-shop subscription pitch has working prototypes and a proposal, but no signed client yet.</li>
+    <li>This site — the one you're reading — has five posts, no affiliate program joined yet, and no ad or
+    referral income.</li>
+  </ul>
+  <p>None of the three has made a dollar or a yen. Having a structured decision-making system doesn't skip that
+  part. It just means the attempts are recorded honestly instead of quietly forgotten.</p>
+
+  <h2>Why I built it this way</h2>
+  <p>The question I actually wanted answered wasn't "can AI write a blog post" — that part was never really in
+  doubt. It was: can an AI coding tool be handed something bigger than a single task — the ongoing decisions
+  about what a small operation should do next — and keep making reasonable, checkable calls over time, without
+  turning into either total autopilot or a system that just tells me what I want to hear? A single chat session
+  that forgets everything between conversations couldn't test that. Separate roles with their own written
+  instructions and a log that persists between sessions can at least attempt it.</p>
+
+  <h2>The guardrails, because "AI runs my company" needs some</h2>
+  <p>None of this works, in my opinion, without limits on what the system is allowed to do by itself. The ones I
+  actually enforce:</p>
+  <ul>
+    <li><strong>No inflated numbers.</strong> Every role is instructed to write "not yet verified" or leave a
+    figure out entirely rather than round up or imply a result that hasn't happened. The "zero revenue" line
+    above is a product of that rule, not an exception to it.</li>
+    <li><strong>No auto-posting to social platforms.</strong> The system can draft, but it doesn't push content
+    to social accounts on its own.</li>
+    <li><strong>Files get moved, not deleted.</strong> Anything the system would otherwise delete goes into a
+    holding folder instead, so a bad call is recoverable.</li>
+    <li><strong>No paid tools or services without my sign-off.</strong> The system doesn't get to subscribe to
+    anything on its own judgment.</li>
+    <li><strong>One narrow exception: publishing this site to GitHub Pages.</strong> That's the single
+    "publish" action I've allowed to run without me approving each time, specifically because it's just files
+    going into a git repository — fully reversible, fully visible in the history. Nothing else gets that level
+    of trust yet.</li>
+  </ul>
+  <p>That last point matters for how I think about the phrase "runs my company." It doesn't run the parts that
+  involve someone else's money, someone else's inbox, or an irreversible action. It runs the parts that are
+  research, writing, and checking — and then one specific, boring, reversible publish step.</p>
+
+  <h2>Where this actually stands</h2>
+  <p>Five posts in, zero revenue across three projects, one narrow publishing action automated, and everything
+  else still gated behind an actual person — me — approving it. That's not a pitch, it's just where the
+  experiment is right now. I don't know yet whether a system like this ends up mattering, or whether it quietly
+  turns out to be more process than it's worth. I'll keep writing that down here as it plays out, one honest post
+  at a time.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>&copy; 2026 Shipped With AI. Written by a student in Japan, edited with the help of AI tools.</div>
+    <div class="links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Affiliate Disclosure</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
