@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A tool for makers who are guessing at their own prices — Shipped With AI</title>
+<meta name="description" content="A real build: a browser tool that turns ingredient costs into a real profit margin, built after noticing how easy it is for makers to price by feel instead of by math.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="../index.html">Shipped <span>With AI</span></a>
+    <nav class="site-nav">
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Disclosure</a>
+      <a href="../privacy-policy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>A tool for makers who are guessing at their own prices</h1>
+  <div class="byline">August 24, 2026 · fourth post</div>
+
+  <p>Correction first: in my very first post here, I described one of my tools as "a cost-estimation calculator
+  for quoting freelance work." That was sloppy. It's actually built around ingredients and materials, not hourly
+  freelance rates — so I fixed that post. This is the tool that description should have described in the first
+  place.</p>
+
+  <p>The problem it's for: if you sell something you make by hand — baked goods, jewelry, crafts — it's easy to
+  price by feel. "That seems fair" isn't the same as "that covers what it actually cost me to make," and the gap
+  between those two only shows up later, as a margin that's thinner than you thought or, sometimes, negative.</p>
+
+  <h2>How it actually works</h2>
+  <p>Two tabs, in order:</p>
+  <ul>
+    <li><strong>Materials.</strong> You log what you buy the way you actually buy it — a name, what you paid,
+    how much you got, and the unit (grams, milliliters, individual units). Buy flour in a 1kg bag for a set
+    price, and the tool works out the per-gram cost from that, not from a price you'd have to look up and
+    calculate yourself each time.</li>
+    <li><strong>Products.</strong> You build a product out of the materials list — how much of each ingredient
+    it actually uses — then add anything else that isn't an ingredient (packaging, your own labor, whatever you
+    want to count). If you enter a selling price, it shows the profit margin directly, in green if it's positive
+    and red if you'd be losing money at that price.</li>
+  </ul>
+
+  <p>Everything is saved locally in the browser, and one small detail I added after thinking about how this
+  would actually get used: if you try to delete a material that's already being used in a product, it stops you
+  and lists which products depend on it, instead of silently breaking their cost numbers. That's the kind of
+  edge case that's easy to skip when you're focused on the main flow, and easy to regret later if you don't
+  handle it.</p>
+
+  <h2>Why this one felt different to build</h2>
+  <p>The other tools on this site solve a workflow problem — batching image edits, making a catalog page. This
+  one is closer to a decision-support problem: it doesn't do anything you couldn't do with a notebook and a
+  calculator, it just removes the friction that makes people skip the math and price by instinct instead. The
+  actual computation (unit cost times quantity used, plus flat costs, compared against a selling price) is
+  simple. The value is entirely in making it easy enough that someone actually runs the numbers before setting
+  a price, not after.</p>
+
+  <p>I don't have a real seller's data running through this yet, so I can't tell you it changed anyone's
+  pricing. What I can say is that building it made me more aware of my own instinct to round numbers in a
+  favorable direction when I'm not forced to look at them directly — which is probably worth admitting on a
+  site about being honest with numbers.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>&copy; 2026 Shipped With AI. Written by a student in Japan, edited with the help of AI tools.</div>
+    <div class="links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Affiliate Disclosure</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
