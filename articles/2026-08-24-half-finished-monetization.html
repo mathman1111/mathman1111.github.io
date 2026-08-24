@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I built a free tool with a Pro tier that doesn't work yet — Shipped With AI</title>
+<meta name="description" content="A real build: a browser-only image/PDF tool with a freemium model wired into the UI, but no payment processing behind it. What that half-finished state actually taught me.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="../index.html">Shipped <span>With AI</span></a>
+    <nav class="site-nav">
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Disclosure</a>
+      <a href="../privacy-policy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>I built a free tool with a Pro tier that doesn't work yet</h1>
+  <div class="byline">August 24, 2026 · third post</div>
+
+  <p>I used to compress and resize batches of images by hand, one at a time, and occasionally needed to merge a
+  few PDFs into one file. Both are the kind of task that's simple but tedious enough that I kept putting it off.
+  So I built a browser tool that does both: bulk image compression, resizing, and format conversion, plus PDF
+  merging — all running entirely in the browser, with the files never leaving the device.</p>
+
+  <h2>I designed the pricing before I built the payment system</h2>
+  <p>Here's the part I want to be honest about. While building it, I also laid out a freemium structure directly
+  in the interface:</p>
+  <ul>
+    <li>The free tier caps you at 5 images or 3 PDF files per batch. Go over, and the tool quietly processes
+    just the first few and tells you why.</li>
+    <li>There's a "Pro" tab describing a paid tier with no batch limit and no ads.</li>
+    <li>There's an ad slot placeholder sitting on the page, waiting for an ad network's review.</li>
+  </ul>
+
+  <p>None of that is actually live. The "Upgrade to Pro" button doesn't charge anyone — there's no payment link
+  wired up yet, so clicking it just shows an alert saying it's not ready. The ad slot is an empty box with a
+  label, not a real ad. If you used this tool today, you'd get the full free experience and nothing else,
+  because that's genuinely all that exists right now.</p>
+
+  <h2>Why I'm not embarrassed about that</h2>
+  <p>My first instinct was to feel like this was premature — why design a Pro tier before a single payment
+  processor is connected? But I think there's a real reason to build it in this order:</p>
+  <p>Sketching the free/paid split directly in the working interface, instead of in a separate planning
+  document, forced me to actually decide what's worth paying for (in this case: no limits, no ads) before I'd
+  spent any time on billing integration. If the answer had turned out to be "nothing here is worth paying for,"
+  I'd rather find that out from a UI mockup than after wiring up a payment provider.</p>
+
+  <p>The part I do want to watch myself on: it would be easy to leave a half-working "Upgrade" button live
+  somewhere and forget it's not real. That's exactly the kind of overstated claim this site tries not to make —
+  so until a payment link actually exists, the honest state is "not available yet," not "coming soon" dressed
+  up to look finished.</p>
+
+  <h2>What's actually next for this one</h2>
+  <p>Wiring up real payment processing and applying for ad review are both still undone, and I'm not going to
+  claim a timeline for either. When one of them actually goes live, that'll be its own post — with real numbers,
+  not projected ones.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>&copy; 2026 Shipped With AI. Written by a student in Japan, edited with the help of AI tools.</div>
+    <div class="links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Affiliate Disclosure</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
