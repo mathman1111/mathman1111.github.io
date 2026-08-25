@@ -6,6 +6,54 @@
 <title>I built a product catalog tool for shop owners who can't code — Shipped With AI</title>
 <meta name="description" content="A real build: two working prototypes for local shops whose websites don't show their products clearly, built with an AI coding assistant, before any client was confirmed.">
 <link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Has a shop actually signed up to use this?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, not yet. As the status note at the top of this post says, this is a real working prototype, not a client success story. No shop had signed up at the time of writing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between the \"Yui\" and \"fushi\" versions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "\"Yui\" is a single page that acts as both the public catalog and the owner's editing screen, built for a general goods shop with a lot of items that change often. \"fushi\" is aimed at furniture and craft workshops and splits the public catalog and the owner's update tool into two separate files, with more weight on material and size details."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the \"fushi\" version sync updates to the public catalog automatically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Its update tool has a live preview panel that reflects edits instantly, but as of this build it doesn't push those changes to the separate public catalog file automatically. That's a real limitation, not a design choice, and it's next on the list to fix."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why use localStorage instead of a real database?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both prototypes save data in the browser (localStorage) rather than needing a real backend. That kept the whole thing to plain HTML files — no server to set up, no hosting bill, nothing that could break in a way I couldn't debug myself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this tool for sale right now?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sales materials (a before/after comparison and a rough pricing hypothesis) exist to show real shop owners, but that part depends on actually walking into shops and having the conversation — it isn't something you can buy off this site today."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -79,7 +127,41 @@
 
   <p>If you're trying something similar — building a real tool before you have a real client, to make the
   pitch concrete instead of abstract — I think that order (prototype first, sales conversation second) was the
-  right call. It gave me something to actually show instead of describing an idea.</p>
+  right call. It gave me something to actually show instead of describing an idea. It's the same order I used
+  for the <a href="2026-08-24-pricing-tool-for-makers.html">pricing tool for makers</a>: build the working thing
+  first, then figure out who actually wants it.</p>
+
+  <p>This project is also one of the three I mention in a later post about
+  <a href="2026-08-25-running-an-ai-agent-company.html">letting AI subagents make the day-to-day decisions</a>
+  across everything I'm building — including the honest fact that, as of that post, this one still doesn't have
+  a signed client either.</p>
+
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <h3>Has a shop actually signed up to use this?</h3>
+  <p>No, not yet. As the status note at the top of this post says, this is a real working prototype, not a
+  client success story. No shop had signed up at the time of writing.</p>
+
+  <h3>What's the difference between the "Yui" and "fushi" versions?</h3>
+  <p>"Yui" is a single page that acts as both the public catalog and the owner's editing screen, built for a
+  general goods shop with a lot of items that change often. "fushi" is aimed at furniture and craft workshops
+  and splits the public catalog and the owner's update tool into two separate files, with more weight on
+  material and size details.</p>
+
+  <h3>Does the "fushi" version sync updates to the public catalog automatically?</h3>
+  <p>Its update tool has a live preview panel that reflects edits instantly, but as of this build it doesn't
+  push those changes to the separate public catalog file automatically. That's a real limitation, not a design
+  choice, and it's next on the list to fix.</p>
+
+  <h3>Why use localStorage instead of a real database?</h3>
+  <p>Both prototypes save data in the browser (localStorage) rather than needing a real backend. That kept the
+  whole thing to plain HTML files — no server to set up, no hosting bill, nothing that could break in a way I
+  couldn't debug myself.</p>
+
+  <h3>Is this tool for sale right now?</h3>
+  <p>Sales materials (a before/after comparison and a rough pricing hypothesis) exist to show real shop owners,
+  but that part depends on actually walking into shops and having the conversation — it isn't something you can
+  buy off this site today.</p>
 </main>
 
 <footer class="site-footer">

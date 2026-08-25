@@ -6,6 +6,46 @@
 <title>I built a free tool with a Pro tier that doesn't work yet — Shipped With AI</title>
 <meta name="description" content="A real build: a browser-only image/PDF tool with a freemium model wired into the UI, but no payment processing behind it. What that half-finished state actually taught me.">
 <link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I actually upgrade to the Pro tier right now?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Clicking \"Upgrade to Pro\" shows an alert saying it's not ready — there's no payment link wired up yet. If you use the tool today, you get the full free experience and nothing else, because that's genuinely all that exists right now."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to use with my files?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool runs entirely in the browser, and files never leave the device. There's no server-side upload involved in the image/PDF processing itself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the free tier's limits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The free tier caps you at 5 images or 3 PDF files per batch. Go over that, and the tool processes just the first few and tells you why, rather than failing silently."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When will payment or ads actually go live?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No timeline yet. Both are still undone, and this post won't claim otherwise — when either one actually ships, that'll be a separate post with real numbers."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -60,7 +100,29 @@
   <h2>What's actually next for this one</h2>
   <p>Wiring up real payment processing and applying for ad review are both still undone, and I'm not going to
   claim a timeline for either. When one of them actually goes live, that'll be its own post — with real numbers,
-  not projected ones.</p>
+  not projected ones. It's the same "admit what's not done yet" approach I used for the
+  <a href="2026-08-24-catalog-tool-for-a-shop-that-cant-code.html">product catalog tool</a> and the
+  <a href="2026-08-24-pricing-tool-for-makers.html">pricing tool</a> — both are working prototypes with clearly
+  stated limitations, not finished products dressed up to look further along than they are.</p>
+
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <h3>Can I actually upgrade to the Pro tier right now?</h3>
+  <p>No. Clicking "Upgrade to Pro" shows an alert saying it's not ready — there's no payment link wired up yet.
+  If you use the tool today, you get the full free experience and nothing else, because that's genuinely all
+  that exists right now.</p>
+
+  <h3>Is it safe to use with my files?</h3>
+  <p>The tool runs entirely in the browser, and files never leave the device. There's no server-side upload
+  involved in the image/PDF processing itself.</p>
+
+  <h3>What are the free tier's limits?</h3>
+  <p>The free tier caps you at 5 images or 3 PDF files per batch. Go over that, and the tool processes just the
+  first few and tells you why, rather than failing silently.</p>
+
+  <h3>When will payment or ads actually go live?</h3>
+  <p>No timeline yet. Both are still undone, and this post won't claim otherwise — when either one actually
+  ships, that'll be a separate post with real numbers.</p>
 </main>
 
 <footer class="site-footer">

@@ -6,6 +6,54 @@
 <title>A tool for makers who are guessing at their own prices — Shipped With AI</title>
 <meta name="description" content="A real build: a browser tool that turns ingredient costs into a real profit margin, built after noticing how easy it is for makers to price by feel instead of by math.">
 <link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this the same tool described as a freelance cost-estimation calculator in an earlier post?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The site's very first post called it \"a cost-estimation calculator for quoting freelance work.\" That was inaccurate — it's built around ingredient and material costs, not hourly freelance rates. The earlier post was corrected once this one was written."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this work for pricing freelance hours or services?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It's built around logging materials (what you bought, how much, and the unit) and building products out of those materials — it's aimed at people who sell things they make, like baked goods, jewelry, or crafts, not hourly service work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my pricing data private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Everything is saved locally in the browser. There's no account, upload, or server involved."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if I delete a material that's already used in a product?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool stops you and lists which products depend on that material, instead of silently breaking their cost numbers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Has this actually changed anyone's pricing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not that I can point to yet — there's no real seller's data running through it so far, so I can't claim it changed anyone's outcome. What building it changed was my own awareness of how easy it is to round numbers in a favorable direction instead of looking at them directly."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -24,10 +72,10 @@
   <h1>A tool for makers who are guessing at their own prices</h1>
   <div class="byline">August 24, 2026 · fourth post</div>
 
-  <p>Correction first: in my very first post here, I described one of my tools as "a cost-estimation calculator
-  for quoting freelance work." That was sloppy. It's actually built around ingredients and materials, not hourly
-  freelance rates — so I fixed that post. This is the tool that description should have described in the first
-  place.</p>
+  <p>Correction first: in my <a href="2026-08-24-why-this-site-exists.html">very first post here</a>, I
+  described one of my tools as "a cost-estimation calculator for quoting freelance work." That was sloppy. It's
+  actually built around ingredients and materials, not hourly freelance rates — so I fixed that post. This is
+  the tool that description should have described in the first place.</p>
 
   <p>The problem it's for: if you sell something you make by hand — baked goods, jewelry, crafts — it's easy to
   price by feel. "That seems fair" isn't the same as "that covers what it actually cost me to make," and the gap
@@ -63,7 +111,34 @@
   <p>I don't have a real seller's data running through this yet, so I can't tell you it changed anyone's
   pricing. What I can say is that building it made me more aware of my own instinct to round numbers in a
   favorable direction when I'm not forced to look at them directly — which is probably worth admitting on a
-  site about being honest with numbers.</p>
+  site about being honest with numbers. It's the same instinct I had to watch for while building the
+  <a href="2026-08-24-half-finished-monetization.html">image/PDF tool with its unfinished payment system</a>,
+  and the same reason the <a href="2026-08-24-catalog-tool-for-a-shop-that-cant-code.html">product catalog
+  prototypes</a> are described here as prototypes, not finished products.</p>
+
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <h3>Is this the same tool described as a freelance cost-estimation calculator in an earlier post?</h3>
+  <p>The site's <a href="2026-08-24-why-this-site-exists.html">very first post</a> called it "a cost-estimation
+  calculator for quoting freelance work." That was inaccurate — it's built around ingredient and material costs,
+  not hourly freelance rates. The earlier post was corrected once this one was written.</p>
+
+  <h3>Does this work for pricing freelance hours or services?</h3>
+  <p>No. It's built around logging materials (what you bought, how much, and the unit) and building products out
+  of those materials — it's aimed at people who sell things they make, like baked goods, jewelry, or crafts, not
+  hourly service work.</p>
+
+  <h3>Is my pricing data private?</h3>
+  <p>Everything is saved locally in the browser. There's no account, upload, or server involved.</p>
+
+  <h3>What happens if I delete a material that's already used in a product?</h3>
+  <p>The tool stops you and lists which products depend on that material, instead of silently breaking their
+  cost numbers.</p>
+
+  <h3>Has this actually changed anyone's pricing?</h3>
+  <p>Not that I can point to yet — there's no real seller's data running through it so far, so I can't claim it
+  changed anyone's outcome. What building it changed was my own awareness of how easy it is to round numbers in
+  a favorable direction instead of looking at them directly.</p>
 </main>
 
 <footer class="site-footer">
