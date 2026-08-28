@@ -1,0 +1,35 @@
+name: Ping IndexNow
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Submit all sitemap URLs to IndexNow
+        run: |
+          set -euo pipefail
+
+          HOST="mathman1111.github.io"
+          KEY_FILE=$(ls [0-9a-f]*.txt | head -n 1)
+          KEY=$(cat "$KEY_FILE")
+
+          URL_LIST=$(grep -oP '(?<=<loc>)[^<]+' sitemap.xml | jq -R . | jq -s .)
+
+          BODY=$(jq -n \
+            --arg host "$HOST" \
+            --arg key "$KEY" \
+            --arg keyLocation "https://${HOST}/${KEY}.txt" \
+            --argjson urlList "$URL_LIST" \
+            '{host: $host, key: $key, keyLocation: $keyLocation, urlList: $urlList}')
+
+          echo "Submitting $(echo "$URL_LIST" | jq length) URLs to IndexNow..."
+
+          curl -s -o /dev/null -w "IndexNow response: %{http_code}\n" \
+            -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$BODY"
