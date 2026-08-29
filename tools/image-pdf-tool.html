@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image/PDF Batch Tool (live tool) — Shipped With AI</title>
+<meta name="description" content="The actual image/PDF batch tool described in the half-finished-monetization article — bulk image compression, resizing, format conversion, and PDF merging, all in your browser.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  body.tool-page { padding: 0; }
+  .tool-page main.wrap { padding-top: 1.5rem; }
+  .tool-back { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.85rem; }
+</style>
+</head>
+<body class="tool-page">
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="../index.html">Shipped <span>With AI</span></a>
+    <nav class="site-nav">
+      <a href="../articles/2026-08-24-half-finished-monetization.html">Read the write-up</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="tool-back"><a href="../articles/2026-08-24-half-finished-monetization.html">&larr; Back to the write-up</a></p>
+</main>
+
+<style>
+  :root{
+    --t-bg:#f5f6f8;
+    --t-card:#ffffff;
+    --t-border:#e2e4e9;
+    --t-text:#1f2430;
+    --t-text-sub:#6b7280;
+    --t-accent:#3d7cf2;
+    --t-accent-dark:#2b5fd0;
+    --t-danger:#e0523f;
+    --t-danger-bg:#fdeceb;
+    --t-profit:#1f9d55;
+    --t-loss:#e0523f;
+    --t-warn:#b8860b;
+    --t-warn-bg:#fff6e0;
+    --t-radius:10px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --t-bg:#14171f;
+      --t-card:#1c2029;
+      --t-border:#2b303c;
+      --t-text:#e7e9ee;
+      --t-text-sub:#9aa1b0;
+      --t-accent:#5b8ff9;
+      --t-accent-dark:#7ea1fb;
+      --t-danger:#ff6b57;
+      --t-danger-bg:#3a211c;
+      --t-profit:#3ddc84;
+      --t-loss:#ff6b57;
+      --t-warn:#e0b84a;
+      --t-warn-bg:#332a10;
+    }
+  }
+  :root[data-theme="dark"]{
+    --t-bg:#14171f;
+    --t-card:#1c2029;
+    --t-border:#2b303c;
+    --t-text:#e7e9ee;
+    --t-text-sub:#9aa1b0;
+    --t-accent:#5b8ff9;
+    --t-accent-dark:#7ea1fb;
+    --t-danger:#ff6b57;
+    --t-danger-bg:#3a211c;
+    --t-profit:#3ddc84;
+    --t-loss:#ff6b57;
+    --t-warn:#e0b84a;
+    --t-warn-bg:#332a10;
+  }
+  .tool-app *{box-sizing:border-box;}
+  .tool-app{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+    background:var(--t-bg);
+    color:var(--t-text);
+    padding:24px 16px 80px;
+  }
+  .tool-app h1{font-size:22px;margin:0 0 4px;}
+  .tool-app .sub{color:var(--t-text-sub);font-size:13px;margin:0 0 20px;}
+  .tool-app .container{max-width:960px;margin:0 auto;}
+  .tool-app .tabs{display:flex;gap:4px;margin-bottom:16px;border-bottom:1px solid var(--t-border);}
+  .tool-app .tab-btn{background:none;border:none;padding:10px 18px;font-size:14px;font-weight:600;color:var(--t-text-sub);cursor:pointer;border-bottom:2px solid transparent;}
+  .tool-app .tab-btn.active{color:var(--t-accent);border-bottom-color:var(--t-accent);}
+  .tool-app .tab-panel{display:none;}
+  .tool-app .tab-panel.active{display:block;}
+  .tool-app .card{background:var(--t-card);border:1px solid var(--t-border);border-radius:var(--t-radius);padding:18px;margin-bottom:16px;}
+  .tool-app .card h2{font-size:15px;margin:0 0 14px;}
+  .tool-app .form-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;align-items:flex-end;}
+  .tool-app .field{display:flex;flex-direction:column;gap:4px;flex:1;min-width:120px;}
+  .tool-app .field label{font-size:12px;color:var(--t-text-sub);}
+  .tool-app input,.tool-app select{padding:8px 10px;border:1px solid var(--t-border);border-radius:6px;font-size:14px;background:var(--t-card);color:var(--t-text);width:100%;}
+  .tool-app input:focus,.tool-app select:focus{outline:none;border-color:var(--t-accent);}
+  .tool-app button{cursor:pointer;border:none;border-radius:6px;font-size:14px;font-weight:600;padding:9px 16px;}
+  .tool-app button:focus-visible,.tool-app input:focus-visible,.tool-app select:focus-visible,.tool-app a:focus-visible{outline:2px solid var(--t-accent);outline-offset:2px;}
+  .tool-app .btn-primary{background:var(--t-accent);color:#fff;}
+  .tool-app .btn-primary:hover{background:var(--t-accent-dark);}
+  .tool-app .btn-primary:disabled{background:var(--t-border);color:var(--t-text-sub);cursor:not-allowed;}
+  .tool-app .btn-ghost{background:var(--t-border);color:var(--t-text);}
+  .tool-app .btn-ghost:hover{filter:brightness(0.95);}
+  .tool-app .btn-danger{background:var(--t-danger-bg);color:var(--t-danger);}
+  .tool-app .btn-danger:hover{filter:brightness(0.95);}
+  .tool-app .btn-sm{padding:5px 10px;font-size:12px;}
+  .tool-app .dropzone{
+    border:2px dashed var(--t-border);
+    border-radius:var(--t-radius);
+    padding:34px 16px;
+    text-align:center;
+    color:var(--t-text-sub);
+    font-size:13px;
+    cursor:pointer;
+    background:var(--t-bg);
+    transition:border-color .15s,background .15s;
+  }
+  .tool-app .dropzone.drag{border-color:var(--t-accent);background:var(--t-card);color:var(--t-accent-dark);}
+  .tool-app .dropzone strong{color:var(--t-text);}
+  .tool-app table{width:100%;border-collapse:collapse;font-size:13px;}
+  .tool-app th,.tool-app td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--t-border);}
+  .tool-app th{color:var(--t-text-sub);font-weight:600;font-size:12px;}
+  .tool-app .num{text-align:right;font-variant-numeric:tabular-nums;}
+  .tool-app .empty{color:var(--t-text-sub);font-size:13px;padding:16px 0;text-align:center;}
+  .tool-app .reduce-tag{font-weight:700;}
+  .tool-app .reduce-tag.good{color:var(--t-profit);}
+  .tool-app .reduce-tag.bad{color:var(--t-loss);}
+  .tool-app .toolbar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+  .tool-app .file-row{display:flex;align-items:center;justify-content:space-between;padding:8px 6px;border-bottom:1px solid var(--t-border);font-size:13px;gap:8px;}
+  .tool-app .file-row .name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .tool-app .order-btns{display:flex;gap:4px;}
+  .tool-app .icon-btn{background:none;border:none;color:var(--t-text-sub);font-size:15px;padding:4px 6px;line-height:1;}
+  .tool-app .icon-btn:hover{color:var(--t-danger);}
+  .tool-app .limit-note{font-size:12px;color:var(--t-text-sub);margin:6px 0 0;}
+  .tool-app .limit-note.warn{color:var(--t-warn);}
+  .tool-app .warn-box{background:var(--t-warn-bg);border:1px solid var(--t-warn);border-radius:8px;padding:10px 12px;font-size:12px;color:var(--t-text);margin-top:10px;}
+  .tool-app .pro-card{background:var(--t-card);border:1px solid var(--t-accent);}
+  .tool-app .pro-card h2{color:var(--t-accent-dark);}
+  .tool-app .pro-list{margin:0 0 14px;padding-left:18px;font-size:13px;color:var(--t-text-sub);line-height:1.8;}
+  .tool-app .ad-slot{
+    margin:16px 0;
+    min-height:90px;
+    border:1px dashed var(--t-border);
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--t-text-sub);
+    font-size:12px;
+    background:var(--t-bg);
+  }
+  .tool-app .privacy-note{font-size:12px;color:var(--t-text-sub);display:flex;align-items:center;gap:6px;margin-bottom:16px;}
+  .tool-app .privacy-note .dot{width:8px;height:8px;border-radius:50%;background:var(--t-profit);flex-shrink:0;}
+  .tool-app .footer-note{color:var(--t-text-sub);font-size:12px;text-align:center;margin-top:30px;}
+  .tool-app .footer-note a{color:var(--t-accent);}
+</style>
+<div class="tool-app">
+<div class="container">
+  <h1>画像・PDF一括処理ツール</h1>
+  <p class="sub">画像の一括圧縮・リサイズ・形式変換と、PDFの結合をブラウザだけで行えます。</p>
+  <p class="privacy-note"><span class="dot"></span>ファイルはサーバーに送信されません。すべての処理はこの端末（ブラウザ）内で完結します。</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="image">画像 圧縮・変換</button>
+    <button class="tab-btn" data-tab="pdf">PDF 結合</button>
+    <button class="tab-btn" data-tab="pro">Pro版について</button>
+  </div>
+
+  <!-- ============ 画像タブ ============ -->
+  <div class="tab-panel active" id="panel-image">
+    <div class="card">
+      <h2>1. 画像を選択</h2>
+      <div class="dropzone" id="img-drop">
+        <div><strong>クリックして選択</strong>、またはここに画像をドラッグ&amp;ドロップ</div>
+        <div>JPEG / PNG / WebP に対応（無料版は一度に <span id="img-limit-label">5</span> 枚まで）</div>
+      </div>
+      <input type="file" id="img-input" accept="image/*" multiple style="display:none;">
+      <div id="img-limit-warn"></div>
+    </div>
+
+    <div class="card">
+      <h2>2. 出力設定</h2>
+      <div class="form-row">
+        <div class="field">
+          <label>出力形式</label>
+          <select id="img-format">
+            <option value="original">元の形式のまま</option>
+            <option value="image/jpeg">JPEG</option>
+            <option value="image/png">PNG</option>
+            <option value="image/webp">WebP</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>最大の横幅（px・空欄なら変更なし）</label>
+          <input type="number" id="img-maxwidth" placeholder="例: 1280" min="1">
+        </div>
+        <div class="field">
+          <label>画質（JPEG / WebP のみ有効）: <span id="img-quality-val">80</span>%</label>
+          <input type="range" id="img-quality" min="10" max="100" value="80">
+        </div>
+      </div>
+      <button class="btn-primary" id="img-process-btn">選択した画像を変換・圧縮する</button>
+    </div>
+
+    <div class="card">
+      <div class="toolbar">
+        <h2 style="margin:0;">3. 結果</h2>
+        <button class="btn-ghost btn-sm" id="img-zip-btn" disabled>まとめてZIPダウンロード</button>
+      </div>
+      <table id="img-result-table" style="display:none;">
+        <thead>
+          <tr><th>ファイル</th><th class="num">元サイズ</th><th class="num">変換後</th><th class="num">削減率</th><th></th></tr>
+        </thead>
+        <tbody id="img-result-body"></tbody>
+      </table>
+      <div class="empty" id="img-result-empty">まだ結果がありません</div>
+    </div>
+  </div>
+
+  <!-- ============ PDFタブ ============ -->
+  <div class="tab-panel" id="panel-pdf">
+    <div class="card">
+      <h2>1. PDFを選択（結合したい順）</h2>
+      <div class="dropzone" id="pdf-drop">
+        <div><strong>クリックして選択</strong>、またはここにPDFをドラッグ&amp;ドロップ</div>
+        <div>無料版は一度に <span id="pdf-limit-label">3</span> ファイルまで結合できます</div>
+      </div>
+      <input type="file" id="pdf-input" accept="application/pdf" multiple style="display:none;">
+      <div id="pdf-limit-warn"></div>
+    </div>
+
+    <div class="card">
+      <h2>2. 順番の確認・並び替え</h2>
+      <div id="pdf-file-list"></div>
+      <div class="empty" id="pdf-file-empty">まだファイルがありません</div>
+    </div>
+
+    <div class="card">
+      <button class="btn-primary" id="pdf-merge-btn">この順番で結合してダウンロード</button>
+      <p class="limit-note" id="pdf-status"></p>
+    </div>
+  </div>
+
+  <!-- ============ Pro版タブ ============ -->
+  <div class="tab-panel" id="panel-pro">
+    <div class="card pro-card">
+      <h2>無料版とPro版のちがい</h2>
+      <ul class="pro-list">
+        <li>無料版：画像は1回5枚まで、PDFは1回3ファイルまで処理できます</li>
+        <li>Pro版：1回の処理件数が無制限になります（準備中）</li>
+        <li>Pro版：広告が非表示になります（準備中）</li>
+      </ul>
+      <button class="btn-primary" id="upgrade-btn">Pro版にアップグレード</button>
+      <p class="limit-note">※ Pro版の決済は現在準備中です。公開までしばらくお待ちください。</p>
+    </div>
+  </div>
+
+  <div class="ad-slot" id="ad-slot">広告スペース（AdSense審査後にここへ広告タグを設置）</div>
+
+  <p class="footer-note">画像・PDF一括処理ツール — 個人開発ツール</p>
+</div>
+</div>
+
+<script>
+  // ===== Pro版アップグレード用リンク（Stripe決済リンクなどを取得したらここに設定） =====
+  var PRO_UPGRADE_URL = "";
+
+  // ===== 無料版の上限 =====
+  var FREE_IMAGE_LIMIT = 5;
+  var FREE_PDF_LIMIT = 3;
+
+  document.getElementById("img-limit-label").textContent = FREE_IMAGE_LIMIT;
+  document.getElementById("pdf-limit-label").textContent = FREE_PDF_LIMIT;
+
+  // ===== タブ切り替え =====
+  var tabBtns = document.querySelectorAll(".tab-btn");
+  var tabPanels = document.querySelectorAll(".tab-panel");
+  tabBtns.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      tabBtns.forEach(function(b){ b.classList.remove("active"); });
+      tabPanels.forEach(function(p){ p.classList.remove("active"); });
+      btn.classList.add("active");
+      document.getElementById("panel-" + btn.dataset.tab).classList.add("active");
+    });
+  });
+
+  document.getElementById("upgrade-btn").addEventListener("click", function(){
+    if (PRO_UPGRADE_URL) {
+      window.location.href = PRO_UPGRADE_URL;
+    } else {
+      alert("Pro版のお申し込みは現在準備中です。もうしばらくお待ちください。");
+    }
+  });
+
+  function formatBytes(bytes){
+    if (bytes < 1024) return bytes + " B";
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
+    return (bytes / 1024 / 1024).toFixed(2) + " MB";
+  }
+
+  // ===================================================================
+  // 画像 圧縮・変換
+  // ===================================================================
+  var imgDrop = document.getElementById("img-drop");
+  var imgInput = document.getElementById("img-input");
+  var imgFiles = [];
+  var imgResults = []; // {name, blob, originalSize, newSize}
+
+  imgDrop.addEventListener("click", function(){ imgInput.click(); });
+  imgDrop.addEventListener("dragover", function(e){ e.preventDefault(); imgDrop.classList.add("drag"); });
+  imgDrop.addEventListener("dragleave", function(){ imgDrop.classList.remove("drag"); });
+  imgDrop.addEventListener("drop", function(e){
+    e.preventDefault();
+    imgDrop.classList.remove("drag");
+    handleImageFiles(e.dataTransfer.files);
+  });
+  imgInput.addEventListener("change", function(){
+    handleImageFiles(imgInput.files);
+  });
+
+  function handleImageFiles(fileList){
+    var files = Array.prototype.slice.call(fileList).filter(function(f){
+      return f.type.indexOf("image/") === 0;
+    });
+    var warnEl = document.getElementById("img-limit-warn");
+    if (files.length > FREE_IMAGE_LIMIT) {
+      warnEl.innerHTML = '<div class="warn-box">無料版では一度に ' + FREE_IMAGE_LIMIT + ' 枚まで処理できます。先頭 ' + FREE_IMAGE_LIMIT + ' 枚のみ処理します。<br>Pro版にすると枚数制限なく処理できます。</div>';
+      files = files.slice(0, FREE_IMAGE_LIMIT);
+    } else {
+      warnEl.innerHTML = "";
+    }
+    imgFiles = files;
+    imgDrop.querySelector("div").innerHTML = "<strong>" + imgFiles.length + " 枚選択中</strong>（クリックで選び直し）";
+  }
+
+  document.getElementById("img-quality").addEventListener("input", function(){
+    document.getElementById("img-quality-val").textContent = this.value;
+  });
+
+  document.getElementById("img-process-btn").addEventListener("click", function(){
+    if (imgFiles.length === 0) {
+      alert("画像を選択してください");
+      return;
+    }
+    var format = document.getElementById("img-format").value;
+    var maxWidth = parseInt(document.getElementById("img-maxwidth").value, 10) || 0;
+    var quality = parseInt(document.getElementById("img-quality").value, 10) / 100;
+
+    imgResults = [];
+    var btn = this;
+    btn.disabled = true;
+    btn.textContent = "処理中...";
+
+    var tasks = imgFiles.map(function(file){
+      return processImage(file, format, maxWidth, quality);
+    });
+
+    Promise.all(tasks).then(function(results){
+      imgResults = results;
+      renderImageResults();
+      btn.disabled = false;
+      btn.textContent = "選択した画像を変換・圧縮する";
+    }).catch(function(err){
+      console.error(err);
+      alert("処理中にエラーが発生しました: " + err.message);
+      btn.disabled = false;
+      btn.textContent = "選択した画像を変換・圧縮する";
+    });
+  });
+
+  function processImage(file, format, maxWidth, quality){
+    return createImageBitmap(file).then(function(bitmap){
+      var w = bitmap.width;
+      var h = bitmap.height;
+      if (maxWidth > 0 && w > maxWidth) {
+        h = Math.round(h * (maxWidth / w));
+        w = maxWidth;
+      }
+      var canvas = document.createElement("canvas");
+      canvas.width = w;
+      canvas.height = h;
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(bitmap, 0, 0, w, h);
+
+      var outType = format === "original" ? (file.type || "image/jpeg") : format;
+      var outQuality = (outType === "image/jpeg" || outType === "image/webp") ? quality : undefined;
+
+      return new Promise(function(resolve, reject){
+        canvas.toBlob(function(blob){
+          if (!blob) { reject(new Error(file.name + " の変換に失敗しました")); return; }
+          var ext = outType === "image/png" ? "png" : (outType === "image/webp" ? "webp" : "jpg");
+          var baseName = file.name.replace(/\.[^.]+$/, "");
+          resolve({
+            name: baseName + "." + ext,
+            blob: blob,
+            originalSize: file.size,
+            newSize: blob.size
+          });
+        }, outType, outQuality);
+      });
+    });
+  }
+
+  function renderImageResults(){
+    var table = document.getElementById("img-result-table");
+    var body = document.getElementById("img-result-body");
+    var empty = document.getElementById("img-result-empty");
+    body.innerHTML = "";
+
+    if (imgResults.length === 0) {
+      table.style.display = "none";
+      empty.style.display = "block";
+      document.getElementById("img-zip-btn").disabled = true;
+      return;
+    }
+    table.style.display = "table";
+    empty.style.display = "none";
+    document.getElementById("img-zip-btn").disabled = false;
+
+    imgResults.forEach(function(r){
+      var tr = document.createElement("tr");
+      var reduceRatio = r.originalSize > 0 ? Math.round((1 - r.newSize / r.originalSize) * 100) : 0;
+      var url = URL.createObjectURL(r.blob);
+      tr.innerHTML =
+        '<td>' + r.name + '</td>' +
+        '<td class="num">' + formatBytes(r.originalSize) + '</td>' +
+        '<td class="num">' + formatBytes(r.newSize) + '</td>' +
+        '<td class="num"><span class="reduce-tag ' + (reduceRatio >= 0 ? "good" : "bad") + '">' + reduceRatio + '%</span></td>' +
+        '<td><a class="btn-ghost btn-sm" style="text-decoration:none;" href="' + url + '" download="' + r.name + '">保存</a></td>';
+      body.appendChild(tr);
+    });
+  }
+
+  document.getElementById("img-zip-btn").addEventListener("click", function(){
+    if (typeof JSZip === "undefined") {
+      alert("ZIP機能の読み込みに失敗しました。通信環境を確認して再読み込みしてください。");
+      return;
+    }
+    var zip = new JSZip();
+    imgResults.forEach(function(r){
+      zip.file(r.name, r.blob);
+    });
+    zip.generateAsync({ type: "blob" }).then(function(content){
+      var url = URL.createObjectURL(content);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "images.zip";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  });
+
+  // ===================================================================
+  // PDF 結合
+  // ===================================================================
+  var pdfDrop = document.getElementById("pdf-drop");
+  var pdfInput = document.getElementById("pdf-input");
+  var pdfFiles = [];
+
+  pdfDrop.addEventListener("click", function(){ pdfInput.click(); });
+  pdfDrop.addEventListener("dragover", function(e){ e.preventDefault(); pdfDrop.classList.add("drag"); });
+  pdfDrop.addEventListener("dragleave", function(){ pdfDrop.classList.remove("drag"); });
+  pdfDrop.addEventListener("drop", function(e){
+    e.preventDefault();
+    pdfDrop.classList.remove("drag");
+    handlePdfFiles(e.dataTransfer.files);
+  });
+  pdfInput.addEventListener("change", function(){
+    handlePdfFiles(pdfInput.files);
+  });
+
+  function handlePdfFiles(fileList){
+    var files = Array.prototype.slice.call(fileList).filter(function(f){
+      return f.type === "application/pdf" || /\.pdf$/i.test(f.name);
+    });
+    var warnEl = document.getElementById("pdf-limit-warn");
+    if (files.length > FREE_PDF_LIMIT) {
+      warnEl.innerHTML = '<div class="warn-box">無料版では一度に ' + FREE_PDF_LIMIT + ' ファイルまで結合できます。先頭 ' + FREE_PDF_LIMIT + ' ファイルのみ使用します。<br>Pro版にするとファイル数無制限で結合できます。</div>';
+      files = files.slice(0, FREE_PDF_LIMIT);
+    } else {
+      warnEl.innerHTML = "";
+    }
+    pdfFiles = files;
+    renderPdfList();
+  }
+
+  function renderPdfList(){
+    var list = document.getElementById("pdf-file-list");
+    var empty = document.getElementById("pdf-file-empty");
+    list.innerHTML = "";
+    if (pdfFiles.length === 0) {
+      empty.style.display = "block";
+      return;
+    }
+    empty.style.display = "none";
+    pdfFiles.forEach(function(f, idx){
+      var row = document.createElement("div");
+      row.className = "file-row";
+      row.innerHTML =
+        '<span class="name">' + (idx + 1) + '. ' + f.name + ' (' + formatBytes(f.size) + ')</span>' +
+        '<span class="order-btns">' +
+          '<button type="button" class="icon-btn" data-act="up" data-idx="' + idx + '">↑</button>' +
+          '<button type="button" class="icon-btn" data-act="down" data-idx="' + idx + '">↓</button>' +
+          '<button type="button" class="icon-btn" data-act="del" data-idx="' + idx + '">✕</button>' +
+        '</span>';
+      list.appendChild(row);
+    });
+    list.querySelectorAll("button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var idx = parseInt(btn.dataset.idx, 10);
+        var act = btn.dataset.act;
+        if (act === "up" && idx > 0) {
+          var tmp = pdfFiles[idx - 1]; pdfFiles[idx - 1] = pdfFiles[idx]; pdfFiles[idx] = tmp;
+        } else if (act === "down" && idx < pdfFiles.length - 1) {
+          var tmp2 = pdfFiles[idx + 1]; pdfFiles[idx + 1] = pdfFiles[idx]; pdfFiles[idx] = tmp2;
+        } else if (act === "del") {
+          pdfFiles.splice(idx, 1);
+        }
+        renderPdfList();
+      });
+    });
+  }
+
+  document.getElementById("pdf-merge-btn").addEventListener("click", function(){
+    if (pdfFiles.length < 2) {
+      alert("結合するには2つ以上のPDFを選択してください");
+      return;
+    }
+    if (typeof PDFLib === "undefined") {
+      alert("PDF機能の読み込みに失敗しました。通信環境を確認して再読み込みしてください。");
+      return;
+    }
+    var status = document.getElementById("pdf-status");
+    status.textContent = "結合中...";
+
+    var PDFDocument = PDFLib.PDFDocument;
+    PDFDocument.create().then(function(mergedPdf){
+      var chain = Promise.resolve();
+      pdfFiles.forEach(function(file){
+        chain = chain.then(function(){
+          return file.arrayBuffer().then(function(buf){
+            return PDFDocument.load(buf).then(function(srcDoc){
+              return mergedPdf.copyPages(srcDoc, srcDoc.getPageIndices()).then(function(pages){
+                pages.forEach(function(p){ mergedPdf.addPage(p); });
+              });
+            });
+          });
+        });
+      });
+      return chain.then(function(){ return mergedPdf.save(); });
+    }).then(function(bytes){
+      var blob = new Blob([bytes], { type: "application/pdf" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "merged.pdf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      status.textContent = "結合が完了しました";
+    }).catch(function(err){
+      console.error(err);
+      status.textContent = "";
+      alert("結合中にエラーが発生しました: " + err.message);
+    });
+  });
+</script>
+
+<!-- 外部ライブラリ（ZIP圧縮 / PDF結合）。いずれも無料・オープンソース -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>&copy; 2026 Shipped With AI. Written by a student in Japan, edited with the help of AI tools.</div>
+    <div class="links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Affiliate Disclosure</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1171d112a9ca44ea957b6af723e7b1e4"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

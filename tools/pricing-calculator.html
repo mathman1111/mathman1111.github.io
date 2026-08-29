@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pricing Calculator (live tool) — Shipped With AI</title>
+<meta name="description" content="The actual pricing/cost calculator described in the pricing tool article — turns ingredient and material costs into a per-product profit margin, right in your browser.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  body.tool-page { padding: 0; }
+  .tool-page main.wrap { padding-top: 1.5rem; }
+  .tool-back { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.85rem; }
+</style>
+</head>
+<body class="tool-page">
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="../index.html">Shipped <span>With AI</span></a>
+    <nav class="site-nav">
+      <a href="../articles/2026-08-24-pricing-tool-for-makers.html">Read the write-up</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="tool-back"><a href="../articles/2026-08-24-pricing-tool-for-makers.html">&larr; Back to the write-up</a></p>
+</main>
+
+<style>
+  :root{
+    --bg:#f5f6f8;
+    --card:#ffffff;
+    --border:#e2e4e9;
+    --text:#1f2430;
+    --text-sub:#6b7280;
+    --accent:#3d7cf2;
+    --accent-dark:#2b5fd0;
+    --danger:#e0523f;
+    --danger-bg:#fdeceb;
+    --profit:#1f9d55;
+    --loss:#e0523f;
+    --radius:10px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14171f;
+      --card:#1c2029;
+      --border:#2b303c;
+      --text:#e7e9ee;
+      --text-sub:#9aa1b0;
+      --accent:#5b8ff9;
+      --accent-dark:#7ea1fb;
+      --danger:#ff6b57;
+      --danger-bg:#3a211c;
+      --profit:#3ddc84;
+      --loss:#ff6b57;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14171f;
+    --card:#1c2029;
+    --border:#2b303c;
+    --text:#e7e9ee;
+    --text-sub:#9aa1b0;
+    --accent:#5b8ff9;
+    --accent-dark:#7ea1fb;
+    --danger:#ff6b57;
+    --danger-bg:#3a211c;
+    --profit:#3ddc84;
+    --loss:#ff6b57;
+  }
+  *{box-sizing:border-box;}
+  .calc-app{
+    margin:0;
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    padding:24px 16px 80px;
+  }
+  .calc-app h1{
+    font-size:22px;
+    margin:0 0 4px;
+  }
+  .calc-app .sub{
+    color:var(--text-sub);
+    font-size:13px;
+    margin:0 0 20px;
+  }
+  .calc-app .container{
+    max-width:960px;
+    margin:0 auto;
+  }
+  .calc-app .tabs{
+    display:flex;
+    gap:4px;
+    margin-bottom:16px;
+    border-bottom:1px solid var(--border);
+  }
+  .calc-app .tab-btn{
+    background:none;
+    border:none;
+    padding:10px 18px;
+    font-size:14px;
+    font-weight:600;
+    color:var(--text-sub);
+    cursor:pointer;
+    border-bottom:2px solid transparent;
+  }
+  .calc-app .tab-btn.active{
+    color:var(--accent);
+    border-bottom-color:var(--accent);
+  }
+  .calc-app .tab-panel{display:none;}
+  .calc-app .tab-panel.active{display:block;}
+  .calc-app .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:18px;
+    margin-bottom:16px;
+  }
+  .calc-app .card h2{
+    font-size:15px;
+    margin:0 0 14px;
+  }
+  .calc-app .form-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+  .calc-app .field{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    flex:1;
+    min-width:110px;
+  }
+  .calc-app .field label{
+    font-size:12px;
+    color:var(--text-sub);
+  }
+  .calc-app input,.calc-app select{
+    padding:8px 10px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    font-size:14px;
+    background:var(--card);
+    color:var(--text);
+    width:100%;
+  }
+  .calc-app input:focus,.calc-app select:focus{
+    outline:none;
+    border-color:var(--accent);
+  }
+  .calc-app button{
+    cursor:pointer;
+    border:none;
+    border-radius:6px;
+    font-size:14px;
+    font-weight:600;
+    padding:9px 16px;
+  }
+  .calc-app button:focus-visible,.calc-app input:focus-visible,.calc-app select:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+  .calc-app .btn-primary{
+    background:var(--accent);
+    color:#fff;
+  }
+  .calc-app .btn-primary:hover{background:var(--accent-dark);}
+  .calc-app .btn-ghost{
+    background:var(--border);
+    color:var(--text);
+  }
+  .calc-app .btn-ghost:hover{filter:brightness(0.95);}
+  .calc-app .btn-danger{
+    background:var(--danger-bg);
+    color:var(--danger);
+  }
+  .calc-app .btn-danger:hover{filter:brightness(0.95);}
+  .calc-app .btn-sm{
+    padding:5px 10px;
+    font-size:12px;
+  }
+  .calc-app table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+  }
+  .calc-app th,.calc-app td{
+    text-align:left;
+    padding:8px 6px;
+    border-bottom:1px solid var(--border);
+  }
+  .calc-app th{
+    color:var(--text-sub);
+    font-weight:600;
+    font-size:12px;
+  }
+  .calc-app .num{text-align:right;font-variant-numeric:tabular-nums;}
+  .calc-app .empty{
+    color:var(--text-sub);
+    font-size:13px;
+    padding:16px 0;
+    text-align:center;
+  }
+  .calc-app .product-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .calc-app .product-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:16px;
+  }
+  .calc-app .product-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+    margin-bottom:10px;
+  }
+  .calc-app .product-head h3{
+    margin:0;
+    font-size:16px;
+  }
+  .calc-app .product-head .actions{
+    display:flex;
+    gap:6px;
+    flex-shrink:0;
+  }
+  .calc-app .stat-row{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin:10px 0;
+    padding:10px 0;
+    border-top:1px dashed var(--border);
+    border-bottom:1px dashed var(--border);
+  }
+  .calc-app .stat{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .calc-app .stat .label{font-size:11px;color:var(--text-sub);}
+  .calc-app .stat .value{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums;}
+  .calc-app .stat .value.profit{color:var(--profit);}
+  .calc-app .stat .value.loss{color:var(--loss);}
+  .calc-app .ingredient-row{
+    display:grid;
+    grid-template-columns:1fr 110px 90px 32px;
+    gap:8px;
+    align-items:center;
+    margin-bottom:8px;
+  }
+  .calc-app .ingredient-row .unit-label{
+    font-size:12px;
+    color:var(--text-sub);
+  }
+  .calc-app .icon-btn{
+    background:none;
+    border:none;
+    color:var(--text-sub);
+    font-size:16px;
+    padding:4px;
+    line-height:1;
+  }
+  .calc-app .icon-btn:hover{color:var(--danger);}
+  .calc-app .add-link{
+    background:none;
+    color:var(--accent);
+    padding:4px 0;
+    font-size:13px;
+    font-weight:600;
+  }
+  .calc-app .toolbar{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+    margin-bottom:12px;
+  }
+  .calc-app .footer-note{
+    color:var(--text-sub);
+    font-size:12px;
+    text-align:center;
+    margin-top:30px;
+  }
+  .calc-app .footer-note a{color:var(--accent);}
+</style>
+<div class="calc-app">
+<div class="container">
+  <h1>原価計算アプリ</h1>
+  <p class="sub">材料の単価を登録し、商品ごとに使用量を積み上げて原価・利益を自動計算します。</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="materials">材料</button>
+    <button class="tab-btn" data-tab="products">商品の原価</button>
+  </div>
+
+  <!-- 材料タブ -->
+  <div class="tab-panel active" id="tab-materials">
+    <div class="card">
+      <h2>材料を追加</h2>
+      <div class="form-row">
+        <div class="field">
+          <label>材料名</label>
+          <input type="text" id="mat-name" placeholder="例: 薄力粉">
+        </div>
+        <div class="field">
+          <label>購入価格(円)</label>
+          <input type="number" id="mat-price" placeholder="500" min="0" step="0.01">
+        </div>
+        <div class="field">
+          <label>購入量</label>
+          <input type="number" id="mat-qty" placeholder="1000" min="0" step="0.01">
+        </div>
+        <div class="field">
+          <label>単位</label>
+          <input type="text" id="mat-unit" placeholder="g / ml / 個">
+        </div>
+      </div>
+      <button class="btn-primary" id="add-material">追加する</button>
+    </div>
+
+    <div class="card">
+      <h2>材料一覧</h2>
+      <table id="material-table">
+        <thead>
+          <tr>
+            <th>材料名</th>
+            <th class="num">購入価格</th>
+            <th class="num">購入量</th>
+            <th>単位</th>
+            <th class="num">単価</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="empty" id="material-empty" style="display:none;">まだ材料が登録されていません。</div>
+    </div>
+  </div>
+
+  <!-- 商品タブ -->
+  <div class="tab-panel" id="tab-products">
+    <div class="toolbar">
+      <button class="btn-primary" id="add-product">＋ 商品を追加</button>
+    </div>
+    <div class="product-list" id="product-list"></div>
+    <div class="empty" id="product-empty" style="display:none;">まだ商品が登録されていません。「商品を追加」から作成してください。</div>
+  </div>
+
+  <p class="footer-note">データはこの端末のブラウザ内にのみ保存されます(localStorage)。サーバーには送信されません。</p>
+</div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var STORAGE_KEY = "genka-app-data-v1";
+  var state = load();
+
+  function load(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if(raw){
+        var data = JSON.parse(raw);
+        if(!Array.isArray(data.materials)) data.materials = [];
+        if(!Array.isArray(data.products)) data.products = [];
+        return data;
+      }
+    }catch(e){}
+    return { materials: [], products: [] };
+  }
+
+  function save(){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+
+  function uid(){
+    return Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+  }
+
+  function fmtYen(n){
+    if(!isFinite(n)) n = 0;
+    return "¥" + Math.round(n * 10) / 10;
+  }
+
+  function fmtYenWhole(n){
+    if(!isFinite(n)) n = 0;
+    return "¥" + n.toLocaleString("ja-JP", {maximumFractionDigits: 1});
+  }
+
+  function unitPrice(mat){
+    var qty = parseFloat(mat.qty);
+    var price = parseFloat(mat.price);
+    if(!qty || qty <= 0 || !isFinite(price)) return 0;
+    return price / qty;
+  }
+
+  // ---------- タブ切り替え ----------
+  var tabBtns = document.querySelectorAll(".tab-btn");
+  var tabPanels = document.querySelectorAll(".tab-panel");
+  tabBtns.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      tabBtns.forEach(function(b){ b.classList.remove("active"); });
+      tabPanels.forEach(function(p){ p.classList.remove("active"); });
+      btn.classList.add("active");
+      document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
+    });
+  });
+
+  // ---------- 材料 ----------
+  var matNameInput = document.getElementById("mat-name");
+  var matPriceInput = document.getElementById("mat-price");
+  var matQtyInput = document.getElementById("mat-qty");
+  var matUnitInput = document.getElementById("mat-unit");
+
+  document.getElementById("add-material").addEventListener("click", function(){
+    var name = matNameInput.value.trim();
+    var price = parseFloat(matPriceInput.value);
+    var qty = parseFloat(matQtyInput.value);
+    var unit = matUnitInput.value.trim();
+
+    if(!name){ alert("材料名を入力してください。"); return; }
+    if(!isFinite(price) || price < 0){ alert("購入価格を正しく入力してください。"); return; }
+    if(!isFinite(qty) || qty <= 0){ alert("購入量を正しく入力してください。"); return; }
+    if(!unit){ alert("単位を入力してください。"); return; }
+
+    state.materials.push({ id: uid(), name: name, price: price, qty: qty, unit: unit });
+    save();
+    matNameInput.value = "";
+    matPriceInput.value = "";
+    matQtyInput.value = "";
+    matUnitInput.value = "";
+    matNameInput.focus();
+    renderMaterials();
+    renderProducts();
+  });
+
+  function deleteMaterial(id){
+    var usedIn = state.products.filter(function(p){
+      return p.items.some(function(it){ return it.materialId === id; });
+    });
+    if(usedIn.length > 0){
+      var names = usedIn.map(function(p){ return p.name; }).join("、");
+      if(!confirm("この材料は次の商品で使用されています: " + names + "\n削除すると該当行も削除されます。よろしいですか？")){
+        return;
+      }
+      state.products.forEach(function(p){
+        p.items = p.items.filter(function(it){ return it.materialId !== id; });
+      });
+    }
+    state.materials = state.materials.filter(function(m){ return m.id !== id; });
+    save();
+    renderMaterials();
+    renderProducts();
+  }
+
+  function renderMaterials(){
+    var tbody = document.querySelector("#material-table tbody");
+    tbody.innerHTML = "";
+    document.getElementById("material-empty").style.display = state.materials.length ? "none" : "block";
+    state.materials.forEach(function(m){
+      var tr = document.createElement("tr");
+      tr.innerHTML =
+        "<td>" + escapeHtml(m.name) + "</td>" +
+        "<td class='num'>" + fmtYenWhole(m.price) + "</td>" +
+        "<td class='num'>" + m.qty + "</td>" +
+        "<td>" + escapeHtml(m.unit) + "</td>" +
+        "<td class='num'>" + fmtYen(unitPrice(m)) + " / " + escapeHtml(m.unit) + "</td>" +
+        "<td></td>";
+      var delBtn = document.createElement("button");
+      delBtn.className = "btn-danger btn-sm";
+      delBtn.textContent = "削除";
+      delBtn.addEventListener("click", function(){ deleteMaterial(m.id); });
+      tr.lastElementChild.appendChild(delBtn);
+      tbody.appendChild(tr);
+    });
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+
+  // ---------- 商品 ----------
+  document.getElementById("add-product").addEventListener("click", function(){
+    state.products.push({
+      id: uid(),
+      name: "新しい商品",
+      items: [],
+      extraCost: 0,
+      sellPrice: 0
+    });
+    save();
+    renderProducts();
+  });
+
+  function deleteProduct(id){
+    if(!confirm("この商品を削除しますか？")) return;
+    state.products = state.products.filter(function(p){ return p.id !== id; });
+    save();
+    renderProducts();
+  }
+
+  function computeCost(product){
+    var matCost = product.items.reduce(function(sum, it){
+      var mat = state.materials.find(function(m){ return m.id === it.materialId; });
+      if(!mat) return sum;
+      var amount = parseFloat(it.amount) || 0;
+      return sum + amount * unitPrice(mat);
+    }, 0);
+    return matCost + (parseFloat(product.extraCost) || 0);
+  }
+
+  function renderProducts(){
+    var list = document.getElementById("product-list");
+    list.innerHTML = "";
+    document.getElementById("product-empty").style.display = state.products.length ? "none" : "block";
+
+    state.products.forEach(function(product){
+      var card = document.createElement("div");
+      card.className = "product-card";
+
+      // head
+      var head = document.createElement("div");
+      head.className = "product-head";
+
+      var nameInput = document.createElement("input");
+      nameInput.type = "text";
+      nameInput.value = product.name;
+      nameInput.style.fontSize = "16px";
+      nameInput.style.fontWeight = "700";
+      nameInput.style.border = "none";
+      nameInput.style.background = "transparent";
+      nameInput.style.padding = "2px 0";
+      nameInput.addEventListener("change", function(){
+        product.name = nameInput.value.trim() || "無題の商品";
+        save();
+      });
+
+      var actions = document.createElement("div");
+      actions.className = "actions";
+      var delBtn = document.createElement("button");
+      delBtn.className = "btn-danger btn-sm";
+      delBtn.textContent = "商品を削除";
+      delBtn.addEventListener("click", function(){ deleteProduct(product.id); });
+      actions.appendChild(delBtn);
+
+      head.appendChild(nameInput);
+      head.appendChild(actions);
+      card.appendChild(head);
+
+      // ingredient rows
+      var ingWrap = document.createElement("div");
+      if(state.materials.length === 0){
+        var note = document.createElement("div");
+        note.className = "empty";
+        note.textContent = "先に「材料」タブで材料を登録してください。";
+        ingWrap.appendChild(note);
+      } else {
+        product.items.forEach(function(item, idx){
+          ingWrap.appendChild(buildIngredientRow(product, item, idx));
+        });
+        var addRowBtn = document.createElement("button");
+        addRowBtn.className = "add-link";
+        addRowBtn.textContent = "＋ 材料を追加";
+        addRowBtn.addEventListener("click", function(){
+          var firstMat = state.materials[0];
+          product.items.push({ materialId: firstMat.id, amount: "" });
+          save();
+          renderProducts();
+        });
+        ingWrap.appendChild(addRowBtn);
+      }
+      card.appendChild(ingWrap);
+
+      // extra cost + sell price
+      var row2 = document.createElement("div");
+      row2.className = "form-row";
+      row2.style.marginTop = "10px";
+
+      var extraField = document.createElement("div");
+      extraField.className = "field";
+      extraField.innerHTML = "<label>その他経費(包装・人件費等/円)</label>";
+      var extraInput = document.createElement("input");
+      extraInput.type = "number";
+      extraInput.min = "0";
+      extraInput.step = "0.01";
+      extraInput.value = product.extraCost || "";
+      extraInput.placeholder = "0";
+      extraInput.addEventListener("input", function(){
+        product.extraCost = parseFloat(extraInput.value) || 0;
+        save();
+        updateStats(product, statRow);
+      });
+      extraField.appendChild(extraInput);
+
+      var sellField = document.createElement("div");
+      sellField.className = "field";
+      sellField.innerHTML = "<label>販売価格(円・任意)</label>";
+      var sellInput = document.createElement("input");
+      sellInput.type = "number";
+      sellInput.min = "0";
+      sellInput.step = "0.01";
+      sellInput.value = product.sellPrice || "";
+      sellInput.placeholder = "0";
+      sellInput.addEventListener("input", function(){
+        product.sellPrice = parseFloat(sellInput.value) || 0;
+        save();
+        updateStats(product, statRow);
+      });
+      sellField.appendChild(sellInput);
+
+      row2.appendChild(extraField);
+      row2.appendChild(sellField);
+      card.appendChild(row2);
+
+      // stats
+      var statRow = document.createElement("div");
+      statRow.className = "stat-row";
+      updateStats(product, statRow);
+      card.appendChild(statRow);
+
+      list.appendChild(card);
+    });
+  }
+
+  function updateStats(product, statRow){
+    var cost = computeCost(product);
+    var sell = parseFloat(product.sellPrice) || 0;
+    var profit = sell - cost;
+    var margin = sell > 0 ? (profit / sell * 100) : null;
+
+    statRow.innerHTML = "";
+    statRow.appendChild(makeStat("原価", fmtYenWhole(cost), null));
+    if(sell > 0){
+      statRow.appendChild(makeStat("販売価格", fmtYenWhole(sell), null));
+      statRow.appendChild(makeStat("利益", fmtYenWhole(profit), profit >= 0 ? "profit" : "loss"));
+      statRow.appendChild(makeStat("利益率", margin.toFixed(1) + "%", margin >= 0 ? "profit" : "loss"));
+    }
+  }
+
+  function makeStat(label, value, cls){
+    var s = document.createElement("div");
+    s.className = "stat";
+    var l = document.createElement("div");
+    l.className = "label";
+    l.textContent = label;
+    var v = document.createElement("div");
+    v.className = "value" + (cls ? " " + cls : "");
+    v.textContent = value;
+    s.appendChild(l);
+    s.appendChild(v);
+    return s;
+  }
+
+  function buildIngredientRow(product, item, idx){
+    var row = document.createElement("div");
+    row.className = "ingredient-row";
+
+    var select = document.createElement("select");
+    state.materials.forEach(function(m){
+      var opt = document.createElement("option");
+      opt.value = m.id;
+      opt.textContent = m.name;
+      if(m.id === item.materialId) opt.selected = true;
+      select.appendChild(opt);
+    });
+    if(!state.materials.some(function(m){ return m.id === item.materialId; }) && state.materials[0]){
+      item.materialId = state.materials[0].id;
+    }
+    select.addEventListener("change", function(){
+      item.materialId = select.value;
+      save();
+      renderProducts();
+    });
+
+    var amountInput = document.createElement("input");
+    amountInput.type = "number";
+    amountInput.min = "0";
+    amountInput.step = "0.01";
+    amountInput.placeholder = "使用量";
+    amountInput.value = item.amount === "" || item.amount === undefined ? "" : item.amount;
+    amountInput.addEventListener("input", function(){
+      item.amount = amountInput.value;
+      save();
+      renderProducts();
+    });
+
+    var unitLabel = document.createElement("div");
+    unitLabel.className = "unit-label";
+    var mat = state.materials.find(function(m){ return m.id === item.materialId; });
+    unitLabel.textContent = mat ? mat.unit : "";
+
+    var removeBtn = document.createElement("button");
+    removeBtn.className = "icon-btn";
+    removeBtn.textContent = "✕";
+    removeBtn.title = "この材料を削除";
+    removeBtn.addEventListener("click", function(){
+      product.items.splice(idx, 1);
+      save();
+      renderProducts();
+    });
+
+    row.appendChild(select);
+    row.appendChild(amountInput);
+    row.appendChild(unitLabel);
+    row.appendChild(removeBtn);
+    return row;
+  }
+
+  // initial render
+  renderMaterials();
+  renderProducts();
+})();
+</script>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>&copy; 2026 Shipped With AI. Written by a student in Japan, edited with the help of AI tools.</div>
+    <div class="links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Affiliate Disclosure</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1171d112a9ca44ea957b6af723e7b1e4"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
