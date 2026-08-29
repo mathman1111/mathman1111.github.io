@@ -223,3 +223,40 @@ footer.site-footer .links a {
   color: var(--text-muted);
   margin: 0.5rem 0 0;
 }
+
+.try-it {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.try-it p {
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.try-it-link {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--bg-card);
+  text-decoration: none;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.try-it-link:hover {
+  opacity: 0.88;
+}
