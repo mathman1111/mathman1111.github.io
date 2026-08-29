@@ -32,7 +32,7 @@
       "name": "Does the \"fushi\" version sync updates to the public catalog automatically?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Its update tool has a live preview panel that reflects edits instantly, but as of this build it doesn't push those changes to the separate public catalog file automatically. That's a real limitation, not a design choice, and it's next on the list to fix."
+        "text": "It didn't at first — the two files each had their own hardcoded product list with no connection between them. That gap has since been closed: both files now read and write the same browser storage, so edits made in the update tool show up on the public catalog page, including cross-tab sync if the catalog is left open."
       }
     },
     {
@@ -94,10 +94,10 @@
     catalog and the owner's own editing screen. Good fit for a shop with a lot of items that change often —
     the owner needs to add, edit, or remove products quickly, without touching two separate files.</li>
     <li><strong>A furniture/craft workshop version ("fushi"):</strong> the public catalog page and the owner's
-    update tool are two separate files. The update tool has its own live preview panel that reflects edits
-    instantly — but, as of this build, it doesn't push those changes to the separate public catalog file
-    automatically. That's a real limitation, not a design choice, and it's next on the list to fix. This version
-    puts more weight on material and size — the kind of detail that actually matters when you're deciding
+    update tool are two separate files. The update tool has its own live preview panel, and — after a
+    <a href="2026-08-29-fixing-the-catalog-sync-bug.html">fix I wrote up separately</a> — edits saved there now
+    show up on the separate public catalog page too, including cross-tab sync if the catalog is left open. This
+    version puts more weight on material and size — the kind of detail that actually matters when you're deciding
     whether a chair will fit your room.</li>
   </ul>
 
@@ -149,9 +149,11 @@
   material and size details.</p>
 
   <h3>Does the "fushi" version sync updates to the public catalog automatically?</h3>
-  <p>Its update tool has a live preview panel that reflects edits instantly, but as of this build it doesn't
-  push those changes to the separate public catalog file automatically. That's a real limitation, not a design
-  choice, and it's next on the list to fix.</p>
+  <p>It didn't at first — the two files each had their own hardcoded product list with no connection between
+  them. That gap has since been closed: both files now read and write the same browser storage, so edits made in
+  the update tool show up on the public catalog page, including cross-tab sync if the catalog is left open. See
+  <a href="2026-08-29-fixing-the-catalog-sync-bug.html">the write-up of that fix</a> for what was actually wrong
+  and how it was tested.</p>
 
   <h3>Why use localStorage instead of a real database?</h3>
   <p>Both prototypes save data in the browser (localStorage) rather than needing a real backend. That kept the

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I fixed the catalog sync bug I said I'd fix — Shipped With AI</title>
+<meta name="description" content="A follow-up: the 'fushi' catalog tool's public page finally reads live updates from the owner's editing tool, with a draft/publish flag and cross-tab sync. Here's what was actually wrong and how it got tested.">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Was this bug fixed because a shop reported it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. No shop has signed up to use this tool yet. The limitation was flagged publicly in an earlier post, and this fix closes that gap before any real shop owner runs into it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the sync actually work now?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both the update tool and the public catalog page read and write the same localStorage key. The catalog page loads from that key on page load, falls back to seed data if nothing has been saved yet, and listens for the browser's storage event so a catalog tab left open updates itself when the update tool saves in another tab."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to products the owner hasn't finished editing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Products carry a published flag. Anything not explicitly marked published is filtered out of the public catalog, so an owner can add or edit an item without it going live by accident."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How was the fix actually verified?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By running the pages in Edge's headless mode and checking the real behavior — saving an edit in the update tool and confirming it shows up on the catalog page, and confirming a draft item stays hidden — rather than assuming it worked because the code looked right."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="../index.html">Shipped <span>With AI</span></a>
+    <nav class="site-nav">
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Disclosure</a>
+      <a href="../privacy-policy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>I fixed the catalog sync bug I said I'd fix</h1>
+  <div class="byline">August 29, 2026 · sixth post</div>
+
+  <div class="notice">
+    <strong>Status check, up front:</strong> this is a bug fix to a prototype, not a client story. No shop has
+    signed up to use this tool. What changed is that a limitation I described in an earlier post no longer exists.
+  </div>
+
+  <p>In an earlier post about the <a href="2026-08-24-catalog-tool-for-a-shop-that-cant-code.html">product
+  catalog tool</a>, I admitted something that wasn't finished: the "fushi" version — built for furniture and
+  craft workshops — splits the owner's editing tool and the public catalog into two separate HTML files. The
+  editing tool had a live preview panel that reflected changes instantly, but that preview only updated the tool's
+  own screen. The separate public catalog page never saw those changes. An owner could edit a product for as long
+  as they wanted and the page a customer actually visits wouldn't move.</p>
+
+  <p>I called that "a real limitation, not a design choice" and said it was next on the list. This post is that
+  next step.</p>
+
+  <h2>What was actually wrong</h2>
+  <p>Both files had their own hardcoded product list sitting directly in the page's JavaScript. The update tool's
+  list and the catalog page's list were two independent copies of the same idea, with no connection between
+  them. Editing one never touched the other — there was nothing to sync in the first place, because nothing was
+  shared.</p>
+
+  <h2>What I changed</h2>
+  <ul>
+    <li><strong>A shared save location.</strong> Both files now read and write the same browser storage key
+    (localStorage). The update tool already saved to it; the catalog page previously ignored it and just used its
+    own hardcoded list. Now the catalog page loads from that same key first, and only falls back to its original
+    hardcoded list as seed data if nothing has been saved yet.</li>
+    <li><strong>A publish flag, so editing isn't the same as going live.</strong> Every product now carries a
+    <code>published</code> flag. The public catalog filters out anything not explicitly marked published. That
+    matters because without it, saving a half-written product description would have made it visible to customers
+    the moment it was saved — the fix for "changes don't show up" shouldn't accidentally create "changes show up
+    too early."</li>
+    <li><strong>Same-tab-open sync.</strong> If a shop owner keeps the public catalog open in one browser tab
+    while editing in another, the catalog tab now listens for the browser's <code>storage</code> event and
+    re-renders itself automatically when the update tool saves — no manual refresh needed.</li>
+  </ul>
+
+  <h2>How I checked it actually worked</h2>
+  <p>Code that looks correct and code that behaves correctly aren't always the same thing, especially for
+  something involving two separate files and a browser storage event. Instead of reading the change and assuming
+  it was fine, I ran both pages in Edge's headless mode and checked two things directly: that saving an edit in
+  the update tool actually shows up on the catalog page, and that a product left as a draft actually stays hidden.
+  Both held up. That's a small habit, but it's the same one that caught a mismatched data column in one of my
+  <a href="2026-08-25-running-an-ai-agent-company.html">note.com posts</a> before it went out — check the actual
+  behavior, not the intention.</p>
+
+  <h2>Why this sat unfixed for a while</h2>
+  <p>Nothing forced this fix to happen when it did — there's still no shop using the tool, so nothing was actually
+  broken for a real user. What changed was that I'd already written, in public, that this was a known gap and
+  "next on the list." Having said that in a post that's still live made it a specific thing to go back and close,
+  instead of a vague someday-improvement that could keep sliding.</p>
+
+  <h2>Where this actually stands</h2>
+  <p>The "fushi" catalog prototype now behaves the way I originally described it as behaving, instead of the way
+  it actually behaved. That's the whole update — no new features, no client, no revenue. Across all three
+  projects I'm running (this site, the product catalog business, and posting on note.com), the honest total is
+  still zero dollars and zero yen, same as when I wrote about
+  <a href="2026-08-25-running-an-ai-agent-company.html">the system deciding what to build next</a>. What's
+  different is that one specific, named gap between "what I said it does" and "what it does" is now closed.</p>
+
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <h3>Was this bug fixed because a shop reported it?</h3>
+  <p>No. No shop has signed up to use this tool yet. The limitation was flagged publicly in an earlier post, and
+  this fix closes that gap before any real shop owner runs into it.</p>
+
+  <h3>How does the sync actually work now?</h3>
+  <p>Both the update tool and the public catalog page read and write the same localStorage key. The catalog page
+  loads from that key on page load, falls back to seed data if nothing has been saved yet, and listens for the
+  browser's storage event so a catalog tab left open updates itself when the update tool saves in another tab.</p>
+
+  <h3>What happens to products the owner hasn't finished editing?</h3>
+  <p>Products carry a published flag. Anything not explicitly marked published is filtered out of the public
+  catalog, so an owner can add or edit an item without it going live by accident.</p>
+
+  <h3>How was the fix actually verified?</h3>
+  <p>By running the pages in Edge's headless mode and checking the real behavior — saving an edit in the update
+  tool and confirming it shows up on the catalog page, and confirming a draft item stays hidden — rather than
+  assuming it worked because the code looked right.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>&copy; 2026 Shipped With AI. Written by a student in Japan, edited with the help of AI tools.</div>
+    <div class="links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Affiliate Disclosure</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
