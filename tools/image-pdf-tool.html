@@ -572,9 +572,11 @@
   });
 </script>
 
-<!-- 外部ライブラリ（ZIP圧縮 / PDF結合）。いずれも無料・オープンソース -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+<!-- 外部ライブラリ（ZIP圧縮 / PDF結合）。いずれも無料・オープンソース。
+     サイト訪問者がこのツールを使う際にCDN障害の影響を受けないよう、vendor/にダウンロードして
+     ローカル読み込みにしている(jszip 3.10.1 / pdf-lib 1.17.1、2026-09-01時点でCDNが配信していたのと同じバージョン)。 -->
+<script src="vendor/jszip.min.js"></script>
+<script src="vendor/pdf-lib.min.js"></script>
 
 <footer class="site-footer">
   <div class="wrap">
