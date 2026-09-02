@@ -347,19 +347,19 @@
       <h2>Add a material</h2>
       <div class="form-row">
         <div class="field">
-          <label>Material name</label>
+          <label for="mat-name">Material name</label>
           <input type="text" id="mat-name" placeholder="e.g. plain flour">
         </div>
         <div class="field">
-          <label>Price paid (<span class="cur-sym">$</span>)</label>
+          <label for="mat-price">Price paid (<span class="cur-sym">$</span>)</label>
           <input type="number" id="mat-price" placeholder="500" min="0" step="0.01">
         </div>
         <div class="field">
-          <label>Quantity bought</label>
+          <label for="mat-qty">Quantity bought</label>
           <input type="number" id="mat-qty" placeholder="1000" min="0" step="0.01">
         </div>
         <div class="field">
-          <label>Unit</label>
+          <label for="mat-unit">Unit</label>
           <input type="text" id="mat-unit" placeholder="g / ml / each">
         </div>
       </div>
@@ -645,8 +645,10 @@
 
       var extraField = document.createElement("div");
       extraField.className = "field";
-      extraField.innerHTML = "<label>Other costs (packaging, labour, ...)</label>";
+      var extraId = "extra-cost-" + product.id;
+      extraField.innerHTML = '<label for="' + extraId + '">Other costs (packaging, labour, ...)</label>';
       var extraInput = document.createElement("input");
+      extraInput.id = extraId;
       extraInput.type = "number";
       extraInput.min = "0";
       extraInput.step = "0.01";
@@ -661,8 +663,10 @@
 
       var sellField = document.createElement("div");
       sellField.className = "field";
-      sellField.innerHTML = "<label>Selling price (optional)</label>";
+      var sellId = "sell-price-" + product.id;
+      sellField.innerHTML = '<label for="' + sellId + '">Selling price (optional)</label>';
       var sellInput = document.createElement("input");
+      sellInput.id = sellId;
       sellInput.type = "number";
       sellInput.min = "0";
       sellInput.step = "0.01";

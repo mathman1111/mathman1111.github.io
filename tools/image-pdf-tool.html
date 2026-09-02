@@ -195,7 +195,7 @@
       <h2>2. Output settings</h2>
       <div class="form-row">
         <div class="field">
-          <label>Output format</label>
+          <label for="img-format">Output format</label>
           <select id="img-format">
             <option value="original">Keep original format</option>
             <option value="image/jpeg">JPEG</option>
@@ -204,11 +204,11 @@
           </select>
         </div>
         <div class="field">
-          <label>Max width (px — leave blank to keep the current size)</label>
+          <label for="img-maxwidth">Max width (px — leave blank to keep the current size)</label>
           <input type="number" id="img-maxwidth" placeholder="e.g. 1280" min="1">
         </div>
         <div class="field">
-          <label>Quality (JPEG / WebP only): <span id="img-quality-val">80</span>%</label>
+          <label for="img-quality">Quality (JPEG / WebP only): <span id="img-quality-val">80</span>%</label>
           <input type="range" id="img-quality" min="10" max="100" value="80">
         </div>
       </div>
