@@ -446,11 +446,44 @@
     });
   }
 
+  // ===================================================================
+  // Lazy library loading
+  // jszip is 98KB and pdf-lib is 525KB. Loading both up front made every
+  // visitor pay for them even if they only compressed an image and left, so
+  // each one is fetched the first time it is actually needed.
+  // ===================================================================
+  var libPromises = {};
+  function ensureLib(globalName, src){
+    if (typeof window[globalName] !== "undefined") return Promise.resolve();
+    if (libPromises[src]) return libPromises[src];
+    libPromises[src] = new Promise(function(resolve, reject){
+      var el = document.createElement("script");
+      el.src = src;
+      el.onload = function(){
+        if (typeof window[globalName] === "undefined") reject(new Error(globalName + " did not load"));
+        else resolve();
+      };
+      el.onerror = function(){ reject(new Error("could not fetch " + src)); };
+      document.head.appendChild(el);
+    });
+    // 失敗したら次回もう一度試せるようにキャッシュを捨てる
+    libPromises[src].catch(function(){ delete libPromises[src]; });
+    return libPromises[src];
+  }
+
   document.getElementById("img-zip-btn").addEventListener("click", function(){
-    if (typeof JSZip === "undefined") {
-      alert("The ZIP library failed to load. Check your connection and reload the page.");
-      return;
-    }
+    var btn = this;
+    btn.disabled = true;
+    ensureLib("JSZip", "vendor/jszip.min.js").then(function(){
+      btn.disabled = false;
+      zipResults();
+    }).catch(function(){
+      btn.disabled = false;
+      alert("The ZIP library failed to load. Check your connection and try again.");
+    });
+  });
+
+  function zipResults(){
     var zip = new JSZip();
     imgResults.forEach(function(r){
       zip.file(r.name, r.blob);
@@ -464,7 +497,7 @@
       a.click();
       document.body.removeChild(a);
     });
-  });
+  }
 
   // ===================================================================
   // PDF merging
@@ -542,13 +575,17 @@
       alert("Choose at least two PDFs to merge.");
       return;
     }
-    if (typeof PDFLib === "undefined") {
-      alert("The PDF library failed to load. Check your connection and reload the page.");
-      return;
-    }
     var status = document.getElementById("pdf-status");
     status.textContent = "Merging...";
 
+    ensureLib("PDFLib", "vendor/pdf-lib.min.js").then(mergePdfs).catch(function(){
+      status.textContent = "";
+      alert("The PDF library failed to load. Check your connection and try again.");
+    });
+  });
+
+  function mergePdfs(){
+    var status = document.getElementById("pdf-status");
     var PDFDocument = PDFLib.PDFDocument;
     PDFDocument.create().then(function(mergedPdf){
       var chain = Promise.resolve();
@@ -579,14 +616,15 @@
       status.textContent = "";
       alert("Something went wrong while merging: " + err.message);
     });
-  });
+  }
 </script>
 
 <!-- Third-party libraries (ZIP + PDF), both free and open source. They are served from
      vendor/ rather than a CDN so a CDN outage cannot break the tool for visitors
      (jszip 3.10.1 / pdf-lib 1.17.1 - the versions the CDN was serving on 2026-09-01). -->
-<script src="vendor/jszip.min.js"></script>
-<script src="vendor/pdf-lib.min.js"></script>
+<!-- 読み込みは上のスクリプト内 ensureLib() が、ZIP保存/PDF結合が実際に押された
+     ときに行う。ここで先読みすると、画像を1枚縮めたいだけの訪問者にも 622KB を
+     ダウンロードさせることになるため。 -->
 
 <footer class="site-footer">
   <div class="wrap">
