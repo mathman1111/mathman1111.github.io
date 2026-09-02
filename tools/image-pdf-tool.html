@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Image/PDF Batch Tool (live tool) — Shipped With AI</title>
 <meta name="description" content="The actual image and PDF batch tool from the write-up: bulk compression, resizing, format conversion and PDF merging, all inside your own browser.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/style.css">
 <style>
   body.tool-page { padding: 0; }
@@ -38,6 +39,8 @@
     --t-text-sub:#6b7280;
     --t-accent:#3d7cf2;
     --t-accent-dark:#2b5fd0;
+    --t-btn-bg:#2b5fd0;
+    --t-btn-text:#ffffff;
     --t-danger:#e0523f;
     --t-danger-bg:#fdeceb;
     --t-profit:#1f9d55;
@@ -55,6 +58,8 @@
       --t-text-sub:#9aa1b0;
       --t-accent:#5b8ff9;
       --t-accent-dark:#7ea1fb;
+      --t-btn-bg:#5b8ff9;
+      --t-btn-text:#14171f;
       --t-danger:#ff6b57;
       --t-danger-bg:#3a211c;
       --t-profit:#3ddc84;
@@ -71,6 +76,8 @@
     --t-text-sub:#9aa1b0;
     --t-accent:#5b8ff9;
     --t-accent-dark:#7ea1fb;
+      --t-btn-bg:#5b8ff9;
+      --t-btn-text:#14171f;
     --t-danger:#ff6b57;
     --t-danger-bg:#3a211c;
     --t-profit:#3ddc84;
@@ -102,8 +109,8 @@
   .tool-app input:focus,.tool-app select:focus{outline:none;border-color:var(--t-accent);}
   .tool-app button{cursor:pointer;border:none;border-radius:6px;font-size:14px;font-weight:600;padding:9px 16px;}
   .tool-app button:focus-visible,.tool-app input:focus-visible,.tool-app select:focus-visible,.tool-app a:focus-visible{outline:2px solid var(--t-accent);outline-offset:2px;}
-  .tool-app .btn-primary{background:var(--t-accent);color:#fff;}
-  .tool-app .btn-primary:hover{background:var(--t-accent-dark);}
+  .tool-app .btn-primary{background:var(--t-btn-bg);color:var(--t-btn-text);}
+  .tool-app .btn-primary:hover{filter:brightness(0.92);}
   .tool-app .btn-primary:disabled{background:var(--t-border);color:var(--t-text-sub);cursor:not-allowed;}
   .tool-app .btn-ghost{background:var(--t-border);color:var(--t-text);}
   .tool-app .btn-ghost:hover{filter:brightness(0.95);}

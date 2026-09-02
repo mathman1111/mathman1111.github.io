@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pricing Calculator (live tool) — Shipped With AI</title>
 <meta name="description" content="The actual pricing calculator from the write-up: turn material costs into a per-product profit margin, in your own currency, inside your own browser.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/style.css">
 <style>
   body.tool-page { padding: 0; }
@@ -38,6 +39,8 @@
     --text-sub:#6b7280;
     --accent:#3d7cf2;
     --accent-dark:#2b5fd0;
+    --btn-bg:#2b5fd0;
+    --btn-text:#ffffff;
     --danger:#e0523f;
     --danger-bg:#fdeceb;
     --profit:#1f9d55;
@@ -53,6 +56,8 @@
       --text-sub:#9aa1b0;
       --accent:#5b8ff9;
       --accent-dark:#7ea1fb;
+      --btn-bg:#5b8ff9;
+      --btn-text:#14171f;
       --danger:#ff6b57;
       --danger-bg:#3a211c;
       --profit:#3ddc84;
@@ -67,6 +72,8 @@
     --text-sub:#9aa1b0;
     --accent:#5b8ff9;
     --accent-dark:#7ea1fb;
+      --btn-bg:#5b8ff9;
+      --btn-text:#14171f;
     --danger:#ff6b57;
     --danger-bg:#3a211c;
     --profit:#3ddc84;
@@ -169,10 +176,10 @@
     outline-offset:2px;
   }
   .calc-app .btn-primary{
-    background:var(--accent);
-    color:#fff;
+    background:var(--btn-bg);
+    color:var(--btn-text);
   }
-  .calc-app .btn-primary:hover{background:var(--accent-dark);}
+  .calc-app .btn-primary:hover{filter:brightness(0.92);}
   .calc-app .btn-ghost{
     background:var(--border);
     color:var(--text);
@@ -306,7 +313,7 @@
     padding:6px 8px;
     border:1px solid var(--border);
     border-radius:6px;
-    background:#fff;
+    background:var(--card);
     font:inherit;
     color:var(--text);
   }
