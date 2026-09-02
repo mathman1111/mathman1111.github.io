@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pricing Calculator (live tool) — Shipped With AI</title>
-<meta name="description" content="The actual pricing/cost calculator described in the pricing tool article — turns ingredient and material costs into a per-product profit margin, right in your browser.">
+<meta name="description" content="The actual pricing calculator from the write-up: turn material costs into a per-product profit margin, in your own currency, inside your own browser.">
 <link rel="stylesheet" href="../assets/style.css">
 <style>
   body.tool-page { padding: 0; }
@@ -20,6 +20,7 @@
     <nav class="site-nav">
       <a href="../articles/2026-08-24-pricing-tool-for-makers.html">Read the write-up</a>
       <a href="../about.html">About</a>
+      <a href="../gear.html">Gear</a>
     </nav>
   </div>
 </header>
@@ -293,71 +294,100 @@
     margin-top:30px;
   }
   .calc-app .footer-note a{color:var(--accent);}
+  .calc-app .currency-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:0 0 18px;
+    font-size:13px;
+    color:var(--text-sub);
+  }
+  .calc-app .currency-row select{
+    padding:6px 8px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    background:#fff;
+    font:inherit;
+    color:var(--text);
+  }
 </style>
 <div class="calc-app">
 <div class="container">
-  <h1>原価計算アプリ</h1>
-  <p class="sub">材料の単価を登録し、商品ごとに使用量を積み上げて原価・利益を自動計算します。</p>
+  <h1>Pricing &amp; margin calculator</h1>
+  <p class="sub">Log what your materials actually cost, then build each product up from the amounts you use.
+     Cost, profit and margin are worked out for you as you type.</p>
 
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="materials">材料</button>
-    <button class="tab-btn" data-tab="products">商品の原価</button>
+  <div class="currency-row">
+    <label for="currency-select">Currency</label>
+    <select id="currency-select">
+      <option value="USD">USD ($)</option>
+      <option value="EUR">EUR (€)</option>
+      <option value="GBP">GBP (£)</option>
+      <option value="CAD">CAD (C$)</option>
+      <option value="AUD">AUD (A$)</option>
+      <option value="JPY">JPY (¥)</option>
+    </select>
   </div>
 
-  <!-- 材料タブ -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="materials">Materials</button>
+    <button class="tab-btn" data-tab="products">Product costs</button>
+  </div>
+
+  <!-- Materials tab -->
   <div class="tab-panel active" id="tab-materials">
     <div class="card">
-      <h2>材料を追加</h2>
+      <h2>Add a material</h2>
       <div class="form-row">
         <div class="field">
-          <label>材料名</label>
-          <input type="text" id="mat-name" placeholder="例: 薄力粉">
+          <label>Material name</label>
+          <input type="text" id="mat-name" placeholder="e.g. plain flour">
         </div>
         <div class="field">
-          <label>購入価格(円)</label>
+          <label>Price paid (<span class="cur-sym">$</span>)</label>
           <input type="number" id="mat-price" placeholder="500" min="0" step="0.01">
         </div>
         <div class="field">
-          <label>購入量</label>
+          <label>Quantity bought</label>
           <input type="number" id="mat-qty" placeholder="1000" min="0" step="0.01">
         </div>
         <div class="field">
-          <label>単位</label>
-          <input type="text" id="mat-unit" placeholder="g / ml / 個">
+          <label>Unit</label>
+          <input type="text" id="mat-unit" placeholder="g / ml / each">
         </div>
       </div>
-      <button class="btn-primary" id="add-material">追加する</button>
+      <button class="btn-primary" id="add-material">Add material</button>
     </div>
 
     <div class="card">
-      <h2>材料一覧</h2>
+      <h2>Your materials</h2>
       <table id="material-table">
         <thead>
           <tr>
-            <th>材料名</th>
-            <th class="num">購入価格</th>
-            <th class="num">購入量</th>
-            <th>単位</th>
-            <th class="num">単価</th>
+            <th>Material</th>
+            <th class="num">Price paid</th>
+            <th class="num">Quantity</th>
+            <th>Unit</th>
+            <th class="num">Unit cost</th>
             <th></th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
-      <div class="empty" id="material-empty" style="display:none;">まだ材料が登録されていません。</div>
+      <div class="empty" id="material-empty" style="display:none;">No materials yet. Add one above.</div>
     </div>
   </div>
 
-  <!-- 商品タブ -->
+  <!-- Products tab -->
   <div class="tab-panel" id="tab-products">
     <div class="toolbar">
-      <button class="btn-primary" id="add-product">＋ 商品を追加</button>
+      <button class="btn-primary" id="add-product">+ Add product</button>
     </div>
     <div class="product-list" id="product-list"></div>
-    <div class="empty" id="product-empty" style="display:none;">まだ商品が登録されていません。「商品を追加」から作成してください。</div>
+    <div class="empty" id="product-empty" style="display:none;">No products yet. Use &quot;Add product&quot; to create one.</div>
   </div>
 
-  <p class="footer-note">データはこの端末のブラウザ内にのみ保存されます(localStorage)。サーバーには送信されません。</p>
+  <p class="footer-note">Your data stays in this browser only (localStorage). Nothing is uploaded to a server.</p>
 </div>
 </div>
 
@@ -389,14 +419,30 @@
     return Date.now().toString(36) + Math.random().toString(36).slice(2,8);
   }
 
-  function fmtYen(n){
+  // ---------- Currency ----------
+  // Nothing is converted here: the tool just labels your own numbers, so pick
+  // whatever currency you actually buy and sell in.
+  var CURRENCIES = { USD:"$", EUR:"€", GBP:"£", CAD:"C$", AUD:"A$", JPY:"¥" };
+  var CURRENCY_KEY = "pricing-calc-currency-v1";
+  var currencyCode = "USD";
+  try{
+    var savedCur = localStorage.getItem(CURRENCY_KEY);
+    if(savedCur && CURRENCIES[savedCur]) currencyCode = savedCur;
+  }catch(e){}
+
+  function curSym(){ return CURRENCIES[currencyCode] || "$"; }
+
+  // A per-gram cost can be a fraction of a cent, so unit costs keep more
+  // decimals than the headline figures do.
+  function fmtUnit(n){
     if(!isFinite(n)) n = 0;
-    return "¥" + Math.round(n * 10) / 10;
+    return curSym() + n.toLocaleString("en-US", {maximumFractionDigits: 4});
   }
 
-  function fmtYenWhole(n){
+  function fmtMoney(n){
     if(!isFinite(n)) n = 0;
-    return "¥" + n.toLocaleString("ja-JP", {maximumFractionDigits: 1});
+    var digits = currencyCode === "JPY" ? 0 : 2;
+    return curSym() + n.toLocaleString("en-US", {maximumFractionDigits: digits});
   }
 
   function unitPrice(mat){
@@ -406,7 +452,7 @@
     return price / qty;
   }
 
-  // ---------- タブ切り替え ----------
+  // ---------- Tabs ----------
   var tabBtns = document.querySelectorAll(".tab-btn");
   var tabPanels = document.querySelectorAll(".tab-panel");
   tabBtns.forEach(function(btn){
@@ -418,7 +464,7 @@
     });
   });
 
-  // ---------- 材料 ----------
+  // ---------- Materials ----------
   var matNameInput = document.getElementById("mat-name");
   var matPriceInput = document.getElementById("mat-price");
   var matQtyInput = document.getElementById("mat-qty");
@@ -430,10 +476,10 @@
     var qty = parseFloat(matQtyInput.value);
     var unit = matUnitInput.value.trim();
 
-    if(!name){ alert("材料名を入力してください。"); return; }
-    if(!isFinite(price) || price < 0){ alert("購入価格を正しく入力してください。"); return; }
-    if(!isFinite(qty) || qty <= 0){ alert("購入量を正しく入力してください。"); return; }
-    if(!unit){ alert("単位を入力してください。"); return; }
+    if(!name){ alert("Please enter a material name."); return; }
+    if(!isFinite(price) || price < 0){ alert("Please enter a valid price."); return; }
+    if(!isFinite(qty) || qty <= 0){ alert("Please enter a valid quantity."); return; }
+    if(!unit){ alert("Please enter a unit (g, ml, each)."); return; }
 
     state.materials.push({ id: uid(), name: name, price: price, qty: qty, unit: unit });
     save();
@@ -451,8 +497,8 @@
       return p.items.some(function(it){ return it.materialId === id; });
     });
     if(usedIn.length > 0){
-      var names = usedIn.map(function(p){ return p.name; }).join("、");
-      if(!confirm("この材料は次の商品で使用されています: " + names + "\n削除すると該当行も削除されます。よろしいですか？")){
+      var names = usedIn.map(function(p){ return p.name; }).join(", ");
+      if(!confirm("This material is used by: " + names + "\nRemoving it will also remove those rows. Continue?")){
         return;
       }
       state.products.forEach(function(p){
@@ -473,14 +519,14 @@
       var tr = document.createElement("tr");
       tr.innerHTML =
         "<td>" + escapeHtml(m.name) + "</td>" +
-        "<td class='num'>" + fmtYenWhole(m.price) + "</td>" +
+        "<td class='num'>" + fmtMoney(m.price) + "</td>" +
         "<td class='num'>" + m.qty + "</td>" +
         "<td>" + escapeHtml(m.unit) + "</td>" +
-        "<td class='num'>" + fmtYen(unitPrice(m)) + " / " + escapeHtml(m.unit) + "</td>" +
+        "<td class='num'>" + fmtUnit(unitPrice(m)) + " / " + escapeHtml(m.unit) + "</td>" +
         "<td></td>";
       var delBtn = document.createElement("button");
       delBtn.className = "btn-danger btn-sm";
-      delBtn.textContent = "削除";
+      delBtn.textContent = "Remove";
       delBtn.addEventListener("click", function(){ deleteMaterial(m.id); });
       tr.lastElementChild.appendChild(delBtn);
       tbody.appendChild(tr);
@@ -493,11 +539,11 @@
     });
   }
 
-  // ---------- 商品 ----------
+  // ---------- Products ----------
   document.getElementById("add-product").addEventListener("click", function(){
     state.products.push({
       id: uid(),
-      name: "新しい商品",
+      name: "New product",
       items: [],
       extraCost: 0,
       sellPrice: 0
@@ -507,7 +553,7 @@
   });
 
   function deleteProduct(id){
-    if(!confirm("この商品を削除しますか？")) return;
+    if(!confirm("Delete this product?")) return;
     state.products = state.products.filter(function(p){ return p.id !== id; });
     save();
     renderProducts();
@@ -545,7 +591,7 @@
       nameInput.style.background = "transparent";
       nameInput.style.padding = "2px 0";
       nameInput.addEventListener("change", function(){
-        product.name = nameInput.value.trim() || "無題の商品";
+        product.name = nameInput.value.trim() || "Untitled product";
         save();
       });
 
@@ -553,7 +599,7 @@
       actions.className = "actions";
       var delBtn = document.createElement("button");
       delBtn.className = "btn-danger btn-sm";
-      delBtn.textContent = "商品を削除";
+      delBtn.textContent = "Delete product";
       delBtn.addEventListener("click", function(){ deleteProduct(product.id); });
       actions.appendChild(delBtn);
 
@@ -566,7 +612,7 @@
       if(state.materials.length === 0){
         var note = document.createElement("div");
         note.className = "empty";
-        note.textContent = "先に「材料」タブで材料を登録してください。";
+        note.textContent = "Add some materials on the Materials tab first.";
         ingWrap.appendChild(note);
       } else {
         product.items.forEach(function(item, idx){
@@ -574,7 +620,7 @@
         });
         var addRowBtn = document.createElement("button");
         addRowBtn.className = "add-link";
-        addRowBtn.textContent = "＋ 材料を追加";
+        addRowBtn.textContent = "+ Add material";
         addRowBtn.addEventListener("click", function(){
           var firstMat = state.materials[0];
           product.items.push({ materialId: firstMat.id, amount: "" });
@@ -592,7 +638,7 @@
 
       var extraField = document.createElement("div");
       extraField.className = "field";
-      extraField.innerHTML = "<label>その他経費(包装・人件費等/円)</label>";
+      extraField.innerHTML = "<label>Other costs (packaging, labour, ...)</label>";
       var extraInput = document.createElement("input");
       extraInput.type = "number";
       extraInput.min = "0";
@@ -608,7 +654,7 @@
 
       var sellField = document.createElement("div");
       sellField.className = "field";
-      sellField.innerHTML = "<label>販売価格(円・任意)</label>";
+      sellField.innerHTML = "<label>Selling price (optional)</label>";
       var sellInput = document.createElement("input");
       sellInput.type = "number";
       sellInput.min = "0";
@@ -643,11 +689,11 @@
     var margin = sell > 0 ? (profit / sell * 100) : null;
 
     statRow.innerHTML = "";
-    statRow.appendChild(makeStat("原価", fmtYenWhole(cost), null));
+    statRow.appendChild(makeStat("Cost", fmtMoney(cost), null));
     if(sell > 0){
-      statRow.appendChild(makeStat("販売価格", fmtYenWhole(sell), null));
-      statRow.appendChild(makeStat("利益", fmtYenWhole(profit), profit >= 0 ? "profit" : "loss"));
-      statRow.appendChild(makeStat("利益率", margin.toFixed(1) + "%", margin >= 0 ? "profit" : "loss"));
+      statRow.appendChild(makeStat("Price", fmtMoney(sell), null));
+      statRow.appendChild(makeStat("Profit", fmtMoney(profit), profit >= 0 ? "profit" : "loss"));
+      statRow.appendChild(makeStat("Margin", margin.toFixed(1) + "%", margin >= 0 ? "profit" : "loss"));
     }
   }
 
@@ -690,7 +736,7 @@
     amountInput.type = "number";
     amountInput.min = "0";
     amountInput.step = "0.01";
-    amountInput.placeholder = "使用量";
+    amountInput.placeholder = "Amount used";
     amountInput.value = item.amount === "" || item.amount === undefined ? "" : item.amount;
     amountInput.addEventListener("input", function(){
       item.amount = amountInput.value;
@@ -706,7 +752,7 @@
     var removeBtn = document.createElement("button");
     removeBtn.className = "icon-btn";
     removeBtn.textContent = "✕";
-    removeBtn.title = "この材料を削除";
+    removeBtn.title = "Remove this material";
     removeBtn.addEventListener("click", function(){
       product.items.splice(idx, 1);
       save();
@@ -720,9 +766,31 @@
     return row;
   }
 
+  // ---------- Currency selector ----------
+  var currencySelect = document.getElementById("currency-select");
+
+  function applyCurrency(){
+    // Every visible money figure is produced by fmtUnit()/fmtMoney(), so a
+    // re-render is all that is needed to switch the whole page over.
+    Array.prototype.forEach.call(document.querySelectorAll(".cur-sym"), function(el){
+      el.textContent = curSym();
+    });
+    renderMaterials();
+    renderProducts();
+  }
+
+  if(currencySelect){
+    currencySelect.value = currencyCode;
+    currencySelect.addEventListener("change", function(){
+      if(!CURRENCIES[currencySelect.value]) return;
+      currencyCode = currencySelect.value;
+      try{ localStorage.setItem(CURRENCY_KEY, currencyCode); }catch(e){}
+      applyCurrency();
+    });
+  }
+
   // initial render
-  renderMaterials();
-  renderProducts();
+  applyCurrency();
 })();
 </script>
 

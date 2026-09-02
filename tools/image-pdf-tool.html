@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Image/PDF Batch Tool (live tool) — Shipped With AI</title>
-<meta name="description" content="The actual image/PDF batch tool described in the half-finished-monetization article — bulk image compression, resizing, format conversion, and PDF merging, all in your browser.">
+<meta name="description" content="The actual image and PDF batch tool from the write-up: bulk compression, resizing, format conversion and PDF merging, all inside your own browser.">
 <link rel="stylesheet" href="../assets/style.css">
 <style>
   body.tool-page { padding: 0; }
@@ -20,6 +20,7 @@
     <nav class="site-nav">
       <a href="../articles/2026-08-24-half-finished-monetization.html">Read the write-up</a>
       <a href="../about.html">About</a>
+      <a href="../gear.html">Gear</a>
     </nav>
   </div>
 </header>
@@ -161,123 +162,125 @@
 </style>
 <div class="tool-app">
 <div class="container">
-  <h1>画像・PDF一括処理ツール</h1>
-  <p class="sub">画像の一括圧縮・リサイズ・形式変換と、PDFの結合をブラウザだけで行えます。</p>
-  <p class="privacy-note"><span class="dot"></span>ファイルはサーバーに送信されません。すべての処理はこの端末（ブラウザ）内で完結します。</p>
+  <h1>Image &amp; PDF batch tool</h1>
+  <p class="sub">Compress, resize and convert images in bulk, and merge PDFs — all in the browser.</p>
+  <p class="privacy-note"><span class="dot"></span>Your files are never uploaded. Everything runs on this device, inside your browser.</p>
 
   <div class="tabs">
-    <button class="tab-btn active" data-tab="image">画像 圧縮・変換</button>
-    <button class="tab-btn" data-tab="pdf">PDF 結合</button>
-    <button class="tab-btn" data-tab="pro">Pro版について</button>
+    <button class="tab-btn active" data-tab="image">Images</button>
+    <button class="tab-btn" data-tab="pdf">Merge PDFs</button>
+    <button class="tab-btn" data-tab="pro">About Pro</button>
   </div>
 
-  <!-- ============ 画像タブ ============ -->
+  <!-- ============ Images tab ============ -->
   <div class="tab-panel active" id="panel-image">
     <div class="card">
-      <h2>1. 画像を選択</h2>
+      <h2>1. Choose images</h2>
       <div class="dropzone" id="img-drop">
-        <div><strong>クリックして選択</strong>、またはここに画像をドラッグ&amp;ドロップ</div>
-        <div>JPEG / PNG / WebP に対応（無料版は一度に <span id="img-limit-label">5</span> 枚まで）</div>
+        <div><strong>Click to choose</strong>, or drag &amp; drop images here</div>
+        <div>JPEG / PNG / WebP supported (free tier: up to <span id="img-limit-label">5</span> images per batch)</div>
       </div>
       <input type="file" id="img-input" accept="image/*" multiple style="display:none;">
       <div id="img-limit-warn"></div>
     </div>
 
     <div class="card">
-      <h2>2. 出力設定</h2>
+      <h2>2. Output settings</h2>
       <div class="form-row">
         <div class="field">
-          <label>出力形式</label>
+          <label>Output format</label>
           <select id="img-format">
-            <option value="original">元の形式のまま</option>
+            <option value="original">Keep original format</option>
             <option value="image/jpeg">JPEG</option>
             <option value="image/png">PNG</option>
             <option value="image/webp">WebP</option>
           </select>
         </div>
         <div class="field">
-          <label>最大の横幅（px・空欄なら変更なし）</label>
-          <input type="number" id="img-maxwidth" placeholder="例: 1280" min="1">
+          <label>Max width (px — leave blank to keep the current size)</label>
+          <input type="number" id="img-maxwidth" placeholder="e.g. 1280" min="1">
         </div>
         <div class="field">
-          <label>画質（JPEG / WebP のみ有効）: <span id="img-quality-val">80</span>%</label>
+          <label>Quality (JPEG / WebP only): <span id="img-quality-val">80</span>%</label>
           <input type="range" id="img-quality" min="10" max="100" value="80">
         </div>
       </div>
-      <button class="btn-primary" id="img-process-btn">選択した画像を変換・圧縮する</button>
+      <button class="btn-primary" id="img-process-btn">Convert &amp; compress</button>
     </div>
 
     <div class="card">
       <div class="toolbar">
-        <h2 style="margin:0;">3. 結果</h2>
-        <button class="btn-ghost btn-sm" id="img-zip-btn" disabled>まとめてZIPダウンロード</button>
+        <h2 style="margin:0;">3. Results</h2>
+        <button class="btn-ghost btn-sm" id="img-zip-btn" disabled>Download all as ZIP</button>
       </div>
       <table id="img-result-table" style="display:none;">
         <thead>
-          <tr><th>ファイル</th><th class="num">元サイズ</th><th class="num">変換後</th><th class="num">削減率</th><th></th></tr>
+          <tr><th>File</th><th class="num">Before</th><th class="num">After</th><th class="num">Saved</th><th></th></tr>
         </thead>
         <tbody id="img-result-body"></tbody>
       </table>
-      <div class="empty" id="img-result-empty">まだ結果がありません</div>
+      <div class="empty" id="img-result-empty">No results yet.</div>
     </div>
   </div>
 
-  <!-- ============ PDFタブ ============ -->
+  <!-- ============ PDF tab ============ -->
   <div class="tab-panel" id="panel-pdf">
     <div class="card">
-      <h2>1. PDFを選択（結合したい順）</h2>
+      <h2>1. Choose PDFs (in merge order)</h2>
       <div class="dropzone" id="pdf-drop">
-        <div><strong>クリックして選択</strong>、またはここにPDFをドラッグ&amp;ドロップ</div>
-        <div>無料版は一度に <span id="pdf-limit-label">3</span> ファイルまで結合できます</div>
+        <div><strong>Click to choose</strong>, or drag &amp; drop PDFs here</div>
+        <div>Free tier: up to <span id="pdf-limit-label">3</span> files per merge</div>
       </div>
       <input type="file" id="pdf-input" accept="application/pdf" multiple style="display:none;">
       <div id="pdf-limit-warn"></div>
     </div>
 
     <div class="card">
-      <h2>2. 順番の確認・並び替え</h2>
+      <h2>2. Check and reorder</h2>
       <div id="pdf-file-list"></div>
-      <div class="empty" id="pdf-file-empty">まだファイルがありません</div>
+      <div class="empty" id="pdf-file-empty">No files yet.</div>
     </div>
 
     <div class="card">
-      <button class="btn-primary" id="pdf-merge-btn">この順番で結合してダウンロード</button>
+      <button class="btn-primary" id="pdf-merge-btn">Merge in this order &amp; download</button>
       <p class="limit-note" id="pdf-status"></p>
     </div>
   </div>
 
-  <!-- ============ Pro版タブ ============ -->
+  <!-- ============ Pro tab ============ -->
   <div class="tab-panel" id="panel-pro">
     <div class="card pro-card">
-      <h2>無料版とPro版のちがい</h2>
+      <h2>What Pro would change</h2>
       <ul class="pro-list">
-        <li>無料版：画像は1回5枚まで、PDFは1回3ファイルまで処理できます</li>
-        <li>Pro版：1回の処理件数が無制限になります（準備中）</li>
-        <li>Pro版：広告が非表示になります（準備中）</li>
+        <li>Free: 5 images per batch, 3 PDFs per merge.</li>
+        <li>Pro: no batch limit <em>(not built yet)</em>.</li>
+        <li>Pro: no ads <em>(not built yet)</em>.</li>
       </ul>
-      <button class="btn-primary" id="upgrade-btn">Pro版にアップグレード</button>
-      <p class="limit-note">※ Pro版の決済は現在準備中です。公開までしばらくお待ちください。</p>
+      <button class="btn-primary" id="upgrade-btn">Upgrade to Pro</button>
+      <p class="limit-note">To be clear: there is no payment system behind that button. Nothing gets charged and
+      nothing unlocks. The pricing was designed before the billing was built, which is exactly what the
+      article about this tool is about.</p>
     </div>
   </div>
 
-  <div class="ad-slot" id="ad-slot">広告スペース（AdSense審査後にここへ広告タグを設置）</div>
+  <div class="ad-slot" id="ad-slot">Ad slot placeholder — empty until an ad network approves the site.</div>
 
-  <p class="footer-note">画像・PDF一括処理ツール — 個人開発ツール</p>
+  <p class="footer-note">Image &amp; PDF batch tool — built and maintained by one person.</p>
 </div>
 </div>
 
 <script>
-  // ===== Pro版アップグレード用リンク（Stripe決済リンクなどを取得したらここに設定） =====
+  // ===== Upgrade link (set this once a real checkout link exists) =====
   var PRO_UPGRADE_URL = "";
 
-  // ===== 無料版の上限 =====
+  // ===== Free tier limits =====
   var FREE_IMAGE_LIMIT = 5;
   var FREE_PDF_LIMIT = 3;
 
   document.getElementById("img-limit-label").textContent = FREE_IMAGE_LIMIT;
   document.getElementById("pdf-limit-label").textContent = FREE_PDF_LIMIT;
 
-  // ===== タブ切り替え =====
+  // ===== Tabs =====
   var tabBtns = document.querySelectorAll(".tab-btn");
   var tabPanels = document.querySelectorAll(".tab-panel");
   tabBtns.forEach(function(btn){
@@ -293,7 +296,7 @@
     if (PRO_UPGRADE_URL) {
       window.location.href = PRO_UPGRADE_URL;
     } else {
-      alert("Pro版のお申し込みは現在準備中です。もうしばらくお待ちください。");
+      alert("There is no checkout behind this yet - nothing has been charged. See the About Pro tab.");
     }
   });
 
@@ -304,7 +307,7 @@
   }
 
   // ===================================================================
-  // 画像 圧縮・変換
+  // Image compression / conversion
   // ===================================================================
   var imgDrop = document.getElementById("img-drop");
   var imgInput = document.getElementById("img-input");
@@ -329,13 +332,13 @@
     });
     var warnEl = document.getElementById("img-limit-warn");
     if (files.length > FREE_IMAGE_LIMIT) {
-      warnEl.innerHTML = '<div class="warn-box">無料版では一度に ' + FREE_IMAGE_LIMIT + ' 枚まで処理できます。先頭 ' + FREE_IMAGE_LIMIT + ' 枚のみ処理します。<br>Pro版にすると枚数制限なく処理できます。</div>';
+      warnEl.innerHTML = '<div class="warn-box">The free tier handles ' + FREE_IMAGE_LIMIT + ' images per batch, so only the first ' + FREE_IMAGE_LIMIT + ' will be processed.</div>';
       files = files.slice(0, FREE_IMAGE_LIMIT);
     } else {
       warnEl.innerHTML = "";
     }
     imgFiles = files;
-    imgDrop.querySelector("div").innerHTML = "<strong>" + imgFiles.length + " 枚選択中</strong>（クリックで選び直し）";
+    imgDrop.querySelector("div").innerHTML = "<strong>" + imgFiles.length + " selected</strong> (click to choose again)";
   }
 
   document.getElementById("img-quality").addEventListener("input", function(){
@@ -344,7 +347,7 @@
 
   document.getElementById("img-process-btn").addEventListener("click", function(){
     if (imgFiles.length === 0) {
-      alert("画像を選択してください");
+      alert("Please choose at least one image.");
       return;
     }
     var format = document.getElementById("img-format").value;
@@ -354,7 +357,7 @@
     imgResults = [];
     var btn = this;
     btn.disabled = true;
-    btn.textContent = "処理中...";
+    btn.textContent = "Working...";
 
     var tasks = imgFiles.map(function(file){
       return processImage(file, format, maxWidth, quality);
@@ -364,12 +367,12 @@
       imgResults = results;
       renderImageResults();
       btn.disabled = false;
-      btn.textContent = "選択した画像を変換・圧縮する";
+      btn.textContent = "Convert & compress";
     }).catch(function(err){
       console.error(err);
-      alert("処理中にエラーが発生しました: " + err.message);
+      alert("Something went wrong: " + err.message);
       btn.disabled = false;
-      btn.textContent = "選択した画像を変換・圧縮する";
+      btn.textContent = "Convert & compress";
     });
   });
 
@@ -392,7 +395,7 @@
 
       return new Promise(function(resolve, reject){
         canvas.toBlob(function(blob){
-          if (!blob) { reject(new Error(file.name + " の変換に失敗しました")); return; }
+          if (!blob) { reject(new Error("Could not convert " + file.name)); return; }
           var ext = outType === "image/png" ? "png" : (outType === "image/webp" ? "webp" : "jpg");
           var baseName = file.name.replace(/\.[^.]+$/, "");
           resolve({
@@ -431,14 +434,14 @@
         '<td class="num">' + formatBytes(r.originalSize) + '</td>' +
         '<td class="num">' + formatBytes(r.newSize) + '</td>' +
         '<td class="num"><span class="reduce-tag ' + (reduceRatio >= 0 ? "good" : "bad") + '">' + reduceRatio + '%</span></td>' +
-        '<td><a class="btn-ghost btn-sm" style="text-decoration:none;" href="' + url + '" download="' + r.name + '">保存</a></td>';
+        '<td><a class="btn-ghost btn-sm" style="text-decoration:none;" href="' + url + '" download="' + r.name + '">Save</a></td>';
       body.appendChild(tr);
     });
   }
 
   document.getElementById("img-zip-btn").addEventListener("click", function(){
     if (typeof JSZip === "undefined") {
-      alert("ZIP機能の読み込みに失敗しました。通信環境を確認して再読み込みしてください。");
+      alert("The ZIP library failed to load. Check your connection and reload the page.");
       return;
     }
     var zip = new JSZip();
@@ -457,7 +460,7 @@
   });
 
   // ===================================================================
-  // PDF 結合
+  // PDF merging
   // ===================================================================
   var pdfDrop = document.getElementById("pdf-drop");
   var pdfInput = document.getElementById("pdf-input");
@@ -481,7 +484,7 @@
     });
     var warnEl = document.getElementById("pdf-limit-warn");
     if (files.length > FREE_PDF_LIMIT) {
-      warnEl.innerHTML = '<div class="warn-box">無料版では一度に ' + FREE_PDF_LIMIT + ' ファイルまで結合できます。先頭 ' + FREE_PDF_LIMIT + ' ファイルのみ使用します。<br>Pro版にするとファイル数無制限で結合できます。</div>';
+      warnEl.innerHTML = '<div class="warn-box">The free tier merges ' + FREE_PDF_LIMIT + ' files at a time, so only the first ' + FREE_PDF_LIMIT + ' will be used.</div>';
       files = files.slice(0, FREE_PDF_LIMIT);
     } else {
       warnEl.innerHTML = "";
@@ -529,15 +532,15 @@
 
   document.getElementById("pdf-merge-btn").addEventListener("click", function(){
     if (pdfFiles.length < 2) {
-      alert("結合するには2つ以上のPDFを選択してください");
+      alert("Choose at least two PDFs to merge.");
       return;
     }
     if (typeof PDFLib === "undefined") {
-      alert("PDF機能の読み込みに失敗しました。通信環境を確認して再読み込みしてください。");
+      alert("The PDF library failed to load. Check your connection and reload the page.");
       return;
     }
     var status = document.getElementById("pdf-status");
-    status.textContent = "結合中...";
+    status.textContent = "Merging...";
 
     var PDFDocument = PDFLib.PDFDocument;
     PDFDocument.create().then(function(mergedPdf){
@@ -563,18 +566,18 @@
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      status.textContent = "結合が完了しました";
+      status.textContent = "Done - your merged PDF has been downloaded.";
     }).catch(function(err){
       console.error(err);
       status.textContent = "";
-      alert("結合中にエラーが発生しました: " + err.message);
+      alert("Something went wrong while merging: " + err.message);
     });
   });
 </script>
 
-<!-- 外部ライブラリ（ZIP圧縮 / PDF結合）。いずれも無料・オープンソース。
-     サイト訪問者がこのツールを使う際にCDN障害の影響を受けないよう、vendor/にダウンロードして
-     ローカル読み込みにしている(jszip 3.10.1 / pdf-lib 1.17.1、2026-09-01時点でCDNが配信していたのと同じバージョン)。 -->
+<!-- Third-party libraries (ZIP + PDF), both free and open source. They are served from
+     vendor/ rather than a CDN so a CDN outage cannot break the tool for visitors
+     (jszip 3.10.1 / pdf-lib 1.17.1 - the versions the CDN was serving on 2026-09-01). -->
 <script src="vendor/jszip.min.js"></script>
 <script src="vendor/pdf-lib.min.js"></script>
 

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>I fixed the catalog sync bug I said I'd fix — Shipped With AI</title>
-<meta name="description" content="A follow-up: the 'fushi' catalog tool's public page finally reads live updates from the owner's editing tool, with a draft/publish flag and cross-tab sync. Here's what was actually wrong and how it got tested.">
+<title>I fixed the catalog sync bug I said I'd fix</title>
+<meta name="description" content="The catalog tool's public page now reads live updates from the owner's editor, with a draft/publish flag and cross-tab sync. What was wrong, and the fix.">
 <link rel="stylesheet" href="../assets/style.css">
 <script type="application/ld+json">
 {
@@ -54,6 +54,7 @@
     <a class="site-title" href="../index.html">Shipped <span>With AI</span></a>
     <nav class="site-nav">
       <a href="../about.html">About</a>
+      <a href="../gear.html">Gear</a>
       <a href="../disclosure.html">Disclosure</a>
       <a href="../privacy-policy.html">Privacy</a>
     </nav>
@@ -143,6 +144,20 @@
   <p>By running the pages in Edge's headless mode and checking the real behavior — saving an edit in the update
   tool and confirming it shows up on the catalog page, and confirming a draft item stays hidden — rather than
   assuming it worked because the code looked right.</p>
+
+  <aside class="related-posts">
+    <h2>Related reading</h2>
+    <ul>
+    <li>
+      <a href="2026-08-24-catalog-tool-for-a-shop-that-cant-code.html">I built a product catalog tool for shop owners who can&rsquo;t code</a>
+      <p>The original build, where this bug was first described as a known limitation.</p>
+    </li>
+    <li>
+      <a href="2026-08-25-running-an-ai-agent-company.html">What it&rsquo;s like to let Claude Code subagents run a company</a>
+      <p>How a fix like this one gets decided on and written up in the first place.</p>
+    </li>
+    </ul>
+  </aside>
 </main>
 
 <footer class="site-footer">

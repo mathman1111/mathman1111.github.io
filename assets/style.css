@@ -260,3 +260,66 @@ footer.site-footer .links a {
 .try-it-link:hover {
   opacity: 0.88;
 }
+
+/* Related reading block at the foot of each article. Added 2026-09-03:
+   the six articles had no links between them at all, which left every post as
+   a dead end for both readers and crawlers. */
+.related-posts {
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0 0;
+  padding-top: 1.25rem;
+}
+.related-posts h2 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 0.9rem;
+}
+.related-posts ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-posts li {
+  margin: 0 0 0.9rem;
+}
+.related-posts a {
+  font-weight: 600;
+}
+.related-posts p {
+  margin: 0.2rem 0 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Tool cards on the home page. The two live tools used to be reachable only
+   from inside two articles. */
+.tool-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+.tool-cards li {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  background: var(--bg-card);
+}
+.tool-cards a {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+.tool-cards p {
+  margin: 0.35rem 0 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
