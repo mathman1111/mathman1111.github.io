@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code wrote it, CodeRabbit reviewed it</title>
+<meta name="description" content="Three review rounds on one CSV export: the default profile found nothing, the strict one found a real formula-injection bug, and its patch broke the numbers.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is CodeRabbit free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reviews on public repositories are free with no time limit. Signing up starts a 14-day trial of a paid plan with no credit card, and when that ends a public repository keeps getting reviewed. Private repositories are the part you pay for."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why did the first review find nothing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The default review profile is called CHILL, and it is deliberately quiet. Adding a .coderabbit.yaml file with an assertive profile and asking for a full review produced a real finding on exactly the same commit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is CSV injection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A spreadsheet treats a cell that starts with an equals sign, plus, minus or at sign as a formula. If an exported CSV contains user-entered text like =1+1, opening the file in Excel or Google Sheets evaluates it instead of showing it. Prefixing the value with an apostrophe keeps it as text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you just apply the suggested fixes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not blindly. The suggested patch here guarded on the value being a string, but every number in this exporter already goes through toFixed(), so a profit of -1.50 arrives as a string and would have been quoted into text, breaking arithmetic in the exported sheet."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="../index.html">Shipped <span>With AI</span></a>
+    <nav class="site-nav">
+      <a href="../about.html">About</a>
+      <a href="../gear.html">Gear</a>
+      <a href="../disclosure.html">Disclosure</a>
+      <a href="../privacy-policy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Claude Code wrote it, CodeRabbit reviewed it</h1>
+  <div class="byline">September 5, 2026 &middot; seventh post</div>
+
+  <div class="notice">
+    <strong>What this is:</strong> one small feature, three review rounds, and the exact findings. Nobody paid for
+    this post and there is no affiliate link in it. If that ever changes, it will say so here and on the
+    <a href="../disclosure.html">disclosure page</a>.
+  </div>
+
+  <p>Everything on this site is written by Claude Code and shipped by one person who does not read every line
+  closely enough to catch a security bug. That is a real gap, and it is the awkward kind: the code looks fine, the
+  page works, the tests pass. So I put a second AI in the way &mdash; <a href="https://www.coderabbit.ai/"
+  target="_blank" rel="noopener">CodeRabbit</a>, which reviews pull requests &mdash; and gave it something real to
+  read.</p>
+
+  <p>The change was a CSV export for the <a href="../tools/pricing-calculator.html">pricing calculator</a>. The
+  tool keeps everything in the browser, which is fine for playing with numbers and useless the moment someone
+  wants to keep a record or send it to a client. So: one row per material line, then other costs, total cost,
+  selling price, profit and margin. About sixty lines. My own checks passed first &mdash; the site audit script,
+  and a headless browser run of both tools, 14 of 14.</p>
+
+  <h2>Round 1: it said nothing</h2>
+
+  <p>The first review came back with one line:</p>
+
+  <blockquote><p>No actionable comments were generated in the recent review.</p></blockquote>
+
+  <p>That is the default. CodeRabbit ships a review profile called <code>CHILL</code>, which is built not to nag.
+  For a team already drowning in review comments that is probably the right default. For someone who wants to know
+  what is wrong with code they cannot fully audit themselves, silence is the least useful answer available.</p>
+
+  <p>So I committed a <code>.coderabbit.yaml</code> asking for the strict profile:</p>
+
+  <pre><code>reviews:
+  profile: assertive</code></pre>
+
+  <p>Same commit, same diff, same reviewer. Only the setting changed.</p>
+
+  <h2>Round 2: a real bug, found the hard way</h2>
+
+  <p>The strict pass flagged one thing, and it was correct. <strong>CSV formula injection</strong> (CWE-1236): a
+  spreadsheet treats a cell beginning with <code>=</code>, <code>+</code>, <code>-</code> or <code>@</code> as a
+  formula. Name a product <code>=1+1</code>, export it, and the number two shows up in the file the other person
+  opens. Pick a nastier formula and it stops being a curiosity. My <code>csvCell()</code> escaped quotes and
+  commas properly and did nothing whatsoever about this.</p>
+
+  <p>What I did not expect was <em>how</em> it checked. Folded into the comment was a shell command it had actually
+  run against the repository &mdash; a <code>ripgrep</code> over the file for every place a product name or unit
+  flows into the exporter &mdash; to see whether something upstream already sanitised the value before it reached
+  the CSV. It did not pattern-match on the words "CSV" and "user input" and fire. It went and looked.</p>
+
+  <h2>The part where you cannot just click Accept</h2>
+
+  <p>It also offered a committable patch, and applying that patch would have introduced a different bug.</p>
+
+  <p>The suggestion guarded the escaping with <code>typeof value === "string"</code>, on the reasonable theory that
+  numbers need no protection. But in this exporter every number has already been through <code>toFixed()</code>
+  before it arrives, so a loss of <code>-1.50</code> turns up as a <em>string</em> beginning with a minus sign. The
+  patch would have quoted it into text, and the profit column in the exported sheet would have quietly stopped
+  adding up. The reviewer knew the vulnerability class. It did not know what the values in this particular
+  function actually are by the time they get there.</p>
+
+  <p>So the fix I shipped skips any cell that is a plain number and quotes the rest.</p>
+
+  <h2>Round 3: it caught the hole in my fix</h2>
+
+  <p>My first version of that guard tested for a number with a hand-written pattern: an optional minus, some
+  digits, optionally a dot and more digits. The next review pointed straight at it: <code>-1e-7</code> starts with
+  a minus, fails that test, and would be exported as text. That is reachable here, because raw material amounts
+  are not run through <code>toFixed()</code>, so a small enough amount really does stringify into exponent
+  notation.</p>
+
+  <p>It was right again, so I threw my regex away instead of patching it:</p>
+
+  <pre><code>if(/^[=+\-@\t\r]/.test(text) &amp;&amp; isNaN(Number(text))){
+  text = "'" + text;
+}</code></pre>
+
+  <p>Let the language decide what a number is. <code>-1e-7</code>, <code>-.5</code> and <code>-1.50</code> pass
+  through untouched; <code>=1+1</code>, <code>@sum</code> and <code>+5x</code> get quoted.</p>
+
+  <p>That version went back through the same strict review and came back with nothing to add.</p>
+
+  <h2>What I actually learned</h2>
+
+  <ul>
+    <li><strong>The default setting hides the product.</strong> Had I tried it once, seen the cheerful nothing and
+    moved on, my conclusion would have been "it finds nothing, so it does nothing." The finding was sitting there
+    the whole time, behind one line of config.</li>
+    <li><strong>It is good at known classes of bug in unfamiliar code.</strong> CSV injection is exactly the sort
+    of thing that is well documented, easy to skip while writing, and invisible to a passing test suite.</li>
+    <li><strong>It is weaker on the consequences of its own advice.</strong> Both times the finding was right and
+    the patch needed a second pass &mdash; once because of what the values already were, once because of a case the
+    pattern missed.</li>
+    <li><strong>Two AIs disagreeing beat either one alone.</strong> What shipped is not what Claude Code wrote, and
+    it is not what CodeRabbit suggested. It is the third thing that came out of the argument.</li>
+  </ul>
+
+  <h2>Cost, honestly</h2>
+
+  <p>Reviews on public repositories are free with no time limit, and this repository is public. Signing up put me
+  on a 14-day trial of a paid plan without asking for a card; when that ends, a public repository carries on being
+  reviewed. Private repositories are the part you pay for, and I have not paid for anything.</p>
+
+  <p>The wider number has not moved since the <a href="2026-08-25-running-an-ai-agent-company.html">post about
+  running this whole thing with subagents</a>: still no revenue, on any of it. What changed today is that a tool I
+  hand to other people no longer writes files that can execute when someone opens them.</p>
+
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <h3>Is CodeRabbit free?</h3>
+  <p>Reviews on public repositories are free with no time limit. Signing up starts a 14-day trial of a paid plan
+  with no credit card, and when that ends a public repository keeps getting reviewed. Private repositories are the
+  part you pay for.</p>
+
+  <h3>Why did the first review find nothing?</h3>
+  <p>The default review profile is called CHILL, and it is deliberately quiet. Adding a
+  <code>.coderabbit.yaml</code> with the assertive profile and asking for a full review produced a real finding on
+  exactly the same commit.</p>
+
+  <h3>What is CSV injection?</h3>
+  <p>A spreadsheet treats a cell that starts with <code>=</code>, <code>+</code>, <code>-</code> or <code>@</code>
+  as a formula. If an exported CSV contains user-entered text like <code>=1+1</code>, opening the file in Excel or
+  Google Sheets evaluates it instead of showing it. Prefixing the value with an apostrophe keeps it as text.</p>
+
+  <h3>Can you just apply the suggested fixes?</h3>
+  <p>Not blindly. The suggested patch here guarded on the value being a string, but every number in this exporter
+  already goes through <code>toFixed()</code>, so a profit of <code>-1.50</code> arrives as a string and would have
+  been quoted into text, breaking arithmetic in the exported sheet.</p>
+
+  <aside class="related-posts">
+    <h2>Related reading</h2>
+    <ul>
+    <li>
+      <a href="2026-08-24-pricing-tool-for-makers.html">A tool for makers who are guessing at their own prices</a>
+      <p>The calculator that now exports CSV, and why it exists at all.</p>
+    </li>
+    <li>
+      <a href="2026-08-29-fixing-the-catalog-sync-bug.html">I fixed the catalog sync bug I said I&rsquo;d fix</a>
+      <p>The same habit without a reviewer: check the behaviour, not the intention.</p>
+    </li>
+    </ul>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>&copy; 2026 Shipped With AI. Written by a student in Japan, edited with the help of AI tools.</div>
+    <div class="links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Affiliate Disclosure</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1171d112a9ca44ea957b6af723e7b1e4"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
