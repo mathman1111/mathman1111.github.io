@@ -1,0 +1,12 @@
+# CodeRabbit review settings for this site.
+# The default CHILL profile stayed quiet on the first review, so this repo asks
+# for the stricter profile: this is a small static site where a broken tool page
+# is the whole product, and we would rather read a nitpick than ship a bug.
+language: en-US
+reviews:
+  profile: assertive
+  request_changes_workflow: false
+  auto_review:
+    enabled: true
+    base_branches:
+      - main
