@@ -806,6 +806,14 @@
   // breakdown has to leave this page in a form Excel and Sheets can open.
   function csvCell(value){
     var text = value === null || value === undefined ? "" : String(value);
+    // Excel and Sheets treat a cell that starts with =, +, - or @ as a formula,
+    // so a product named "=1+1" would be evaluated when someone opens the file.
+    // The leading quote keeps it text. (Flagged by CodeRabbit on PR #1.)
+    // A negative number like -1.50 must stay a number, so only non-numeric
+    // text gets the quote.
+    if(/^[=+\-@\t\r]/.test(text) && !/^-?\d+(\.\d+)?$/.test(text)){
+      text = "'" + text;
+    }
     if(/[",\n\r]/.test(text)){
       text = '"' + text.replace(/"/g, '""') + '"';
     }
