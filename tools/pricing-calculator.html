@@ -389,6 +389,7 @@
   <div class="tab-panel" id="tab-products">
     <div class="toolbar">
       <button class="btn-primary" id="add-product">+ Add product</button>
+      <button class="btn-sm" id="export-csv">Export CSV</button>
     </div>
     <div class="product-list" id="product-list"></div>
     <div class="empty" id="product-empty" style="display:none;">No products yet. Use &quot;Add product&quot; to create one.</div>
@@ -799,6 +800,64 @@
       applyCurrency();
     });
   }
+
+  // ---------- CSV export ----------
+  // Spreadsheets are where most makers actually keep their numbers, so the
+  // breakdown has to leave this page in a form Excel and Sheets can open.
+  function csvCell(value){
+    var text = value === null || value === undefined ? "" : String(value);
+    if(/[",\n\r]/.test(text)){
+      text = '"' + text.replace(/"/g, '""') + '"';
+    }
+    return text;
+  }
+
+  function csvRow(cells){
+    return cells.map(csvCell).join(",");
+  }
+
+  function buildCsv(){
+    var rows = [["Product","Material","Amount","Unit","Unit cost","Line cost"]];
+    state.products.forEach(function(product){
+      product.items.forEach(function(item){
+        var mat = state.materials.find(function(m){ return m.id === item.materialId; });
+        if(!mat) return;
+        var amount = parseFloat(item.amount) || 0;
+        var unit = unitPrice(mat);
+        rows.push([product.name, mat.name, amount, mat.unit, unit.toFixed(4), (amount * unit).toFixed(2)]);
+      });
+      var cost = computeCost(product);
+      var sell = parseFloat(product.sellPrice) || 0;
+      rows.push([product.name, "Other costs", "", "", "", (parseFloat(product.extraCost) || 0).toFixed(2)]);
+      rows.push([product.name, "Total cost", "", "", "", cost.toFixed(2)]);
+      if(sell > 0){
+        rows.push([product.name, "Selling price", "", "", "", sell.toFixed(2)]);
+        rows.push([product.name, "Profit", "", "", "", (sell - cost).toFixed(2)]);
+        rows.push([product.name, "Margin %", "", "", "", ((sell - cost) / sell * 100).toFixed(1)]);
+      }
+      rows.push([]);
+    });
+    return rows.map(csvRow).join("\r\n");
+  }
+
+  function exportCsv(){
+    if(state.products.length === 0){
+      alert("Add a product first.");
+      return;
+    }
+    // The BOM is what makes Excel read the file as UTF-8 instead of guessing.
+    var blob = new Blob(["\ufeff" + buildCsv()], {type: "text/csv;charset=utf-8;"});
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement("a");
+    link.href = url;
+    link.download = "product-costs-" + new Date().toISOString().slice(0,10) + ".csv";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
+  document.getElementById("export-csv").addEventListener("click", exportCsv);
 
   // initial render
   applyCurrency();
