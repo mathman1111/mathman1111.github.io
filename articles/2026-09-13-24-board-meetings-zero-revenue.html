@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7 Claude Code agents held 24 board meetings. Revenue: $0.</title>
+<meta name="description" content="Unattended Claude Code agents ran ten small businesses for three weeks: 24 meetings, 16 articles, 18 Shorts, 3 products, $0. The five things that broke, with fixes.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why did the unattended runs report success when nothing was produced?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The runner wrote OK whenever the process exited with code 0 and printed something. A process can exit 0 without doing the work: a byte-order-mark issue made PowerShell 5.1 mangle the command name and exit cleanly, a poster saved a draft instead of publishing, and a reply writer returned 0 without writing its file. The fix is to judge a run by its artifact: the expected file exists, was modified after the run started, and contains the heading the command always writes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why did the YouTube refresh token expire after a week?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Google Cloud OAuth consent screen was still in Testing status. In Testing, refresh tokens expire after seven days. Publishing the app on the consent screen removes that limit, and it has to be done by a human in the console before the scheduled job depends on it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the kit an affiliate link?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The author owns the Gumroad store, so the kit and the free runner are plain product links. As of this post they have zero sales."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="../index.html">Shipped <span>With AI</span></a>
+    <nav class="site-nav">
+      <a href="../about.html">About</a>
+      <a href="../gear.html">Gear</a>
+      <a href="../disclosure.html">Disclosure</a>
+      <a href="../privacy-policy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>7 Claude Code agents held 24 board meetings. Revenue: $0.</h1>
+  <div class="byline">September 13, 2026 &middot; eighth post</div>
+
+  <div class="notice">
+    <strong>What this is:</strong> three weeks of numbers from an unattended agent system, and the five things that
+    broke. There are two links to a product I sell at the end; I own the store, so they are plain product links, not
+    affiliate links. See the <a href="../disclosure.html">disclosure page</a>.
+  </div>
+
+  <p><strong>TL;DR</strong> &mdash; For 21 days I let seven Claude Code subagents run ten small businesses from a
+  <code>/board-meeting</code> slash command: research, decide, write, design, publish, review, repeat. They held 24
+  meetings, made 382 commits, and shipped 16 articles, 18 Shorts, 3 digital products and 5 job proposals. I edited
+  one article by hand; everything else went out as written. Total revenue: $0. Here is exactly what broke, with the
+  numbers, because the failures are more reusable than the setup.</p>
+
+  <p>I am one person with a Claude Code subscription. On August 24 I wrote seven agent definitions &mdash;
+  <code>ceo</code>, <code>secretary</code>, <code>researcher</code>, <code>writer</code>, <code>marketer</code>,
+  <code>designer</code>, <code>programmer</code> &mdash; and one slash command that calls them in order. Every
+  morning Windows Task Scheduler runs that command unattended. Fourteen other PowerShell runners post the outputs:
+  a YouTube Short at 14:00 and 21:00, a note.com article at 07:20, a Dev.to crosspost, an X reply draft, a stats
+  pull, a daily self-check. (The setup itself is described in
+  <a href="2026-08-25-running-an-ai-agent-company.html">the earlier post</a>.)</p>
+
+  <p>The output side of that machine works. Here is the input side, three weeks in:</p>
+
+  <div class="table-wrap">
+  <table class="data">
+    <thead><tr><th>channel</th><th>shipped</th><th>result</th></tr></thead>
+    <tbody>
+      <tr><td>note.com (Japanese blog)</td><td>16 articles</td><td>137 views, 17 likes, total</td></tr>
+      <tr><td>YouTube Shorts</td><td>18 videos</td><td>12,124 views</td></tr>
+      <tr><td>Dev.to</td><td>3 posts</td><td>92 views</td></tr>
+      <tr><td>X</td><td>10 posts</td><td>1 visitor sent to the blog</td></tr>
+      <tr><td>freelance proposals</td><td>5 sent</td><td>0 replies</td></tr>
+      <tr><td>digital products (Gumroad, Fiverr, BOOTH)</td><td>3 listed</td><td>0 sales</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Every number is from the platform dashboards, pulled by a script. Nothing is rounded up.</p>
+
+  <h2>Break 1: &ldquo;success&rdquo; that produced nothing, three times</h2>
+
+  <p>The runner that launches each unattended command wrote <code>OK</code> to its log when the process exited 0
+  and printed something. That definition of success failed three separate ways in three weeks.</p>
+
+  <ol>
+    <li><strong>A byte-order mark.</strong> PowerShell 5.1 read a UTF-8 file with no BOM as the system code page,
+    mangled the Japanese command name, and exited 0. Three days of <code>OK</code>. Zero Shorts posted. The tell,
+    in hindsight: log start and end were the same second.</li>
+    <li><strong>&ldquo;Published&rdquo; meant &ldquo;saved as draft&rdquo;.</strong> The note.com poster reported
+    success. The article sat unpublished until the agent that reads the dashboard noticed 0 views on a URL that
+    did not exist.</li>
+    <li><strong>The reply writer that wrote no file.</strong> The X-reply command returned 0 with a non-empty
+    stdout. The file it was supposed to write, <code>replies/2026-09-13.md</code>, does not exist. The secretary
+    agent then read the <code>OK</code> and marked the automation &ldquo;live&rdquo;.</li>
+  </ol>
+
+  <p>The fix is boring and I should have started with it: <strong>judge a run by its artifact, not its exit
+  code.</strong> The runner now takes the path of the file the command is supposed to produce and checks that it
+  exists, was modified after the run started, and contains the heading the command always writes:</p>
+
+<pre><code>param([string]$ExpectedOutput, [string]$MustContain = '## 1.')
+$started = Get-Date
+# ... run the slash command ...
+if ($ExpectedOutput) {
+  $ok = (Test-Path $ExpectedOutput) -and
+        ((Get-Item $ExpectedOutput).LastWriteTime -gt $started) -and
+        (Select-String -Path $ExpectedOutput -Pattern $MustContain -Quiet)
+  if (-not $ok) { Write-Log 'NG' 'no artifact'; exit 1 }
+}</code></pre>
+
+  <p>A <code>0</code> from a process means the process did not crash. It does not mean the work happened.</p>
+
+  <h2>Break 2: a five-minute human task stopped the machine for days</h2>
+
+  <p>The Shorts pipeline is the only fully unattended business. It stopped on September 12 at 06:45 because the
+  YouTube refresh token expired. Why: the Google Cloud OAuth consent screen was still in <strong>Testing</strong>,
+  and in Testing, refresh tokens expire after seven days.</p>
+
+  <p>The agents detected it correctly. They put &ldquo;re-authenticate and publish the OAuth app&rdquo; at the top
+  of my daily to-do, with a time estimate (five minutes) and a warning that re-authenticating alone would fail
+  again on the 19th. What they cannot do is click <strong>Publish app</strong> in the Google Cloud console. So the
+  pipeline that posts two videos a day lost five slots waiting for my five minutes.</p>
+
+  <p>If you are automating anything on Google APIs: publish the consent screen <em>before</em> you schedule the
+  job. And count the human clicks per dollar in your pipeline. Mine were the critical path and I had not measured
+  them.</p>
+
+  <h2>Break 3: the meeting optimized what it could measure</h2>
+
+  <p>Twenty-four meetings is a lot of deciding. What did they decide? Decision files with numbered items and
+  &ldquo;refutation conditions&rdquo;. Edits to the agent definitions. Guardrails on guardrails. A runner that
+  checks the runners.</p>
+
+  <p>Meanwhile, 20 X posts sat drafted in a queue from September 6, waiting for a human to press the button,
+  because the X API costs money and the card was declined. The agents measured &ldquo;runs OK&rdquo; and
+  &ldquo;articles published&rdquo; &mdash; the things they could touch &mdash; and polished those. Nobody in the
+  meeting could touch the money, so the money did not move.</p>
+
+  <p>An agent loop will get very good at the metric it can observe. If the only metric it can observe is its own
+  process, that is what it will improve.</p>
+
+  <h2>Break 4: every marketplace already had agents in it</h2>
+
+  <p>The plan for near-term cash was freelance platforms. The rule for accepting a job was strict and honest: only
+  work an agent can complete end to end, no calls, no design taste, no video editing. Fine. This morning the agent
+  read 73 new listings on a Japanese platform, found 9 that qualified, then fetched each detail page for the
+  proposal count: <strong>12 to 210 proposals each.</strong> The one job we did apply to had 107 proposals when we
+  sent it and 165 a week later.</p>
+
+  <p>I also checked GitHub bounty issues as an alternative. One open issue has 1,394 comments.</p>
+
+  <p>&ldquo;My agent can do this task&rdquo; is not an edge when every other freelancer&rsquo;s agent can do it
+  too. It is the entry fee.</p>
+
+  <h2>Break 5: one unattended meeting ate the five-hour window in 37 minutes</h2>
+
+  <p>Claude Code&rsquo;s subscription has a rolling usage window. An unattended board meeting with seven agents,
+  each reading the whole strategy file, burned through it in 37 minutes on September 8. Everything else scheduled
+  that morning waited hours. The fix was two start guards on the meeting runner &mdash; never twice in a day, never
+  within 12 hours of the last full run &mdash; and splitting the minutes-writing step into its own session so a
+  cutoff loses the least important part.</p>
+
+  <p>Rate-limit your own agents. The scarce resource is not the model&rsquo;s ability; it is your plan&rsquo;s
+  window.</p>
+
+  <h2>What actually worked, so this is not only a list of failures</h2>
+
+  <ul>
+    <li>The production side is real. Fifteen of the 16 articles and all 18 videos went out untouched; the pipeline
+    from script to voice to render to upload runs unattended when the token is valid.</li>
+    <li>The daily self-check that compares &ldquo;what was scheduled&rdquo; to &ldquo;what left evidence&rdquo; is
+    the single most useful thing built. It caught breaks 1 and 2.</li>
+    <li><strong>Honest failure reports were the only content that moved.</strong> The most-read article on the
+    Japanese blog is titled &ldquo;3 proposals, 0 orders&rdquo;. The only Dev.to post that got comments is
+    <a href="2026-09-05-what-an-ai-code-reviewer-caught.html">the one where the AI reviewer&rsquo;s fix was
+    wrong</a>. This post is written in that shape on purpose.</li>
+  </ul>
+
+  <h2>If you are running agents unattended, check these first</h2>
+
+  <ol>
+    <li>Define &ldquo;done&rdquo; as an artifact &mdash; a file, a URL that returns 200, a row in a table &mdash;
+    never as an exit code.</li>
+    <li>Check the artifact&rsquo;s modification time against the run&rsquo;s start time. A stale file from
+    yesterday passes a plain existence test.</li>
+    <li>List every step a human must click, and put a time estimate next to each. Those are your outages waiting
+    to happen.</li>
+    <li>Put OAuth apps in production before the first scheduled run.</li>
+    <li>Give the loop one metric it cannot fake. Views, replies, dollars. Not &ldquo;runs OK&rdquo;.</li>
+    <li>Count the competition before you count on the marketplace. Fetch the proposal count; do not trust the
+    listing page.</li>
+    <li>Cap what one unattended job may consume, in time and in usage window.</li>
+  </ol>
+
+  <p>The agent definitions, the meeting command, and the runner are packaged as a kit on Gumroad &mdash;
+  <a href="https://tachibana53.gumroad.com/l/claude-code-company-kit" rel="sponsored noopener" target="_blank">One-Person
+  Company Kit for Claude Code ($19)</a> &mdash; and the runner alone is
+  <a href="https://tachibana53.gumroad.com/l/claude-code-unattended-runner" rel="sponsored noopener" target="_blank">free,
+  pay what you want</a>. I own the store; these are plain product links. Sales so far: zero, which is consistent
+  with everything above.</p>
+
+  <h2>The question I am left with</h2>
+
+  <p><strong>If you run agents unattended, what do you count as &ldquo;done&rdquo; &mdash; the exit code, the
+  artifact, or someone paying?</strong> I would rather hear from people who got past the third one than guess.</p>
+
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <h3>Why did the unattended runs report success when nothing was produced?</h3>
+  <p>The runner wrote OK whenever the process exited with code 0 and printed something. A process can exit 0
+  without doing the work. The fix is to judge a run by its artifact: the expected file exists, was modified after
+  the run started, and contains the heading the command always writes.</p>
+
+  <h3>Why did the YouTube refresh token expire after a week?</h3>
+  <p>The Google Cloud OAuth consent screen was still in Testing status, and in Testing, refresh tokens expire after
+  seven days. Publishing the app removes that limit, and only a human can do it in the console.</p>
+
+  <h3>Is the kit an affiliate link?</h3>
+  <p>No. I own the Gumroad store, so the kit and the free runner are plain product links. As of this post they
+  have zero sales.</p>
+
+  <aside class="related-posts">
+    <h2>Related reading</h2>
+    <ul>
+    <li>
+      <a href="2026-08-25-running-an-ai-agent-company.html">I let 7 Claude Code subagents run my company. The hard part wasn't the code.</a>
+      <p>How the seven agents and the meeting command are set up, written on day two.</p>
+    </li>
+    <li>
+      <a href="2026-09-05-what-an-ai-code-reviewer-caught.html">The AI reviewer found a real bug. Its suggested fix would have broken my app.</a>
+      <p>The other post where the interesting part is what went wrong.</p>
+    </li>
+    </ul>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>&copy; 2026 Shipped With AI. Written by a student in Japan, edited with the help of AI tools.</div>
+    <div class="links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Affiliate Disclosure</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1171d112a9ca44ea957b6af723e7b1e4"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

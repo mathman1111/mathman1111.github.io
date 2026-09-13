@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mathman1111.github.io/</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-09-13</lastmod>
   </url>
   <url>
     <loc>https://mathman1111.github.io/about.html</loc>
@@ -43,6 +43,10 @@
   <url>
     <loc>https://mathman1111.github.io/articles/2026-09-05-what-an-ai-code-reviewer-caught.html</loc>
     <lastmod>2026-09-05</lastmod>
+  </url>
+  <url>
+    <loc>https://mathman1111.github.io/articles/2026-09-13-24-board-meetings-zero-revenue.html</loc>
+    <lastmod>2026-09-13</lastmod>
   </url>
   <url>
     <loc>https://mathman1111.github.io/articles/2026-08-29-fixing-the-catalog-sync-bug.html</loc>

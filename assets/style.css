@@ -323,3 +323,24 @@ footer.site-footer .links a {
   font-size: 0.85rem;
   color: var(--text-muted);
 }
+
+/* Data tables inside articles (added 2026-09-13 for the results table in the
+   board-meetings post). Same border tokens as .notice so it reads as one system. */
+table.data {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.25rem 0 1.75rem;
+  font-size: 0.95rem;
+}
+table.data th,
+table.data td {
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+table.data th {
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+.table-wrap { overflow-x: auto; }
