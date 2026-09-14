@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>WOOD STUDIO KUZE'S｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。WOOD STUDIO KUZE'S様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>WOOD STUDIO KUZE'S</h1>
+  <p class="tagline">千葉県茂原市の家具工房。無垢材を天然オイルで仕上げた家具とカトラリー。樹種・サイズの変更はご相談を。</p>
+  <div class="badges"><span>千葉県茂原市</span><span>掲載 61点</span><span>サイズ・価格から探せます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="キャビネット・収納">キャビネット・収納</button><button class="chip" data-k="cat" data-v="チェア・スツール">チェア・スツール</button><button class="chip" data-k="cat" data-v="カトラリー・小物">カトラリー・小物</button><button class="chip" data-k="cat" data-v="子ども用">子ども用</button><button class="chip" data-k="cat" data-v="スツール小・棚">スツール小・棚</button><button class="chip" data-k="cat" data-v="テーブル・デスク">テーブル・デスク</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option><option value="赤松">赤松</option><option value="タモ">タモ</option><option value="ブラックウォルナット">ブラックウォルナット</option><option value="クルミ">クルミ</option><option value="アメリカンブラックチェリー">アメリカンブラックチェリー</option><option value="アメリカンブラックウォルナット">アメリカンブラックウォルナット</option><option value="山桜">山桜</option><option value="アメリカンブラックチェリー、クルミ、アメリカンブラックウォルナット、メイプル他">アメリカンブラックチェリー、クルミ、アメリカンブラックウォルナット、メイプル他</option><option value="クルミ、アメリカンブラックウォルナット">クルミ、アメリカンブラックウォルナット</option><option value="カバ">カバ</option><option value="クリ">クリ</option><option value="アメリカンブラックウォルナット、アメリカンブラックチェリー">アメリカンブラックウォルナット、アメリカンブラックチェリー</option><option value="アメリカンブラックウォルナット、アメリカンブラックチェリー、メイプル">アメリカンブラックウォルナット、アメリカンブラックチェリー、メイプル</option><option value="アメリカンブラックウォルナット、アメリカンブラックチェリー、クルミ">アメリカンブラックウォルナット、アメリカンブラックチェリー、クルミ</option><option value="アメリカンブラックチェリー、山桜">アメリカンブラックチェリー、山桜</option><option value="タモ・アメリカンブラックチェリー">タモ・アメリカンブラックチェリー</option><option value="タモ・アクリルテープ">タモ・アクリルテープ</option><option value="アメリカンブラックウォルナット・アメリカンブラックチェリー">アメリカンブラックウォルナット・アメリカンブラックチェリー</option><option value="タモ・アメリカンブラックウォルナット">タモ・アメリカンブラックウォルナット</option><option value="カバザクラ">カバザクラ</option><option value="ナラ">ナラ</option><option value="メープル">メープル</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="キャビネット・収納" data-mat="赤松" data-price="120000" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャビネット・収納</div>
+    <h3>赤松の戸棚</h3>
+    <div class="price">¥120,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W600×D250×H970</td><td class="pr">¥120,000</td></tr></tbody></table>
+      <div class="mat">素材: 赤松 / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cabinet/akamatsu-cupboard/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャビネット・収納" data-mat="タモ" data-price="220000" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャビネット・収納</div>
+    <h3>オーディオボード</h3>
+    <div class="price">¥220,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1000×D380×H600</td><td class="pr">¥220,000</td></tr></tbody></table>
+      <div class="mat">素材: タモ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cabinet/audio-board/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャビネット・収納" data-mat="タモ" data-price="135000" data-w="665">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャビネット・収納</div>
+    <h3>オーディオラック</h3>
+    <div class="price">¥135,000<small>(税込)</small></div>
+    <p class="desc">背面の脚の部分に配線用のフックを配置しました。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:35%"></div></div>
+      <div class="barnote">幅 665mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W665×D385×H855</td><td class="pr">¥135,000</td></tr></tbody></table>
+      <div class="mat">素材: タモ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cabinet/audio-rack/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャビネット・収納" data-mat="ブラックウォルナット" data-price="0" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャビネット・収納</div>
+    <h3>ブラックウォルナットの棚</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1800×D400×H1300</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォルナット / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cabinet/black-walnut-shelves/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャビネット・収納" data-mat="タモ" data-price="125000" data-w="850">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャビネット・収納</div>
+    <h3>カウンターキャビネット</h3>
+    <div class="price">¥125,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:45%"></div></div>
+      <div class="barnote">幅 850mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W850×D250×H800</td><td class="pr">¥125,000</td></tr></tbody></table>
+      <div class="mat">素材: タモ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cabinet/counter-cabinet/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャビネット・収納" data-mat="クルミ" data-price="600000" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャビネット・収納</div>
+    <h3>カップボード</h3>
+    <div class="price">¥600,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1000×D430×H1835</td><td class="pr">¥600,000</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cabinet/cup-board/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャビネット・収納" data-mat="タモ" data-price="210000" data-w="560">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャビネット・収納</div>
+    <h3>キッチンワゴン</h3>
+    <div class="price">¥210,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 560mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W560×D450×H1200</td><td class="pr">¥210,000</td></tr></tbody></table>
+      <div class="mat">素材: タモ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cabinet/kakitchin-wagon/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャビネット・収納" data-mat="クルミ" data-price="380000" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャビネット・収納</div>
+    <h3>ローボード</h3>
+    <div class="price">¥380,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1500×D450×H400</td><td class="pr">¥380,000</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cabinet/low-board/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャビネット・収納" data-mat="赤松" data-price="135000" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャビネット・収納</div>
+    <h3>引き出しの付いた赤松の戸棚</h3>
+    <div class="price">¥135,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W600×D250×H970</td><td class="pr">¥135,000</td></tr></tbody></table>
+      <div class="mat">素材: 赤松 / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cabinet/red-pine-closet-with-drawer/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア・スツール" data-mat="アメリカンブラックチェリー" data-price="95000" data-w="550">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア・スツール</div>
+    <h3>肘掛け付スタンダードチェアー</h3>
+    <div class="price">¥95,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 550mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W550×D550×H800 / 座面高 SH400</td><td class="pr">¥95,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/chair/armrest-chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア・スツール" data-mat="クルミ" data-price="80000" data-w="1300">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア・スツール</div>
+    <h3>通し丸ほぞのベンチ</h3>
+    <div class="price">¥80,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:68%"></div></div>
+      <div class="barnote">幅 1300mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1300×D280×H400</td><td class="pr">¥80,000</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/chair/bench-tenon/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア・スツール" data-mat="アメリカンブラックウォルナット" data-price="140000" data-w="645">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア・スツール</div>
+    <h3>ブラックウォルナットのローチェアー</h3>
+    <div class="price">¥140,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:34%"></div></div>
+      <div class="barnote">幅 645mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W645×D600×H735 / 座面高 SH300</td><td class="pr">¥140,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックウォルナット / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/chair/black-walnut-low-chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア・スツール" data-mat="アメリカンブラックウォルナット" data-price="300000" data-w="700">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア・スツール</div>
+    <h3>ブラックウォルナットのロッキングチェアー</h3>
+    <div class="price">¥300,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:37%"></div></div>
+      <div class="barnote">幅 700mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W700×D900×H1150 / 座面高 SH380</td><td class="pr">¥300,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックウォルナット / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/chair/black-walnut-rocking-chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア・スツール" data-mat="山桜" data-price="38000" data-w="320">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア・スツール</div>
+    <h3>カフェスツール</h3>
+    <div class="price">¥38,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:17%"></div></div>
+      <div class="barnote">幅 320mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W320×D320×H500</td><td class="pr">¥38,000</td></tr></tbody></table>
+      <div class="mat">素材: 山桜 / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/chair/cafe-stool/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア・スツール" data-mat="アメリカンブラックチェリー、クルミ、アメリカンブラックウォルナット、メイプル他" data-price="73000" data-w="450">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア・スツール</div>
+    <h3>ダイニングチェアー</h3>
+    <div class="price">¥73,000<small>(税込)</small></div>
+    <p class="desc">アメリカンブラックチェリー</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 450mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W450×D450×H800 / 座面高 SH400</td><td class="pr">¥73,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックチェリー、クルミ、アメリカンブラックウォルナット、メイプル他 / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/chair/dining-chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア・スツール" data-mat="タモ" data-price="110000" data-w="1400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア・スツール</div>
+    <h3>家族のカウンターベンチ</h3>
+    <div class="price">¥110,000<small>(税込)</small></div>
+    <p class="desc">お客様より写真を頂きました。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:74%"></div></div>
+      <div class="barnote">幅 1400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1400×D380×H550</td><td class="pr">¥110,000</td></tr></tbody></table>
+      <div class="mat">素材: タモ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/chair/family-counter-bench/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア・スツール" data-mat="" data-price="0" data-w="430">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア・スツール</div>
+    <h3>くにおかチェアー</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:23%"></div></div>
+      <div class="barnote">幅 430mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W430×D430×H800 / 座面高 SH460</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材:  / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/chair/mai-cafe-chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア・スツール" data-mat="アメリカンブラックウォルナット" data-price="48000" data-w="320">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア・スツール</div>
+    <h3>スピンドルチェアー</h3>
+    <div class="price">¥48,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:17%"></div></div>
+      <div class="barnote">幅 320mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W320×D370×H590 / 座面高 SH345</td><td class="pr">¥48,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックウォルナット / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/chair/spindle-chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア・スツール" data-mat="アメリカンブラックチェリー" data-price="55000" data-w="420">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア・スツール</div>
+    <h3>スタンダードチェアー</h3>
+    <div class="price">¥55,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:22%"></div></div>
+      <div class="barnote">幅 420mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W420×D450×H800 / 座面高 SH400</td><td class="pr">¥55,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/chair/standard-chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア・スツール" data-mat="タモ" data-price="60000" data-w="250">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア・スツール</div>
+    <h3>トレイの置けるスツール</h3>
+    <div class="price">¥60,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:13%"></div></div>
+      <div class="barnote">幅 250mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W250×D500×H465</td><td class="pr">¥60,000</td></tr></tbody></table>
+      <div class="mat">素材: タモ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/chair/stool-in-tray/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア・スツール" data-mat="クルミ、アメリカンブラックウォルナット" data-price="42000" data-w="450">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア・スツール</div>
+    <h3>通し丸ほぞのスツール</h3>
+    <div class="price">¥42,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 450mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W450×D280×H400</td><td class="pr">¥42,000</td></tr></tbody></table>
+      <div class="mat">素材: クルミ、アメリカンブラックウォルナット / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/chair/stool-tenon/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア・スツール" data-mat="アメリカンブラックチェリー" data-price="40000" data-w="370">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア・スツール</div>
+    <h3>棚のあるスツール</h3>
+    <div class="price">¥40,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:19%"></div></div>
+      <div class="barnote">幅 370mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W370×D370×H400</td><td class="pr">¥40,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/chair/stool-with-shelves/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア・スツール" data-mat="山桜" data-price="290000" data-w="700">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア・スツール</div>
+    <h3>山桜のロッキングチェアー</h3>
+    <div class="price">¥290,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:37%"></div></div>
+      <div class="barnote">幅 700mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W700×D900×H1150 / 座面高 SH380</td><td class="pr">¥290,000</td></tr></tbody></table>
+      <div class="mat">素材: 山桜 / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/chair/yamazakura-rocking-chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カトラリー・小物" data-mat="カバ" data-price="1650" data-w="160">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カトラリー・小物</div>
+    <h3>カバのスプーン1</h3>
+    <div class="price">¥1,650<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:8%"></div></div>
+      <div class="barnote">幅 160mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W160×D37×H10</td><td class="pr">¥1,650</td></tr></tbody></table>
+      <div class="mat">素材: カバ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cutlery/birch-spoon-1/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カトラリー・小物" data-mat="カバ" data-price="1650" data-w="160">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カトラリー・小物</div>
+    <h3>カバのスプーン2</h3>
+    <div class="price">¥1,650<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:8%"></div></div>
+      <div class="barnote">幅 160mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W160×D37×H10</td><td class="pr">¥1,650</td></tr></tbody></table>
+      <div class="mat">素材: カバ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cutlery/birch-spoon/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カトラリー・小物" data-mat="クリ" data-price="2200" data-w="190">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カトラリー・小物</div>
+    <h3>クリのサーバースプーン</h3>
+    <div class="price">¥2,200<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:10%"></div></div>
+      <div class="barnote">幅 190mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W190×D60×H12</td><td class="pr">¥2,200</td></tr></tbody></table>
+      <div class="mat">素材: クリ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cutlery/chestnut-server-spoon/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カトラリー・小物" data-mat="アメリカンブラックウォルナット、アメリカンブラックチェリー" data-price="3080" data-w="110">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カトラリー・小物</div>
+    <h3>コーヒーのメジャースプーン</h3>
+    <div class="price">¥3,080<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:6%"></div></div>
+      <div class="barnote">幅 110mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W110×D47×H27</td><td class="pr">¥3,080</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックウォルナット、アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cutlery/coffee-measure-spoon/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カトラリー・小物" data-mat="アメリカンブラックチェリー" data-price="7700" data-w="360">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カトラリー・小物</div>
+    <h3>ちょっと深めのトレイ</h3>
+    <div class="price">¥7,700<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:19%"></div></div>
+      <div class="barnote">幅 360mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W360×D190×H35</td><td class="pr">¥7,700</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cutlery/deep-tray/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カトラリー・小物" data-mat="クルミ" data-price="1320" data-w="90">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カトラリー・小物</div>
+    <h3>サカナの茶さじ</h3>
+    <div class="price">¥1,320<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:5%"></div></div>
+      <div class="barnote">幅 90mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W90×D40×H15</td><td class="pr">¥1,320</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cutlery/fish-teaspoon/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カトラリー・小物" data-mat="アメリカンブラックウォルナット" data-price="3600" data-w="300">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カトラリー・小物</div>
+    <h3>炒め物のへら</h3>
+    <div class="price">¥3,600<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:16%"></div></div>
+      <div class="barnote">幅 300mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W300×D70×H11</td><td class="pr">¥3,600</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックウォルナット / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cutlery/fried-spatula/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カトラリー・小物" data-mat="クルミ" data-price="0" data-w="160">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カトラリー・小物</div>
+    <h3>持ち手の付いたカッティングボード</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:8%"></div></div>
+      <div class="barnote">幅 160mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W160×D280×H25</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cutlery/handle-cutting-board/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カトラリー・小物" data-mat="山桜" data-price="2420" data-w="200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カトラリー・小物</div>
+    <h3>山桜のスプーン</h3>
+    <div class="price">¥2,420<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:11%"></div></div>
+      <div class="barnote">幅 200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W200×D45×H10</td><td class="pr">¥2,420</td></tr></tbody></table>
+      <div class="mat">素材: 山桜 / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cutlery/mountain-cherry-blossom-spoon/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カトラリー・小物" data-mat="アメリカンブラックウォルナット、アメリカンブラックチェリー、メイプル" data-price="1320" data-w="165">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カトラリー・小物</div>
+    <h3>ノコ目のバターナイフ</h3>
+    <div class="price">¥1,320<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:9%"></div></div>
+      <div class="barnote">幅 165mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W165×D25×H10</td><td class="pr">¥1,320</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックウォルナット、アメリカンブラックチェリー、メイプル / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cutlery/serrated-butter-knife/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カトラリー・小物" data-mat="アメリカンブラックウォルナット、アメリカンブラックチェリー、クルミ" data-price="6600" data-w="370">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カトラリー・小物</div>
+    <h3>小さめのトレイ</h3>
+    <div class="price">¥6,600<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:19%"></div></div>
+      <div class="barnote">幅 370mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W370×D185×H23</td><td class="pr">¥6,600</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックウォルナット、アメリカンブラックチェリー、クルミ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cutlery/small-tray/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カトラリー・小物" data-mat="アメリカンブラックチェリー、山桜" data-price="3600" data-w="200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カトラリー・小物</div>
+    <h3>立つしゃもじ</h3>
+    <div class="price">¥3,600<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:11%"></div></div>
+      <div class="barnote">幅 200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W200×D80×H28</td><td class="pr">¥3,600</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックチェリー、山桜 / 塗装: 天然オイル+くるみオイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cutlery/standing-rice-scoop/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カトラリー・小物" data-mat="タモ・アメリカンブラックチェリー" data-price="9900" data-w="90">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カトラリー・小物</div>
+    <h3>シュガーポット</h3>
+    <div class="price">¥9,900<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:5%"></div></div>
+      <div class="barnote">幅 90mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W90×D90×H90</td><td class="pr">¥9,900</td></tr></tbody></table>
+      <div class="mat">素材: タモ・アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/cutlery/sugar-pot/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="子ども用" data-mat="クリ" data-price="55000" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">子ども用</div>
+    <h3>ミニテーブル</h3>
+    <div class="price">¥55,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W600×D470×H360</td><td class="pr">¥55,000</td></tr></tbody></table>
+      <div class="mat">素材: クリ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/for-children/mini-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="子ども用" data-mat="アメリカンブラックチェリー" data-price="53000" data-w="300">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">子ども用</div>
+    <h3>可動ステップのキッズチェアー</h3>
+    <div class="price">¥53,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:16%"></div></div>
+      <div class="barnote">幅 300mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W300×D420×H620 / 座面高 SH500</td><td class="pr">¥53,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/for-children/movable-step-kids-chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="子ども用" data-mat="アメリカンブラックチェリー" data-price="53000" data-w="370">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">子ども用</div>
+    <h3>ステップキッズチェアー</h3>
+    <div class="price">¥53,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:19%"></div></div>
+      <div class="barnote">幅 370mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W370×D460×H750 / 座面高 SH470</td><td class="pr">¥53,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/for-children/step-kids-chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="子ども用" data-mat="タモ・アクリルテープ" data-price="0" data-w="265">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">子ども用</div>
+    <h3>テープ編みの子供イス</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:14%"></div></div>
+      <div class="barnote">幅 265mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W265×D265×H350</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: タモ・アクリルテープ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/for-children/tape-knitting-kids-chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール小・棚" data-mat="アメリカンブラックウォルナット" data-price="9720" data-w="270">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール小・棚</div>
+    <h3>ブラックウォルナットの小さなスツール</h3>
+    <div class="price">¥9,720<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:14%"></div></div>
+      <div class="barnote">幅 270mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W270×D270×H295</td><td class="pr">¥9,720</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックウォルナット / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/other/black-walnut-small-stool/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール小・棚" data-mat="アメリカンブラックウォルナット・アメリカンブラックチェリー" data-price="9180" data-w="310">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール小・棚</div>
+    <h3>小さなギザギザスツール</h3>
+    <div class="price">¥9,180<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:16%"></div></div>
+      <div class="barnote">幅 310mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W310×D210×H220</td><td class="pr">¥9,180</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックウォルナット・アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/other/small-jagged-stool/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール小・棚" data-mat="タモ・アメリカンブラックウォルナット" data-price="5184" data-w="175">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール小・棚</div>
+    <h3>小さな小さな三つ脚スツール2</h3>
+    <div class="price">¥5,184<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:9%"></div></div>
+      <div class="barnote">幅 175mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W175×D110×H135</td><td class="pr">¥5,184</td></tr></tbody></table>
+      <div class="mat">素材: タモ・アメリカンブラックウォルナット / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/other/small-small-three-legged-stool/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール小・棚" data-mat="タモ" data-price="8640" data-w="210">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール小・棚</div>
+    <h3>タモの小さなスツール</h3>
+    <div class="price">¥8,640<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:11%"></div></div>
+      <div class="barnote">幅 210mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W210×D210×H250</td><td class="pr">¥8,640</td></tr></tbody></table>
+      <div class="mat">素材: タモ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/other/small-stool-of-ash/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール小・棚" data-mat="タモ・アメリカンブラックウォルナット" data-price="5184" data-w="170">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール小・棚</div>
+    <h3>小さな小さな三つ脚スツール1</h3>
+    <div class="price">¥5,184<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:9%"></div></div>
+      <div class="barnote">幅 170mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W170×D110×H135</td><td class="pr">¥5,184</td></tr></tbody></table>
+      <div class="mat">素材: タモ・アメリカンブラックウォルナット / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/other/small-three-legged-stool/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール小・棚" data-mat="クルミ" data-price="13000" data-w="550">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール小・棚</div>
+    <h3>壁掛け棚</h3>
+    <div class="price">¥13,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 550mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W550×D120×H100</td><td class="pr">¥13,000</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/other/wall-shelf/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="カバザクラ" data-price="135000" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>カバの丸いローテーブル</h3>
+    <div class="price">¥135,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1000×D1000×H350</td><td class="pr">¥135,000</td></tr></tbody></table>
+      <div class="mat">素材: カバザクラ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/birch-round-low-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="アメリカンブラックウォルナット" data-price="145000" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>ブラックウォルナットの学習机</h3>
+    <div class="price">¥145,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1000×D650×H700</td><td class="pr">¥145,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックウォルナット / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/black-walnut-learning-desk/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="クルミ" data-price="100000" data-w="740">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>カフェテーブル</h3>
+    <div class="price">¥100,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:39%"></div></div>
+      <div class="barnote">幅 740mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W740×D700×H700</td><td class="pr">¥100,000</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/cafe-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="アメリカンブラックチェリー" data-price="135000" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>チェリーの丸いローテーブル</h3>
+    <div class="price">¥135,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1000×D1000×H350</td><td class="pr">¥135,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/cherry-round-low-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="アメリカンブラックチェリー" data-price="340000" data-w="2050">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>カウンターテーブル</h3>
+    <div class="price">¥340,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2050mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W2050×D500×H900</td><td class="pr">¥340,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/counter/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="アメリカンブラックウォルナット" data-price="340000" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>引き出しの付いた家族のテーブル</h3>
+    <div class="price">¥340,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1800×D700×H700</td><td class="pr">¥340,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックウォルナット / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/drawer-family-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="ナラ" data-price="300000" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>家族のテーブル</h3>
+    <div class="price">¥300,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1800×D900×H700</td><td class="pr">¥300,000</td></tr></tbody></table>
+      <div class="mat">素材: ナラ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/family-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="アメリカンブラックチェリー" data-price="145000" data-w="910">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>脚折れちゃぶ台</h3>
+    <div class="price">¥145,000<small>(税込)</small></div>
+    <p class="desc">たたむと脚のストッパーは内側に収まる様になっています。(天板取り付け前)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:48%"></div></div>
+      <div class="barnote">幅 910mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W910×D910×H310</td><td class="pr">¥145,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/folding-chabudai/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="アメリカンブラックチェリー" data-price="158000" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>丸面取りの学習机</h3>
+    <div class="price">¥158,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1000×D700×H700</td><td class="pr">¥158,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/learning-round-corner/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="アメリカンブラックチェリー" data-price="380000" data-w="2800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>窓辺の長テーブル</h3>
+    <div class="price">¥380,000<small>(税込)</small></div>
+    <p class="desc">(テーブルのみになります。)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W2800×D550×H720</td><td class="pr">¥380,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/long-table-by-the-window/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="タモ" data-price="135000" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>ローテーブル</h3>
+    <div class="price">¥135,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1200×D745×H380</td><td class="pr">¥135,000</td></tr></tbody></table>
+      <div class="mat">素材: タモ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/low-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="メープル" data-price="210000" data-w="1300">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>引き出し1つのテーブル</h3>
+    <div class="price">¥210,000<small>(税込)</small></div>
+    <p class="desc">引き出しに入れた物ガ引っ掛かからない様に、内側が平になる様に板を貼っています。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:68%"></div></div>
+      <div class="barnote">幅 1300mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1300×D800×H720</td><td class="pr">¥210,000</td></tr></tbody></table>
+      <div class="mat">素材: メープル / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/one-drawer-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="クルミ" data-price="135000" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>クルミの丸いローテーブル</h3>
+    <div class="price">¥135,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1000×D1000×H360</td><td class="pr">¥135,000</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/walnut-round-low-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="クルミ" data-price="120000" data-w="820">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>棚のあるワークデスク</h3>
+    <div class="price">¥120,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:43%"></div></div>
+      <div class="barnote">幅 820mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W820×D705×H750</td><td class="pr">¥120,000</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/work-desk-with-shelves/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・デスク" data-mat="アメリカンブラックチェリー" data-price="140000" data-w="850">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・デスク</div>
+    <h3>ワークデスク</h3>
+    <div class="price">¥140,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:45%"></div></div>
+      <div class="barnote">幅 850mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W850×D600×H820</td><td class="pr">¥140,000</td></tr></tbody></table>
+      <div class="mat">素材: アメリカンブラックチェリー / 塗装: 天然オイル</div>
+    </div>
+    <a class="more" href="https://kuze-s.com/works/table/work-desk/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、WOOD STUDIO KUZE'S様の公式サイト(<a href="https://kuze-s.com/works/" target="_blank" rel="noopener">https://kuze-s.com/works/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
