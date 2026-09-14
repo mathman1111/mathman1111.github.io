@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>家具工房クラポ｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。家具工房クラポ様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>家具工房クラポ</h1>
+  <p class="tagline">安曇野の工房で、デザイン→設計→製作を一貫。椅子は座面高を1cm単位で選べる定番、ベンチ・ソファはサイズ変更のオーダーも。</p>
+  <div class="badges"><span>長野県安曇野市</span><span>掲載 37点</span><span>サイズ・価格から探せます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="チェア">チェア</button><button class="chip" data-k="cat" data-v="スツール">スツール</button><button class="chip" data-k="cat" data-v="ベンチ">ベンチ</button><button class="chip" data-k="cat" data-v="ソファ">ソファ</button><button class="chip" data-k="cat" data-v="オットマン">オットマン</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option><option value="ウォールナット">ウォールナット</option><option value="チェリー(ナラ・メープルも)">チェリー(ナラ・メープルも)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="550">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>アームチェア 5301 (布テープ座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; 椅子 &gt; アームチェア 5301T</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 550mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W550×D540×H820 / 座面高 SH38~43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5301/5301.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="550">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>アームチェア 5301W (和紙座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; 椅子 &gt; アームチェア 5301T</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 550mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W550×D540×H820 / 座面高 SH38~43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5301w/5301w.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="460">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5305T (布テープ座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; 椅子・スツール・ベンチ・ソファ &gt; チェア 5305T</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 460mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W460×D510×H710 / 座面高 SH38~43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5305/5305t.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="470">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5305S (板座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; 椅子・スツール・ベンチ・ソファ &gt; チェア 5305S</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:25%"></div></div>
+      <div class="barnote">幅 470mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W470×D510×H720 / 座面高 SH38~43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5305s/5305s.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="460">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5305W</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; 椅子・スツール・ベンチ・ソファ &gt; チェア 5305W</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 460mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W460×D510×H710 / 座面高 SH38~43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5305w/5305w.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="660">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>スツール 5327</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; スツール &gt; スツール 5327</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:35%"></div></div>
+      <div class="barnote">幅 660mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W660×D290×H560 / 座面高 SH48cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5327/5327.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>スツール 5330</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; スツール &gt; スツール 5330</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W400×D270 / 座面高 SH45cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5330/5330.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="450">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5332</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">クラポのイスの背もたれは、座面と同じくらいの広さを備えているものが殆どですが、この5332はそうではありません。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 450mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W450×D560×H860 / 座面高 SH38~43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5332/5332.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="540">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5333T (布テープ座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">クラポでは5301や5302のような椅子をフルアームチェアと呼び、このような短い肘掛を備えた椅子をショートアームチェアと呼んでいます。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:28%"></div></div>
+      <div class="barnote">幅 540mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W540×D570×H830 / 座面高 SH38~43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5333/5333t.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="540">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>アームチェア 5333S (板座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">アームチェア5333Tの座面を板座面としたバージョンです。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:28%"></div></div>
+      <div class="barnote">幅 540mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W540×D570×H830 / 座面高 SH38~43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5333s/5333s.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="540">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>アームチェア 5333W (和紙座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; 椅子・スツール・ベンチ・ソファ &gt; アームチェア5333W 和紙座面</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:28%"></div></div>
+      <div class="barnote">幅 540mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W540×D570×H830 / 座面高 SH40cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5333w/5333w.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="580">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5334W (和紙座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; 椅子・スツール・ベンチ・ソファ &gt; チェア 5334W 和紙座面</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:31%"></div></div>
+      <div class="barnote">幅 580mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W580×D500×H710 / 座面高 SH38~43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5334/5334w.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="580">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5334L (革座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; 椅子・スツール・ベンチ・ソファ &gt; チェア5334L 革座面</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:31%"></div></div>
+      <div class="barnote">幅 580mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W580×D500×H710 / 座面高 SH38~43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5334l/5334l.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="580">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5334S (板座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; 作品集 &gt; 椅子・スツール・ベンチ・ソファ &gt; チェア5334S</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:31%"></div></div>
+      <div class="barnote">幅 580mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W580×D500×H710 / 座面高 SH38~43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5334s/5334s.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="580">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5334T (布テープ座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; 作品集 &gt; 椅子・スツール・ベンチ・ソファ &gt; チェア5334T</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:31%"></div></div>
+      <div class="barnote">幅 580mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W580×D500×H690 / 座面高 SH38~43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5334t/5334t.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="520">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5335 (布テープ座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; 作品集 &gt; 椅子・スツール・ベンチ・ソファ &gt; チェア5335T</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:27%"></div></div>
+      <div class="barnote">幅 520mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W520×D460×H710 / 座面高 SH45cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5335/5335.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="520">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5335W (和紙座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; 作品集 &gt; 椅子・スツール・ベンチ・ソファ &gt; チェア5335W</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:27%"></div></div>
+      <div class="barnote">幅 520mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W520×D460×H710 / 座面高 SH45cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5335w/5335w.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="410">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>スツール 5337</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">border: 1px #cccccc solid;</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:22%"></div></div>
+      <div class="barnote">幅 410mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W410×D330 / 座面高 SH39cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5337/5337.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="410">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>スツール 5337S</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">スツール5337の座面を無垢の板に替えたものです。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:22%"></div></div>
+      <div class="barnote">幅 410mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W410×D330 / 座面高 SH35~45cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5337s/5337s.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ</div>
+    <h3>ベンチ 5340</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; ベンチ・ソファ &gt;  ベンチ 5340</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5340/5340.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ</div>
+    <h3>ベンチ 5341</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; ベンチ・ソファ &gt;  ベンチ 5341</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5341/5341.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ソファ" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="760">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ</div>
+    <h3>ソファ 5345</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; ベンチ・ソファ &gt;  ソファ 5345</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:40%"></div></div>
+      <div class="barnote">幅 760mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W760×D730×H780 / 座面高 SH38cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5345/5345.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="520">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5351 (布テープ座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; 椅子・スツール・ベンチ・ソファ &gt; チェア 5351T 布テープ座面</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:27%"></div></div>
+      <div class="barnote">幅 520mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W520×D480×H700 / 座面高 SH38~43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5351/5351.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="520">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5351W (和紙座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; 椅子・スツール・ベンチ・ソファ &gt; チェア 5351W 和紙座面</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:27%"></div></div>
+      <div class="barnote">幅 520mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W520×D480×H700 / 座面高 SH38~43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5351w/5351w.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="410">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>スツール 5352 (布テープ座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; スツール &gt; スツール 5352</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:22%"></div></div>
+      <div class="barnote">幅 410mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W410×D260×H480 / 座面高 SH48cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5352/5352.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="280">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>スツール 5354</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; スツール &gt; スツール 5354</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:15%"></div></div>
+      <div class="barnote">幅 280mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W280×D280 / 座面高 SH43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5354/5354.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="オットマン" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">オットマン</div>
+    <h3>オットマン 5356</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; 作品集 &gt; ベンチ・ソファ &gt;  オットマン 5356</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:26%"></div></div>
+      <div class="barnote">幅 500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W500×D500 / 座面高 SH40cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5356/5356.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="1380">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ</div>
+    <h3>ベンチ 5358</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; 作品集 &gt; ベンチ・ソファ &gt;  ベンチ5358</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:73%"></div></div>
+      <div class="barnote">幅 1380mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1380×D380 / 座面高 SH41cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5358/5358.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="460">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5359T (布テープ座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; 椅子・スツール・ベンチ・ソファ &gt; チェア 5359T</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 460mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W460×H660 / 座面高 SH34cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5359/5359t.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="460">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5359P (紙紐)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; 椅子・スツール・ベンチ・ソファ &gt; チェア 5359P</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 460mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W460×H660 / 座面高 SH34cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5359p/5359p.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="570">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>リビングチェア 5361</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; 椅子・スツール・ベンチ・ソファ &gt; チェア 5361</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:30%"></div></div>
+      <div class="barnote">幅 570mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W570×D620×H800 / 座面高 SH38~40cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5361/5361.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="520">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>カウンターチェア 5362</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">カウンターチェア5362 『ORIGAMI』</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:27%"></div></div>
+      <div class="barnote">幅 520mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W520×D510×H600 / 座面高 SH60cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5362/5362.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>チェア 5363W (和紙座面)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; 椅子・スツール・ベンチ・ソファ &gt; ダイニングチェア 5363W</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:26%"></div></div>
+      <div class="barnote">幅 500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W500×D490×H810 / 座面高 SH40~42cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5363w/5363w.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="630">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>多目的スツール 5365</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">多目的スツール5365「花火でも見ようか」</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:33%"></div></div>
+      <div class="barnote">幅 630mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W630×D350 / 座面高 SH45~50cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/5365/5365.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ソファ" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="1700">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ</div>
+    <h3>ソファ 5349</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; ベンチ・ソファ &gt;  ソファ 5349</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:89%"></div></div>
+      <div class="barnote">幅 1700mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1700×D810×H760 / 座面高 SH43cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/sofa5349/5349.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ソファ" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="1460">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ</div>
+    <h3>ソファ 5350</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; 作品集 &gt; ベンチ・ソファ &gt;  ソファ 5350</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:77%"></div></div>
+      <div class="barnote">幅 1460mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1460×D900×H800 / 座面高 SH38cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/sofa5350/5350.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ソファ" data-mat="ウォールナット/チェリー(ナラ・メープルも)" data-price="0" data-w="1760">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ</div>
+    <h3>ソファ 5344</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">Home &gt; Products &gt; ベンチ・ソファ &gt;  ソファ 5344</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:93%"></div></div>
+      <div class="barnote">幅 1760mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1760 / 座面高 SH40cm</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/チェリー(ナラ・メープルも) / 塗装: オイルフィニッシュ</div>
+    </div>
+    <a class="more" href="https://www.crapo.jp/chair/sofa_1/sofa_1.htm" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、家具工房クラポ様の公式サイト(<a href="https://www.crapo.jp/chair.htm" target="_blank" rel="noopener">https://www.crapo.jp/chair.htm</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
