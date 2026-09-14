@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>彩工房 畑山｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。彩工房 畑山様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>彩工房 畑山</h1>
+  <p class="tagline">相談できる札幌の家具店・ショールーム。テーブルはセミオーダーで幅・奥行・脚・塗装を選べる。品番のあるものは寸法・樹種で並べました(参考価格は税抜表示を税込に換算)。</p>
+  <div class="badges"><span>北海道札幌市南区</span><span>掲載 14点</span><span>サイズ・価格から探せます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="テーブル">テーブル</button><button class="chip" data-k="cat" data-v="ローテーブル">ローテーブル</button><button class="chip" data-k="cat" data-v="サイドテーブル">サイドテーブル</button><button class="chip" data-k="cat" data-v="チェア">チェア</button><button class="chip" data-k="cat" data-v="スツール">スツール</button><button class="chip" data-k="cat" data-v="ベンチ">ベンチ</button><button class="chip" data-k="cat" data-v="TVボード">TVボード</button><button class="chip" data-k="cat" data-v="ソファ">ソファ</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option><option value="オーク ほか">オーク ほか</option><option value="オーク">オーク</option><option value="ウォールナット">ウォールナット</option><option value="ウォールナット+オーク">ウォールナット+オーク</option><option value="ビーチ">ビーチ</option><option value="ウォールナット(W)">ウォールナット(W)</option><option value="オーク(A)">オーク(A)</option><option value="ウォールナット+オーク(K)">ウォールナット+オーク(K)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="テーブル" data-mat="オーク ほか" data-price="137500" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>セミオーダーテーブル</h3>
+    <div class="price">¥137,500〜¥182,600<small>(税込)</small></div>
+    <p class="desc">最低限の規格で実現するリーズナブルな価格。8cm角脚または8cm丸テーパー脚、耳なし天板は角に脚がつく。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>1200×800 天板28mm〜</td><td>W1200×D800×H700</td><td class="pr">¥137,500</td></tr><tr><td>大きめ・厚天板〜</td><td>W1200×D800×H700</td><td class="pr">¥182,600</td></tr></tbody></table>
+      <div class="mat">素材: オーク ほか / 塗装: つや消し</div>
+    </div>
+    <a class="more" href="https://saikoubou.com/furniture/semi/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="オーク" data-price="163900" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>オリジナルテーブル</h3>
+    <div class="price">¥163,900〜¥180,400<small>(税込)</small></div>
+    <p class="desc">オーク 幅1800×奥行900・厚さ35mmの耳付き・丸脚・ウレタン塗装の例あり。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>1200×800 天板28mm〜</td><td>W1200×D800×H700</td><td class="pr">¥163,900</td></tr><tr><td>上位仕様〜</td><td>W1200×D800×H700</td><td class="pr">¥180,400</td></tr></tbody></table>
+      <div class="mat">素材: オーク / 塗装: ウレタン塗装</div>
+    </div>
+    <a class="more" href="https://saikoubou.com/furniture/original/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="オーク" data-price="128700" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>丸テーブル</h3>
+    <div class="price">¥128,700〜¥144,100<small>(税込)</small></div>
+    <p class="desc">角がない丸テーブル。直径5cmずつサイズを選べる。オーク4本丸テーパー脚。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Φ800×H700〜</td><td>W800×D800×H700</td><td class="pr">¥128,700</td></tr><tr><td>大きめ〜</td><td>W1200×D1200×H700</td><td class="pr">¥144,100</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://saikoubou.com/furniture/circle/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="オーク" data-price="157300" data-w="1350">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>楕円テーブル</h3>
+    <div class="price">¥157,300〜¥184,800<small>(税込)</small></div>
+    <p class="desc">全て丸脚。幅1350は斜めに、他のサイズは垂直に脚がつく。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:71%"></div></div>
+      <div class="barnote">幅 1350mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>1350×900×H700〜</td><td>W1350×D900×H700</td><td class="pr">¥157,300</td></tr><tr><td>他サイズ〜</td><td>W1350×D900×H700</td><td class="pr">¥184,800</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://saikoubou.com/furniture/oval/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ローテーブル" data-mat="ウォールナット/オーク" data-price="0" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ローテーブル</div>
+    <h3>モード センターテーブル(ELT91/92)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">座卓にもリビングテーブルにも。8cm角脚。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>ELT91</td><td>W850×D850×H370</td><td class="pr">—</td></tr><tr><td>ELT92</td><td>W1000×D1000×H370</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/オーク</div>
+    </div>
+    <a class="more" href="https://saikoubou.com/furniture/lowtable/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="サイドテーブル" data-mat="ウォールナット/ウォールナット+オーク/オーク" data-price="0" data-w="830">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">サイドテーブル</div>
+    <h3>サロンテーブル(JLT89/61/62)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">3サイズ。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:44%"></div></div>
+      <div class="barnote">幅 830mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>JLT89</td><td>W385×D360×H500</td><td class="pr">—</td></tr><tr><td>JLT61</td><td>W630×D450×H500</td><td class="pr">—</td></tr><tr><td>JLT62</td><td>W830×D590×H500</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット/ウォールナット+オーク/オーク</div>
+    </div>
+    <a class="more" href="https://saikoubou.com/furniture/sidetable/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ビーチ/オーク" data-price="0" data-w="540">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>ELBOW CHAIR(CH20)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">デザイナー Hans J. Wegner。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:28%"></div></div>
+      <div class="barnote">幅 540mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W540×D470×H730 / 座面高 SH460</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ビーチ/オーク</div>
+    </div>
+    <a class="more" href="https://saikoubou.com/furniture/dining/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット(W)/オーク(A)" data-price="0" data-w="640">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>デューイージーチェア(ELC10)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">アーム高600。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:34%"></div></div>
+      <div class="barnote">幅 640mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W640×D715×H835 / 座面高 SH400</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット(W)/オーク(A)</div>
+    </div>
+    <a class="more" href="https://saikoubou.com/furniture/easy/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="ウォールナット+オーク(K)/オーク(A)" data-price="0" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>シビルデスクチェア(CC89)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">高さ調整 H940〜1050、座面高435〜545。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W600×D570×H1050 / 座面高 SH435〜545</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット+オーク(K)/オーク(A)</div>
+    </div>
+    <a class="more" href="https://saikoubou.com/furniture/desk/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="オーク(A)/ウォールナット(W)" data-price="0" data-w="450">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>ハイスツール 張座(EC18)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 450mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W450×D355×H675 / 座面高 SH650</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク(A)/ウォールナット(W)</div>
+    </div>
+    <a class="more" href="https://saikoubou.com/furniture/high/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェア" data-mat="オーク" data-price="0" data-w="390">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア</div>
+    <h3>ベビーチェア(BC01)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 390mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W390×D540×H780 / 座面高 SH570</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://saikoubou.com/furniture/baby/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ" data-mat="オーク" data-price="0" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ</div>
+    <h3>オーダーベンチ 4本脚(LC01〜06)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">幅7段階。ベンチ用クッションのオプションあり。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>W450</td><td>W450×D380×H420</td><td class="pr">—</td></tr><tr><td>W900</td><td>W900×D380×H420</td><td class="pr">—</td></tr><tr><td>W1200</td><td>W1200×D380×H420</td><td class="pr">—</td></tr><tr><td>W1500</td><td>W1500×D380×H420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://saikoubou.com/furniture/bench/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="TVボード" data-mat="ウォールナット+オーク/オーク" data-price="0" data-w="2100">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">TVボード</div>
+    <h3>シビルTVボード</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">幅4サイズ。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2100mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>W1400</td><td>W1400×D500×H470</td><td class="pr">—</td></tr><tr><td>W1600</td><td>W1600×D500×H470</td><td class="pr">—</td></tr><tr><td>W1800</td><td>W1800×D500×H470</td><td class="pr">—</td></tr><tr><td>W2100</td><td>W2100×D500×H470</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット+オーク/オーク</div>
+    </div>
+    <a class="more" href="https://saikoubou.com/furniture/tvboard/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ソファ" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ</div>
+    <h3>ビーソファ</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">シリーズにより選べる素材が違う。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://saikoubou.com/furniture/sofa/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、彩工房 畑山様の公式サイト(<a href="https://saikoubou.com/" target="_blank" rel="noopener">https://saikoubou.com/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
