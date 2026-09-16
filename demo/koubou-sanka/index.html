@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>工房山窩｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。工房山窩様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>工房山窩</h1>
+  <p class="tagline">筑北村の手造り家具工房。椅子・小椅子・スツール・テーブル・箱棚の5ページに散らばる57点の品番・寸法・在庫を1枚に並べました(価格はオンラインショップ側にあるため空欄)。</p>
+  <div class="badges"><span>長野県東筑摩郡筑北村</span><span>掲載 58点</span><span>サイズ・価格から探せます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="椅子">椅子</button><button class="chip" data-k="cat" data-v="小椅子">小椅子</button><button class="chip" data-k="cat" data-v="スツール">スツール</button><button class="chip" data-k="cat" data-v="テーブル・机">テーブル・机</button><button class="chip" data-k="cat" data-v="箱・棚">箱・棚</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option><option value="山葡萄">山葡萄</option><option value="クルミ">クルミ</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="635">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch2107(ウインザー調・本革)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">ウインザー調チェアー。座は本革。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:33%"></div></div>
+      <div class="barnote">幅 635mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W635×D590×H900 / 座面高 SH420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材:  / 塗装: 本革</div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="山葡萄" data-price="0" data-w="460">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>山葡萄の椅子 ch2002</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">長野県の山葡萄で編んだ座。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 460mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W460×D515×H890 / 座面高 SH420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 山葡萄 / 塗装: 山葡萄編み</div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="460">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch1502</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">座は泥染め・藍染・山葡萄染めの和紙編みから。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 460mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W460×D460×H735 / 座面高 SH425</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材:  / 塗装: 和紙編み</div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="山葡萄" data-price="0" data-w="460">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch1503(山葡萄編み)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 460mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W460×D460×H735 / 座面高 SH425</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 山葡萄 / 塗装: 山葡萄編み</div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch1710</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">座は泥染め・藍染・山葡萄染めの和紙編みから。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>D480×H735 / 座面高 SH430</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材:  / 塗装: 和紙編み</div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="515">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch18121</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:27%"></div></div>
+      <div class="barnote">幅 515mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W515×D615×H1010 / 座面高 SH420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="525">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch18122</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:28%"></div></div>
+      <div class="barnote">幅 525mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W525×D520×H710 / 座面高 SH420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="650">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch18123</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:34%"></div></div>
+      <div class="barnote">幅 650mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W650×D575×H1010 / 座面高 SH420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="565">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch1409</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">在庫品は座面が「掘り」の仕様。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:30%"></div></div>
+      <div class="barnote">幅 565mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W565×D475×H715 / 座面高 SH425</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="565">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch1407</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:30%"></div></div>
+      <div class="barnote">幅 565mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W565×D475×H715 / 座面高 SH430</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="700">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch18124</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:37%"></div></div>
+      <div class="barnote">幅 700mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W700×D530×H535 / 座面高 SH420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="625">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ロッキングチェアー ch1504</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:33%"></div></div>
+      <div class="barnote">幅 625mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W625×D880×H1100 / 座面高 SH410</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="625">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ロッキングチェアー皮座 ch1412</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:33%"></div></div>
+      <div class="barnote">幅 625mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W625×D880×H1100</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材:  / 塗装: 皮座</div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="660">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch0705</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:35%"></div></div>
+      <div class="barnote">幅 660mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W660×D575×H975 / 座面高 SH420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch14043</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch1212</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch13031</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="540">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch0909</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:28%"></div></div>
+      <div class="barnote">幅 540mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W540×D520×H1000 / 座面高 SH410</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch0712</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="510">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch13071</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:27%"></div></div>
+      <div class="barnote">幅 510mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W510×D530×H900 / 座面高 SH450</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="540">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch1505</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:28%"></div></div>
+      <div class="barnote">幅 540mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W540×D520×H1000 / 座面高 SH410</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch1107</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch0907</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch1208</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch0312</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch0203</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch0205</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch1205(ペーパーコード編み)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材:  / 塗装: ペーパーコード編み</div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="山葡萄" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェアー ch1309(山葡萄編み)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: 山葡萄 / 塗装: 山葡萄編み</div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/isu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="小椅子" data-mat="" data-price="0" data-w="265">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">小椅子</div>
+    <h3>小椅子 ch0711</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:14%"></div></div>
+      <div class="barnote">幅 265mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W265×D270×H435 / 座面高 SH220</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/koisu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="小椅子" data-mat="" data-price="0" data-w="370">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">小椅子</div>
+    <h3>小椅子 ch108</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:19%"></div></div>
+      <div class="barnote">幅 370mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W370×H500 / 座面高 SH220</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/koisu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="小椅子" data-mat="" data-price="0" data-w="355">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">小椅子</div>
+    <h3>小椅子 ch1110</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:19%"></div></div>
+      <div class="barnote">幅 355mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W355×D290×H370 / 座面高 SH220</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/koisu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="小椅子" data-mat="" data-price="0" data-w="355">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">小椅子</div>
+    <h3>小椅子 ch1111</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:19%"></div></div>
+      <div class="barnote">幅 355mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W355×D290×H370 / 座面高 SH220</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/koisu.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="山葡萄" data-price="0" data-w="560">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>山葡萄のひじ付スツール ch1512</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 560mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W560×D445×H625 / 座面高 SH425</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 山葡萄 / 塗装: 山葡萄編み</div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/stool.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="" data-price="0" data-w="560">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>座編みひじ付スツール ch1307</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">座は泥染め・藍染・山葡萄染め和紙編み、和紙編み、イ草編みから。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 560mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W560×D445×H625 / 座面高 SH425</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材:  / 塗装: 和紙編み / イ草編み</div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/stool.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="" data-price="0" data-w="560">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>ひじ付スツール ch1306</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 560mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W560×D445×H625 / 座面高 SH425</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/stool.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="山葡萄" data-price="0" data-w="460">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>山葡萄のスツール ch1211</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 460mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W460×D330×H425 / 座面高 SH425</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 山葡萄 / 塗装: 山葡萄編み</div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/stool.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="" data-price="0" data-w="460">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>座編みスツール ch1112</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">座は泥染め・藍染・山葡萄染め和紙編み、和紙編み、イ草編みから。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 460mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W460×D330×H425 / 座面高 SH425</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材:  / 塗装: 和紙編み / イ草編み</div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/stool.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="" data-price="0" data-w="460">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>スツール ch1501</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 460mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W460×D330×H425 / 座面高 SH425</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/stool.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="山葡萄" data-price="0" data-w="380">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>山葡萄のスツール ch2013</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:20%"></div></div>
+      <div class="barnote">幅 380mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W380×D300 / 座面高 SH420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 山葡萄 / 塗装: 山葡萄編み</div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/stool.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="クルミ" data-price="0" data-w="310">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>スツール ch2034(クルミ)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">丸座 φ310。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:16%"></div></div>
+      <div class="barnote">幅 310mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>φ310</td><td>W310×D310×H425</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: クルミ</div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/stool.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="" data-price="0" data-w="560">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>ひじ付スツール ch1303</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 560mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W560×D445×H625 / 座面高 SH430</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/stool.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="" data-price="0" data-w="560">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>スツール ch2024A</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 560mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W560×D445×H625 / 座面高 SH430</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/stool.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="" data-price="0" data-w="360">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>スツール ch2024B</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:19%"></div></div>
+      <div class="barnote">幅 360mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W360×D360×H420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/stool.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スツール" data-mat="" data-price="0" data-w="350">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">スツール</div>
+    <h3>スツール ch2014</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:18%"></div></div>
+      <div class="barnote">幅 350mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W350×D350×H420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/stool.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・机" data-mat="" data-price="0" data-w="900">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">テーブル・机</div>
+    <h3>テーブル ta1406</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:47%"></div></div>
+      <div class="barnote">幅 900mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W900×D900×H700</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/table.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・机" data-mat="" data-price="0" data-w="620">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">テーブル・机</div>
+    <h3>テーブル ta1407</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:33%"></div></div>
+      <div class="barnote">幅 620mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W620×D620×H610</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/table.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・机" data-mat="" data-price="0" data-w="1600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">テーブル・机</div>
+    <h3>テーブル ta1601</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">天板厚さ約50。奥行700〜800。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:84%"></div></div>
+      <div class="barnote">幅 1600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1600×D800×H675</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/table.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・机" data-mat="" data-price="0" data-w="1845">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">テーブル・机</div>
+    <h3>テーブル ta1804</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:97%"></div></div>
+      <div class="barnote">幅 1845mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1845×D830×H680</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/table.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・机" data-mat="" data-price="0" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">テーブル・机</div>
+    <h3>テーブル ta1108</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1500×D850×H685</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/table.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・机" data-mat="" data-price="0" data-w="850">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・机</div>
+    <h3>円卓 ta1710</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">φ850 の座卓。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:45%"></div></div>
+      <div class="barnote">幅 850mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>φ850</td><td>W850×D850×H335</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/table.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・机" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル・机</div>
+    <h3>ちゃぶ台</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/table.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・机" data-mat="" data-price="0" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">テーブル・机</div>
+    <h3>机 ta1809</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1200×D450×H700</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/table.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・机" data-mat="" data-price="0" data-w="1775">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">テーブル・机</div>
+    <h3>机/テーブル ta1801</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">奥行570〜680。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:93%"></div></div>
+      <div class="barnote">幅 1775mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1775×D680×H735</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/table.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル・机" data-mat="" data-price="0" data-w="1845">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">テーブル・机</div>
+    <h3>机 ta1809(大)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">奥行おおむね700、高さは希望で。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:97%"></div></div>
+      <div class="barnote">幅 1845mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1845×D700</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/table.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="箱・棚" data-mat="" data-price="0" data-w="455">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">箱・棚</div>
+    <h3>五段引き出し bo005</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">抽斗の奥行 380。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 455mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W455×D450×H735</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/hako.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="箱・棚" data-mat="" data-price="0" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫あり</span></div>
+  <div class="body">
+    <div class="cat">箱・棚</div>
+    <h3>テレビ台 bo1503</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">左右幅内寸345・中央幅内寸450。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1200×D300×H355</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/hako.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="箱・棚" data-mat="" data-price="0" data-w="775">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">箱・棚</div>
+    <h3>棚 bo1502</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:41%"></div></div>
+      <div class="barnote">幅 775mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W775×D280×H805</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://koubou-sanka.main.jp/hako.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、工房山窩様の公式サイト(<a href="http://koubou-sanka.main.jp/" target="_blank" rel="noopener">http://koubou-sanka.main.jp/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>浅村家具製作所｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。浅村家具製作所様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>浅村家具製作所</h1>
+  <p class="tagline">松本市の家具工房。works の48点(オリジナルデザイン家具・オーダーメイド家具・木製雑貨)が6ページに分かれて載っている寸法・樹種・価格を1枚に並べました。</p>
+  <div class="badges"><span>長野県松本市</span><span>掲載 48点</span><span>サイズ・価格から探せます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button><button class="chip" data-k="series" data-v="original">オリジナルデザイン家具</button><button class="chip" data-k="series" data-v="order">オーダーメイド家具</button><button class="chip" data-k="series" data-v="zakka">木製雑貨</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="チェア">チェア</button><button class="chip" data-k="cat" data-v="パーソナルチェア">パーソナルチェア</button><button class="chip" data-k="cat" data-v="ソファ">ソファ</button><button class="chip" data-k="cat" data-v="子供椅子">子供椅子</button><button class="chip" data-k="cat" data-v="ベンチ">ベンチ</button><button class="chip" data-k="cat" data-v="スツール">スツール</button><button class="chip" data-k="cat" data-v="テレビボード">テレビボード</button><button class="chip" data-k="cat" data-v="シェルフ">シェルフ</button><button class="chip" data-k="cat" data-v="チェスト">チェスト</button><button class="chip" data-k="cat" data-v="仏壇・厨子">仏壇・厨子</button><button class="chip" data-k="cat" data-v="キャビネット">キャビネット</button><button class="chip" data-k="cat" data-v="その他">その他</button><button class="chip" data-k="cat" data-v="テーブル">テーブル</button><button class="chip" data-k="cat" data-v="デスク">デスク</button><button class="chip" data-k="cat" data-v="木製雑貨">木製雑貨</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option><option value="ハードメイプル">ハードメイプル</option><option value="センノキ">センノキ</option><option value="ウォールナット">ウォールナット</option><option value="アッシュ">アッシュ</option><option value="タモ">タモ</option><option value="マホガニー">マホガニー</option><option value="桐">桐</option><option value="ホワイトアッシュ">ホワイトアッシュ</option><option value="チェリー">チェリー</option><option value="ナラ">ナラ</option><option value="鉄">鉄</option><option value="メープル">メープル</option><option value="木">木</option><option value="レジン">レジン</option><option value="ケヤキ">ケヤキ</option><option value="チーク">チーク</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="original" data-cat="チェア" data-mat="ハードメイプル" data-price="73700" data-w="410">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア · オリジナルデザイン家具</div>
+    <h3>ダイニングチェア SA-2n</h3>
+    <div class="price">¥73,700<small>(税込)</small></div>
+    <p class="desc">SA-2のマイナーチェンジ。角脚で陰影がはっきり出る。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:22%"></div></div>
+      <div class="barnote">幅 410mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td>W410×D520×H880 / 座面高 SH430</td><td class="pr">¥73,700</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chair-sofa/1042/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="チェア" data-mat="センノキ" data-price="99000" data-w="580">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア · オリジナルデザイン家具</div>
+    <h3>ダイニングチェア HA-5</h3>
+    <div class="price">¥99,000<small>(税込)</small></div>
+    <p class="desc">軽量なフルアームチェア。座面はアクリルテープ編み。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:31%"></div></div>
+      <div class="barnote">幅 580mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td>W580×D485×H710 / 座面高 SH420</td><td class="pr">¥99,000</td></tr></tbody></table>
+      <div class="mat">素材: センノキ / 塗装: マットウレタン(クリア・ブラック)</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chair-sofa/1610/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="チェア" data-mat="ハードメイプル" data-price="75900" data-w="410">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェア · オリジナルデザイン家具</div>
+    <h3>カウンターチェア</h3>
+    <div class="price">¥75,900<small>(税込)</small></div>
+    <p class="desc">高さ805〜855(SH600〜650)。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:22%"></div></div>
+      <div class="barnote">幅 410mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td>W410×D420×H855 / 座面高 SH600〜650</td><td class="pr">¥75,900</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chair-sofa/981/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="パーソナルチェア" data-mat="ハードメイプル" data-price="194700" data-w="645">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">パーソナルチェア · オリジナルデザイン家具</div>
+    <h3>イージーチェア HL-1</h3>
+    <div class="price">¥194,700<small>(税込)</small></div>
+    <p class="desc">無垢材を削り込んで成型。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:34%"></div></div>
+      <div class="barnote">幅 645mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td>W645×D620×H740 / 座面高 SH380</td><td class="pr">¥194,700</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chair-sofa/587/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="パーソナルチェア" data-mat="ウォールナット" data-price="275000" data-w="690">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">パーソナルチェア · オリジナルデザイン家具</div>
+    <h3>ラウンジチェア SR</h3>
+    <div class="price">¥275,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:36%"></div></div>
+      <div class="barnote">幅 690mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td>W690×D920×H880 / 座面高 SH300</td><td class="pr">¥275,000</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chair-sofa/730/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="パーソナルチェア" data-mat="ハードメイプル / ウォールナット" data-price="231000" data-w="685">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">パーソナルチェア · オリジナルデザイン家具</div>
+    <h3>ロッキングチェア</h3>
+    <div class="price">¥231,000〜¥258,500<small>(税込)</small></div>
+    <p class="desc">樹種で価格が変わる(HM/WN)。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:36%"></div></div>
+      <div class="barnote">幅 685mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>ハードメイプル</td><td>W685×D790×H760 / 座面高 SH390</td><td class="pr">¥231,000</td></tr><tr><td>ウォールナット</td><td>W685×D790×H760 / 座面高 SH390</td><td class="pr">¥258,500</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / ウォールナット / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chair-sofa/864/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="ソファ" data-mat="ハードメイプル" data-price="385000" data-w="1360">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ · オリジナルデザイン家具</div>
+    <h3>ハイバック・ソファー SR</h3>
+    <div class="price">¥385,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:72%"></div></div>
+      <div class="barnote">幅 1360mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1360×D870×H880 / 座面高 SH300</td><td class="pr">¥385,000</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chair-sofa/743/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="ソファ" data-mat="ウォールナット" data-price="253000" data-w="900">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ · オリジナルデザイン家具</div>
+    <h3>ウォールナットのローソファ(シングル)</h3>
+    <div class="price">¥253,000<small>(税込)</small></div>
+    <p class="desc">幅200mmの大型シングルアーム。左右どちらのアームも製作可。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:47%"></div></div>
+      <div class="barnote">幅 900mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W900×D940×H590 / 座面高 SH240</td><td class="pr">¥253,000</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chair-sofa/1436/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="order" data-cat="ソファ" data-mat="ウォールナット" data-price="0" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ · オーダーメイド家具</div>
+    <h3>ウォールナットのローソファー(フルオーダー)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">張地はマイクロファイバースエード lamous。背面に収納スペース。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>製作例</td><td>W1800×D960×H600 / 座面高 SH240</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chair-sofa/1123/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="子供椅子" data-mat="アッシュ" data-price="39600" data-w="650">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">子供椅子 · オリジナルデザイン家具</div>
+    <h3>kodomo-sofa</h3>
+    <div class="price">¥39,600〜¥74,250<small>(税込)</small></div>
+    <p class="desc">1人掛け・2人掛け。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:34%"></div></div>
+      <div class="barnote">幅 650mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>1p 〜</td><td>W380×D360×H410 / 座面高 SH180</td><td class="pr">¥39,600</td></tr><tr><td>2p 〜</td><td>W650×D360×H410 / 座面高 SH180</td><td class="pr">¥74,250</td></tr></tbody></table>
+      <div class="mat">素材: アッシュ / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chair-sofa/760/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="ベンチ" data-mat="ウォールナット" data-price="165000" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ · オリジナルデザイン家具</div>
+    <h3>ベンチ HA-4b</h3>
+    <div class="price">¥165,000<small>(税込)</small></div>
+    <p class="desc">2人掛け・3人掛け。座面はウェービングテープ+ウレタンフォーム。参考価格。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>3人掛け(参考)</td><td>W1500×D400×H420</td><td class="pr">¥165,000</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chair-sofa/1176/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="スツール" data-mat="" data-price="53900" data-w="450">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール · オリジナルデザイン家具</div>
+    <h3>スタッキングスツール</h3>
+    <div class="price">¥53,900<small>(税込)</small></div>
+    <p class="desc">1脚の価格。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 450mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>1脚 〜</td><td>W450×D370×H415</td><td class="pr">¥53,900</td></tr></tbody></table>
+      <div class="mat">素材:  / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chair-sofa/683/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="スツール" data-mat="ハードメイプル" data-price="42900" data-w="300">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スツール · オリジナルデザイン家具</div>
+    <h3>ハイスツール</h3>
+    <div class="price">¥42,900<small>(税込)</small></div>
+    <p class="desc">座面径φ180。高さ600〜650。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:16%"></div></div>
+      <div class="barnote">幅 300mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td>W300×D300×H650</td><td class="pr">¥42,900</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chair-sofa/809/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="テレビボード" data-mat="ウォールナット" data-price="385000" data-w="1960">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テレビボード · オリジナルデザイン家具</div>
+    <h3>TVボード</h3>
+    <div class="price">¥385,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 1960mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1960×D450×H400</td><td class="pr">¥385,000</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chest-cabinet/1084/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="order" data-cat="テレビボード" data-mat="ウォールナット" data-price="0" data-w="3000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テレビボード · オーダーメイド家具</div>
+    <h3>オーダーTVボード(壁面収納)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">75インチが入る壁面収納。曲面開き戸の把手はエボニー。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 3000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>製作例</td><td>W3000×D470×H2550</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chest-cabinet/1487/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="order" data-cat="テレビボード" data-mat="ハードメイプル" data-price="0" data-w="2600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テレビボード · オーダーメイド家具</div>
+    <h3>オーダーTVボード</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>製作例</td><td>W2600×D450×H500</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chest-cabinet/978/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="order" data-cat="シェルフ" data-mat="ハードメイプル" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">シェルフ · オーダーメイド家具</div>
+    <h3>ハードメイプルの壁面本棚(フルオーダー)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">無垢材と突板を要所で使い分け。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ハードメイプル</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chest-cabinet/1372/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="order" data-cat="シェルフ" data-mat="タモ" data-price="0" data-w="3000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">シェルフ · オーダーメイド家具</div>
+    <h3>タモの壁面本棚</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 3000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>製作例</td><td>W3000×D310×H2450</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: タモ / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chest-cabinet/1419/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="チェスト" data-mat="マホガニー" data-price="0" data-w="800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェスト · オリジナルデザイン家具</div>
+    <h3>十の抽斗(とうのひきだし)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">木工二人展 vol.10 記念作品。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:42%"></div></div>
+      <div class="barnote">幅 800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W800×D415×H640</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: マホガニー</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chest-cabinet/1751/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="チェスト" data-mat="ハードメイプル / 桐" data-price="0" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェスト · オリジナルデザイン家具</div>
+    <h3>白漆のチェスト</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">抽斗前板はハードメイプル無垢(内部は桐、ソフトクローズレール)。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>h800</td><td>W1200×D450×H800</td><td class="pr">—</td></tr><tr><td>h1000</td><td>W1200×D435×H1000</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / 桐 / 塗装: 白漆 / オイル</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chest-cabinet/758/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="仏壇・厨子" data-mat="ホワイトアッシュ / ウォールナット" data-price="165000" data-w="850">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">仏壇・厨子 · オリジナルデザイン家具</div>
+    <h3>butsudan</h3>
+    <div class="price">¥165,000<small>(税込)</small></div>
+    <p class="desc">厨子部はウォールナット。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:45%"></div></div>
+      <div class="barnote">幅 850mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td>W850×D300×H650</td><td class="pr">¥165,000</td></tr></tbody></table>
+      <div class="mat">素材: ホワイトアッシュ / ウォールナット / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chest-cabinet/505/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="仏壇・厨子" data-mat="ハードメイプル" data-price="330000" data-w="320">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">仏壇・厨子 · オリジナルデザイン家具</div>
+    <h3>丸厨子(まるずし)</h3>
+    <div class="price">¥330,000<small>(税込)</small></div>
+    <p class="desc">白い丸厨子。内部寸法 w150×h295。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:17%"></div></div>
+      <div class="barnote">幅 320mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W320×D300×H390</td><td class="pr">¥330,000</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / 塗装: マットウレタン(ホワイト)</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chest-cabinet/530/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="仏壇・厨子" data-mat="ハードメイプル / ウォールナット" data-price="47300" data-w="140">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">仏壇・厨子 · オリジナルデザイン家具</div>
+    <h3>小厨子</h3>
+    <div class="price">¥47,300<small>(税込)</small></div>
+    <p class="desc">内部寸法 w120×d80×h220。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:7%"></div></div>
+      <div class="barnote">幅 140mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td>W140×D105×H255</td><td class="pr">¥47,300</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / ウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chest-cabinet/824/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="order" data-cat="キャビネット" data-mat="ウォールナット" data-price="0" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャビネット · オーダーメイド家具</div>
+    <h3>オーダーキャビネット</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>製作例</td><td>W1200×D380×H2500</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chest-cabinet/543/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="order" data-cat="キャビネット" data-mat="ハードメイプル" data-price="0" data-w="2000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャビネット · オーダーメイド家具</div>
+    <h3>サイドボード</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">天板・側板・前板はハードメイプル無垢、内部は突板のフラッシュ構造。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>製作例</td><td>W2000×D300×H990</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chest-cabinet/693/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="order" data-cat="その他" data-mat="ウォールナット" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他 · オーダーメイド家具</div>
+    <h3>キャットハウス</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ウォールナット / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chest-cabinet/976/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="order" data-cat="その他" data-mat="ウォールナット" data-price="0" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他 · オーダーメイド家具</div>
+    <h3>ハンガーラック</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>製作例</td><td>W1000×D900×H2000</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/chest-cabinet/984/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="テーブル" data-mat="ウォールナット / マホガニー" data-price="214500" data-w="1600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル · オリジナルデザイン家具</div>
+    <h3>ダイニングテーブル RO</h3>
+    <div class="price">¥214,500〜¥253,000<small>(税込)</small></div>
+    <p class="desc">樹種・サイズで価格が変わる。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:84%"></div></div>
+      <div class="barnote">幅 1600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>ウォールナット 〜</td><td>W1600×D800×H720</td><td class="pr">¥253,000</td></tr><tr><td>マホガニー(参考)</td><td>W1500×D780×H700</td><td class="pr">¥214,500</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット / マホガニー / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/table-desk/1064/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="テーブル" data-mat="ハードメイプル" data-price="242000" data-w="1100">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル · オリジナルデザイン家具</div>
+    <h3>ラウンドテーブル</h3>
+    <div class="price">¥242,000<small>(税込)</small></div>
+    <p class="desc">写真はφ1100。φ1200が人気。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:58%"></div></div>
+      <div class="barnote">幅 1100mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>φ1100 〜</td><td>W1100×D1100×H720</td><td class="pr">¥242,000</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/table-desk/553/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="order" data-cat="テーブル" data-mat="ウォールナット / チェリー" data-price="0" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル · オーダーメイド家具</div>
+    <h3>リビングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">ローソファに合わせて製作。チェリーのサイズオーダー例あり。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>ウォールナット</td><td>W1200×D500×H350</td><td class="pr">—</td></tr><tr><td>チェリー(サイズオーダー)</td><td>W1100×D500×H380</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット / チェリー / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/table-desk/1207/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="テーブル" data-mat="ウォールナット" data-price="165000" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル · オリジナルデザイン家具</div>
+    <h3>ネストテーブル</h3>
+    <div class="price">¥165,000<small>(税込)</small></div>
+    <p class="desc">大中小セット価格。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>大(セット価格)</td><td>W600×D350×H500</td><td class="pr">¥165,000</td></tr><tr><td>中</td><td>W490×D327×H482</td><td class="pr">—</td></tr><tr><td>小</td><td>W380×D304×H464</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/table-desk/1226/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="order" data-cat="テーブル" data-mat="ナラ / 鉄" data-price="0" data-w="490">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル · オーダーメイド家具</div>
+    <h3>センターテーブル(鉄脚)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">鉄脚の先端にナラ無垢材。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:26%"></div></div>
+      <div class="barnote">幅 490mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>製作例</td><td>W490×D490×H400</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ナラ / 鉄 / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/table-desk/1325/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="テーブル" data-mat="ハードメイプル / チェリー / ウォールナット" data-price="209000" data-w="650">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル · オリジナルデザイン家具</div>
+    <h3>ローテーブル(ラウンドトリオ)</h3>
+    <div class="price">¥209,000<small>(税込)</small></div>
+    <p class="desc">φ650の丸卓3台セット。横並びで w1735。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:34%"></div></div>
+      <div class="barnote">幅 650mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>3台セット φ650</td><td>W650×D650×H350</td><td class="pr">¥209,000</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / チェリー / ウォールナット / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/table-desk/1350/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="テーブル" data-mat="メープル / ウォールナット / チェリー" data-price="220000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル · オリジナルデザイン家具</div>
+    <h3>ローテーブル(ラウンドトリオⅡ)</h3>
+    <div class="price">¥220,000<small>(税込)</small></div>
+    <p class="desc">3台セット。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>3台セット</td><td></td><td class="pr">¥220,000</td></tr></tbody></table>
+      <div class="mat">素材: メープル / ウォールナット / チェリー / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/table-desk/1589/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="テーブル" data-mat="ハードメイプル" data-price="148500" data-w="1350">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル · オリジナルデザイン家具</div>
+    <h3>センターテーブル</h3>
+    <div class="price">¥148,500<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:71%"></div></div>
+      <div class="barnote">幅 1350mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td>W1350×D430×H300</td><td class="pr">¥148,500</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/table-desk/817/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="テーブル" data-mat="ハードメイプル" data-price="77000" data-w="540">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル · オリジナルデザイン家具</div>
+    <h3>サイドテーブル△</h3>
+    <div class="price">¥77,000<small>(税込)</small></div>
+    <p class="desc">三角形の天板に角材の脚。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:28%"></div></div>
+      <div class="barnote">幅 540mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td>W540×D525×H500</td><td class="pr">¥77,000</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/table-desk/974/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="original" data-cat="デスク" data-mat="ハードメイプル" data-price="203500" data-w="900">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">デスク · オリジナルデザイン家具</div>
+    <h3>カウンターデスク</h3>
+    <div class="price">¥203,500<small>(税込)</small></div>
+    <p class="desc">参考価格。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:47%"></div></div>
+      <div class="barnote">幅 900mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W900×D400×H920</td><td class="pr">¥203,500</td></tr></tbody></table>
+      <div class="mat">素材: ハードメイプル / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/table-desk/840/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="zakka" data-cat="木製雑貨" data-mat="木 / レジン" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木製雑貨 · 木製雑貨</div>
+    <h3>木とレジンのお皿 co_ren</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">艶消しウレタン仕上げ。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: 木 / レジン / 塗装: 艶消しウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/zakka/1039/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="zakka" data-cat="木製雑貨" data-mat="アッシュ / チェリー / ウォールナット" data-price="22000" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木製雑貨 · 木製雑貨</div>
+    <h3>ワインラック</h3>
+    <div class="price">¥22,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W400×D230×H200</td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: アッシュ / チェリー / ウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/zakka/1147/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="zakka" data-cat="木製雑貨" data-mat="" data-price="0" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木製雑貨 · 木製雑貨</div>
+    <h3>カッティングボード small</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">把手100を含む。自然塗料のオイル仕上げ。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W400×D120×H18</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材:  / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/zakka/1248/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="zakka" data-cat="木製雑貨" data-mat="" data-price="0" data-w="320">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木製雑貨 · 木製雑貨</div>
+    <h3>カッティングボード square</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">把手100を含む。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:17%"></div></div>
+      <div class="barnote">幅 320mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W320×D220×H18</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材:  / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/zakka/1253/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="zakka" data-cat="木製雑貨" data-mat="" data-price="0" data-w="500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木製雑貨 · 木製雑貨</div>
+    <h3>カッティングボード large</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">把手100を含む。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:26%"></div></div>
+      <div class="barnote">幅 500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W500×D180×H18</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材:  / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/zakka/1256/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="zakka" data-cat="木製雑貨" data-mat="" data-price="0" data-w="270">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木製雑貨 · 木製雑貨</div>
+    <h3>カッティングボードLight</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:14%"></div></div>
+      <div class="barnote">幅 270mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>standard</td><td>W270×D150×H12</td><td class="pr">—</td></tr><tr><td>square</td><td>W200×D200×H12</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材:  / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/zakka/1457/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="zakka" data-cat="木製雑貨" data-mat="ウォールナット" data-price="0" data-w="240">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木製雑貨 · 木製雑貨</div>
+    <h3>プレート</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">無垢材を削り込んで成型。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:13%"></div></div>
+      <div class="barnote">幅 240mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W240×D70×H15</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/zakka/1291/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="zakka" data-cat="木製雑貨" data-mat="メープル / ケヤキ / ウォールナット" data-price="0" data-w="90">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木製雑貨 · 木製雑貨</div>
+    <h3>ディフューザー</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">アロマオイルを注入して使う。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:5%"></div></div>
+      <div class="barnote">幅 90mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W90×D53×H20</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: メープル / ケヤキ / ウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/zakka/1538/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="zakka" data-cat="木製雑貨" data-mat="" data-price="0" data-w="130">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木製雑貨 · 木製雑貨</div>
+    <h3>フルーツピック</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">130×10mm、色々な樹種。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:7%"></div></div>
+      <div class="barnote">幅 130mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W130×D10</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材:  / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/zakka/1638/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="zakka" data-cat="木製雑貨" data-mat="チーク / メープル" data-price="6600" data-w="250">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木製雑貨 · 木製雑貨</div>
+    <h3>カトラリーケース</h3>
+    <div class="price">¥6,600<small>(税込)</small></div>
+    <p class="desc">チーク+メープル。内寸 w232×d67×h35。1個の価格。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:13%"></div></div>
+      <div class="barnote">幅 250mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>1個</td><td>W250×D85×H45</td><td class="pr">¥6,600</td></tr></tbody></table>
+      <div class="mat">素材: チーク / メープル / 塗装: マットウレタン</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/zakka/1655/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="zakka" data-cat="木製雑貨" data-mat="桐" data-price="0" data-w="100">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木製雑貨 · 木製雑貨</div>
+    <h3>kobako</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">内部は桐材。内部寸法 φ70×h15。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:5%"></div></div>
+      <div class="barnote">幅 100mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W100×D100×H33</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 桐 / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://asamurakagu.com/works/zakka/830/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、浅村家具製作所様の公式サイト(<a href="https://asamurakagu.com/works/" target="_blank" rel="noopener">https://asamurakagu.com/works/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
