@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mathman1111.github.io/</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-17</lastmod>
   </url>
   <url>
     <loc>https://mathman1111.github.io/about.html</loc>
@@ -83,5 +83,9 @@
   <url>
     <loc>https://mathman1111.github.io/portfolio/cleaning-estimate.html</loc>
     <lastmod>2026-09-04</lastmod>
+  </url>
+  <url>
+    <loc>https://mathman1111.github.io/articles/2026-09-17-oauth-testing-mode-expires-in-7-days.html</loc>
+    <lastmod>2026-09-17</lastmod>
   </url>
 </urlset>

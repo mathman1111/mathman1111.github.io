@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google's OAuth 'Testing' mode expires refresh tokens in 7 days. Publish the consent screen before you schedule anything.</title>
+<meta name="description" content="If your Google Cloud OAuth consent screen is still in Testing, every refresh token it issues dies after seven days. That is documented behavior, not a bug.">
+<link rel="canonical" href="https://mathman1111.github.io/articles/2026-09-17-oauth-testing-mode-expires-in-7-days.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="../index.html">Shipped <span>With AI</span></a>
+    <nav class="site-nav">
+      <a href="../about.html">About</a>
+      <a href="../gear.html">Gear</a>
+      <a href="../disclosure.html">Disclosure</a>
+      <a href="../privacy-policy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Google's OAuth 'Testing' mode expires refresh tokens in 7 days. Publish the consent screen before you schedule anything.</h1>
+  <div class="byline">September 17, 2026 &middot; ninth post</div>
+
+  <div class="notice">
+    <strong>What this is:</strong> a write-up of something that broke in my own unattended setup, and the fix. There is a
+    link to a product I sell at the end; I own the store, so it is a plain product link, not an affiliate link. See the
+    <a href="../disclosure.html">disclosure page</a>.
+  </div>
+
+  <p><strong>TL;DR</strong> — If your Google Cloud OAuth consent screen is still in <strong>Testing</strong>, every refresh token it issues dies after seven days. That is documented behavior, not a bug. My unattended YouTube uploader ran fine for a week and then stopped at 06:45 on a Saturday. The fix is not "re-authenticate"; it is "publish the app", and publishing has prerequisites that took an hour, not a minute.</p>
+  <hr>
+  <p>You scheduled it. It ran for a week. Then it stopped.</p>
+  <p>That is the whole shape of this failure, and if you have a cron job, a GitHub Action, or a Task Scheduler entry that talks to a Google API with a refresh token you minted on your laptop, it is probably sitting in your future too.</p>
+  <h2>What happened</h2>
+  <p>My YouTube Shorts pipeline is the one part of my setup that runs with nobody watching: Claude Code writes the script, a renderer makes the video, and a PowerShell runner uploads it at 14:00 and 21:00 every day. On September 12 at 06:45 the refresh token expired. It was exactly seven days old.</p>
+  <p>The same morning, before the first scheduled slot, I added a small script called <code>check_youtube_token.js</code> in front of the runner. It tries to refresh the token; if that fails, the runner writes <code>SKIP: waiting for YouTube re-auth</code> to its log and exits without launching anything. So the outage was loud rather than silent: three skipped slots that day, two more the next, five lost uploads in total, each with the reason next to it. The next morning's self-check surfaced the same line.</p>
+  <p>But a machine cannot click "Allow" on a Google sign-in page. The five slots stayed lost until a human sat down.</p>
+  <h2>Why: this is Google's documented behavior</h2>
+  <p>From the OAuth 2.0 docs, under <a href="https://developers.google.com/identity/protocols/oauth2#expiration" rel="noopener" target="_blank">refresh token expiration</a>: a Google Cloud project whose OAuth consent screen is configured for an external user type and has a publishing status of <strong>Testing</strong> is issued a refresh token that expires in seven days.</p>
+  <p>Read that again if you built your integration the way most tutorials show. You create a project, set up the consent screen, add yourself as a test user, run the local auth flow once, save <code>token.json</code>, and schedule the job. Everything in that sequence leaves the app in Testing. The token works on day one. It works on day six. On day seven it does not, and nothing in the auth flow warned you.</p>
+  <p>Re-authenticating buys you another seven days and nothing else. If that is your fix, you will be doing it every week.</p>
+  <h2>The fix: put the consent screen in production</h2>
+  <p>The real fix is changing the publishing status from Testing to <strong>In production</strong>. In my case the "Publish app" button was greyed out, and here is why, in the order I hit it:</p>
+  <p>Google requires three branding fields before an external app can be published: an application homepage URL, a privacy policy URL, and at least one authorized domain. The authorized domain has to be one you have proven you own, and the proof Google accepts is Search Console verification. My domain was not verified yet, so the branding form would not save, so the publish button would not enable.</p>
+  <p>So the actual sequence was: open Search Console, add the domain as a property, verify it by uploading an HTML file to the site root, go back to the consent screen, fill in the three branding fields, save, click Publish app, then run the auth flow one more time so the new refresh token is issued under production status. The re-auth itself took about a minute. The rest took the better part of an hour, starting before 5 a.m., because the pipeline had already been down for two days.</p>
+  <p>After that, <code>check_youtube_token.js</code> reports the app as production with no expiry on the token, and the 14:00 slot that afternoon uploaded normally.</p>
+  <p>One thing to check before you assume you are safe: the token response tells you. When the app is in Testing, the JSON that comes back from the auth flow includes a <code>refresh_token_expires_in</code> field counting down from seven days. If you see that field, you are on the clock.</p>
+  <h2>What changed in the runner</h2>
+  <p>Two things, and neither is clever.</p>
+  <p>First, the token check runs <em>before</em> the expensive part. The runner used to launch Claude Code first and let the upload step, at the very end, discover the dead token. Now the check is the first thing that happens; if it fails, the run costs nothing and the log says exactly why.</p>
+  <p>Second, "skip with a reason" is treated as a first-class outcome, not a failure to hide. A row that says <code>SKIP: waiting for YouTube re-auth</code> is more useful than a row that says <code>OK</code> when nothing was uploaded, and a lot more useful than a stack trace at the bottom of a long log. The daily self-check reads those rows and puts the human task at the top of the to-do list.</p>
+  <p>If you are building anything unattended on Google APIs, the order is: verify the domain, fill in branding, publish the consent screen, <em>then</em> run the auth flow, <em>then</em> schedule. Doing it in the other order works for exactly one week.</p>
+  <h2>My take</h2>
+  <p><strong>My take: Google should refuse to issue a refresh token to a Testing app at all, instead of letting it die silently on day seven.</strong> Tell me why I'm wrong — or tell me which of your scheduled jobs is still running on one.</p>
+  <hr>
+  <p><em>A Japanese version of this post goes up the same day on <a href="https://note.com/holy_owl9373" rel="noopener" target="_blank">my note.com blog</a>.</em> The runner with the pre-launch token check is <a href="https://tachibana53.gumroad.com/l/claude-code-unattended-runner" rel="sponsored noopener" target="_blank">free, pay what you want, on Gumroad</a> — I own the store; that is a plain product link.</p>
+
+  <aside class="related-posts">
+    <h2>Related reading</h2>
+    <ul>
+    <li>
+      <a href="2026-09-13-24-board-meetings-zero-revenue.html">7 Claude Code agents held 24 board meetings. Revenue: $0.</a>
+      <p>Three weeks of unattended agents running ten small businesses: 24 meetings, 382 commits, 16 articles, 18 Shorts, 5 proposals, 3 products, zero dollars. The five things that broke &mdash; runs that reported success and produced nothing, a five-minute human task that stopped the machine for days, marketplaces already full of agents &mdash; and the fix for each.</p>
+    </li>
+    <li>
+      <a href="2026-09-05-what-an-ai-code-reviewer-caught.html">The AI reviewer found a real bug. Its suggested fix would have broken my app.</a>
+      <p>Three review rounds on one small CSV export: the default profile found nothing, the strict profile found a real formula-injection bug, and the patch it suggested would have broken every negative number in the file.</p>
+    </li>
+    </ul>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>&copy; 2026 Shipped With AI. Written by a student in Japan, edited with the help of AI tools.</div>
+    <div class="links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../disclosure.html">Affiliate Disclosure</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1171d112a9ca44ea957b6af723e7b1e4"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
