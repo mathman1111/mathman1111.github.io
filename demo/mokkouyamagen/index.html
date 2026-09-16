@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>木工yamagen｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。木工yamagen様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>木工yamagen</h1>
+  <p class="tagline">富士見町の木工房。Worksに載っている43点(テーブル12・椅子13・収納11・その他9)の樹種・寸法・価格を1枚に並べました。</p>
+  <div class="badges"><span>長野県諏訪郡富士見町</span><span>掲載 43点</span><span>サイズ・価格から探せます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="テーブル">テーブル</button><button class="chip" data-k="cat" data-v="椅子">椅子</button><button class="chip" data-k="cat" data-v="収納">収納</button><button class="chip" data-k="cat" data-v="その他">その他</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option><option value="屋久杉(天板)">屋久杉(天板)</option><option value="ケヤキ(脚)">ケヤキ(脚)</option><option value="walnut">walnut</option><option value="栃">栃</option><option value="楓">楓</option><option value="楠">楠</option><option value="楢">楢</option><option value="oak">oak</option><option value="ケヤキ">ケヤキ</option><option value="leather">leather</option><option value="ツガ(座面)">ツガ(座面)</option><option value="カバ(脚)">カバ(脚)</option><option value="cherry">cherry</option><option value="山桜">山桜</option><option value="brass">brass</option><option value="rattan">rattan</option><option value="栗">栗</option><option value="cherry無垢材">cherry無垢材</option><option value="突板合板">突板合板</option><option value="メラミン化粧板">メラミン化粧板</option><option value="teak突板合板">teak突板合板</option><option value="oak無垢材">oak無垢材</option><option value="walnut無垢材">walnut無垢材</option><option value="teak">teak</option><option value="檜">檜</option><option value="カヤ">カヤ</option><option value="黒檀">黒檀</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="テーブル" data-mat="屋久杉(天板) / ケヤキ(脚)" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>Dining table[05]</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: 屋久杉(天板) / ケヤキ(脚)</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/dining-table%5B05%5D" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="walnut" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>Desk[02]</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: walnut</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/desk%5B02%5D" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="栃 / 楓" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>Desk[03]</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: 栃 / 楓</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/desk%5B03%5D" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="楠" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>Center table[02]</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: 楠</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/center-table02" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="walnut" data-price="357500" data-w="1700">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>Dining table[01]</h3>
+    <div class="price">¥357,500<small>(税込)</small></div>
+    <p class="desc">サイズにより価格が異なる(サイト掲載価格は W1700 の参考)。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:89%"></div></div>
+      <div class="barnote">幅 1700mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1700×D800×H700</td><td class="pr">¥357,500</td></tr></tbody></table>
+      <div class="mat">素材: walnut</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/dining-table%5B01%5D" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="walnut" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>Crescent coffee table</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: walnut</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/crescent-coffee-table" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="walnut" data-price="0" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>Round Table[02]</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。丸テーブル φ1200。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考 φ1200</td><td>W1200×D1200×H720</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: walnut</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/round-table%5B02%5D" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="楢" data-price="0" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>Round Table[01]</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。丸テーブル φ1200。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考 φ1200</td><td>W1200×D1200×H720</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 楢</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/round-table%5B01%5D" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="walnut" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>Coffee table</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: walnut</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/coffee-table" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="walnut" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>Dining table[02]</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: walnut</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/dining-table%5B02%5D" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="oak" data-price="280500" data-w="1900">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>Dining table[04]</h3>
+    <div class="price">¥280,500<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 1900mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1900×D900×H700</td><td class="pr">¥280,500</td></tr></tbody></table>
+      <div class="mat">素材: oak</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/dining-table%5B04%5D" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="walnut" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>Desk</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: walnut</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/desk" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="143000" data-w="550">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>Crescent chair</h3>
+    <div class="price">¥143,000<small>(税込)</small></div>
+    <p class="desc">三日月形の背をもつ椅子。オンラインストアでも販売。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 550mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W550×D470×H710 / 座面高 SH430</td><td class="pr">¥143,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/crescent-chair" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ケヤキ / leather" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>Sofa[01]</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ケヤキ / leather</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/sofa" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ツガ(座面) / カバ(脚)" data-price="99000" data-w="750">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>Pillar stool</h3>
+    <div class="price">¥99,000<small>(税込)</small></div>
+    <p class="desc">諏訪の「御柱祭」をモチーフにしたスツール。前後の「めどでこ」が特徴。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:39%"></div></div>
+      <div class="barnote">幅 750mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W750×D500×H600</td><td class="pr">¥99,000</td></tr></tbody></table>
+      <div class="mat">素材: ツガ(座面) / カバ(脚)</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/pillar-stool" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="walnut / leather" data-price="275000" data-w="680">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>Easy chair</h3>
+    <div class="price">¥275,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:36%"></div></div>
+      <div class="barnote">幅 680mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W680×D800×H830 / 座面高 SH400</td><td class="pr">¥275,000</td></tr></tbody></table>
+      <div class="mat">素材: walnut / leather</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/easy-chair" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="cherry / walnut" data-price="55000" data-w="275">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>Crescent stool</h3>
+    <div class="price">¥55,000〜¥57,200<small>(税込)</small></div>
+    <p class="desc">φ275 のスツール。樹種で価格が変わる。オンラインストアでも販売。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:14%"></div></div>
+      <div class="barnote">幅 275mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>cherry φ275</td><td>W275×D275×H555</td><td class="pr">¥55,000</td></tr><tr><td>walnut φ275</td><td>W275×D275×H555</td><td class="pr">¥57,200</td></tr></tbody></table>
+      <div class="mat">素材: cherry / walnut</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/crescent-stool" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="楓" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>Bar stool [02]</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: 楓</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/bar-stool-%5B02%5D" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="297000" data-w="1050">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>Telephone bench</h3>
+    <div class="price">¥297,000<small>(税込)</small></div>
+    <p class="desc">USB×1・ACコンセント×1付き。サイト表記は税別¥270,000(税込換算で表示)。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:55%"></div></div>
+      <div class="barnote">幅 1050mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1050×D370×H650 / 座面高 SH450</td><td class="pr">¥297,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/telephone-bench" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="山桜" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>Bench</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: 山桜</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/bench" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="walnut" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>Bar stool</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: walnut</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/bar-stool" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="walnut / brass" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>Bench[01]</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: walnut / brass</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/bench%5B01%5D" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="cherry" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>Spindle chair</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: cherry</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/spindle-chair" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納" data-mat="walnut" data-price="418000" data-w="1600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">収納</div>
+    <h3>CD &amp; DVD Storage Rack</h3>
+    <div class="price">¥418,000<small>(税込)</small></div>
+    <p class="desc">参考価格。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:84%"></div></div>
+      <div class="barnote">幅 1600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W1600×D230×H850</td><td class="pr">¥418,000</td></tr></tbody></table>
+      <div class="mat">素材: walnut</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/cd-%26-dvd-storage-rack" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納" data-mat="cherry / rattan / brass" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">収納</div>
+    <h3>TV cabinet 03</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: cherry / rattan / brass</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/tv-cabinet-03" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納" data-mat="栗" data-price="0" data-w="800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">収納</div>
+    <h3>Shoes Cabinet</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:42%"></div></div>
+      <div class="barnote">幅 800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W800×D370×H2050</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 栗</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/shoes-cabinet" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納" data-mat="walnut" data-price="0" data-w="4000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">収納</div>
+    <h3>TV cabinet 01</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。壁面いっぱいの大型。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 4000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W4000×D450×H2400</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: walnut</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/tv-cabinet-01" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納" data-mat="cherry無垢材 / 突板合板 / メラミン化粧板" data-price="0" data-w="2180">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">収納</div>
+    <h3>Kitchen cabinet</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。高さ430と850の2段構成。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2180mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考(下段)</td><td>W2180×D500×H430</td><td class="pr">—</td></tr><tr><td>参考(上段)</td><td>W2180×D500×H850</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: cherry無垢材 / 突板合板 / メラミン化粧板</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/kitchen-cabinet" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納" data-mat="teak突板合板 / oak無垢材" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">収納</div>
+    <h3>TV cabinet 02</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: teak突板合板 / oak無垢材</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/tv-cabinet-02" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納" data-mat="walnut無垢材 / 突板合板" data-price="0" data-w="3050">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">収納</div>
+    <h3>Audio shelf</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 3050mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>参考</td><td>W3050×D500×H970</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: walnut無垢材 / 突板合板</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/audio-shelf" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納" data-mat="teak" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">収納</div>
+    <h3>shelves</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: teak</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/shelves" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">収納</div>
+    <h3>wardrobe(shop)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">店舗什器の制作例(南青山 花嫁着物専門店 CUCURU様、設計: ALLOY)。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/wardrobe(shop)" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納" data-mat="walnut" data-price="99000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">収納</div>
+    <h3>Drawer</h3>
+    <div class="price">¥99,000<small>(税込)</small></div>
+    <p class="desc">受注制作。¥99,000〜。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td></td><td class="pr">¥99,000</td></tr></tbody></table>
+      <div class="mat">素材: walnut</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/drawer" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納" data-mat="walnut無垢材 / 突板合板" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">収納</div>
+    <h3>cabinet</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: walnut無垢材 / 突板合板</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/cabinet" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="檜" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>Bed [02]</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: 檜</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/bed2" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="walnut" data-price="352000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>Buddhist altar</h3>
+    <div class="price">¥352,000<small>(税込)</small></div>
+    <p class="desc">仏壇。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td></td><td class="pr">¥352,000</td></tr></tbody></table>
+      <div class="mat">素材: walnut</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/buddhist-altar" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="カヤ" data-price="22000" data-w="180">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>Banana</h3>
+    <div class="price">¥22,000<small>(税込)</small></div>
+    <p class="desc">バナナの形の木の小物。約180mm。オンラインストアでも販売。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:9%"></div></div>
+      <div class="barnote">幅 180mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>約180mm</td><td>W180</td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: カヤ</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/banana" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="oak" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>Bed</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: oak</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/bed" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="walnut / cherry" data-price="0" data-w="210">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>Waste basket</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:11%"></div></div>
+      <div class="barnote">幅 210mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W210×D210×H300</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: walnut / cherry</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/waste-basket" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="oak" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>Key box</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">受注制作。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: oak</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/key-box" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="ケヤキ" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>[ rebuild ] buddhist altar</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">欅の大黒柱を仏壇に作り替え。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ケヤキ</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/%5B-rebuild-%5D-buddhist-alter" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>Box tissue case</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/box-tissue-case-" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="黒檀" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>[ rebuild ] box</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">黒檀の床柱を小箱に作り替え。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: 黒檀</div>
+    </div>
+    <a class="more" href="https://www.mokkouyamagen.com/works/%5B-rebuild-%5D-box" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、木工yamagen様の公式サイト(<a href="https://www.mokkouyamagen.com/" target="_blank" rel="noopener">https://www.mokkouyamagen.com/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>

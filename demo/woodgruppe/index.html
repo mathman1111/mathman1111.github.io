@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>木工房グルッペ｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。木工房グルッペ様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>木工房グルッペ</h1>
+  <p class="tagline">信州小川村の木工房。「現品情報」に載っている51点(1点ずつ別ページ)の樹種・寸法・参考価格を1枚に並べました。すぐ届く現品だけの一覧です。</p>
+  <div class="badges"><span>長野県上水内郡小川村</span><span>掲載 51点</span><span>サイズ・価格から探せます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="テーブル">テーブル</button><button class="chip" data-k="cat" data-v="学習机・デスク">学習机・デスク</button><button class="chip" data-k="cat" data-v="こたつテーブル">こたつテーブル</button><button class="chip" data-k="cat" data-v="厨子・その他家具">厨子・その他家具</button><button class="chip" data-k="cat" data-v="木馬・子供椅子">木馬・子供椅子</button><button class="chip" data-k="cat" data-v="時計">時計</button><button class="chip" data-k="cat" data-v="額・ステーショナリー">額・ステーショナリー</button><button class="chip" data-k="cat" data-v="トレイ・ステージ">トレイ・ステージ</button><button class="chip" data-k="cat" data-v="花台">花台</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option><option value="ヤマザクラ">ヤマザクラ</option><option value="イタヤカエデ">イタヤカエデ</option><option value="キハダ">キハダ</option><option value="クルミ">クルミ</option><option value="サクラ">サクラ</option><option value="ブラックウォールナット">ブラックウォールナット</option><option value="ミズナラ">ミズナラ</option><option value="メープル">メープル</option><option value="チェリー">チェリー</option><option value="ウォールナット">ウォールナット</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="テーブル" data-mat="ヤマザクラ" data-price="132000" data-w="900">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>山桜の小ぶりのテーブル</h3>
+    <div class="price">¥132,000<small>(税込)</small></div>
+    <p class="desc">北海道産山桜の2枚接ぎ天板。オイルフィニッシュ(2018年10月製作)。脚をカットして低くもできる。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:47%"></div></div>
+      <div class="barnote">幅 900mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品</td><td>W900×D680×H700</td><td class="pr">¥132,000</td></tr></tbody></table>
+      <div class="mat">素材: ヤマザクラ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/dinningtable/ta1808skg.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="イタヤカエデ" data-price="99000" data-w="1100">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">現品特価</span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>イタヤカエデの珈琲テーブル</h3>
+    <div class="price">¥99,000<small>(税込)</small></div>
+    <p class="desc">埋木をしたカエデの一枚板と千鳥格子の棚。定価¥165,000のところ現品特価(送料別)。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:58%"></div></div>
+      <div class="barnote">幅 1100mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品特価</td><td>W1100×D500×H480</td><td class="pr">¥99,000</td></tr></tbody></table>
+      <div class="mat">素材: イタヤカエデ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/dinningtable/ct1902ig.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="キハダ / クルミ" data-price="58000" data-w="800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">現品特価</span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>丸いちゃぶ台(キハダ)</h3>
+    <div class="price">¥58,000<small>(税込)</small></div>
+    <p class="desc">天板キハダ・脚クルミ。参考価格¥66,000のところ現品特価。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:42%"></div></div>
+      <div class="barnote">幅 800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品特価 φ800</td><td>W800×D800×H325</td><td class="pr">¥58,000</td></tr></tbody></table>
+      <div class="mat">素材: キハダ / クルミ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/dinningtable/ccha2003kg.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="学習机・デスク" data-mat="イタヤカエデ" data-price="110000" data-w="900">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">現品特価</span></div>
+  <div class="body">
+    <div class="cat">学習机・デスク</div>
+    <h3>シンプルデスクSD900(イタヤカエデ)</h3>
+    <div class="price">¥110,000<small>(税込)</small></div>
+    <p class="desc">定価¥137,500のところ現品特価(送料別・送料半額補助対象)。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:47%"></div></div>
+      <div class="barnote">幅 900mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品特価</td><td>W900×D600×H700</td><td class="pr">¥110,000</td></tr></tbody></table>
+      <div class="mat">素材: イタヤカエデ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/desk/sd2102ihg.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="学習机・デスク" data-mat="サクラ" data-price="137500" data-w="900">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">学習机・デスク</div>
+    <h3>シンプルデスクSD900(サクラ)</h3>
+    <div class="price">¥137,500<small>(税込)</small></div>
+    <p class="desc">定価(送料別途)。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:47%"></div></div>
+      <div class="barnote">幅 900mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品</td><td>W900×D600×H720</td><td class="pr">¥137,500</td></tr></tbody></table>
+      <div class="mat">素材: サクラ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/desk/sd900sg.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="学習机・デスク" data-mat="クルミ" data-price="80000" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">机はSOLDOUT</span></div>
+  <div class="body">
+    <div class="cat">学習机・デスク</div>
+    <h3>シンプルデスクDD1000 本棚(クルミ)</h3>
+    <div class="price">¥80,000<small>(税込)</small></div>
+    <p class="desc">HGグレード。机(w1000×d600×h700)はSOLDOUT、本棚のみ。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>本棚</td><td>W600×D270×H1350</td><td class="pr">¥80,000</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/desk/dd1406kg1.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="学習机・デスク" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">学習机・デスク</div>
+    <h3>ワゴンチェスト</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">ギャラリーで展示中。詳細はメールで問い合わせ。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/desk/wag1808kskg.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="学習机・デスク" data-mat="ブラックウォールナット" data-price="88000" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">現品特価</span></div>
+  <div class="body">
+    <div class="cat">学習机・デスク</div>
+    <h3>ブラックウォールナットの机ND1000(引出し無し)</h3>
+    <div class="price">¥88,000<small>(税込)</small></div>
+    <p class="desc">定価¥99,000のところ現品特価(送料別・送料半額補助対象)。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品特価</td><td>W1000×D590×H700</td><td class="pr">¥88,000</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/desk/nd2102bwg.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="こたつテーブル" data-mat="イタヤカエデ" data-price="160000" data-w="800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">現品大特価</span></div>
+  <div class="body">
+    <div class="cat">こたつテーブル</div>
+    <h3>杢の美しいイタヤカエデのこたつテーブル 800角</h3>
+    <div class="price">¥160,000<small>(税込)</small></div>
+    <p class="desc">ヒーター無し・ホットカーペットタイプ。2011年1月製作。参考価格¥220,000のところ現品大特価(送料別)。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:42%"></div></div>
+      <div class="barnote">幅 800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品大特価</td><td>W800×D800×H360</td><td class="pr">¥160,000</td></tr></tbody></table>
+      <div class="mat">素材: イタヤカエデ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/kotatu/KQ1101IT1.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="こたつテーブル" data-mat="イタヤカエデ" data-price="165000" data-w="750">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">現品特価</span></div>
+  <div class="body">
+    <div class="cat">こたつテーブル</div>
+    <h3>一枚板耳付きのイタヤカエデのこたつテーブル 750角</h3>
+    <div class="price">¥165,000<small>(税込)</small></div>
+    <p class="desc">鏡板は幅45cm超の一枚板・耳付き。ヒーター無し。サイト表記は現品特価¥150,000(税別・送料別)、税込換算で表示。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:39%"></div></div>
+      <div class="barnote">幅 750mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品特価</td><td>W750×D750×H360</td><td class="pr">¥165,000</td></tr></tbody></table>
+      <div class="mat">素材: イタヤカエデ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/kotatu/KQ1101IT2.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="厨子・その他家具" data-mat="ミズナラ" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">厨子・その他家具</div>
+    <h3>ミズナラのお厨子</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">ギャラリーで展示中。チェストはSOLDOUT。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ミズナラ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/others/mbs1612mg.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="厨子・その他家具" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">厨子・その他家具</div>
+    <h3>姿見・ワインラック・サイドテーブル</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">ギャラリーで展示中。姿見はSOLDOUT。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/others/2018others.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="厨子・その他家具" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">厨子・その他家具</div>
+    <h3>ハイスツール(3台)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">ギャラリーで展示中。詳細はメールで問い合わせ。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/desk/histool1808g3.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="木馬・子供椅子" data-mat="ブラックウォールナット" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木馬・子供椅子</div>
+    <h3>木馬(ウォールナット)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">ギャラリーで展示中。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ブラックウォールナット</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/others/mokuba_BW.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="木馬・子供椅子" data-mat="クルミ" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木馬・子供椅子</div>
+    <h3>木馬(クルミ)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">ギャラリーで展示中。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: クルミ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/others/mokuba_kurumi.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="木馬・子供椅子" data-mat="メープル" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木馬・子供椅子</div>
+    <h3>木馬(メープル)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">ギャラリーで展示中。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: メープル</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/others/mokuba_maple.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="木馬・子供椅子" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">木馬・子供椅子</div>
+    <h3>キッズチェアー</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">ギャラリーで展示中。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/others/kidschair.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="ヤマザクラ" data-price="16500" data-w="298">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>壁掛け時計 ヤマザクラH</h3>
+    <div class="price">¥16,500<small>(税込)</small></div>
+    <p class="desc">オンラインショップで購入可。サイト表記¥15,000(税別・送料別)、税込換算で表示。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:16%"></div></div>
+      <div class="barnote">幅 298mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品</td><td>W298×D13×H263</td><td class="pr">¥16,500</td></tr></tbody></table>
+      <div class="mat">素材: ヤマザクラ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/clock/wall_clockH.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="ヤマザクラ" data-price="16500" data-w="298">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>壁掛け時計 ヤマザクラE</h3>
+    <div class="price">¥16,500<small>(税込)</small></div>
+    <p class="desc">オンラインショップで購入可。サイト表記¥15,000(税別・送料別)、税込換算で表示。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:16%"></div></div>
+      <div class="barnote">幅 298mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品</td><td>W298×D17×H350</td><td class="pr">¥16,500</td></tr></tbody></table>
+      <div class="mat">素材: ヤマザクラ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/clock/wall_clockE.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="ヤマザクラ" data-price="8800" data-w="200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>壁掛け時計 ヤマザクラD</h3>
+    <div class="price">¥8,800<small>(税込)</small></div>
+    <p class="desc">オンラインショップで購入可。サイト表記¥8,000(税別・送料別)、税込換算で表示。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:11%"></div></div>
+      <div class="barnote">幅 200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品</td><td>W200×D23×H350</td><td class="pr">¥8,800</td></tr></tbody></table>
+      <div class="mat">素材: ヤマザクラ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/clock/wall_clockD.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="ヤマザクラ" data-price="7700" data-w="110">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>壁掛け時計 ヤマザクラF</h3>
+    <div class="price">¥7,700<small>(税込)</small></div>
+    <p class="desc">オンラインショップで購入可。サイト表記¥7,000(税別・送料別)、税込換算で表示。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:6%"></div></div>
+      <div class="barnote">幅 110mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品</td><td>W110×D17×H280</td><td class="pr">¥7,700</td></tr></tbody></table>
+      <div class="mat">素材: ヤマザクラ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/clock/wall_clockF.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="ブラックウォールナット" data-price="4950" data-w="106">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>置き時計 ブラックウォールナットA</h3>
+    <div class="price">¥4,950<small>(税込)</small></div>
+    <p class="desc">クォーツ時計。サイト表記¥4,500(税別・送料別)、税込換算で表示。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:6%"></div></div>
+      <div class="barnote">幅 106mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品</td><td>W106×D40×H106</td><td class="pr">¥4,950</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/clock/table_clockBW_A.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="メープル" data-price="5500" data-w="106">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>置き時計 メープルA</h3>
+    <div class="price">¥5,500<small>(税込)</small></div>
+    <p class="desc">クォーツ時計。サイト表記¥5,000(税別・送料別)、税込換算で表示。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:6%"></div></div>
+      <div class="barnote">幅 106mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品</td><td>W106×D43×H106</td><td class="pr">¥5,500</td></tr></tbody></table>
+      <div class="mat">素材: メープル</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/clock/table_clockmaple_A.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="ミズナラ" data-price="5500" data-w="147">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>置き時計 ミズナラA</h3>
+    <div class="price">¥5,500<small>(税込)</small></div>
+    <p class="desc">クォーツ時計。サイト表記¥5,000(税別・送料別)、税込換算で表示。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:8%"></div></div>
+      <div class="barnote">幅 147mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品</td><td>W147×D33×H107</td><td class="pr">¥5,500</td></tr></tbody></table>
+      <div class="mat">素材: ミズナラ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/clock/table_clocnara_A.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="ヤマザクラ" data-price="6050" data-w="151">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>置き時計 ヤマザクラA</h3>
+    <div class="price">¥6,050<small>(税込)</small></div>
+    <p class="desc">電波時計。サイト表記¥5,500(税別・送料別)、税込換算で表示。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:8%"></div></div>
+      <div class="barnote">幅 151mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>現品</td><td>W151×D40×H113</td><td class="pr">¥6,050</td></tr></tbody></table>
+      <div class="mat">素材: ヤマザクラ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/clock/table_clocsakura_A.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="額・ステーショナリー" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">額・ステーショナリー</div>
+    <h3>フォトスタンド</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/photoframe_stand/photostand.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="額・ステーショナリー" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">額・ステーショナリー</div>
+    <h3>フォトフレーム</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/photoframe_stand/photoframe.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="額・ステーショナリー" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">額・ステーショナリー</div>
+    <h3>イーゼル</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/staionary/easel.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="額・ステーショナリー" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">額・ステーショナリー</div>
+    <h3>ペンスタンド</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/staionary/penstand.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="額・ステーショナリー" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">額・ステーショナリー</div>
+    <h3>書類整理箱</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/staionary/stackingtray.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ・ステージ" data-mat="ブラックウォールナット" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">トレイ・ステージ</div>
+    <h3>ステージ・トレイ(ブラックウォールナット)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ブラックウォールナット</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/stage/stage_BW_A.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ・ステージ" data-mat="チェリー" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">トレイ・ステージ</div>
+    <h3>ステージ・トレイ(チェリー)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/stage/stage_cherry_A.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ・ステージ" data-mat="クルミ" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">トレイ・ステージ</div>
+    <h3>ステージ・トレイ クルミA</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: クルミ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/stage/stage_kurumi_A.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ・ステージ" data-mat="クルミ" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">トレイ・ステージ</div>
+    <h3>ステージ・トレイ クルミB</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: クルミ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/stage/stage_kurumi_B.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ・ステージ" data-mat="クルミ" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">トレイ・ステージ</div>
+    <h3>ステージ・トレイ クルミC</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: クルミ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/stage/stage_kurumi_C.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ・ステージ" data-mat="ミズナラ" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">トレイ・ステージ</div>
+    <h3>ステージ・トレイ ミズナラA</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ミズナラ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/stage/stage_nara_A.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ・ステージ" data-mat="ミズナラ" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">トレイ・ステージ</div>
+    <h3>ステージ・トレイ ミズナラB</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ミズナラ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/stage/stage_nara_B.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ・ステージ" data-mat="ブラックウォールナット" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">トレイ・ステージ</div>
+    <h3>レジトレイ(ブラックウォールナット)A</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ブラックウォールナット</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/cashutray/cashtrayA.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ・ステージ" data-mat="ブラックウォールナット" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">トレイ・ステージ</div>
+    <h3>レジトレイ(ブラックウォールナット)B</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ブラックウォールナット</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/cashutray/cashtrayB.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ・ステージ" data-mat="メープル" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">トレイ・ステージ</div>
+    <h3>レジトレイ(メープル)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: メープル</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/cashutray/cashtrayC.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ・ステージ" data-mat="ヤマザクラ" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">トレイ・ステージ</div>
+    <h3>レジトレイ(ヤマザクラ)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ヤマザクラ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/cashutray/cashtrayD.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ・ステージ" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">トレイ・ステージ</div>
+    <h3>コーヒーペーパーホルダー</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">キッチン小物。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/kitchen/coffepaper.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="花台" data-mat="メープル" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">花台</div>
+    <h3>花台(フラワースタンド)A</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: メープル</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/flowerstand/flowerstand_A.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="花台" data-mat="クルミ" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">花台</div>
+    <h3>花台(フラワースタンド)B</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: クルミ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/flowerstand/flowerstand_B.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="花台" data-mat="ウォールナット" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">花台</div>
+    <h3>花台(フラワースタンド)C</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/flowerstand/flowerstand_C.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="花台" data-mat="チェリー" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">花台</div>
+    <h3>花台(フラワースタンド)D</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/flowerstand/flowerstand_D.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="花台" data-mat="ヤマザクラ" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">花台</div>
+    <h3>花台(フラワースタンド)E</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ヤマザクラ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/flowerstand/flowerstand_E.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="花台" data-mat="チェリー" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">花台</div>
+    <h3>花台(フラワースタンド)F</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/flowerstand/flowerstand_F.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="花台" data-mat="ウォールナット" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">花台</div>
+    <h3>花台(フラワースタンド)G</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/flowerstand/flowerstand_G.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="花台" data-mat="ヤマザクラ" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">花台</div>
+    <h3>花台(フラワースタンド)H</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ヤマザクラ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/flowerstand/flowerstand_H.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="花台" data-mat="ヤマザクラ" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">花台</div>
+    <h3>花台(フラワースタンド)I</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ヤマザクラ</div>
+    </div>
+    <a class="more" href="http://www.woodgruppe.com/works/sale/flowerstand/flowerstand_I.html" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、木工房グルッペ様の公式サイト(<a href="http://www.woodgruppe.com/works/sale/index.html" target="_blank" rel="noopener">http://www.woodgruppe.com/works/sale/index.html</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>

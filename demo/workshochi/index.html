@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>WorksHOCHI｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。WorksHOCHI様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>WorksHOCHI</h1>
+  <p class="tagline">信州塩尻のオーダーメイド家具工房。WORKSページに縦に並んでいる59点の樹種・寸法・仕上げを、種類・樹種・幅で絞り込める形に並べ直しました(価格はサイトに無いため空欄)。</p>
+  <div class="badges"><span>長野県塩尻市</span><span>掲載 59点</span><span>サイズ・価格から探せます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="椅子">椅子</button><button class="chip" data-k="cat" data-v="座椅子">座椅子</button><button class="chip" data-k="cat" data-v="ダイニングセット">ダイニングセット</button><button class="chip" data-k="cat" data-v="テーブル">テーブル</button><button class="chip" data-k="cat" data-v="デスク＆ワゴン">デスク＆ワゴン</button><button class="chip" data-k="cat" data-v="メモリアルボックス">メモリアルボックス</button><button class="chip" data-k="cat" data-v="棚・収納">棚・収納</button><button class="chip" data-k="cat" data-v="その他">その他</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option><option value="ブラックウォールナット">ブラックウォールナット</option><option value="白アサダ">白アサダ</option><option value="山桜">山桜</option><option value="クルミ">クルミ</option><option value="ハードメープル">ハードメープル</option><option value="タモ">タモ</option><option value="シナアピトン積層合板">シナアピトン積層合板</option><option value="ヨーロッパビーチ">ヨーロッパビーチ</option><option value="ミズメ">ミズメ</option><option value="メープル">メープル</option><option value="ケヤキ">ケヤキ</option><option value="ナラ">ナラ</option><option value="カバ">カバ</option><option value="トチ">トチ</option><option value="クリ">クリ</option><option value="栗">栗</option><option value="桐">桐</option><option value="竹">竹</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="椅子" data-mat="ブラックウォールナット" data-price="0" data-w="615">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ロッキングチェア</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 615mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W615×D845×H1120 / 座面高 SH350</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: オイル / 和紙(柿渋染め)縒り編み</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#a" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ブラックウォールナット" data-price="0" data-w="655">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ラウンジチェア</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:34%"></div></div>
+      <div class="barnote">幅 655mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W655×D733×H818 / 座面高 SH350</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#a" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="白アサダ" data-price="0" data-w="560">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ゆれいす</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">主に畳の部屋で使う低めの揺れる椅子。左右のアームは立ち上がるときの手かけ。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 560mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W560×D605×H695 / 座面高 SH350</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 白アサダ / 塗装: オイル / 和紙縒り編み</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#a" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="山桜" data-price="0" data-w="580">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>茶事ゆれいす(肘付き)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">コーヒーテーブルセット用。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:31%"></div></div>
+      <div class="barnote">幅 580mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W580×D630×H700 / 座面高 SH350</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 山桜 / 塗装: オイル / 和紙縒り編み</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#a" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="山桜" data-price="0" data-w="540">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>茶事ゆれいす(肘無し)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">コーヒーテーブルセット用。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:28%"></div></div>
+      <div class="barnote">幅 540mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W540×D630×H700 / 座面高 SH350</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 山桜 / 塗装: オイル / 和紙縒り編み</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#a" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="山桜 / クルミ / ハードメープル" data-price="0" data-w="560">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ダイニングチェア(山桜・クルミ・ハードメープル)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">座面はい草編み・板座・和紙縒り編み(柿渋染め・未晒し)から選べる。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 560mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W560×D495×H625 / 座面高 SH385</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 山桜 / クルミ / ハードメープル / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#k" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ハードメープル" data-price="0" data-w="560">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ダイニングチェア(ハードメープル・H740)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 560mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W560×D545×H740 / 座面高 SH385</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ハードメープル / 塗装: オイル / 和紙縒り編み</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#k" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ハードメープル" data-price="0" data-w="558">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ダイニングチェア(ハードメープル・H750)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 558mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W558×D547×H750 / 座面高 SH390</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ハードメープル / 塗装: オイル / 和紙(柿渋染め)縒り編み</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#k" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ブラックウォールナット" data-price="0" data-w="440">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ダイニングチェア(ブラックウォールナット)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:23%"></div></div>
+      <div class="barnote">幅 440mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W440×D440×H690 / 座面高 SH405</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#k" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ブラックウォールナット / タモ" data-price="0" data-w="430">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ダイニングチェア(スタッキング)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">重ねられる椅子。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:23%"></div></div>
+      <div class="barnote">幅 430mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W430×D420×H545 / 座面高 SH345</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / タモ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#k" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ブラックウォールナット" data-price="0" data-w="555">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>アームチェア(H855)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 555mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W555×D520×H855 / 座面高 SH360</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: オイル / 和紙縒り編み</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#k" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ブラックウォールナット" data-price="0" data-w="535">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>アームチェア(H735)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:28%"></div></div>
+      <div class="barnote">幅 535mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W535×D470×H735 / 座面高 SH395</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: オイル / 和紙縒り編み</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#k" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ブラックウォールナット" data-price="0" data-w="410">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>スツール(ブラックウォールナット)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:22%"></div></div>
+      <div class="barnote">幅 410mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W410×D427×H405</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#k" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ハードメープル" data-price="0" data-w="350">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>スツール(ハードメープル)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">丸座スツール。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:18%"></div></div>
+      <div class="barnote">幅 350mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W350×D350×H430</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ハードメープル / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#k" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="シナアピトン積層合板 / ヨーロッパビーチ" data-price="0" data-w="450">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>子供椅子(ノックダウン式)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">座面・止まり木の高さ H205〜530mm で調節。0才から使える。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 450mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W450×D500×H790 / 座面高 SH385(205〜530で調節)</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: シナアピトン積層合板 / ヨーロッパビーチ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#g" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ミズメ" data-price="0" data-w="345">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>玄関椅子</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">料亭の玄関椅子。足元は黒摺漆(松煙)。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:18%"></div></div>
+      <div class="barnote">幅 345mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W345×D345×H650</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ミズメ / 塗装: 摺漆</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#g" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="山桜" data-price="0" data-w="386">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>折り畳み椅子</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">折り畳み時 W386×D82×H557。カーシートのオットマンにも。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:20%"></div></div>
+      <div class="barnote">幅 386mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>使用時</td><td>W386×D440×H350</td><td class="pr">—</td></tr><tr><td>折り畳み時</td><td>W386×D82×H557</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 山桜 / 塗装: オイル / 和紙(柿渋染め)縒り編み</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#g" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="座椅子" data-mat="タモ / ブラックウォールナット / 山桜" data-price="0" data-w="325">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">座椅子</div>
+    <h3>三角座椅子</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">頂点を前にして正座、一辺を前にしてあぐら。高さは100/125/150/175から。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:17%"></div></div>
+      <div class="barnote">幅 325mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>大</td><td>W325×D310×H175</td><td class="pr">—</td></tr><tr><td>小</td><td>W295×D285×H175</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: タモ / ブラックウォールナット / 山桜 / 塗装: オイル / 和紙縒り編み</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#e" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="座椅子" data-mat="タモ" data-price="0" data-w="415">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">座椅子</div>
+    <h3>四角座椅子</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">高さは125/150/175から。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:22%"></div></div>
+      <div class="barnote">幅 415mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W415×D330×H175</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: タモ / 塗装: オイルまたは摺漆 / い草編み</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#e" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="座椅子" data-mat="メープル / ブラックウォールナット" data-price="0" data-w="445">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">座椅子</div>
+    <h3>あぐら座椅子</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">座面高は125/170/270から。茶事で正座ができない方の椅子にも。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:23%"></div></div>
+      <div class="barnote">幅 445mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W445×D400×H330 / 座面高 SH125/170/270</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: メープル / ブラックウォールナット / 塗装: オイルまたは摺漆 / い草編み</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#m" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="座椅子" data-mat="ブラックウォールナット" data-price="0" data-w="500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">座椅子</div>
+    <h3>背付き座椅子</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:26%"></div></div>
+      <div class="barnote">幅 500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W500×D570×H620 / 座面高 SH270</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: 摺漆 / 和紙(柿渋染め)縒り編み</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#m" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングセット" data-mat="クルミ / ブラックウォールナット" data-price="0" data-w="2100">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングセット</div>
+    <h3>ダイニングセット(クルミ・W2100)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">脚部交換で座卓(H330)にもなるテーブルと、い草編みのチェア。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2100mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>テーブル</td><td>W2100×D1000×H640</td><td class="pr">—</td></tr><tr><td>チェア</td><td>W610×D505×H640 / 座面高 SH370</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / ブラックウォールナット / 塗装: オイル / い草編み</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングセット" data-mat="ハードメープル" data-price="0" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングセット</div>
+    <h3>ダイニングセット(ハードメープル・W1500)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>テーブル</td><td>W1500×D800×H670</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ハードメープル / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングセット" data-mat="ブラックウォールナット / メープル" data-price="0" data-w="2000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングセット</div>
+    <h3>ダイニングセット(エクステンションテーブル)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">テーブルは W1450→2000 に伸長。スタッキングチェア付き。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>テーブル(通常)</td><td>W1450×D860×H615</td><td class="pr">—</td></tr><tr><td>テーブル(伸長時)</td><td>W2000×D860×H615</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / メープル / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングセット" data-mat="ブラックウォールナット" data-price="0" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングセット</div>
+    <h3>ダイニングセット(ブラックウォールナット・W1500)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">チェア・スツール付き。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>テーブル</td><td>W1500×D850×H670</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングセット" data-mat="クルミ" data-price="0" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングセット</div>
+    <h3>ダイニングセット(クルミ・W1800)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>テーブル</td><td>W1800×D980×H680</td><td class="pr">—</td></tr><tr><td>チェア</td><td>W550×D495×H655 / 座面高 SH370</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングセット" data-mat="ハードメープル" data-price="0" data-w="1600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングセット</div>
+    <h3>ダイニングセット(ハードメープル・W1600)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">チェア2種・スツール付き。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:84%"></div></div>
+      <div class="barnote">幅 1600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>テーブル</td><td>W1600×D825×H670</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ハードメープル / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="クルミ / ブラックウォールナット" data-price="0" data-w="1600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>ローテーブル(クルミ)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:84%"></div></div>
+      <div class="barnote">幅 1600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1600×D850×H350</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / ブラックウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="山桜" data-price="0" data-w="1400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>ローテーブル(山桜)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:74%"></div></div>
+      <div class="barnote">幅 1400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1400×D700×H330</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 山桜 / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="山桜" data-price="0" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>丸テーブル(コーヒーテーブルセット)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">茶事ゆれいす2脚とのセット。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>テーブル φ600</td><td>W600×D600×H500</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 山桜 / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="ブラックウォールナット" data-price="0" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>サイドテーブル(摺漆)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W400×D400×H550</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: 摺漆</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="ブラックウォールナット" data-price="0" data-w="450">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>サイドテーブル(オイル)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 450mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W450×D450×H430</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="ケヤキ" data-price="0" data-w="1050">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>文机</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:55%"></div></div>
+      <div class="barnote">幅 1050mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1050×D370×H330</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ケヤキ / 塗装: 摺漆</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="デスク＆ワゴン" data-mat="タモ" data-price="0" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">デスク＆ワゴン</div>
+    <h3>デスク＆ワゴン(タモ)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>デスク</td><td>W1000×D650×H690</td><td class="pr">—</td></tr><tr><td>ワゴン</td><td>W330×D555×H550</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: タモ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="デスク＆ワゴン" data-mat="ブラックウォールナット" data-price="0" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">デスク＆ワゴン</div>
+    <h3>デスク＆ワゴン＆チェア(ブラックウォールナット)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>デスク</td><td>W1200×D600×H685</td><td class="pr">—</td></tr><tr><td>ワゴン</td><td>W380×D550×H560</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="デスク＆ワゴン" data-mat="クルミ" data-price="0" data-w="1100">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">デスク＆ワゴン</div>
+    <h3>デスク＆ワゴン＆本立て(クルミ)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:58%"></div></div>
+      <div class="barnote">幅 1100mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>デスク</td><td>W1100×D650×H700</td><td class="pr">—</td></tr><tr><td>ワゴン</td><td>W410×D530×H580</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="デスク＆ワゴン" data-mat="ナラ" data-price="0" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">デスク＆ワゴン</div>
+    <h3>デスク＆ワゴン(ナラ)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>デスク</td><td>W1200×D600×H720</td><td class="pr">—</td></tr><tr><td>ワゴン</td><td>W420×D545×H580</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ナラ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#i" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="メモリアルボックス" data-mat="ブラックウォールナット / カバ" data-price="0" data-w="350">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">メモリアルボックス</div>
+    <h3>メモリアルボックス(ブラックウォールナット＆カバ)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">発想は仏壇から。宗教を問わず大切なものを入れる記念碑的な箱。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:18%"></div></div>
+      <div class="barnote">幅 350mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W350×D310×H550</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / カバ / 塗装: 摺漆</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#d" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="メモリアルボックス" data-mat="ブラックウォールナット" data-price="0" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">メモリアルボックス</div>
+    <h3>メモリアルボックス(ブラックウォールナット)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W400×D332×H600</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: 摺漆</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#d" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="メモリアルボックス" data-mat="白アサダ" data-price="0" data-w="350">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">メモリアルボックス</div>
+    <h3>メモリアルボックス(白アサダ)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:18%"></div></div>
+      <div class="barnote">幅 350mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W350×D305×H485</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 白アサダ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#d" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="メモリアルボックス" data-mat="山桜" data-price="0" data-w="324">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">メモリアルボックス</div>
+    <h3>メモリアルボックス(山桜)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:17%"></div></div>
+      <div class="barnote">幅 324mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W324×D294×H530</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 山桜 / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#f" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="メモリアルボックス" data-mat="ケヤキ / トチ" data-price="0" data-w="200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">メモリアルボックス</div>
+    <h3>祈りの箱(ケヤキ＆トチ)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:11%"></div></div>
+      <div class="barnote">幅 200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W200×D140×H310</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ケヤキ / トチ / 塗装: 摺漆</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#f" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="メモリアルボックス" data-mat="ブラックウォールナット" data-price="0" data-w="207">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">メモリアルボックス</div>
+    <h3>祈りの箱(ブラックウォールナット)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:11%"></div></div>
+      <div class="barnote">幅 207mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W207×D167×H287</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#f" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="メモリアルボックス" data-mat="ナラ / トチ" data-price="0" data-w="207">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">メモリアルボックス</div>
+    <h3>祈りの箱(ナラ＆トチ杢)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">素銅蝶番。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:11%"></div></div>
+      <div class="barnote">幅 207mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W207×D167×H287</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ナラ / トチ / 塗装: 摺漆</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#o" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="メモリアルボックス" data-mat="ブラックウォールナット" data-price="0" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">メモリアルボックス</div>
+    <h3>仏壇(置台・椅子付き)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">仏壇 W372×D272×H450、置台 W400×D350×H800、椅子 W330×D330×H400。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>仏壇</td><td>W372×D272×H450</td><td class="pr">—</td></tr><tr><td>置台</td><td>W400×D350×H800</td><td class="pr">—</td></tr><tr><td>椅子</td><td>W330×D330×H400</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#o" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="メモリアルボックス" data-mat="ブラックウォールナット / ナラ / クリ" data-price="0" data-w="472">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">メモリアルボックス</div>
+    <h3>仏壇(H1400)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">照明はハロゲンダウンライト。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:25%"></div></div>
+      <div class="barnote">幅 472mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W472×D436×H1400</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / ナラ / クリ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#o" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="メモリアルボックス" data-mat="ブラックウォールナット" data-price="0" data-w="140">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">メモリアルボックス</div>
+    <h3>メモリアルフレーム(祈りの額)</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:7%"></div></div>
+      <div class="barnote">幅 140mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W140×D170×H340</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: 摺漆</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#l" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="棚・収納" data-mat="タモ / 栗 / 桐" data-price="0" data-w="930">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">棚・収納</div>
+    <h3>水屋箪笥</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">上下分割型。引違戸の一部は竹の波網代(製作: 竹工芸閑 飯島正章)。松煙・弁柄・柿渋着色の後オイル塗装。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:49%"></div></div>
+      <div class="barnote">幅 930mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W930×D470×H1800</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: タモ / 栗 / 桐 / 塗装: 着色+オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#b" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="棚・収納" data-mat="ブラックウォールナット" data-price="0" data-w="1220">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">棚・収納</div>
+    <h3>キャビネット</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">プッシュオープン式スライドレール。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:64%"></div></div>
+      <div class="barnote">幅 1220mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1220×D445×H500</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#h" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="棚・収納" data-mat="クルミ" data-price="0" data-w="980">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">棚・収納</div>
+    <h3>テレビ台</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:52%"></div></div>
+      <div class="barnote">幅 980mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W980×D410×H520</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: クルミ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#h" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="棚・収納" data-mat="トチ" data-price="0" data-w="243">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">棚・収納</div>
+    <h3>文箱</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:13%"></div></div>
+      <div class="barnote">幅 243mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W243×D158×H44</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: トチ / 塗装: 摺漆</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#h" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="棚・収納" data-mat="ケヤキ" data-price="0" data-w="260">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">棚・収納</div>
+    <h3>筆箱</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:14%"></div></div>
+      <div class="barnote">幅 260mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W260×D87×H35</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ケヤキ / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#h" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="トチ / 竹" data-price="0" data-w="73">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>名刺入れ</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">帯巻は竹編み組み(製作: 竹工芸閑 飯島正章)。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:4%"></div></div>
+      <div class="barnote">幅 73mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W73×D15×H110</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: トチ / 竹 / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#n" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="ブラックウォールナット" data-price="0" data-w="310">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>道具箱</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:16%"></div></div>
+      <div class="barnote">幅 310mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W310×D250×H197</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / 塗装: 摺漆</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#n" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="山桜" data-price="0" data-w="380">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>本立て</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:20%"></div></div>
+      <div class="barnote">幅 380mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W380×D240×H288</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 山桜 / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#n" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="山桜 / ブラックウォールナット" data-price="0" data-w="410">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>額</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:22%"></div></div>
+      <div class="barnote">幅 410mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W410×D35×H530</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: 山桜 / ブラックウォールナット / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#j" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="ケヤキ" data-price="0" data-w="610">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>大皿</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 610mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W610×D270×H50</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ケヤキ / 塗装: 摺漆</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#j" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="ブラックウォールナット / メープル" data-price="0" data-w="1440">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>コートハンガー</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">ベース W1440×D125×H120、ハンガー W420×D60×H250(革紐・ブロンズ)。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:76%"></div></div>
+      <div class="barnote">幅 1440mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>ベース</td><td>W1440×D125×H120</td><td class="pr">—</td></tr><tr><td>ハンガー</td><td>W420×D60×H250</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット / メープル / 塗装: オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#j" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="クリ" data-price="0" data-w="810">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>玄関扉</h3>
+    <div class="price">価格はお問い合わせ<small>(税込)</small></div>
+    <p class="desc">顔料着色+屋外用オイル。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:43%"></div></div>
+      <div class="barnote">幅 810mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W810×D139×H1995</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: クリ / 塗装: 顔料着色+屋外用オイル</div>
+    </div>
+    <a class="more" href="https://www.workshochi.com/works.html#j" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、WorksHOCHI様の公式サイト(<a href="https://www.workshochi.com/works.html" target="_blank" rel="noopener">https://www.workshochi.com/works.html</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
