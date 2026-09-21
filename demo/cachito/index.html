@@ -1,0 +1,2677 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>cachito furniture｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。cachito furniture様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>cachito furniture</h1>
+  <p class="tagline">神戸・北区の家具屋。Furnitureの11カテゴリ160点が個別ページに分かれていて、サイズ(128点)と参考価格(58点)を並べて比べる場所が無かったので、1枚に並べました。</p>
+  <div class="badges"><span>兵庫県神戸市北区</span><span>掲載 160点</span><span>サイズ・価格から探せます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="ベンチ・スツール">ベンチ・スツール</button><button class="chip" data-k="cat" data-v="椅子">椅子</button><button class="chip" data-k="cat" data-v="カウンターテーブル・デスク">カウンターテーブル・デスク</button><button class="chip" data-k="cat" data-v="ダイニングテーブル">ダイニングテーブル</button><button class="chip" data-k="cat" data-v="キッチンボード・食器棚">キッチンボード・食器棚</button><button class="chip" data-k="cat" data-v="ローテーブル・こたつ">ローテーブル・こたつ</button><button class="chip" data-k="cat" data-v="その他">その他</button><button class="chip" data-k="cat" data-v="ソファ">ソファ</button><button class="chip" data-k="cat" data-v="収納家具・キャビネット">収納家具・キャビネット</button><button class="chip" data-k="cat" data-v="テレビボード">テレビボード</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option><option value="オーク×ウォールナット">オーク×ウォールナット</option><option value="オーク">オーク</option><option value="ビーチ">ビーチ</option><option value="ー">ー</option><option value="ナラ">ナラ</option><option value="ウォールナット">ウォールナット</option><option value="ブラックチェリー 他">ブラックチェリー 他</option><option value="ブナ他">ブナ他</option><option value="レッドオーク">レッドオーク</option><option value="タモ">タモ</option><option value="ブラックチェリー">ブラックチェリー</option><option value="ブナ">ブナ</option><option value="ビーチ他">ビーチ他</option><option value="タモ無垢材">タモ無垢材</option><option value="ブラックチェリー無垢材、鉄脚">ブラックチェリー無垢材、鉄脚</option><option value="アルダー">アルダー</option><option value="オーク（一部ウォールナット）">オーク（一部ウォールナット）</option><option value="モンキーポッド×鉄脚">モンキーポッド×鉄脚</option><option value="アサメラ×鉄脚">アサメラ×鉄脚</option><option value="ビーチ無垢材">ビーチ無垢材</option><option value="ハードメープル">ハードメープル</option><option value="オーク無垢材×鉄脚">オーク無垢材×鉄脚</option><option value="ウォールナット×鉄×ガラス">ウォールナット×鉄×ガラス</option><option value="タモ×鉄脚">タモ×鉄脚</option><option value="オーク無垢材">オーク無垢材</option><option value="ブラックチェリー無垢材">ブラックチェリー無垢材</option><option value="ウォールナット無垢材">ウォールナット無垢材</option><option value="ナラ×鉄脚">ナラ×鉄脚</option><option value="オーク無垢材（着色）">オーク無垢材（着色）</option><option value="ウォールナット、鉄脚">ウォールナット、鉄脚</option><option value="チェリー">チェリー</option><option value="wool 100%">wool 100%</option><option value="アサメラ×ウォールナット">アサメラ×ウォールナット</option><option value="鉄脚">鉄脚</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="ベンチ・スツール" data-mat="オーク×ウォールナット" data-price="99000" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ・スツール</div>
+    <h3>BE-01 無垢材（コンビ）のベンチ</h3>
+    <div class="price">¥99,000<small>(税込)</small></div>
+    <p class="desc">お尻に沿った座面の角度が、ソフトな座り心地。 オークとウォールナットのコントラストが美しいベンチです。 オークとウォールナットのコンビネーションのダイニングチェアーと合わせると立体</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1200×D380×H420</td><td class="pr">¥99,000</td></tr></tbody></table>
+      <div class="mat">素材: オーク×ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/bench-01_konbi/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ・スツール" data-mat="オーク" data-price="83600" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ・スツール</div>
+    <h3>BE-02 無垢材のベンチ</h3>
+    <div class="price">¥83,600<small>(税込)</small></div>
+    <p class="desc">BE-01を１つの樹種（オーク無垢材）で製作したバージョンです。 お尻に沿った座面の角度が、ソフトな座り心地。 片側にベンチ。片側にダイニングチェアーでお部屋に立体感が出て、空間が</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1200×D380×H420</td><td class="pr">¥83,600</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/bench-0/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ・スツール" data-mat="オーク" data-price="39600" data-w="450">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ・スツール</div>
+    <h3>ST-01 スツール</h3>
+    <div class="price">¥39,600<small>(税込)</small></div>
+    <p class="desc">シンプルで細身の美しいライン。シンプルなだけに素材、作りにはしっかりとこだわらなければ、どこかチープに見えてくる。そういったことを乗り越えてきた、美しいスツール。 ▽オンラインショ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 450mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W450×D300 / 座面高 SH430</td><td class="pr">¥39,600</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/st-01_stool/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ・スツール" data-mat="オーク" data-price="49500" data-w="450">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ・スツール</div>
+    <h3>ST-02 ハイスツール</h3>
+    <div class="price">¥49,500<small>(税込)</small></div>
+    <p class="desc">シンプルで細身の美しいライン。シンプルなだけに素材、作りにはしっかりとこだわらなければ、どこかチープに見えてくる。そういったことを乗り越えてきた、美しいスツール。 高さは550～7</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 450mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W450×D355 / 座面高 SH650</td><td class="pr">¥49,500</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/st-02_high-stool/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ・スツール" data-mat="オーク" data-price="25300" data-w="310">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ・スツール</div>
+    <h3>トイスツール｜日進木工</h3>
+    <div class="price">¥25,300<small>(税込)</small></div>
+    <p class="desc">日進木工のトイスツールは、丸い座面のコンパクトなスツールです。 ダイニングで使ったり、キッチンでの立ち仕事の合間に座ったり。そばにあると、ちょっと嬉しい存在です。 ミナペルホネンの</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:16%"></div></div>
+      <div class="barnote">幅 310mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W310×D310 / 座面高 SH450</td><td class="pr">¥25,300</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/st-03_stool/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ・スツール" data-mat="ビーチ" data-price="69300" data-w="575">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ・スツール</div>
+    <h3>低座 座椅子</h3>
+    <div class="price">¥69,300<small>(税込)</small></div>
+    <p class="desc">低座 座椅子 LOW CHAIRは、床や畳での生活が多い方や、床座りだと少し腰が痛い方、立ち座りに不便を感じている方にぴったりです。 座面が少し高めの座椅子で、足腰への負担が軽減さ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:30%"></div></div>
+      <div class="barnote">幅 575mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W575×D465×H520 / 座面高 SH240</td><td class="pr">¥69,300</td></tr></tbody></table>
+      <div class="mat">素材: ビーチ</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/low_chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ・スツール" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ベンチ・スツール</div>
+    <h3>椅子張り生地（ミナペルホネン、北欧生地等）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">当店では新しい椅子やお修理の椅子に様々な生地を張ることができます。 ミナペルホネン（mina perhonen）の、丸いドットがなんともいえないかわいさのタンバリンや、チョウチョ。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/mina-perhonen_chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ・スツール" data-mat="ー" data-price="0" data-w="450">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ベンチ・スツール</div>
+    <h3>玄関用スツール</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">玄関で靴をぬぎはきする時に、腰かけるためのスツールです。しっかり硬めの掛け心地で作りました。 ぱっと目を引く、きれいな赤色は、デンマークの美しい生地。耐久性も驚くほど高いです。生地</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 450mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W450×D320×H245</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/stool-genkan/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ナラ / ウォールナット / ブラックチェリー 他" data-price="91520" data-w="535">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>No.42 チェア（カイ・クリスチャンセン）</h3>
+    <div class="price">¥91,520<small>(税込)</small></div>
+    <p class="desc">デザイン：カイ・クリスチャンセン（デンマーク）、製作：宮崎椅子製作所 ゆったりとした座り心地が気持ち良い、No.42チェア。 身体にあわせて傾く独特の背もたれが、特別なくつろぎを生</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:28%"></div></div>
+      <div class="barnote">幅 535mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W535×D545×H750 / 座面高 SH460</td><td class="pr">¥91,520</td></tr></tbody></table>
+      <div class="mat">素材: ナラ / ウォールナット / ブラックチェリー 他</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/no42_chair_miyazaki-isu/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ナラ / ウォールナット/ブラックチェリー 他" data-price="58740" data-w="535">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>pepe arm ペペアーム チェア</h3>
+    <div class="price">¥58,740<small>(税込)</small></div>
+    <p class="desc">デザイン：村澤一晃 製作：宮崎椅子製作所 pepe arm （ペペアーム）チェアー。 脚先では丸い木部が、アーム部では丸四角になり、背の先端でまた丸くなる。ゆるやかな形状の変化がな</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:28%"></div></div>
+      <div class="barnote">幅 535mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W535×D550×H770 / 座面高 SH435</td><td class="pr">¥58,740</td></tr></tbody></table>
+      <div class="mat">素材: ナラ / ウォールナット/ブラックチェリー 他</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/pepe_arm_chair_miyazaki-isu/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ナラ / ウォールナット / ブラックチェリー 他" data-price="65340" data-w="490">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>4110 UNI senior（カイ・クリスチャンセン）</h3>
+    <div class="price">¥65,340<small>(税込)</small></div>
+    <p class="desc">デザイン：カイ・クリスチャンセン（デンマーク）、製作：宮崎椅子製作所 すっきりとしたシャープなライン、シンプルな中にこだわりのある椅子。美しい存在感を感じる4110 UNI sen</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:26%"></div></div>
+      <div class="barnote">幅 490mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W490×D475×H720 / 座面高 SH440</td><td class="pr">¥65,340</td></tr></tbody></table>
+      <div class="mat">素材: ナラ / ウォールナット / ブラックチェリー 他</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/4110_uni_senior_chair_miyazaki-isu/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ナラ / ウォールナット / ブラックチェリー 他" data-price="74140" data-w="540">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>GINA</h3>
+    <div class="price">¥74,140<small>(税込)</small></div>
+    <p class="desc">デザイン：村澤一晃 製作：宮崎椅子製作所 木部はどこも丸みを帯び、優しいさわり心地についついなでてしまいます。 座と背が一体型の成形による作りで、ほど良い弾力があり、疲れを感じさせ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:28%"></div></div>
+      <div class="barnote">幅 540mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W540×D570×H790 / 座面高 SH420</td><td class="pr">¥74,140</td></tr></tbody></table>
+      <div class="mat">素材: ナラ / ウォールナット / ブラックチェリー 他</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/gina-chair_miyazaki-isu/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ブナ他" data-price="59840" data-w="445">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>KAKI no ISU</h3>
+    <div class="price">¥59,840<small>(税込)</small></div>
+    <p class="desc">デザイン：古田恵介 背フレームが大きく湾曲したフォルムとなめらかな曲線が特徴的。 背は布張りタイプと無垢の2タイプありお好みで選べます。 場所をとらないコンパクトなサイズですが、座</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:23%"></div></div>
+      <div class="barnote">幅 445mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W445×D500×H765 / 座面高 SH445</td><td class="pr">¥59,840</td></tr></tbody></table>
+      <div class="mat">素材: ブナ他</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kaki-no-isu_miyazaki-isu/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="オーク×ウォールナット" data-price="72600" data-w="515">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>シビルチェア</h3>
+    <div class="price">¥72,600<small>(税込)</small></div>
+    <p class="desc">背のスポークが美しく、ゆったりと寛げるハイバックの椅子「柏木工のシビルチェア」。 素材の選び方で雰囲気が変わるのも魅力的な椅子です。 オークとウォールナットのコンビネーション材は、</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:27%"></div></div>
+      <div class="barnote">幅 515mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W515×D535×H920 / 座面高 SH430</td><td class="pr">¥72,600</td></tr></tbody></table>
+      <div class="mat">素材: オーク×ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/civil-chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="オーク×ウォールナット" data-price="64900" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>キャプテンチェア</h3>
+    <div class="price">¥64,900<small>(税込)</small></div>
+    <p class="desc">高山ウッドワークスのキャプテンチェア。オークとウォールナットのコンビネーションによるコントラストが目を引く、特別な存在感がある椅子です。無垢材ならではの質感や、包み込まれるような座</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W600×D505×H720 / 座面高 SH430</td><td class="pr">¥64,900</td></tr></tbody></table>
+      <div class="mat">素材: オーク×ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/arm-chair_konbi/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="レッドオーク / ウォールナット / ブラックチェリー 他" data-price="54780" data-w="560">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>DC352 アームチェア（ハンギングチェア）</h3>
+    <div class="price">¥54,780<small>(税込)</small></div>
+    <p class="desc">テーブルに掛けられる無垢材のハンギングチェア。 シンプルなデザインが魅力の、ナガノインテリアのDC352 アームチェアです。 ハンギング機能によりお掃除がしやすく、また、スタッキン</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 560mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W560×D500×H720 / 座面高 SH420</td><td class="pr">¥54,780</td></tr></tbody></table>
+      <div class="mat">素材: レッドオーク / ウォールナット / ブラックチェリー 他</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/chair-naganointerior/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="オーク" data-price="57200" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>クラウンチェア</h3>
+    <div class="price">¥57,200<small>(税込)</small></div>
+    <p class="desc">何時間でも座っていられるような、心地良い座り心地。すっと手を置ける幅広のアームは、無垢材ならではの質感です。 軽やかで美しいスポークと、包み込むアームの魅力的なデザイン。 木の種類</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W600×D505×H720 / 座面高 SH430</td><td class="pr">¥57,200</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/arm-chair-02/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ウォールナット" data-price="123200" data-w="654">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>BOSSチェア（ボスチェア）</h3>
+    <div class="price">¥123,200<small>(税込)</small></div>
+    <p class="desc">柏木工のBOSSチェア（ボス ダイニングチェア）。くつろいだ座り心地を追求した椅子。ほどよいアームと広々とした座面で、落ち着いた存在感があります。 木の種類や張地の種類、お部屋の雰</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:34%"></div></div>
+      <div class="barnote">幅 654mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W654×D592×H766 / 座面高 SH430</td><td class="pr">¥123,200</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/arm-chair_walnut/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="オーク" data-price="66000" data-w="440">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>オークの学習椅子</h3>
+    <div class="price">¥66,000<small>(税込)</small></div>
+    <p class="desc">子どもから大人まで使える学習椅子。 座面が下がるにつれ、奥行が広がり、大きくなっても正しい姿勢で座れます。 子ども部屋だけでなく、リビングやダイニングにも設置できるよう、美しいライ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:23%"></div></div>
+      <div class="barnote">幅 440mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W440×D425×H740</td><td class="pr">¥66,000</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/gakusyuu_isu_kobrina/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="オーク×ウォールナット" data-price="60500" data-w="475">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ファンバックチェア</h3>
+    <div class="price">¥60,500<small>(税込)</small></div>
+    <p class="desc">デザイン：岩倉榮利 高山ウッドワークスのファンバックチェア。 シンプルで、暮らしに溶け込むような、優しい椅子。 心地良い座り心地はもちろん、軽やかで美しい背のスポークも素晴らしい椅</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:25%"></div></div>
+      <div class="barnote">幅 475mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W475×D515×H805 / 座面高 SH430</td><td class="pr">¥60,500</td></tr></tbody></table>
+      <div class="mat">素材: オーク×ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/high-back-chair01/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="オーク×ウォールナット" data-price="61600" data-w="455">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ベビーチェア</h3>
+    <div class="price">¥61,600<small>(税込)</small></div>
+    <p class="desc">高山ウッドワークスのベビーチェア。 軽やかで美しいスポークと、包み込むアームが魅力的なデザイン。オークとウォールナットのコントラストが絶妙で、見るたびに惚れ惚れします。 日々の暮ら</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 455mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W455×D485×H747 / 座面高 SH520</td><td class="pr">¥61,600</td></tr></tbody></table>
+      <div class="mat">素材: オーク×ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/babychair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="タモ / ナラ / ブラックチェリー / ウォールナット" data-price="77000" data-w="495">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ZENチェア</h3>
+    <div class="price">¥77,000<small>(税込)</small></div>
+    <p class="desc">デザイン：高橋三太郎 ISU-WORKS（イスワークス）のZENチェアー。 座にも背にもファブリックがあり、アームが半分のハーフ（セミ）アームチェア。背のファブリックが背中を優しく</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:26%"></div></div>
+      <div class="barnote">幅 495mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W495×D525×H730 / 座面高 SH420</td><td class="pr">¥77,000</td></tr></tbody></table>
+      <div class="mat">素材: タモ / ナラ / ブラックチェリー / ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/zen_chair_isu-works/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="タモ / ナラ / ブラックチェリー / ウォールナット" data-price="86900" data-w="520">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>GENチェア</h3>
+    <div class="price">¥86,900<small>(税込)</small></div>
+    <p class="desc">デザイン：高橋三太郎 ISU-WORKS（イスワークス）のGENチェアー。 見てるだけで癒され、座ると穏やかな気持ちになるダイニングチェアーです。 木の種類や張地の種類、お部屋の雰</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:27%"></div></div>
+      <div class="barnote">幅 520mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W520×D525×H735 / 座面高 SH420</td><td class="pr">¥86,900</td></tr></tbody></table>
+      <div class="mat">素材: タモ / ナラ / ブラックチェリー / ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/gen_chair_isu-works/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="タモ / ナラ / ブラックチェリー / ウォールナット" data-price="75900" data-w="495">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>LENチェア</h3>
+    <div class="price">¥75,900<small>(税込)</small></div>
+    <p class="desc">デザイン：高橋三太郎 ISU-WORKS（イスワークス）のLENチェアー。 木の背中のさらっとした座り心地、アームが半分のハーフ（セミ）アームチェアです。座面は木（板座）、または、</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:26%"></div></div>
+      <div class="barnote">幅 495mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W495×D510×H755 / 座面高 SH420</td><td class="pr">¥75,900</td></tr></tbody></table>
+      <div class="mat">素材: タモ / ナラ / ブラックチェリー / ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/len_chair_isu-works/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="タモ / ナラ / ブラックチェリー / ウォールナット" data-price="64900" data-w="463">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>MEGチェア</h3>
+    <div class="price">¥64,900<small>(税込)</small></div>
+    <p class="desc">デザイン：高橋三太郎 座った時の、背中の気持ち良さがなにより素晴らしいダイニングチェアーです。 スタッキングできる実用性と、軽さ、そして場所をとらないコンパクトさも魅力です。 素材</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 463mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W463×D490×H735 / 座面高 SH420</td><td class="pr">¥64,900</td></tr></tbody></table>
+      <div class="mat">素材: タモ / ナラ / ブラックチェリー / ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/meg-chair_isu-works/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="タモ / ナラ / ブラックチェリー / ウォールナット" data-price="63800" data-w="463">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>HUGチェア</h3>
+    <div class="price">¥63,800<small>(税込)</small></div>
+    <p class="desc">デザイン：高橋三太郎 三次元に曲げられた背中のアールが、しなるように身体にフィットする特別な座り心地。 素材は、ナラの他、タモ、ブラックチェリー、ウォールナットからお選びいただけま</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 463mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W463×D500×H720 / 座面高 SH420</td><td class="pr">¥63,800</td></tr></tbody></table>
+      <div class="mat">素材: タモ / ナラ / ブラックチェリー / ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/hug-chair_isu-works/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ナラ / ブラックチェリー / ウォールナット" data-price="128700" data-w="595">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>RAYチェア</h3>
+    <div class="price">¥128,700<small>(税込)</small></div>
+    <p class="desc">デザイン：高橋三太郎 ISU-WORKS（イスワークス）のRAYチェアー。 フルアームのアームチェアです。座面は木（板座）、または、ファブリック（張り座）をお選びいただけます。 木</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:31%"></div></div>
+      <div class="barnote">幅 595mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W595×D480×H703 / 座面高 SH420</td><td class="pr">¥128,700</td></tr></tbody></table>
+      <div class="mat">素材: ナラ / ブラックチェリー / ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/ray_chair_isu-works/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="オーク×ウォールナット" data-price="67100" data-w="575">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>WOC-131/132 チェア</h3>
+    <div class="price">¥67,100<small>(税込)</small></div>
+    <p class="desc">日進木工のWhite Wood（ホワイトウッド）シリーズのダイニングチェアー。 シンプルでモダン、肘かけの先端にブラックウォールナットをあしらった個性的なデザインが特徴です。 木の</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:30%"></div></div>
+      <div class="barnote">幅 575mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W575×D500×H730 / 座面高 SH430</td><td class="pr">¥67,100</td></tr></tbody></table>
+      <div class="mat">素材: オーク×ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/woc-131-chair_nissin-mokkou-2/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="オーク / ブナ / ウォールナット" data-price="45100" data-w="510">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>NBC-442/452 チェア</h3>
+    <div class="price">¥45,100<small>(税込)</small></div>
+    <p class="desc">日進木工のForms（フォルムス）シリーズのダイニングチェア。丸い座面が可愛い椅子です。 細身のライン、すっきりとしたシンプルなデザインで、軽やかな印象を与えてくれます。 使わない</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:27%"></div></div>
+      <div class="barnote">幅 510mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W510×D520×H730 / 座面高 SH440</td><td class="pr">¥45,100</td></tr></tbody></table>
+      <div class="mat">素材: オーク / ブナ / ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/nbc442-chair_nissin-mokkou/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="オーク / ウォールナット" data-price="71500" data-w="550">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>DCC-096/095チェア</h3>
+    <div class="price">¥71,500<small>(税込)</small></div>
+    <p class="desc">日進木工のForms（フォルムス）シリーズのダイニングチェアー。 シンプルな椅子のようでいて、細やかな心遣いが随所にあふれたダイニングチェアです。 木の種類や張地の種類、お部屋の雰</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 550mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W550×D530×H780 / 座面高 SH440</td><td class="pr">¥71,500</td></tr></tbody></table>
+      <div class="mat">素材: オーク / ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dcc-096-chair_nissin-mokkou/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="オーク / ブナ" data-price="53900" data-w="490">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>DCC-1132チェア</h3>
+    <div class="price">¥53,900<small>(税込)</small></div>
+    <p class="desc">日進木工のForms（フォルムス）シリーズのダイニングチェアー。 浅く腰掛けても背あたりがよいダイニングチェア。 シャープな脚や背板に施したかきとりが軽やかな印象の椅子です。 大き</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:26%"></div></div>
+      <div class="barnote">幅 490mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W490×D515×H840 / 座面高 SH440</td><td class="pr">¥53,900</td></tr></tbody></table>
+      <div class="mat">素材: オーク / ブナ</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dcc-1132-chair_nissin-mokkou/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="オーク" data-price="48400" data-w="463">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>オークの学習椅子 その２</h3>
+    <div class="price">¥48,400<small>(税込)</small></div>
+    <p class="desc">座面の高さを変えて、お子さまから大人の方まで使える学習椅子/ワークチェア。 子ども椅子、また、ワークチェア、ダイニングチェアとしても使えます。 シンプルなデザインで、子ども部屋だけ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 463mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W463×D497×H767</td><td class="pr">¥48,400</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/gakusyuu-isu-oak/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ビーチ他" data-price="106700" data-w="550">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>Yチェア/CH24/ハンスJウェグナー</h3>
+    <div class="price">¥106,700<small>(税込)</small></div>
+    <p class="desc">デザイン：ハンス.J.ウェグナー 製作：Carl Hansen&amp;Son（カールハンセン・アンド・サン） デンマーク家具の巨匠、ハンス.J.ウェグナーの代表作。 1949年にデザイン</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 550mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W550×D510×H760 / 座面高 SH450</td><td class="pr">¥106,700</td></tr></tbody></table>
+      <div class="mat">素材: ビーチ他</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/y-chair_hansjwegner/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ビーチ他" data-price="0" data-w="580">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>PP68/ラストダイニングチェア/ハンスJウェグナー</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">デザイン：ハンス.J.ウェグナー 製作：PPモブラー / デンマーク 1987年。デンマーク家具の巨匠、ハンス.J.ウェグナーが最後にデザインした、集大成といえる椅子です。ラストダ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:31%"></div></div>
+      <div class="barnote">幅 580mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W580×D470×H720 / 座面高 SH440</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ビーチ他</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/pp68_hansjwegner/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ビーチ他" data-price="0" data-w="490">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>J39チェア/ボーエ・モーエンセン</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">デザイン：ボーエ・モーエンセン（デンマーク） 製作：フレデリシア 北欧の名作椅子・J39。簡素で誠実なデザインが表現されたダイニングチェアの傑作です。 キチンと座るダイニングチェア</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:26%"></div></div>
+      <div class="barnote">幅 490mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W490×D440×H765 / 座面高 SH445</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ビーチ他</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/j39_borge-mogensen/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="オーク" data-price="121000" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>オーク無垢材のデスク / 学習机</h3>
+    <div class="price">¥121,000<small>(税込)</small></div>
+    <p class="desc">無垢材の学習机。大人になっても使える丈夫さと、シンプルなデザインです。ライフスタイルにあわせ、ボックス脚やワゴン、本棚、いろんなパターンから選べます。 W900～2000mmまで1</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1200×D600×H710</td><td class="pr">¥121,000</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/desk_oak_simple/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="オーク" data-price="178200" data-w="2000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>オーク無垢材のデスク / 学習机（ロングサイズ）</h3>
+    <div class="price">¥178,200<small>(税込)</small></div>
+    <p class="desc">シンプルなデザインの無垢材の学習机、長いサイズの写真です。ライフスタイルにあわせ、ボックス脚やワゴン、本棚、いろんなパターンから選べます。 W900～2000mmまで100mm単位</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2000×D600×H710</td><td class="pr">¥178,200</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/desk_oak_muku_long/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="タモ無垢材" data-price="0" data-w="2200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>無垢材のカウンターデスク</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">しっかりとした無垢材を使用して製作したデスクです。サイズオーダーが可能で、長いカウンターデスクとしても使用できます。 木そのものの表情や質感、そして、安定感のある佇まいが無垢材なら</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2200×D450×H720</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: タモ無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/desk_counter_muku/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="ブラックチェリー無垢材、鉄脚" data-price="0" data-w="1300">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>無垢材と鉄脚のカウンターデスク</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">しっかりとした無垢材の天板と、鉄脚で製作したデスクです。サイズオーダーが可能で、長いカウンターデスクとしても使用できます。 板が厚くしっかりとした存在感。そして、安定感のある佇まい</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:68%"></div></div>
+      <div class="barnote">幅 1300mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1300×D600×H710</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックチェリー無垢材、鉄脚</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/desk_counter_ironleg/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="ー" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>無垢材の学習机 / デスクセット</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">シンプルなデザインの無垢材の学習机。本棚を前に置いたり、横に置いたり。環境の変化に柔軟に対応できます。 椅子もお子さまの成長にあわせて高さを変えながら使えます。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/gakusyuu_tukue_set/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="アルダー" data-price="0" data-w="3000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>AS-01 ユニット</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">間取りやライフスタイルに合わせてユニットを変更できる、使う場所を選ばない家具です。 リビングルームにテレビボードとデスク、キャビネットなどを揃ったデザインで設置でき、リビング学習に</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 3000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W3000×D450×H715</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: アルダー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/storage_alder_walnut/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="オーク（一部ウォールナット）" data-price="147400" data-w="700">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>コンソールテーブル</h3>
+    <div class="price">¥147,400<small>(税込)</small></div>
+    <p class="desc">オークの素材感を活かしたコンソールテーブルです。 花瓶や時計の飾り台や、作業台に、電話台としても。 壁面のアクセントとなり、雰囲気が引き締まります。 10年保証。10年経過後は工房</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:37%"></div></div>
+      <div class="barnote">幅 700mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W700×D380×H850</td><td class="pr">¥147,400</td></tr></tbody></table>
+      <div class="mat">素材: オーク（一部ウォールナット）</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/console_table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="オーク" data-price="179300" data-w="570">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>DR-01 ドレッサー/ミニデスク</h3>
+    <div class="price">¥179,300<small>(税込)</small></div>
+    <p class="desc">シンプルな美しさのドレッサー。 細身の脚と、本体とのバランスがとてもキレイです。 デスクとミラーの組み合わせ式になります。デスク単体での使用も可能です。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:30%"></div></div>
+      <div class="barnote">幅 570mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W570×D420×H1145</td><td class="pr">¥179,300</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dresser/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="ウォールナット" data-price="0" data-w="5050">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>オーダーメイド ウォールナットのカウンターデスク</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">W5000mm超のロングデスク。奥行も700mmと広々と、パソコン作業や学習にも快適なサイズです。 ウォールナット材の落ち着いた存在感と、すっきりとスマートな印象を大切に製作しまし</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 5050mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W5050×D700×H700</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/order-counter-desk/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="ブラックチェリー" data-price="0" data-w="2100">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>ブラックチェリーのロングデスク/テーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ｗ2100のロングサイズのデスク/テーブルを製作させていただきました。 ソファでパソコン作業をするときに使いやすい高さで、 リビングテーブルでもあり、デスクでもある、お使いになる方</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2100mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2100×D600</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックチェリー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/desk-long_2100/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="オーク" data-price="0" data-w="2150">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>カウンターロングデスク</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ｗ2150のロングサイズのデスクを製作させていただきました。 既製品ではなかなかないサイズです。 引き出しは、すっきりとした見た目になるよう製作しました。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2150mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2150×D550×H720</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/desk_long_counter/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="オーク" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>オーダーメイド オークのカウンターデスク</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">デスク部分W3250キャビネット部分W350 総W3600mmのロングデスク。 オーク材での製作です。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/order_counter_desk/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="ブラックチェリー" data-price="0" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>ブラックチェリー無垢材のデスク/学習机</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ご入学のお祝いに、ブラックチェリー無垢材のデスク/学習机を製作させていただきました。 シンプルななかに温かみを感じられる、やさしいラインでの製作です。 10年20年と一緒に時を重ね</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1200×D580</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックチェリー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/blackcherry-desk/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="モンキーポッド×鉄脚" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>モンキーポッド一枚板のカウンターテーブル（デスク）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">モンキーポッド一枚板のカウンタータイプのロングテーブル（デスク）です。 お食事をしたり、お茶をしたり。勉強したり、本を読んだり。いろんな事に使えるゆとりあるテーブルです。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: モンキーポッド×鉄脚</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/monkey_pod_ichimaiita_counter_table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="アサメラ×鉄脚" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>アサメラ一枚板のカウンターテーブル（デスク）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">アサメラ一枚板のカウンタータイプのロングテーブル（デスク）です。 ｗ2500を超える一枚板の迫力、存在感がかっこよく、 昼は海を臨むカフェ。夜は大人のバーカウンター。昼と夜、違う表</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: アサメラ×鉄脚</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/asamelra_ichimaiita_counter_table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="タモ無垢材" data-price="0" data-w="2200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>L字型のオーダーメイド デスク（診察机）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ゆったりとした心地よさを感じる、L字型のデスク。 診察机としてオーダーメイドでの製作です。機能的な使いやすさと、丸く仕上げたやさしいデザインにこだわりました。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2200×D1650×H700</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: タモ無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/l-order-desk/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="ビーチ無垢材" data-price="0" data-w="1550">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>L字型（豆型）のオーダーメイドデスク（診察机）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">丸みのある、やわらかな印象の豆型テーブル。 診察机としてオーダーメイドでの製作です。機能的な使いやすさと、豆型で丸く仕上げたやさしいデザインにこだわりました。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:82%"></div></div>
+      <div class="barnote">幅 1550mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1550×D1100×H700</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ビーチ無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/beans-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="ハードメープル" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>ハードメープル無垢材のオーダーデスク</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">入り組んだ形の壁に納まるように不定形のデスクを製作しました。オーダーメイドならではの変わった形のデスクです。 素材はハードメープル材で、北欧のバランスチェアとの相性もよく、ほっこり</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ハードメープル</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/desk_maple_henkei/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="オーク無垢材×鉄脚" data-price="0" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>オーク無垢材と鉄脚のカウンターデスク</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">オーク無垢材の天板と鉄脚をあわせた、カウンターデスクです。 天板の面取りや、鉄の丸脚など、細やかな表情にこだわりました。 天板は、右端をナナメにカットした台形になっています。デスク</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1800×D450×H720</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク無垢材×鉄脚</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/oak-counter-desk/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="ー" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>オーダーメイド デスク</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">壁に納まるように、オーダーメイドでデスクを製作しました。 片側の脚部は、パソコン本体を収納できるようになっています。 他のインテリアとの調和を考えた、すっきりとしたラインです。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/desk_ordermade/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="ウォールナット×鉄×ガラス" data-price="0" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>鉄とガラスのコンソールテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ウォールナット無垢材、ガラス、鉄。3つの異素材を組み合わせたコンソールテーブルを製作しました。 クライアントの目指す「シンプルモダン、ホテルライク」をテーマにした製作です。素材感や</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W600×D300×H800</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット×鉄×ガラス</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/console_table_glass_iron/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カウンターテーブル・デスク" data-mat="タモ×鉄脚" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">カウンターテーブル・デスク</div>
+    <h3>つながるダイニングテーブルとカウンターテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">しっかりとした40ｍｍ厚の天板を使用した、タモ無垢材のダイニングテーブルとカウンターテーブル。ダイニングとカウンターは繋げて一体型で使ったり、分割して使ったり、いろいろなシーンで活</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: タモ×鉄脚</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/ittaigata_dining_counter/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="オーク無垢材" data-price="238700" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>丸脚のダイニングテーブル</h3>
+    <div class="price">¥238,700<small>(税込)</small></div>
+    <p class="desc">軽やかな印象の丸脚ダイニングテーブルです。 ななめに角度のついた特徴的な脚は、木の枝をイメージしています。温かみのある優しさと、すっきりとしたシャープさが同居したデザインです。 天</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1500×D850×H700</td><td class="pr">¥238,700</td></tr></tbody></table>
+      <div class="mat">素材: オーク無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/round-leg-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="オーク無垢材" data-price="238700" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>丸テーブル（円形・ラウンドテーブル）</h3>
+    <div class="price">¥238,700<small>(税込)</small></div>
+    <p class="desc">軽やかな印象の丸テーブル（ラウンドテーブル、円形ダイニングテーブル）です。 丸テーブルの優しい雰囲気のなかに、きりっとしたシャープさも感じるテーブルです。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1200×D1200</td><td class="pr">¥238,700</td></tr></tbody></table>
+      <div class="mat">素材: オーク無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/round-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="ブラックチェリー無垢材" data-price="0" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>ブラックチェリー無垢材のダイニングテーブル（厚天板40mm）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">しっかりとした40ｍｍ厚の天板を使用したダイニングテーブルです。板が厚くしっかりとした存在感。そして、安定感のある佇まいが、お部屋の主役にふさわしいテーブルです。 年月と共に深く色</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1800×D900×H690</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックチェリー無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table_t40_black_cherry/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="ウォールナット無垢材" data-price="0" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>ウォールナット無垢材のダイニングテーブル（厚天板40mm）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">しっかりとした40ｍｍ厚の天板を使用したダイニングテーブルです。板が厚くしっかりとした存在感。そして、安定感のある佇まい。ウォールナットの持ち味をしっかりと引き出したお部屋の主役に</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1500×D800×H700</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table_t40_walnut/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="オーク無垢材" data-price="0" data-w="1650">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>オーク無垢材のダイニングテーブル（厚天板40mm）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">しっかりとした40ｍｍ厚の天板を使用したダイニングテーブルです。板が厚くしっかりとした存在感。そして、安定感のある佇まいが、お部屋の主役にふさわしいテーブルです。 オーク材は年月と</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:87%"></div></div>
+      <div class="barnote">幅 1650mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1650×D850×H700</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table_t40_oak/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="タモ無垢材" data-price="0" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>タモ無垢材のダイニングテーブル（厚天板40mm）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">しっかりとした40ｍｍ厚の天板を使用したダイニングテーブルです。板が厚くしっかりとした存在感。そして、安定感のある佇まいが、お部屋の主役にふさわしいテーブルです。 年月と共に飴色に</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1500×D800×H700</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: タモ無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table_t40_tamo-2/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="ウォールナット無垢材" data-price="0" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>ウォールナット材の耳付きダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">耳付きの天板が、動きのある豊かな表情をみせてくれます。 しっかりとした40ｍｍ厚の天板を使用したダイニングテーブルです。板が厚くしっかりとした存在感。そして、安定感のある佇まいが、</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1500×D850×H690</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table_mimituki_walnut/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="ブラックチェリー無垢材" data-price="0" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>ブラックチェリー材の耳付きダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">耳付きの天板が、動きのある豊かな表情をみせてくれます。 しっかりとした厚みの天板を使用したダイニングテーブルです。板が厚くしっかりとした存在感。そして、安定感のある佇まいが、お部屋</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1500×D850×H700</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックチェリー無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table_mimituki_black_cherry/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="ブラックチェリー無垢材" data-price="0" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>ブラックチェリー無垢材 ダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">シンプルに美しく。シンプルに使いやすく。無垢材ならではの木そのものの表情、質感をしっかりと活かした作りです。 使うほどに、色、ツヤ、味わいを増し、どんどんと素敵になること。10年、</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1800×D900×H720</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックチェリー無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table-blackcherry/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="オーク無垢材" data-price="0" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>オーク無垢材 ダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">塗装：オイル シンプルに美しく。シンプルに使いやすく。無垢材ならではの木そのものの表情、質感をしっかりと活かした作りです。 天板の厚み、脚部の太さを少し変えて製作し、凛とした美しい</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1500×D850×H710</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table_oak_oil/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="ウォールナット無垢材" data-price="0" data-w="1400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>ウォールナット無垢材 ダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ウォールナット無垢材のダイニングテーブル。シャープな角度の天板と先細りの丸脚の、すっきりとしたデザインです。 「北欧家具と調和する、細めのすっきりとしたライン」をテーマに製作しまし</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:74%"></div></div>
+      <div class="barnote">幅 1400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1400×D750×H720</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table_walnut/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="タモ無垢材" data-price="0" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>タモ無垢材 ダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">シンプルに美しく。シンプルに使いやすく。無垢材ならではの木そのものの表情、質感をしっかりと活かした作りです。 先にむけて細くなるテーパー脚、天板の厚みのバランスを考え、すっきりと美</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1500×D850×H700</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: タモ無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table_tamo_oil/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="ウォールナット無垢材" data-price="313500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>無垢材のエクステンションテーブル</h3>
+    <div class="price">¥313,500<small>(税込)</small></div>
+    <p class="desc">人数、使い方、シーンに合わせて長さを変えられる、便利な無垢材の伸長式テーブルです。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>W850（1150・1450）×D850×H720mm</td><td></td><td class="pr">¥313,500</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/extension-table-oak-muku/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="タモ×鉄脚" data-price="0" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>タモ無垢材 鉄脚ダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">しっかりとした40ｍｍ厚の天板と鉄脚で作った、タモ無垢材のダイニングテーブルです。 無垢材、白、グレイの色味を基調にした空間に、鉄脚がアクセントになり、引き締まったダイニングに。同</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1800×D900</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: タモ×鉄脚</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/tamo-ironleg-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="ナラ×鉄脚" data-price="0" data-w="2000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>ナラ無垢材 鉄脚ダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">しっかりとした40ｍｍ厚みの天板を使用した、ナラ無垢材のダイニングテーブル。２メートルのどっしりとしたテーブルで余白を大切に。グレイッシュなキッチンや鉄の階段など、お家全体の空間と</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2000×D900</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ナラ×鉄脚</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/nara-ironleg-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="オーク無垢材" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>クロス脚のラウンドテーブル（丸テーブル）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">クロスする3本脚が独特なデザイン。 「どこからでも座りやすく、モダンな印象のラウンドテーブルを。」とのご相談での製作。 オーク無垢材の力強さを感じる天板は、切り込んだような面取りで</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: オーク無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/round-dining-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="ブラックチェリー無垢材" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>ブラックチェリー材の丸テーブル（カフェテーブル）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">3本脚の丸いカフェテーブルを、ブラックチェリー無垢材で製作しました。 丸い面取りの天板に丸脚をあわせて、可愛らしい印象に仕上げました。 経年変化も楽しみなオイル塗装仕上げです。時間</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ブラックチェリー無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/round-table-cherry/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="ウォールナット" data-price="0" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>ロクロ脚のダイニングテーブルをウォールナットで</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ロクロ脚のダイニングテーブルをウォールナットで製作しました。天板下に幕板を使わず、すっきりとした形です。 ヨーロッパのレトロなアンティークのような雰囲気とすっきりとしたモダンな雰囲</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1800×D850</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/spindle_legged_table_walnut/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>オリジナルの鉄脚ダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">オリジナルの鉄脚のダイニングテーブルができました。天板はウォールナットの耳付き板、脚部はちょっと変わった鉄脚で。 無骨さと繊細さ、機能性とデザイン性。相反するような感覚が馴染むよう</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/iron_legged_diningtable/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="オーク無垢材（着色）" data-price="0" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>2本脚（Ⅱ型脚）のダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">懐かしい雰囲気になりやすい2本脚（Ⅱ型脚）を、今回はモダンな雰囲気を重視し、細部の調整をして製作しました。 北欧の家具とも相性が良さそうな、柔らかくもすっきりとした雰囲気に仕上がっ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1500×D900</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク無垢材（着色）</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/2leg-table_order/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="ウォールナット無垢材" data-price="0" data-w="1630">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>変わった形のダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">いろんな形のダイニングテーブルの製作が可能です。 理想のイメージをぜひご相談下さい。 色々なサイズ、樹種（ウォールナット、ブラックチェリー、オーク他）でオーダー頂けます。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:86%"></div></div>
+      <div class="barnote">幅 1630mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1630×D1100×H720</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table_etc/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="オーク" data-price="0" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>ラフな仕上げのダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">オーク材のラフな仕上げのダイニングテーブル。 素材感を活かし、木そのものの節や割れ、切った時の鋸の後を残したダイニングテーブルです。 割れや節はちょうどよいバランスになるよう、少し</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1500×D850×H700</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table_oak_rough/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="タモ" data-price="0" data-w="1650">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>クロス脚のダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">一生使う、ダイニングテーブル。せっかくオーダーメイドで作るのだから、他にはない特別なダイニングテーブルを。 ということで、厚みのある天板と、アクセントのあるクロス脚で、こだわりのつ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:87%"></div></div>
+      <div class="barnote">幅 1650mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1650×D850×H690</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: タモ</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table_crossed-leg/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="ブラックチェリー" data-price="0" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>ブラックチェリー材のクロス脚ダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">沖縄県からのご依頼で製作しました。遠くから信頼して、大切な家具をオーダー下さり、本当にうれしいご依頼です。丁度タイミングが合ったのと、組立が必要という事もあり、那覇まで納品に伺いま</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1800×D900×H700</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックチェリー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table_crossed-leg_cherry/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル" data-mat="オーク" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル</div>
+    <h3>棚つき鉄脚のダイニングテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">棚つき鉄脚のダイニングテーブルです。 鉄脚は丸パイプを使用し、柔らかな雰囲気を出しました。 無骨になりすぎず、優しくなりすぎず、作業台のような、ダイニングテーブルのようなバランスで</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/dining-table_oak_iron-leg/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="オーク" data-price="196900" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>KB-01 キッチンボード</h3>
+    <div class="price">¥196,900<small>(税込)</small></div>
+    <p class="desc">木の温もりのあるキッチンボード（食器棚）。チェッカーガラスにしたり、すりガラスにしたり、とガラス変更が可能です。 大容量の収納と、大型の電子レンジが設置できるのも魅力的です。 写真</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>D510/310×H1900mm</td><td></td><td class="pr">¥196,900</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchen_board_order/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="ウォールナット" data-price="0" data-w="1352">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>KB-06 カップボード（パターンオーダー）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">パータンオーダーのカップボード（食器棚）です。 サイズはもちろん、引き出しや扉、ガラスや板戸など、ご要望に合わせてオーダー頂けます。 上置き収納のあるハイタイプのほか、カウンター型</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:71%"></div></div>
+      <div class="barnote">幅 1352mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1352×D422×H1600</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/cupboard_patternorder/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="ウォールナット" data-price="0" data-w="1402">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>KB-05 キッチンボード（パターンオーダー）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">パータンオーダーのキッチンボード（食器棚）です。 サイズはもちろん、ゴミ箱スペースを作ったり、引き出しや扉、ガラスや板戸など、ご要望に合わせてオーダー頂けます。 カウンター型のほか</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:74%"></div></div>
+      <div class="barnote">幅 1402mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1402×D425×H850</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchenboard_patternorder/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="ウォールナット" data-price="154000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>KB-ME キッチンボード</h3>
+    <div class="price">¥154,000<small>(税込)</small></div>
+    <p class="desc">木の温もりのあるキッチンボード（食器棚）。ウォールナット材での製作です。チェッカーガラスにしたり、すりガラスにしたりとガラス変更が可能です。 写真はウォールナット材ですが、オーク材</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>D460×H1900mm</td><td></td><td class="pr">¥154,000</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchen_board_walnut-2/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="オーク" data-price="291500" data-w="1174">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>KB-04 キッチンボード</h3>
+    <div class="price">¥291,500<small>(税込)</small></div>
+    <p class="desc">オーク材での製作です。チェッカーガラスにしたり、すりガラスにしたりとガラス変更が可能です。写真はオーク材ですが、ウォールナット材での製作も可能です。 前板に表情の異なる無垢材をあし</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:62%"></div></div>
+      <div class="barnote">幅 1174mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1174×D465</td><td class="pr">¥291,500</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchen_board_oak/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="ウォールナット" data-price="0" data-w="3300">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>KB-GR カウンターボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ウォールナットでの製作のW3300の長尺カウンターボード/キッチンボードです。前板が表情の異なる無垢材で、存在感抜群のカウンターボードです。壁材との相性もよく、良い存在感に収まりま</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 3300mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W3300×D475×H940</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/walnut_counter-board/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="オーク" data-price="0" data-w="1194">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>KB-02 キッチンボード（板戸）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">木の質感をしっかりと感じられる板戸のキッチンボード（食器棚）。隠したいものはしっかりと隠せるすぐれもの。 上部扉は上開きで、中が見やすく、頭もぶつからない。毎日のことなので、このち</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1194mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1194×D530</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchen-board_itado/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="オーク" data-price="0" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>KB-03 引き戸のキッチンボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">引き戸のキッチンボード（食器棚）。扉が引き戸になると、ほっとするような、懐かしいような雰囲気に。正面の必要スペースがコンパクトなので、お部屋を大きく使えます。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1200×D440×H1800</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchen_board_hikido/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="ウォールナット" data-price="0" data-w="2700">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>ウォールナット無垢材キッチンボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ウォールナットのキッチンボード（カウンターボード）を製作しました。 幅2700mmウォールナット無垢材のカウンタートップが存在感のある佇まい。 面取りも丸くせず、カクッとしたC面（</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2700mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2700×D520×H900</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchen_board_walnut/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="ウォールナット" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>ウォールナット カウンター型キッチンボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ウォールナットのキッチンボード（カウンターボード）、オーダーメイドでの製作です。 ウォールナット無垢材のカウンタートップの存在感を大切に、かつ、すっきりとシンプルなデザインで仕上げ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchenboard-walnut/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="オーク" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>オーク材キッチンボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">鉄の棚受けをアクセントに、収納力をしっかり、かつ、すっきりとしたデザインで仕上げたキッチンボード。 W2400mmと大きさのあるサイズですが、圧迫感が出ないよう空間とのバランスを考</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchenboard-order/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="オーク" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>オーク材、オーダーメイド食器棚</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ゴミ箱スペースや、キャスター付きのオーブンレンジ収納、そのための配線など、オーダーメイドならではの食器棚です。 オープン棚には、お気に入りの籠を入れられるように。また、扉や引き出し</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/order-kitchenboard-gomibako/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="ウォールナット" data-price="0" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>ウォールナット 吊り戸棚のキッチンボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">吊り戸棚のキッチンボードを製作しました。 ウォールナット材の木目や質感をしっかりと感じる、落ち着いた存在感。 また、すっきりとスマートな印象を大切にするため、ハンドルは付けずに手が</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1200×D500</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchen_board_walnut-3/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="オーク" data-price="0" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>オーク 吊り戸棚のオーダーキッチンボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">吊り戸棚で製作の、オーク材のオーダーメイド食器棚（キッチンボード）。 「食器棚にはこだわりたい。」と1年ほど前からご相談にお越し下さり、すっきりとした見た目、高さのバランスや、収納</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1800×D450</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchen_board_turi_todana/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="オーク" data-price="0" data-w="1470">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>オーク 鉄製取手のオーダーキッチンボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">鉄製ハンドルをあしらったオーク材のキッチンボード。 悩みに悩みながらの打ち合わせ、製作でしたが、幸せな納品の瞬間でした。 下部納品例にて、納品時のことを書き記していますので、読んで</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:77%"></div></div>
+      <div class="barnote">幅 1470mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1470×D450</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchen_board_oak_iron_handle/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="オーク" data-price="0" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>オークのラフなキッチンボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">オーク材のラフなキッチンボード。 木そのものの節や割れ、切った時の鋸の後を入れたキッチンボードです。 割れや節はちょうどよいバランスになるよう、少しずつ削り、配置する。絵を描くよう</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W600×D450×H1800</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/oak_rough_kitchen_board/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="オーク" data-price="0" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>チェッカーガラスと鉄製取手のキッチンボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">鉄製ハンドルとチェッカーガラスのオーク材のキッチンボード。 引出や収納は、クライアントのこだわりがぎゅっと詰まっています。 使いやすいように、こだわりを形にしました。 最も特徴的な</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1800×D450</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchenboard_iron_handle_checker_glass/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="ウォールナット" data-price="0" data-w="1680">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>ウォールナットのオーダーキッチンボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ウォールナットのキッチンボード（食器棚）を製作しました。収納を確保しながら、できる限りカクカクした雰囲気での製作です。取手も手掛かりもなしの、プッシュオープンオープンタイプです。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:88%"></div></div>
+      <div class="barnote">幅 1680mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1680×D510</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchenboard_walnut_order/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="オーク" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>天井までのキッチンボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">天井までのキッチンボード（食器棚）を製作しました。ガラスはチェッカーガラスを使用しています。 カウンター越しにキレイに見えるよう高さや作りにこだわりました。 天井までの作りですが、</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchenboard_till_ceiling/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="オーク" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>チェッカーガラスのキッチンボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">チェッカーガラスのキッチンボード（食器棚）を製作しました。 収納はオープン部分を多くとり、誰でもどこに何があるかわかるようにしました。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchenboard_checker_glass/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="オーク" data-price="0" data-w="1350">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>オークのキッチンカウンター / チェスト</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">オークのキッチンカウンター（チェスト）を製作しました。キッチンの背面に器を収納したり、天板に電子レンジを置いたり。 たっぷりと収納できるよう、大型の引き出しでの製作です。前板には手</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:71%"></div></div>
+      <div class="barnote">幅 1350mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1350×D525×H850</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchen_counter_chest/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチンボード・食器棚" data-mat="ウォールナット" data-price="0" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">キッチンボード・食器棚</div>
+    <h3>ウォールナットのオーダーキッチンカウンター</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ウォールナットのキッチンカウンターを製作しました。両面化粧の間仕切り収納としての使用です。 片面はキッチン側収納として、ゴミ箱スペースや大切な器をいれる食器棚です。 もう片面、ダイ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1500×D600×H850</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kitchen_counter_walnut/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ローテーブル・こたつ" data-mat="ブラックチェリー" data-price="280500" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ローテーブル・こたつ</div>
+    <h3>無垢材のこたつ（座卓ローテーブル）</h3>
+    <div class="price">¥280,500<small>(税込)</small></div>
+    <p class="desc">冬は暖かなこたつに、夏はシンプルな無垢材の座卓として、一年中心地よい暮らしに。どんな空間にもよく馴染むデザインです。 オーク、ブラックチェリー、ウォールナットの無垢材からオーダー頂</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1500×D850×H360</td><td class="pr">¥280,500</td></tr></tbody></table>
+      <div class="mat">素材: ブラックチェリー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/kotatsu_muku/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ローテーブル・こたつ" data-mat="ウォールナット無垢材" data-price="0" data-w="1100">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ローテーブル・こたつ</div>
+    <h3>ウォールナット材のリビングテーブル（センターテーブル）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ソファに合わせた高さ、お使いのシーンによりそう大きさ、少し丸みのあるデザイン。 シンプルだけれど、「ちょうど、しっくり馴染む」ように考えられたオーダーメイドのリビングテーブル（セン</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:58%"></div></div>
+      <div class="barnote">幅 1100mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1100×D520×H480</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット無垢材</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/living-table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ローテーブル・こたつ" data-mat="ウォールナット、鉄脚" data-price="0" data-w="900">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ローテーブル・こたつ</div>
+    <h3>ウォールナット材のネストテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">入れ子式のネストテーブル。「モダンに」というクライアントとのテーマから、ウォールナット材の天板に鉄脚をあわせて、すっきりと製作しました。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:47%"></div></div>
+      <div class="barnote">幅 900mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W900×D900×H370</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット、鉄脚</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/nest_table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ローテーブル・こたつ" data-mat="ー" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">ローテーブル・こたつ</div>
+    <h3>モンキーポッド輪切りのローテーブル</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">モンキーポッド輪切りのローテーブル（センターテーブル）です。 切り株になったモンキーポッドをローテーブルにして納品しました。自然にできたモンキーポッド特有の色の濃淡が美しく、空間に</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/monkey_pod_wagiri_low_table/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="ー" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>リノベーションマンション、家具コーディネート</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">不動産会社様からのご依頼でリノベーションマンションに家具をコーディネートさせていただきました。 美しい空間をよりよくするために。生活のイメージがわくように。 住む人のことを想像し、</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/furniture_cordinate/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="チェリー" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>コレクションケース</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">クラシックカーのインゴットを飾るコレクションケースを製作させて頂きました。 インゴットのシルバーが映える様、はめ込む台も、全てブラックチェリー無垢材での製作です。 思い入れのこもっ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/collection_case/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="wool 100%" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>ウィルトン織のウールラグ / カーペット COURT</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ウィルトン織のウールラグ、COURT。産業革命期に製造された機械を使用し、人の手も使いながら、丁寧に、丁寧に作りこまれていくカーペットです。柔らかな色彩の糸に染め、生産されていきま</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: wool 100%</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/wilton_woven_rug/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ソファ" data-mat="ナラ / ウォールナット / ブラックチェリー 他" data-price="152460" data-w="640">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ</div>
+    <h3>ペーパーナイフソファ</h3>
+    <div class="price">¥152,460<small>(税込)</small></div>
+    <p class="desc">デザイン：カイ・クリスチャンセン（デンマーク） 滑らかで美しいラインのアームが特徴的なウッドフレームソファー。 １人掛けのほか、２人掛けと３人掛け、またオットマンがあります。 お部</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:34%"></div></div>
+      <div class="barnote">幅 640mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W640×D770×H750 / 座面高 SH400</td><td class="pr">¥152,460</td></tr></tbody></table>
+      <div class="mat">素材: ナラ / ウォールナット / ブラックチェリー 他</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/paperknifesofa-miyazakiisu/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ソファ" data-mat="オーク×ウォールナット" data-price="466400" data-w="1900">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ</div>
+    <h3>シビルソファ/柏木工</h3>
+    <div class="price">¥466,400<small>(税込)</small></div>
+    <p class="desc">夏のキャンペーン開催中｜ポイント10％還元＆送料無料（8月31日まで） 圧倒的な背面の美しさ。ゆったりとひじを掛けられるワイドアーム。オークとウォールナットの絶妙なコントラスト。フ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 1900mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1900×D835×H795 / 座面高 SH390</td><td class="pr">¥466,400</td></tr></tbody></table>
+      <div class="mat">素材: オーク×ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/civil-sofa/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ソファ" data-mat="オーク" data-price="309100" data-w="1855">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ</div>
+    <h3>ウッドフレームソファ01（オーク）</h3>
+    <div class="price">¥309,100<small>(税込)</small></div>
+    <p class="desc">ゆったりしているけれども、腰が沈まない。クッションがちょうどいい硬さで、後ろ姿もしっかりと美しく仕上がったウッドフレームソファーです。 生地はカバーリングタイプとなっていて、お手入</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:98%"></div></div>
+      <div class="barnote">幅 1855mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1855×D810×H800 / 座面高 SH395</td><td class="pr">¥309,100</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/sofa_2p_oak/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ソファ" data-mat="オーク / ウォールナット" data-price="372900" data-w="1760">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ</div>
+    <h3>ハイバックソファ/NBC-420/419/日進木工</h3>
+    <div class="price">¥372,900<small>(税込)</small></div>
+    <p class="desc">すっきりとした繊細なラインが美しい、ハイバックソファ/パーソナルチェア。 背もたれが高く、首までもたれることができ、ゆったりとくつろげる座り心地は抜群です。 2.5人掛けと１人掛け</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:93%"></div></div>
+      <div class="barnote">幅 1760mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1760×D800×H990 / 座面高 SH375</td><td class="pr">¥372,900</td></tr></tbody></table>
+      <div class="mat">素材: オーク / ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/high-back-sofa_nbc-419/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ソファ" data-mat="オーク×ウォールナット" data-price="217800" data-w="695">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ</div>
+    <h3>シビルイージーチェア</h3>
+    <div class="price">¥217,800<small>(税込)</small></div>
+    <p class="desc">圧倒的な背面の美しさ。ゆったりとひじを掛けられるアーム。オークとウォールナットの絶妙なコントラスト。 包み込まれるような気持ちの良い座り心地、無垢材のイージーチェアです。 くつろぎ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:37%"></div></div>
+      <div class="barnote">幅 695mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W695×D900×H935 / 座面高 SH380</td><td class="pr">¥217,800</td></tr></tbody></table>
+      <div class="mat">素材: オーク×ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/civil-easy-chair/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ソファ" data-mat="オーク×ウォールナット" data-price="85800" data-w="620">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ</div>
+    <h3>丸型 オットマン スツール</h3>
+    <div class="price">¥85,800<small>(税込)</small></div>
+    <p class="desc">ころんとした丸い形が可愛らしい、オットマンスツール。 ソファとあわせて、足置き用のオットマンとしても、 しっかりとクッション性のある座り心地の良さは、一人掛けのリラックス椅子として</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:33%"></div></div>
+      <div class="barnote">幅 620mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W620×D620×H390</td><td class="pr">¥85,800</td></tr></tbody></table>
+      <div class="mat">素材: オーク×ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/ottoman-civil/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ソファ" data-mat="ウォールナット" data-price="453560" data-w="2180">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ</div>
+    <h3>ウッドフレームソファ02</h3>
+    <div class="price">¥453,560<small>(税込)</small></div>
+    <p class="desc">シンプルに無垢材の質感をしっかりと活かした、ウッドフレームソファーです。 生地はカバーリングタイプとなっていて、お手入れもしやすい設計です。 写真は３人掛けワイド版ですが、他に１人</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2180mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2180×D940×H800 / 座面高 SH390</td><td class="pr">¥453,560</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/sofa_walnat/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ソファ" data-mat="ブラックチェリー" data-price="309320" data-w="1890">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ソファ</div>
+    <h3>ウッドフレームソファ03</h3>
+    <div class="price">¥309,320<small>(税込)</small></div>
+    <p class="desc">少し細めのラインで、すっきりとした表情の、無垢材のウッドフレームソファーです。 生地はカバーリングタイプとなっていて、お手入れもしやすい設計です。 写真は３人掛けですが、他に１人掛</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:99%"></div></div>
+      <div class="barnote">幅 1890mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1890×D860×H840 / 座面高 SH410</td><td class="pr">¥309,320</td></tr></tbody></table>
+      <div class="mat">素材: ブラックチェリー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/sofa_black-cherry/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="オーク" data-price="294800" data-w="1570">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>LB-01 リビングボード</h3>
+    <div class="price">¥294,800<small>(税込)</small></div>
+    <p class="desc">高く細い脚部と本体のバランスが絶妙なリビングボードです。少し高めの脚部がスッキリとした印象を持たせ、お部屋が広く感じます。引き出しの精度も高く、一つを閉じると他の引き出しが飛び出し</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:83%"></div></div>
+      <div class="barnote">幅 1570mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1570×D420×H810</td><td class="pr">¥294,800</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/sv-living_board/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="ウォールナット" data-price="206800" data-w="1050">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>CC-01 キャビネットチェスト</h3>
+    <div class="price">¥206,800<small>(税込)</small></div>
+    <p class="desc">高く細い脚部と本体のバランスが絶妙なキャビネットチェストです。少し高めの脚部がスッキリとした印象を持たせ、お部屋が広く感じます。引き出しの精度も高く、一つを閉じると他の引き出しが飛</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:55%"></div></div>
+      <div class="barnote">幅 1050mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1050×D420×H810</td><td class="pr">¥206,800</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/cabinet_chest_walnut-2/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="オーク" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>LB-02 リビングボード（パターンオーダー）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">パターンオーダーのリビングボード（収納家具）です。 サイズはもちろん、棚をそなえたキャビネットや、引き出し収納のチェスト、テレビボードと組み合わせてなど、ご要望に合わせてオーダー頂</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/livingboard-oak/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="ウォールナット" data-price="302500" data-w="1803">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>SB-01 サイドボード</h3>
+    <div class="price">¥302,500<small>(税込)</small></div>
+    <p class="desc">すっきりとシンプルなサイドボード。 シンプルなデザインで、どんな空間にも馴染みやすく、 木目の美しさを楽しめるサイドボードです。 ウォールナット材の他、オーク材やブラックチェリー材</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1803mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1803×D415×H720</td><td class="pr">¥302,500</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/sideboard/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="ウォールナット" data-price="0" data-w="1400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>ウォールナットの壁面本棚</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ウォールナット材の壁面本棚を製作しました。全て固定棚の作りにしたことで、よりすっきりとした佇まいに仕上がったと思います。 身の回りの色々なものを掛けることも出来るよう、サイドには真</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:74%"></div></div>
+      <div class="barnote">幅 1400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1400×D275×H1875</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/wall-bookshelf-walnut/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="ウォールナット" data-price="0" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>ジュエリー / アクセサリーチェスト その3</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ジュエリー、アクセサリーのためのオーダーメイドチェスト（キャビネット）。ウォールナット材での製作です。 引出そのものが、ジュエリー（アクセサリー）ケースになっているチェストです。 </p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W400×D420×H330</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/jewelry_accessory_chest_walnut/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="オーク" data-price="0" data-w="580">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>ジュエリー / アクセサリーチェスト その２</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ジュエリー、アクセサリーのためのオーダーメイドチェスト（キャビネット）。オーク材での製作です。 引出そのものが、ジュエリー（アクセサリー）ケースになっているチェストです。 色鮮やか</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:31%"></div></div>
+      <div class="barnote">幅 580mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W580×D420×H330</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/jewelry_accessory_chest_cabinet_order-2/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="オーク" data-price="0" data-w="880">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>ジュエリー / アクセサリーチェスト</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ジュエリー、アクセサリーのためのオーダーメイドチェスト（キャビネット）。オーク材での製作です。 「引出そのものが、ジュエリー（アクセサリー）ケースになっているチェストを。」とのオー</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:46%"></div></div>
+      <div class="barnote">幅 880mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W880×D420×H1100</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/jewelry_accessory_chest_cabinet_order/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="オーク" data-price="0" data-w="2330">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>オークの壁面本棚</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">書斎に壁面本棚を製作しました。壁にぴったりと合うサイズはもちろん、隣接して置かれる予定のデスクとあわせた棚の位置など、オーダーメイドならではの仕上がりとなりました。アクセントクロス</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2330mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2330×D303×H2340</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/wall_book_chelf_oak/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="ブラックチェリー" data-price="0" data-w="1350">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>ブラックチェリーのキャビネット / カップボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">素敵な食器のコレクションを飾って収納するためのキャビネット/カップボードを、ブラックチェリー材で製作しました。 お部屋の中心となる存在感がありつつ、全体のインテリアにすっと馴染む、</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:71%"></div></div>
+      <div class="barnote">幅 1350mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1350×D420×H1000</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックチェリー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/cherry_cabinet_cupboard/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="オーク" data-price="0" data-w="2550">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>オーク材のキャビネット/ワードローブ</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">飾る収納と隠す収納。 ガラス扉の飾る収納は、ソファー越しでも見えるよう高めの位置に配置しました。隠す収納は、しっかりと大容量の収納力を確保。左側、縦長の板戸部分はお洋服を掛けられる</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2550mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2550×D450×H1600</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/cabinet_wardrobe/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="チェリー" data-price="0" data-w="1030">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>チェリーのキャビネット</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ブラックチェリー材のキャビネット兼チェストを製作しました。 キッチンから続く、ダイニング空間に。食器類を収めるように、とご依頼くださいました。 見せる収納と、見せない収納。両方存在</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:54%"></div></div>
+      <div class="barnote">幅 1030mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1030×D420×H1350</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/cherry_cabinet/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="オーク" data-price="0" data-w="850">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>オークのキャビネット チェスト</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">オーク材のキャビネット兼チェストを製作しました。木目をつなげることはもちろん、木材を一番活かせるよう、選定や配置にこだわっての製作です。 納品後、お礼のご連絡をいただきました。大変</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:45%"></div></div>
+      <div class="barnote">幅 850mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W850×D400×H1250</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/cabinet_chest_oak/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="ウォールナット" data-price="0" data-w="1350">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>ウォールナットのキャビネットチェスト</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ウォールナットのキャビネットチェスト。見せる収納と見せない収納を配置することで、気軽に飾ったり、収納したりできる事を目指しました。 木目の繋がり、厚みや細部のバランス、ウォールナッ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:71%"></div></div>
+      <div class="barnote">幅 1350mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1350×D420×H1200</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/cabinet_chest_walnut/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="ウォールナット" data-price="0" data-w="1940">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>ウォールナットの水槽台</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">オーダーメイドでウォールナットの水槽台を製作しました。 水槽台ぽくないローボードのような水槽台を。というご依頼でした。真鍮をアクセントにしながら、上手く形にできたのではないかと思い</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 1940mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1940×D465×H550</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/aquarium-cabinet-walnut/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="オーク" data-price="0" data-w="2120">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>オークの水槽台</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">オーダーメイドでオークの水槽台を製作しました。 すっきりとした作りで、収納はA4ファイルが、前後２列、上下２段で入るなど、大容量です。 お持ちのものに合わせて、収納が変えていけるの</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2120mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2120×D600×H900</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/aquarium-cabinet-oak/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="アサメラ×鉄脚" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>一枚板と鉄脚の水槽台</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">重厚感のある一枚板を天板に、水槽台を製作しました。見た目が重くなりすぎないようバランスをとるため、脚部は鉄脚でオープン仕様にしました。軽やかさと重厚感。両立した水槽台が仕上がったと</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: アサメラ×鉄脚</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/aquarium-cabinet-order-2/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="オーク" data-price="0" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>オークのチェスト（箪笥）</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">シンプルなオークのチェスト（箪笥）を製作しました。アクセントにラフな鉄のつまみをあしらい、表情をつけました。 シンプルになればなるほど、素材や細部ののクオリティーが仕上がりの表情に</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W600×D450×H1165</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/chest_oak/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="オーク" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>オークのオーダーメイドテレビボード/キャビネット</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ダイニングテーブルとテレビボードとキャビネットを併せてご依頼いただきました。 テレビボードとキャビネットは並んだ姿が美しくなる様、デザインはもちろん、脚の高さなど、ラインやサイズを</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/oak_order_tv-board_cabinet/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="ウォールナット" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>ウォールナットのオーダーメイドテレビボード/キャビネット</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ダイニングセットとテレビボードとキャビネットを併せてご依頼いただきました。 テレビボードとキャビネットは並んだ姿が美しくなる様、デザインはもちろん、脚の高さなど、ラインやサイズを揃</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/walnut_order_tv-board_cabinet/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="オーク" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>オークのオーダーメイドテレビボード/チェスト</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">テレビボードとチェスト（衣類収納）を併せてご依頼いただきました。 テレビボードとチェストは並んだ姿が美しくなる様、デザインはもちろん、脚の高さなど、ラインやサイズを揃えています。 </p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/oar_tv-board_chest_order/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="収納家具・キャビネット" data-mat="ウォールナット" data-price="0" data-w="1500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">収納家具・キャビネット</div>
+    <h3>ウォールナットのテレビボード兼キャビネット</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">シンプルなテレビボード兼キャビネット。ウォールナットの板戸に、アクセントとして真鍮のツマミをあしらいました。 壁掛けテレビとのバランスや収納力を考え、背はすこし高めのH550mmで</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:79%"></div></div>
+      <div class="barnote">幅 1500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1500×D450×H550</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/walnut_order_tv-board/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="ウォールナット" data-price="231000" data-w="2000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>TB-01 テレビボード</h3>
+    <div class="price">¥231,000<small>(税込)</small></div>
+    <p class="desc">重厚感のある美しさのテレビボード。 すっきりとした前板の板戸は、閉じたままリモコンを使える仕様です。両サイドの引出はソフトクローズで、滑らかな仕上がり。 サイドにキャビネットを置い</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2000×D467×H350</td><td class="pr">¥231,000</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/tb-01_tv-board/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="オーク" data-price="217800" data-w="1570">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>TB-02 テレビボード</h3>
+    <div class="price">¥217,800<small>(税込)</small></div>
+    <p class="desc">高く細い脚部と本体のバランスが絶妙なテレビボード。 凛とした潔いデザインです。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:83%"></div></div>
+      <div class="barnote">幅 1570mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1570×D420×H420</td><td class="pr">¥217,800</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/salvia-tv_oak/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="ウォールナット" data-price="302500" data-w="2104">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>TB-RI テレビボード</h3>
+    <div class="price">¥302,500<small>(税込)</small></div>
+    <p class="desc">波打つ前板が、柔らかな印象のテレビボード。 優しく美しい曲線が特徴的、ルーバータイプのテレビボードです。 写真は脚付きタイプですが、より重厚感のある台輪タイプも可能です。 ウォール</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2104mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2104×D434×H517</td><td class="pr">¥302,500</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/tv-board-louver-3/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="ブラックチェリー" data-price="192500" data-w="2003">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>TB-CER テレビボード</h3>
+    <div class="price">¥192,500<small>(税込)</small></div>
+    <p class="desc">シンプルな、ルーバータイプのテレビボード。 上品な色味がうつくしい、ブラックチェリー材です。 その他の樹種でもお作りがございます。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2003mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2003×D465×H368</td><td class="pr">¥192,500</td></tr></tbody></table>
+      <div class="mat">素材: ブラックチェリー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/tv-board-louver-2/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="ブラックチェリー" data-price="236500" data-w="2004">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>TB-03 テレビボード</h3>
+    <div class="price">¥236,500<small>(税込)</small></div>
+    <p class="desc">大容量のフラップ扉で、TVまわりのものをすっきりと収納できます。 経年変化も楽しんでいただきたいテレビボードです。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2004mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2004×D444×H420</td><td class="pr">¥236,500</td></tr></tbody></table>
+      <div class="mat">素材: ブラックチェリー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/tb-03-tv_board_cherry/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="ウォールナット" data-price="0" data-w="2370">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>ウォールナット無垢材のテレビボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">重厚感のある無垢材のテレビボード。こちらはウォールナットでの製作ですが、様々な樹種、サイズをお選びいただけます。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2370mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2370×D430×H400</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/tv-board_walnut_muku/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="アルダー" data-price="0" data-w="3400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>AS-01 ユニット</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">間取りやライフスタイルに合わせてユニットを変更できる、使う場所を選ばない家具です。 リビングルームにテレビボードとデスク、キャビネットなどを揃ったデザインで設置でき、リビング学習に</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 3400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W3400×D450×H715</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: アルダー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/storage_alder_walnut-2/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="オーク" data-price="0" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>オーク材のオーダーメイドテレビボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">オーク材の力強さのなかに、すこし丸みのある脚が、優しさを感じさせるテレビボードです。 テレビやお部屋のサイズとのバランス、収納されたいDVDのことなどをご相談し、 「きっとこんな風</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1800×D420×H420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/oak-order-tv-board-2/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="オーク" data-price="0" data-w="2100">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>オーク無垢材のオーダーメイドテレビボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">総無垢の存在感を活かしながら、見た目が重たくなりすぎないよう、脚付きで製作したテレビボードです。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2100mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2100×D420×H400</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/oak_order_tv-board/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="ブラックチェリー" data-price="0" data-w="2000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>ブラックチェリー無垢材のオーダーメイドテレビボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">ブラックチェリー無垢材の存在感を活かしながら、見た目が重たくなりすぎないよう、脚付きで製作したテレビボードです。 木材は色の変化を楽しめますが、チェリー材は何より変化が楽しみな木材</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2000×D420×H420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ブラックチェリー</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/tv-board_cherry_order/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="オーク" data-price="0" data-w="2000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>オーク材のシンプルなテレビボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">「無垢材の存在感が味わえ、木の温もりや優しさのある、テレビボードを。」とのオーダーで、製作させて頂きました。 無垢材らしい重厚感と、オークの持つ優しい色味の持ち味を上手くだしたいと</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2000×D420×H315</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/oak_order_simple_tv-board/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="ウォールナット" data-price="0" data-w="1350">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>ウォールナット材のオーダーメイド テレビボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">空間に合わせた、小さめのサイズでご依頼いただきました。 小ぶりなテレビボードでもすっきりとした印象になるように、シャープな台輪脚でのデザインです。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:71%"></div></div>
+      <div class="barnote">幅 1350mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1350×D420×H420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/walnut-tv-board/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="ウォールナット" data-price="0" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>ウォールナットのシンプルなテレビボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">「木の箱」の様に、すっきりと究極にシンプルなテレビボードを、とのオーダー。 シンプルを目指すほどに、技術・精度・素材の良しあしが出来上がりに大きく影響してくるため、丁寧に、丁寧に、</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1800×D420×H300</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/tv-board_walnut_simple/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="ウォールナット" data-price="0" data-w="1250">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>ウォールナットのシンプルなテレビボード その２</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">以前製作のウォールナットのテレビボードを見てご依頼いただきました。 家具製作は常に丁寧に取り組んでいますが、遠方からのご依頼のため、納品まで喜んでいただけるか緊張しっぱなしでした。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:66%"></div></div>
+      <div class="barnote">幅 1250mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W1250×D430×H400</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/tv-board_simple_part2/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="アサメラ×ウォールナット" data-price="0" data-w="2100">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>アサメラとウォールナットのテレビボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">耳付のアサメラ一枚板と、ウォールナット無垢材で製作したテレビボードです。 圧倒的な存在感の、アサメラ一枚板の天板。本体のラインを太くしすぎると、野暮ったくなる。スッキリさせすぎると</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2100mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2100×D420×H400</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: アサメラ×ウォールナット</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/asamela_walnut_tv-board/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="モンキーポッド×鉄脚" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>モンキーポッド一枚板と鉄脚のテレビボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">モンキーポッドのダイニングセットをご依頼いただいたクライアントに、テレビボードも製作させていただきました。 テレビボードはすっきりとシンプルに、鉄と合わせて格好良い雰囲気で、とのご</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: モンキーポッド×鉄脚</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/monkeypod-ichimaiita-tvboard/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="鉄脚" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>一枚板と鉄脚のテレビボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">世界に一つだけの存在感、一枚板の天板に鉄脚をあわせた、潔い佇まい。 鉄脚は木との相性を考え、ブラウンがかった特別色で仕上げています。真っ黒だとのっぺり重たくなりすぎる、でも、あくま</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: 鉄脚</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/tv-board_ichimaiita_iron-leg/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="オーク" data-price="0" data-w="2530">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>テレビボード兼パソコンデスク</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">すっきりとシンプルなデザインに、オーク無垢材が組み合わさることで、「本物」の存在感があるのに、とても暮らしになじむ、テレビボードが完成しました。 デッキ用棚の下の収納BOXはキャス</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:100%"></div></div>
+      <div class="barnote">幅 2530mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W2530×D500×H420</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/tv-board_pc-desk/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テレビボード" data-mat="" data-price="0" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">価格はお問い合わせ</span></div>
+  <div class="body">
+    <div class="cat">テレビボード</div>
+    <h3>バーチ無垢材のテレビボード</h3>
+    <div class="price">価格はお問い合わせ<small></small></div>
+    <p class="desc">シンプルな無垢材のテレビボードです。 シンプルなほど難しい。 どの材を使うか。どこに使うか。機械の精度はどうか。 木材と正面から向かい合って製作した一品です。</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <div class="mat">サイズ・価格はお問い合わせ(セミオーダー可)</div>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://www.cachitofurniture.com/furniture/tv-board_birch/" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、cachito furniture様の公式サイト(<a href="https://www.cachitofurniture.com/furniture/" target="_blank" rel="noopener">https://www.cachitofurniture.com/furniture/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
