@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>はせ工房(HASE CRAFT)｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。はせ工房(HASE CRAFT)様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>はせ工房(HASE CRAFT)</h1>
+  <p class="tagline">恵那市の木工房。公式サイトの「豆いす」ページと、別サイトのショップ(HASE CRAFT)に分かれて載っている23点の品名・サイズ・材・価格(税込)を1枚に並べました。</p>
+  <div class="badges"><span>岐阜県恵那市</span><span>掲載 23点</span><span>サイズ・価格から探せます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="子供家具">子供家具</button><button class="chip" data-k="cat" data-v="椅子">椅子</button><button class="chip" data-k="cat" data-v="小物">小物</button><button class="chip" data-k="cat" data-v="靴べら">靴べら</button><button class="chip" data-k="cat" data-v="台所道具">台所道具</button><button class="chip" data-k="cat" data-v="文具">文具</button><button class="chip" data-k="cat" data-v="裁縫道具">裁縫道具</button><button class="chip" data-k="cat" data-v="花器">花器</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option><option value="桧(ヒノキ)">桧(ヒノキ)</option><option value="ナラ">ナラ</option><option value="ケヤキ">ケヤキ</option><option value="トチ">トチ</option><option value="カエデ">カエデ</option><option value="ヤマザクラ">ヤマザクラ</option><option value="クリ">クリ</option><option value="ミズメザクラ">ミズメザクラ</option><option value="ネムノキ">ネムノキ</option><option value="ヒノキ">ヒノキ</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="子供家具" data-mat="桧(ヒノキ)" data-price="16000" data-w="280">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">子供家具</div>
+    <h3>桧の豆いす(子供の椅子)</h3>
+    <div class="price">¥16,000<small>(税込)</small></div>
+    <p class="desc">お子様が最初に出逢う家具。角や面をやさしく仕上げ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:15%"></div></div>
+      <div class="barnote">幅 280mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W280×D290×H350 / 座面高 SH200</td><td class="pr">¥16,000</td></tr></tbody></table>
+      <div class="mat">素材: 桧(ヒノキ) / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/55531183" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="子供家具" data-mat="桧(ヒノキ)" data-price="21000" data-w="330">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">子供家具</div>
+    <h3>桧の豆いす(大)</h3>
+    <div class="price">¥21,000<small>(税込)</small></div>
+    <p class="desc">幼児〜小学生向けの一回り大きいサイズ。大人の小椅子にも</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:17%"></div></div>
+      <div class="barnote">幅 330mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>大</td><td>W330×D345×H450 / 座面高 SH270</td><td class="pr">¥21,000</td></tr></tbody></table>
+      <div class="mat">素材: 桧(ヒノキ) / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/58365480" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="子供家具" data-mat="桧(ヒノキ)" data-price="21000" data-w="560">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">子供家具</div>
+    <h3>桧の豆机(子供の机)</h3>
+    <div class="price">¥21,000<small>(税込)</small></div>
+    <p class="desc">豆いすに合わせた机。天板厚3.8cm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 560mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W560×D350×H385</td><td class="pr">¥21,000</td></tr></tbody></table>
+      <div class="mat">素材: 桧(ヒノキ) / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/55531512" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="子供家具" data-mat="桧(ヒノキ)" data-price="35000" data-w="560">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">子供家具</div>
+    <h3>桧の豆いすと豆机のセット</h3>
+    <div class="price">¥35,000<small>(税込)</small></div>
+    <p class="desc">「桧の豆いす」と「桧の豆机」のセット</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 560mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>豆いす</td><td>W280×D290×H350 / 座面高 SH200</td><td class="pr">—</td></tr><tr><td>豆机</td><td>W560×D350×H385</td><td class="pr">¥35,000</td></tr></tbody></table>
+      <div class="mat">素材: 桧(ヒノキ) / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/58364907" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="桧(ヒノキ)" data-price="33000" data-w="420">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注生産</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ダイニングチェア</h3>
+    <div class="price">¥33,000<small>(税込)</small></div>
+    <p class="desc">食卓用・学習机用。受注生産(配送まで3〜4週間)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:22%"></div></div>
+      <div class="barnote">幅 420mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W420×D420×H700 / 座面高 SH420</td><td class="pr">¥33,000</td></tr></tbody></table>
+      <div class="mat">素材: 桧(ヒノキ) / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/57613527" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="子供家具" data-mat="桧(ヒノキ)" data-price="1500" data-w="160">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">子供家具</div>
+    <h3>桧の積み木セット(化粧箱入り)</h3>
+    <div class="price">¥1,500<small>(税込)</small></div>
+    <p class="desc">6種類×2個=12個。無塗装でお子様が舐めても安心</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:8%"></div></div>
+      <div class="barnote">幅 160mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>箱入り全体</td><td>W160×D125×H55</td><td class="pr">¥1,500</td></tr></tbody></table>
+      <div class="mat">素材: 桧(ヒノキ) / 塗装: 無塗装</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/57481012" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="小物" data-mat="桧(ヒノキ)" data-price="2900" data-w="150">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">小物</div>
+    <h3>タブレットスタンド</h3>
+    <div class="price">¥2,900<small>(税込)</small></div>
+    <p class="desc">縦横どちらも立てられ、角度が自在</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:8%"></div></div>
+      <div class="barnote">幅 150mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W150×D230×H127</td><td class="pr">¥2,900</td></tr></tbody></table>
+      <div class="mat">素材: 桧(ヒノキ) / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/57221153" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="靴べら" data-mat="ナラ/ケヤキ" data-price="6000" data-w="700">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫なし</span></div>
+  <div class="body">
+    <div class="cat">靴べら</div>
+    <h3>木の靴べら(70cm)</h3>
+    <div class="price">¥6,000<small>(税込)</small></div>
+    <p class="desc">立ったまま履くのに使いやすい長さ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:37%"></div></div>
+      <div class="barnote">幅 700mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>長さ70cm</td><td>W700×D40×H18</td><td class="pr">¥6,000</td></tr></tbody></table>
+      <div class="mat">素材: ナラ/ケヤキ / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/55541643" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="靴べら" data-mat="ナラ/ケヤキ/トチ" data-price="3800" data-w="500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫なし</span></div>
+  <div class="body">
+    <div class="cat">靴べら</div>
+    <h3>木の靴べら(50cm)</h3>
+    <div class="price">¥3,800<small>(税込)</small></div>
+    <p class="desc">立っても座っても使いやすい長さ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:26%"></div></div>
+      <div class="barnote">幅 500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>長さ50cm</td><td>W500×D40×H20</td><td class="pr">¥3,800</td></tr></tbody></table>
+      <div class="mat">素材: ナラ/ケヤキ/トチ / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/55541879" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="靴べら" data-mat="ナラ/ケヤキ/トチ" data-price="3300" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫なし</span></div>
+  <div class="body">
+    <div class="cat">靴べら</div>
+    <h3>木の靴べら(40cm)</h3>
+    <div class="price">¥3,300<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>長さ40cm</td><td>W400×D40×H20</td><td class="pr">¥3,300</td></tr></tbody></table>
+      <div class="mat">素材: ナラ/ケヤキ/トチ / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/57220885" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="靴べら" data-mat="ナラ/ケヤキ/トチ/カエデ" data-price="3000" data-w="300">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫なし</span></div>
+  <div class="body">
+    <div class="cat">靴べら</div>
+    <h3>木の靴べら(30cm)</h3>
+    <div class="price">¥3,000<small>(税込)</small></div>
+    <p class="desc">座って使うのに適した長さ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:16%"></div></div>
+      <div class="barnote">幅 300mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>長さ30cm</td><td>W300×D35×H20</td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: ナラ/ケヤキ/トチ/カエデ / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/64334399" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="靴べら" data-mat="ナラ/トチ/カエデ/ヤマザクラ/クリ" data-price="2500" data-w="250">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫なし</span></div>
+  <div class="body">
+    <div class="cat">靴べら</div>
+    <h3>木の靴べら(携帯用)</h3>
+    <div class="price">¥2,500<small>(税込)</small></div>
+    <p class="desc">オフィスや旅行先で。18・20・25cmの3種類</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:13%"></div></div>
+      <div class="barnote">幅 250mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>18cm</td><td>W180×D40×H20</td><td class="pr">¥2,500</td></tr><tr><td>20cm</td><td>W200×D40×H20</td><td class="pr">¥2,500</td></tr><tr><td>25cm</td><td>W250×D40×H20</td><td class="pr">¥2,500</td></tr></tbody></table>
+      <div class="mat">素材: ナラ/トチ/カエデ/ヤマザクラ/クリ / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/68100523" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="台所道具" data-mat="ヤマザクラ/カエデ" data-price="4200" data-w="280">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫なし</span></div>
+  <div class="body">
+    <div class="cat">台所道具</div>
+    <h3>木のフライ返し(大)</h3>
+    <div class="price">¥4,200<small>(税込)</small></div>
+    <p class="desc">持ち手の曲がりを充分にとった使いやすい形。約80g</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:15%"></div></div>
+      <div class="barnote">幅 280mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>大</td><td>W280×D90×H40</td><td class="pr">¥4,200</td></tr></tbody></table>
+      <div class="mat">素材: ヤマザクラ/カエデ / 塗装: ツバキ油</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/57613169" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="台所道具" data-mat="ヤマザクラ/カエデ" data-price="3300" data-w="260">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">台所道具</div>
+    <h3>木のフライ返し(小)</h3>
+    <div class="price">¥3,300<small>(税込)</small></div>
+    <p class="desc">約62g</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:14%"></div></div>
+      <div class="barnote">幅 260mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>小</td><td>W260×D70×H35</td><td class="pr">¥3,300</td></tr></tbody></table>
+      <div class="mat">素材: ヤマザクラ/カエデ / 塗装: ツバキ油</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/57220983" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="文具" data-mat="カエデ/ヤマザクラ" data-price="1900" data-w="220">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫なし</span></div>
+  <div class="body">
+    <div class="cat">文具</div>
+    <h3>木のペーパーナイフ(カエデ・ヤマザクラ)</h3>
+    <div class="price">¥1,900<small>(税込)</small></div>
+    <p class="desc">引き出しに収納しやすいシンプルな形。12〜15g</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:12%"></div></div>
+      <div class="barnote">幅 220mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W220×D20×H8</td><td class="pr">¥1,900</td></tr></tbody></table>
+      <div class="mat">素材: カエデ/ヤマザクラ / 塗装: ツバキ油(自家製)とエゴマ油</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/61138662" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="文具" data-mat="カエデ" data-price="2500" data-w="190">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">文具</div>
+    <h3>木のペーパーナイフ L型</h3>
+    <div class="price">¥2,500<small>(税込)</small></div>
+    <p class="desc">持ち手を持ちやすく、先端に十分な曲がり</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:10%"></div></div>
+      <div class="barnote">幅 190mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W190×D28×H23</td><td class="pr">¥2,500</td></tr></tbody></table>
+      <div class="mat">素材: カエデ / 塗装: ツバキ油(自家製)</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/68140030" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="裁縫道具" data-mat="ナラ/ケヤキ/ミズメザクラ/クリ" data-price="2900" data-w="215">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">裁縫道具</div>
+    <h3>木の糸立て(大)</h3>
+    <div class="price">¥2,900<small>(税込)</small></div>
+    <p class="desc">糸・針山・ハサミを一緒に収納</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:11%"></div></div>
+      <div class="barnote">幅 215mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>大</td><td>W215×D55×H50</td><td class="pr">¥2,900</td></tr></tbody></table>
+      <div class="mat">素材: ナラ/ケヤキ/ミズメザクラ/クリ / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/57530644" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="裁縫道具" data-mat="ナラ/ケヤキ/ミズメザクラ/クリ" data-price="2400" data-w="170">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫なし</span></div>
+  <div class="body">
+    <div class="cat">裁縫道具</div>
+    <h3>木の糸立て(中)</h3>
+    <div class="price">¥2,400<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:9%"></div></div>
+      <div class="barnote">幅 170mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>中</td><td>W170×D55×H50</td><td class="pr">¥2,400</td></tr></tbody></table>
+      <div class="mat">素材: ナラ/ケヤキ/ミズメザクラ/クリ / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/57222314" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="裁縫道具" data-mat="ナラ/ケヤキ/ミズメザクラ/クリ" data-price="1900" data-w="125">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫なし</span></div>
+  <div class="body">
+    <div class="cat">裁縫道具</div>
+    <h3>木の糸立て(小)</h3>
+    <div class="price">¥1,900<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:7%"></div></div>
+      <div class="barnote">幅 125mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>小</td><td>W125×D55×H50</td><td class="pr">¥1,900</td></tr></tbody></table>
+      <div class="mat">素材: ナラ/ケヤキ/ミズメザクラ/クリ / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/57530551" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="小物" data-mat="ナラ" data-price="2700" data-w="24">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">小物</div>
+    <h3>木のフック(4個入)</h3>
+    <div class="price">¥2,700<small>(税込)</small></div>
+    <p class="desc">ブロンズ色のステンレスビス付き</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:1%"></div></div>
+      <div class="barnote">幅 24mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>4個入</td><td>W24×D30×H40</td><td class="pr">¥2,700</td></tr></tbody></table>
+      <div class="mat">素材: ナラ / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/57526302" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="小物" data-mat="ナラ" data-price="1500" data-w="24">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">小物</div>
+    <h3>木のフック(2個入)</h3>
+    <div class="price">¥1,500<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:1%"></div></div>
+      <div class="barnote">幅 24mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>2個入</td><td>W24×D30×H40</td><td class="pr">¥1,500</td></tr></tbody></table>
+      <div class="mat">素材: ナラ / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/57526367" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="花器" data-mat="ネムノキ/ヒノキ/ヤマザクラ/カエデ/ナラ/クリ" data-price="1500" data-w="70">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫なし</span></div>
+  <div class="body">
+    <div class="cat">花器</div>
+    <h3>野の花や葉が似合う一輪挿し</h3>
+    <div class="price">¥1,500<small>(税込)</small></div>
+    <p class="desc">重心を下部にした倒れにくい形</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:4%"></div></div>
+      <div class="barnote">幅 70mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準</td><td>W70×D60×H90</td><td class="pr">¥1,500</td></tr></tbody></table>
+      <div class="mat">素材: ネムノキ/ヒノキ/ヤマザクラ/カエデ/ナラ/クリ / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/57221261" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="花器" data-mat="ヒノキ/ヤマザクラ/クリ" data-price="1700" data-w="80">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">在庫なし</span></div>
+  <div class="body">
+    <div class="cat">花器</div>
+    <h3>一輪挿し(大)</h3>
+    <div class="price">¥1,700<small>(税込)</small></div>
+    <p class="desc">試験管1個付き。価格は1個</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:4%"></div></div>
+      <div class="barnote">幅 80mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>大</td><td>W80×D70×H110</td><td class="pr">¥1,700</td></tr></tbody></table>
+      <div class="mat">素材: ヒノキ/ヤマザクラ/クリ / 塗装: 植物性オイル</div>
+    </div>
+    <a class="more" href="https://hasecraft.theshop.jp/items/61137621" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、はせ工房(HASE CRAFT)様の公式サイト(<a href="https://hasekoubou.com/" target="_blank" rel="noopener">https://hasekoubou.com/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
