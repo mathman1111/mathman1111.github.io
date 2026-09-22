@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>福庭家具工房｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。福庭家具工房様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>福庭家具工房</h1>
+  <p class="tagline">美濃加茂市の家具工房。丸テーブル・学習机・椅子・ベンチ・ダイニングテーブル脚など13カテゴリが別々のページに載っている定番品53点の品名・サイズ・価格(税込・〜)を1枚に並べました。</p>
+  <div class="badges"><span>岐阜県美濃加茂市</span><span>掲載 53点</span><span>サイズ・価格から探せます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="椅子">椅子</button><button class="chip" data-k="cat" data-v="丸テーブル">丸テーブル</button><button class="chip" data-k="cat" data-v="学習机">学習机</button><button class="chip" data-k="cat" data-v="ダイニングテーブル(脚)">ダイニングテーブル(脚)</button><button class="chip" data-k="cat" data-v="座卓(脚)">座卓(脚)</button><button class="chip" data-k="cat" data-v="座卓(天板)">座卓(天板)</button><button class="chip" data-k="cat" data-v="シンプルテーブル">シンプルテーブル</button><button class="chip" data-k="cat" data-v="ベンチ">ベンチ</button><button class="chip" data-k="cat" data-v="ベッド">ベッド</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option><option value="無垢材">無垢材</option><option value="アイアン">アイアン</option><option value="ビーチ">ビーチ</option><option value="メープル">メープル</option><option value="チェリー">チェリー</option><option value="タモ">タモ</option><option value="クルミ">クルミ</option><option value="栗">栗</option><option value="山桜">山桜</option><option value="ウォールナット">ウォールナット</option><option value="ナラ">ナラ</option><option value="セン">セン</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="88000" data-w="420">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 ダイニングチェアーA</h3>
+    <div class="price">¥88,000<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:22%"></div></div>
+      <div class="barnote">幅 420mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W420×D470×H850</td><td class="pr">¥88,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/diningchair-a" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="77000" data-w="420">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ダイニングチェアーa</h3>
+    <div class="price">¥77,000<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:22%"></div></div>
+      <div class="barnote">幅 420mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W420×D470×H700</td><td class="pr">¥77,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/diningchair-a-2" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="44000" data-w="550">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 ダイニングチェアーB</h3>
+    <div class="price">¥44,000<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 550mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W550×D500×H780</td><td class="pr">¥44,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/diningchair-b" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="66000" data-w="460">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 ダイニングチェアーC</h3>
+    <div class="price">¥66,000<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 460mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W460×D500×H780</td><td class="pr">¥66,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/diningchair-c-2" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="44000" data-w="440">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 ダイニングチェアーD</h3>
+    <div class="price">¥44,000<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:23%"></div></div>
+      <div class="barnote">幅 440mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W440×D515×H780</td><td class="pr">¥44,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/diningchair-d" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="66000" data-w="440">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 ダイニングチェアーE</h3>
+    <div class="price">¥66,000<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:23%"></div></div>
+      <div class="barnote">幅 440mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W440×D525×H780</td><td class="pr">¥66,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/diningchair-e" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="110000" data-w="570">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 アームチェアーA</h3>
+    <div class="price">¥110,000<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:30%"></div></div>
+      <div class="barnote">幅 570mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W570×D460×H620</td><td class="pr">¥110,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/armchair-a" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="77000" data-w="560">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 アームチェアーB</h3>
+    <div class="price">¥77,000<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:29%"></div></div>
+      <div class="barnote">幅 560mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W560×D510×H660</td><td class="pr">¥77,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/armchair-b" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="77000" data-w="500">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 アームチェアーC</h3>
+    <div class="price">¥77,000<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:26%"></div></div>
+      <div class="barnote">幅 500mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W500×D480×H780</td><td class="pr">¥77,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/armchair-c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="22000" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 スツールB</h3>
+    <div class="price">¥22,000<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W400×D370×H400</td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/stool-b" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="33000" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 ティーチェアーC</h3>
+    <div class="price">¥33,000<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W400×D385×H680</td><td class="pr">¥33,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/teachair-c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="33000" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 カウンターチェアーA</h3>
+    <div class="price">¥33,000<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W400×D370×H600</td><td class="pr">¥33,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/counterchair-a" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="38500" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 カウンターチェアーC</h3>
+    <div class="price">¥38,500<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W400×D385×H780</td><td class="pr">¥38,500</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/counterchair-c" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="38500" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 カウンターチェアーD</h3>
+    <div class="price">¥38,500<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W400×D385×H780</td><td class="pr">¥38,500</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/counterchair-d" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="77000" data-w="450">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 カウンターチェアーE</h3>
+    <div class="price">¥77,000<small>(税込)</small></div>
+    <p class="desc">無垢材の椅子。価格は「〜」(材・仕様で変わる)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 450mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W450×D500×H850</td><td class="pr">¥77,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/counterchair-e" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材" data-price="33000" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>無垢 ティーチェアーD</h3>
+    <div class="price">¥33,000〜¥44,000<small>(税込)</small></div>
+    <p class="desc">2タイプ(33,000円〜 / 44,000円〜)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>タイプ1〜</td><td>W400×D385×H680</td><td class="pr">¥33,000</td></tr><tr><td>タイプ2〜</td><td>W400×D385×H680</td><td class="pr">¥44,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/teachair-d" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="無垢材/アイアン" data-price="48070" data-w="480">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>アイアンチェアーABC</h3>
+    <div class="price">¥48,070〜¥62,370<small>(税込)</small></div>
+    <p class="desc">鉄脚と無垢座面の椅子。A/B/Cの3型</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:25%"></div></div>
+      <div class="barnote">幅 480mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>A〜</td><td>W480×D535×H660</td><td class="pr">¥52,470</td></tr><tr><td>B〜</td><td>W480×D535×H660</td><td class="pr">¥48,070</td></tr><tr><td>C〜</td><td>W480×D535×H660</td><td class="pr">¥62,370</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材/アイアン</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/chair/ironchair-abc" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="丸テーブル" data-mat="無垢材" data-price="78840" data-w="800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">丸テーブル</div>
+    <h3>丸テーブル 集中脚タイプ</h3>
+    <div class="price">¥78,840<small>(税込)</small></div>
+    <p class="desc">1990年に制作開始以来のロングセラー</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:42%"></div></div>
+      <div class="barnote">幅 800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>直径80cm〜</td><td>W800×D800</td><td class="pr">¥78,840</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/rtable/centralizedleg" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="丸テーブル" data-mat="無垢材" data-price="93420" data-w="800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">丸テーブル</div>
+    <h3>丸テーブル 八ノ字型脚タイプ</h3>
+    <div class="price">¥93,420<small>(税込)</small></div>
+    <p class="desc">モダンで洗練された雰囲気</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:42%"></div></div>
+      <div class="barnote">幅 800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>直径80cm〜</td><td>W800×D800</td><td class="pr">¥93,420</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/rtable/hachinojileg" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="丸テーブル" data-mat="無垢材" data-price="78840" data-w="800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">丸テーブル</div>
+    <h3>丸テーブル 4本脚タイプ 幕板なし</h3>
+    <div class="price">¥78,840<small>(税込)</small></div>
+    <p class="desc">すっきりしたデザイン、椅子も収まりやすい</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:42%"></div></div>
+      <div class="barnote">幅 800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>直径80cm〜</td><td>W800×D800</td><td class="pr">¥78,840</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/rtable/fourlegs02" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="丸テーブル" data-mat="無垢材" data-price="53730" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">丸テーブル</div>
+    <h3>丸テーブル 4本脚タイプ 幕板あり</h3>
+    <div class="price">¥53,730<small>(税込)</small></div>
+    <p class="desc">幕板をアーチ型にしたデザイン</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>直径60cm〜</td><td>W600×D600</td><td class="pr">¥53,730</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/rtable/fourlegs" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="丸テーブル" data-mat="無垢材" data-price="142110" data-w="1200">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">丸テーブル</div>
+    <h3>丸テーブル 5本脚タイプ 幕板なし</h3>
+    <div class="price">¥142,110<small>(税込)</small></div>
+    <p class="desc">5人家族向けの5本脚</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:63%"></div></div>
+      <div class="barnote">幅 1200mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>直径120cm〜</td><td>W1200×D1200</td><td class="pr">¥142,110</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/rtable/fivelegs" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="丸テーブル" data-mat="無垢材" data-price="59040" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">丸テーブル</div>
+    <h3>丸テーブル 1本脚タイプ</h3>
+    <div class="price">¥59,040<small>(税込)</small></div>
+    <p class="desc">コーヒーテーブル。工房のヒット商品第一号</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>直径60cm〜</td><td>W600×D600</td><td class="pr">¥59,040</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/rtable/singleleg" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="学習机" data-mat="無垢材" data-price="51840" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">学習机</div>
+    <h3>学習机(ワークデスク)</h3>
+    <div class="price">¥51,840<small>(税込)</small></div>
+    <p class="desc">1994年から販売のロングセラー</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W1000×D600</td><td class="pr">¥51,840</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/workdesk/wdesk" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="学習机" data-mat="無垢材" data-price="67815" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">学習机</div>
+    <h3>パソコンデスク</h3>
+    <div class="price">¥67,815<small>(税込)</small></div>
+    <p class="desc">キーボードスライダー付き</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W1000×D450</td><td class="pr">¥67,815</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/workdesk/pcdesk" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="学習机" data-mat="無垢材" data-price="99000" data-w="360">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">学習机</div>
+    <h3>キャスターワゴン つまみ有り</h3>
+    <div class="price">¥99,000<small>(税込)</small></div>
+    <p class="desc">学習机用ワゴン</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:19%"></div></div>
+      <div class="barnote">幅 360mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W360×D450×H550</td><td class="pr">¥99,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/workdesk/wagon-01" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="学習机" data-mat="無垢材" data-price="104500" data-w="360">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">学習机</div>
+    <h3>キャスターワゴン つまみ無し</h3>
+    <div class="price">¥104,500<small>(税込)</small></div>
+    <p class="desc">学習机用ワゴン</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:19%"></div></div>
+      <div class="barnote">幅 360mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W360×D450×H550</td><td class="pr">¥104,500</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/workdesk/wagon-02" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="学習机" data-mat="無垢材" data-price="33000" data-w="400">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">学習机</div>
+    <h3>キャスターボックス</h3>
+    <div class="price">¥33,000<small>(税込)</small></div>
+    <p class="desc">学習机用の収納ボックス</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:21%"></div></div>
+      <div class="barnote">幅 400mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W400×D400×H300</td><td class="pr">¥33,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/workdesk/casterbox" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="学習机" data-mat="無垢材" data-price="121000" data-w="450">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">学習机</div>
+    <h3>デスクサイドチェスト つまみ有り</h3>
+    <div class="price">¥121,000<small>(税込)</small></div>
+    <p class="desc">デスク脇の収納</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 450mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W450×D500×H700</td><td class="pr">¥121,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/workdesk/chest-01" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="学習机" data-mat="無垢材" data-price="121000" data-w="450">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">学習机</div>
+    <h3>デスクサイドチェスト つまみ無し</h3>
+    <div class="price">¥121,000<small>(税込)</small></div>
+    <p class="desc">デスク脇の収納</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 450mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W450×D500×H700</td><td class="pr">¥121,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/workdesk/chest-02" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="学習机" data-mat="無垢材" data-price="69300" data-w="450">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">学習机</div>
+    <h3>デスクサイドシェルフ</h3>
+    <div class="price">¥69,300<small>(税込)</small></div>
+    <p class="desc">デスク脇の棚</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:24%"></div></div>
+      <div class="barnote">幅 450mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W450×D450×H700</td><td class="pr">¥69,300</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/workdesk/shelf" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="学習机" data-mat="無垢材" data-price="33000" data-w="600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">学習机</div>
+    <h3>ブックスタンド</h3>
+    <div class="price">¥33,000<small>(税込)</small></div>
+    <p class="desc">学習机用の本立て</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:32%"></div></div>
+      <div class="barnote">幅 600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>標準〜</td><td>W600×D210×H250</td><td class="pr">¥33,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/workdesk/bookstand" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル(脚)" data-mat="無垢材" data-price="49500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル(脚)</div>
+    <h3>ダイニングテーブル用脚 くさび留め4本脚</h3>
+    <div class="price">¥49,500〜¥55,000<small>(税込)</small></div>
+    <p class="desc">天板は別売(接ぎ板天板 約3cm厚・材とサイズを選ぶ)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>スリム〜</td><td></td><td class="pr">¥49,500</td></tr><tr><td>スタンダード〜</td><td></td><td class="pr">¥55,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/leg/diningleg-01" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル(脚)" data-mat="無垢材" data-price="49500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル(脚)</div>
+    <h3>ダイニングテーブル用脚 くさび留めスポーク脚</h3>
+    <div class="price">¥49,500〜¥55,000<small>(税込)</small></div>
+    <p class="desc">天板は別売(接ぎ板天板 約3cm厚・材とサイズを選ぶ)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>スリム〜</td><td></td><td class="pr">¥49,500</td></tr><tr><td>スタンダード〜</td><td></td><td class="pr">¥55,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/leg/diningleg-02" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル(脚)" data-mat="無垢材" data-price="49500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル(脚)</div>
+    <h3>ダイニングテーブル用脚 くさび留め板脚</h3>
+    <div class="price">¥49,500〜¥55,000<small>(税込)</small></div>
+    <p class="desc">天板は別売(接ぎ板天板 約3cm厚・材とサイズを選ぶ)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>スリム〜</td><td></td><td class="pr">¥49,500</td></tr><tr><td>スタンダード〜</td><td></td><td class="pr">¥55,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/leg/diningleg-03" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル(脚)" data-mat="無垢材" data-price="49500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル(脚)</div>
+    <h3>ダイニングテーブル用脚 くさび留め3枚板脚</h3>
+    <div class="price">¥49,500〜¥55,000<small>(税込)</small></div>
+    <p class="desc">天板は別売(接ぎ板天板 約3cm厚・材とサイズを選ぶ)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>スリム〜</td><td></td><td class="pr">¥49,500</td></tr><tr><td>スタンダード〜</td><td></td><td class="pr">¥55,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/leg/diningleg-04" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル(脚)" data-mat="無垢材" data-price="49500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル(脚)</div>
+    <h3>ダイニングテーブル用脚 くさび留め逆T字型脚</h3>
+    <div class="price">¥49,500〜¥55,000<small>(税込)</small></div>
+    <p class="desc">天板は別売(接ぎ板天板 約3cm厚・材とサイズを選ぶ)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>スリム〜</td><td></td><td class="pr">¥49,500</td></tr><tr><td>スタンダード〜</td><td></td><td class="pr">¥55,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/leg/diningleg-05" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル(脚)" data-mat="無垢材" data-price="49500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル(脚)</div>
+    <h3>ダイニングテーブル用脚 3本脚</h3>
+    <div class="price">¥49,500〜¥55,000<small>(税込)</small></div>
+    <p class="desc">天板は別売(接ぎ板天板 約3cm厚・材とサイズを選ぶ)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>スリム〜</td><td></td><td class="pr">¥49,500</td></tr><tr><td>スタンダード〜</td><td></td><td class="pr">¥55,000</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/leg/diningleg-06" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル(脚)" data-mat="無垢材" data-price="50600" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル(脚)</div>
+    <h3>ダイニングテーブル用脚 4本脚</h3>
+    <div class="price">¥50,600〜¥56,100<small>(税込)</small></div>
+    <p class="desc">天板は別売(接ぎ板天板 約3cm厚・材とサイズを選ぶ)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>スリム〜</td><td></td><td class="pr">¥50,600</td></tr><tr><td>スタンダード〜</td><td></td><td class="pr">¥56,100</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/leg/diningleg-07" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル(脚)" data-mat="無垢材" data-price="55000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル(脚)</div>
+    <h3>ダイニングテーブル用脚 八ノ字型脚</h3>
+    <div class="price">¥55,000〜¥60,500<small>(税込)</small></div>
+    <p class="desc">天板は別売(接ぎ板天板 約3cm厚・材とサイズを選ぶ)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>スリム〜</td><td></td><td class="pr">¥55,000</td></tr><tr><td>スタンダード〜</td><td></td><td class="pr">¥60,500</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/leg/diningleg-09" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ダイニングテーブル(脚)" data-mat="無垢材" data-price="37400" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ダイニングテーブル(脚)</div>
+    <h3>ダイニングテーブル用脚 口の字型脚</h3>
+    <div class="price">¥37,400〜¥42,900<small>(税込)</small></div>
+    <p class="desc">天板は別売(接ぎ板天板 約3cm厚・材とサイズを選ぶ)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>スリム〜</td><td></td><td class="pr">¥37,400</td></tr><tr><td>スタンダード〜</td><td></td><td class="pr">¥42,900</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/leg/diningleg-10" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="座卓(脚)" data-mat="無垢材" data-price="31900" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">座卓(脚)</div>
+    <h3>座卓用脚 口の字型脚</h3>
+    <div class="price">¥31,900<small>(税込)</small></div>
+    <p class="desc">天板は別売(座卓用 接ぎ板天板 約180×80〜100cm)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td></td><td class="pr">¥31,900</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/leg/livingleg-01" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="座卓(脚)" data-mat="無垢材" data-price="45100" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">座卓(脚)</div>
+    <h3>座卓用脚 4本脚</h3>
+    <div class="price">¥45,100<small>(税込)</small></div>
+    <p class="desc">天板は別売(座卓用 接ぎ板天板 約180×80〜100cm)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td></td><td class="pr">¥45,100</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/leg/livingleg-02" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="座卓(脚)" data-mat="無垢材" data-price="34100" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">座卓(脚)</div>
+    <h3>座卓用脚 板脚</h3>
+    <div class="price">¥34,100<small>(税込)</small></div>
+    <p class="desc">天板は別売(座卓用 接ぎ板天板 約180×80〜100cm)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td></td><td class="pr">¥34,100</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/leg/livingleg-03" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="座卓(脚)" data-mat="無垢材" data-price="34100" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">座卓(脚)</div>
+    <h3>座卓用脚 3本脚</h3>
+    <div class="price">¥34,100<small>(税込)</small></div>
+    <p class="desc">天板は別売(座卓用 接ぎ板天板 約180×80〜100cm)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td></td><td class="pr">¥34,100</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/leg/livingleg-04" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="座卓(脚)" data-mat="無垢材" data-price="38500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">座卓(脚)</div>
+    <h3>座卓用脚 くさび留め4本脚</h3>
+    <div class="price">¥38,500<small>(税込)</small></div>
+    <p class="desc">天板は別売(座卓用 接ぎ板天板 約180×80〜100cm)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td></td><td class="pr">¥38,500</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/leg/livingleg-05" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="座卓(天板)" data-mat="無垢材" data-price="119500" data-w="1800">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">座卓(天板)</div>
+    <h3>座卓用 オーダー接ぎ板天板</h3>
+    <div class="price">¥119,500〜¥202,100<small>(税込)</small></div>
+    <p class="desc">材は タモ・クルミ・ブラックチェリー・クリ・ハードメイプル・山桜・ウォールナット・ナラ・ビーチ。表示は最安(ビーチ)〜最高(ウォールナット・ナラ)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+      <div class="barnote">幅 1800mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>約180×80cm(ビーチ)</td><td>W1800×D800</td><td class="pr">¥119,500</td></tr><tr><td>約180×100cm(ウォールナット/ナラ)</td><td>W1800×D1000</td><td class="pr">¥202,100</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/ltable" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="シンプルテーブル" data-mat="ビーチ/メープル/チェリー/タモ/クルミ/栗/山桜/ウォールナット/ナラ" data-price="51120" data-w="1600">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">シンプルテーブル</div>
+    <h3>無垢 シンプルテーブル</h3>
+    <div class="price">¥51,120<small>(税込)</small></div>
+    <p class="desc">サイズ・デザインを簡素化して手頃な価格に。高さはダイニング(70cm以内)/リビング(35cm以内)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:84%"></div></div>
+      <div class="barnote">幅 1600mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>60×60cm〜</td><td>W600×D600×H700</td><td class="pr">¥51,120</td></tr><tr><td>160×80cm</td><td>W1600×D800×H700</td><td class="pr">—</td></tr></tbody></table>
+      <div class="mat">素材: ビーチ/メープル/チェリー/タモ/クルミ/栗/山桜/ウォールナット/ナラ</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/ctable" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ" data-mat="無垢材" data-price="48400" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ</div>
+    <h3>一枚板・接ぎ板ベンチ</h3>
+    <div class="price">¥48,400<small>(税込)</small></div>
+    <p class="desc">背もたれのないベンチ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td>W1000×D350×H400</td><td class="pr">¥48,400</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/bench/jointplate-bench" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ" data-mat="無垢材" data-price="72600" data-w="1100">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ</div>
+    <h3>丸いベンチ</h3>
+    <div class="price">¥72,600<small>(税込)</small></div>
+    <p class="desc">丸テーブルにぴったりの丸型ベンチ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:58%"></div></div>
+      <div class="barnote">幅 1100mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td>W1100×D300×H400</td><td class="pr">¥72,600</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/bench/round-bench" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ" data-mat="無垢材" data-price="90750" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ</div>
+    <h3>背付きベンチ</h3>
+    <div class="price">¥90,750<small>(税込)</small></div>
+    <p class="desc">背もたれ付き。SH40cm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td>W1000×D480×H780 / 座面高 SH400</td><td class="pr">¥90,750</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/bench/backrest-bench" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベンチ" data-mat="無垢材" data-price="67800" data-w="1000">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベンチ</div>
+    <h3>引き出し付きベンチ</h3>
+    <div class="price">¥67,800<small>(税込)</small></div>
+    <p class="desc">収納付きベンチ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:53%"></div></div>
+      <div class="barnote">幅 1000mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>〜</td><td>W1000×D350×H400</td><td class="pr">¥67,800</td></tr></tbody></table>
+      <div class="mat">素材: 無垢材</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/bench/drawer-bench" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ベッド" data-mat="ビーチ/セン/メープル/タモ/チェリー/栗/クルミ/山桜/ウォールナット/ナラ" data-price="176000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ベッド</div>
+    <h3>ベッド(シングル) BED2015</h3>
+    <div class="price">¥176,000<small>(税込)</small></div>
+    <p class="desc">無垢材のシングルベッド。桐のすのこ、背板は選択可</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>シングル〜</td><td></td><td class="pr">¥176,000</td></tr></tbody></table>
+      <div class="mat">素材: ビーチ/セン/メープル/タモ/チェリー/栗/クルミ/山桜/ウォールナット/ナラ</div>
+    </div>
+    <a class="more" href="https://fukuniwa.com/work/bed" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、福庭家具工房様の公式サイト(<a href="https://fukuniwa.com/" target="_blank" rel="noopener">https://fukuniwa.com/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
