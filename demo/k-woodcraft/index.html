@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Murakami Woodworks(木のモノ雑貨店)｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。Murakami Woodworks(木のモノ雑貨店)様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>Murakami Woodworks(木のモノ雑貨店)</h1>
+  <p class="tagline">屋久島の木工房。オンラインショップ「木のモノ雑貨店」に載っている43点(カッティングボード・トレイ・時計・子供椅子・カトラリー)の品名・材・価格(税込)を1枚に並べ、受注制作中と売り切れを分けました。</p>
+  <div class="badges"><span>鹿児島県屋久島町</span><span>掲載 43点</span><span>サイズ・価格から探せます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="キッチン">キッチン</button><button class="chip" data-k="cat" data-v="カッティングボード">カッティングボード</button><button class="chip" data-k="cat" data-v="時計">時計</button><button class="chip" data-k="cat" data-v="椅子">椅子</button><button class="chip" data-k="cat" data-v="インテリア">インテリア</button><button class="chip" data-k="cat" data-v="トレイ">トレイ</button><button class="chip" data-k="cat" data-v="テーブル">テーブル</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option><option value="チェリー">チェリー</option><option value="メープル">メープル</option><option value="ウォールナット">ウォールナット</option><option value="栗">栗</option><option value="サクラ">サクラ</option><option value="ホワイトオーク">ホワイトオーク</option><option value="オーク">オーク</option><option value="ブラックウォールナット">ブラックウォールナット</option><option value="ブラックチェリー">ブラックチェリー</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="キッチン" data-mat="" data-price="1650" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">キッチン</div>
+    <h3>餃子、お好みがすくえるフライ返し</h3>
+    <div class="price">¥1,650<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥1,650</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=101631383" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチン" data-mat="" data-price="1210" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">キッチン</div>
+    <h3>トンガリ炒めヘラ</h3>
+    <div class="price">¥1,210<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥1,210</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=103387830" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カッティングボード" data-mat="チェリー" data-price="3850" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">カッティングボード</div>
+    <h3>チェリーの手彫りカッティングボードno,3</h3>
+    <div class="price">¥3,850<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥3,850</td></tr></tbody></table>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=120545548" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチン" data-mat="" data-price="2860" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">キッチン</div>
+    <h3>コーヒーメジャースプーン</h3>
+    <div class="price">¥2,860<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥2,860</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=120613415" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="メープル" data-price="6600" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>メープルの月時計</h3>
+    <div class="price">¥6,600<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥6,600</td></tr></tbody></table>
+      <div class="mat">素材: メープル</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=120783161" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="ウォールナット" data-price="6600" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>ウォールナットの月時計</h3>
+    <div class="price">¥6,600<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥6,600</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=120794915" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="メープル" data-price="5500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>メープルのmaru時計</h3>
+    <div class="price">¥5,500<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥5,500</td></tr></tbody></table>
+      <div class="mat">素材: メープル</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=120855700" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="ウォールナット" data-price="5500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>ウォールナットのmaru時計</h3>
+    <div class="price">¥5,500<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥5,500</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=120855828" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="" data-price="20900" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>maruスツール</h3>
+    <div class="price">¥20,900<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥20,900</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=120967339" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インテリア" data-mat="ウォールナット" data-price="5280" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">インテリア</div>
+    <h3>ウォールナットのペンケース</h3>
+    <div class="price">¥5,280<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥5,280</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=121081090" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ" data-mat="チェリー" data-price="13200" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">トレイ</div>
+    <h3>ラウンドトレー・30cmチェリー材(受注制作)</h3>
+    <div class="price">¥13,200<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥13,200</td></tr></tbody></table>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=121256627" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="栗" data-price="14300" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>栗の木の時計A</h3>
+    <div class="price">¥14,300<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥14,300</td></tr></tbody></table>
+      <div class="mat">素材: 栗</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=121257389" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチン" data-mat="サクラ" data-price="2860" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">キッチン</div>
+    <h3>サクラのスープスプーン</h3>
+    <div class="price">¥2,860<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥2,860</td></tr></tbody></table>
+      <div class="mat">素材: サクラ</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=121613415" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ" data-mat="ウォールナット" data-price="8800" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">トレイ</div>
+    <h3>ウォールナット・トレイa(受注制作)</h3>
+    <div class="price">¥8,800<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥8,800</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=121875390" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カッティングボード" data-mat="ホワイトオーク" data-price="8250" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">カッティングボード</div>
+    <h3>ホワイトオークのカッティングボード・XLサイズ(ブレッド・ボード)</h3>
+    <div class="price">¥8,250<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥8,250</td></tr></tbody></table>
+      <div class="mat">素材: ホワイトオーク</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=122412791" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カッティングボード" data-mat="オーク" data-price="7700" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">カッティングボード</div>
+    <h3>オークのカッティングボード(彫り込み)no,2</h3>
+    <div class="price">¥7,700<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥7,700</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=123304616" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カッティングボード" data-mat="チェリー" data-price="7700" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">カッティングボード</div>
+    <h3>チェリーのカッティングボード(ノミ彫り込み)no,4</h3>
+    <div class="price">¥7,700<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥7,700</td></tr></tbody></table>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=123358453" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カッティングボード" data-mat="チェリー" data-price="6600" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">カッティングボード</div>
+    <h3>チェリーのカッティングボード(ノミ彫り込み)雫(受注制作)</h3>
+    <div class="price">¥6,600<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥6,600</td></tr></tbody></table>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=123413780" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチン" data-mat="サクラ" data-price="1540" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">キッチン</div>
+    <h3>サクラのベビースプーン</h3>
+    <div class="price">¥1,540<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥1,540</td></tr></tbody></table>
+      <div class="mat">素材: サクラ</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=129554926" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチン" data-mat="サクラ" data-price="1540" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">キッチン</div>
+    <h3>サクラのベビーフォーク</h3>
+    <div class="price">¥1,540<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥1,540</td></tr></tbody></table>
+      <div class="mat">素材: サクラ</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=129555028" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ" data-mat="ブラックウォールナット" data-price="13200" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">トレイ</div>
+    <h3>Instagram掲載ラウンドトレイ・ブラックウォールナット(受注制作)</h3>
+    <div class="price">¥13,200<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥13,200</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=130442024" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ" data-mat="チェリー" data-price="11000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">トレイ</div>
+    <h3>チェリートレイ 角盆(受注制作)</h3>
+    <div class="price">¥11,000<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥11,000</td></tr></tbody></table>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=130444674" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="栗" data-price="13200" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>栗の木のまる時計(受注制作)</h3>
+    <div class="price">¥13,200<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥13,200</td></tr></tbody></table>
+      <div class="mat">素材: 栗</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=131434387" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="時計" data-mat="栗" data-price="14300" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">時計</div>
+    <h3>栗の木のまる時計・木製針タイプ(受注制作)</h3>
+    <div class="price">¥14,300<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥14,300</td></tr></tbody></table>
+      <div class="mat">素材: 栗</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=131434423" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="トレイ" data-mat="ウォールナット" data-price="6600" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">トレイ</div>
+    <h3>ウォールナット・トレイb(受注制作)</h3>
+    <div class="price">¥6,600<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥6,600</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=174450833" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インテリア" data-mat="" data-price="3850" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">インテリア</div>
+    <h3>ミニテープカッタ−</h3>
+    <div class="price">¥3,850<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥3,850</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=93455028" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="ウォールナット" data-price="33000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>ウォールナットの子供椅子</h3>
+    <div class="price">¥33,000<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥33,000</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=93258624" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カッティングボード" data-mat="チェリー" data-price="3850" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">カッティングボード</div>
+    <h3>チェリーの手彫りカッティングボードno,2</h3>
+    <div class="price">¥3,850<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥3,850</td></tr></tbody></table>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=120366503" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="チェリー" data-price="29700" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>チェリーの子供椅子</h3>
+    <div class="price">¥29,700<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥29,700</td></tr></tbody></table>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=93260786" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カッティングボード" data-mat="チェリー" data-price="3850" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">カッティングボード</div>
+    <h3>チェリーの手彫りカッティングボードno,1</h3>
+    <div class="price">¥3,850<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥3,850</td></tr></tbody></table>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=120310490" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カッティングボード" data-mat="ウォールナット" data-price="3960" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">カッティングボード</div>
+    <h3>ウォールナットの手彫りカッティングボードA</h3>
+    <div class="price">¥3,960<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥3,960</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=120269551" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="椅子" data-mat="栗" data-price="27500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">椅子</div>
+    <h3>栗の木の子供椅子</h3>
+    <div class="price">¥27,500<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥27,500</td></tr></tbody></table>
+      <div class="mat">素材: 栗</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=93261066" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カッティングボード" data-mat="オーク" data-price="6600" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">カッティングボード</div>
+    <h3>オークのカッティングボード彫り込み</h3>
+    <div class="price">¥6,600<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥6,600</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=120188326" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カッティングボード" data-mat="チェリー" data-price="7700" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">カッティングボード</div>
+    <h3>チェリーの木のカッティングボード・XLサイズ(ブレッド・ボード)</h3>
+    <div class="price">¥7,700<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥7,700</td></tr></tbody></table>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=120131464" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチン" data-mat="サクラ" data-price="1650" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">キッチン</div>
+    <h3>サクラのジャムスプーン</h3>
+    <div class="price">¥1,650<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥1,650</td></tr></tbody></table>
+      <div class="mat">素材: サクラ</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=119987524" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチン" data-mat="サクラ" data-price="1760" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">キッチン</div>
+    <h3>サクラのスプーン</h3>
+    <div class="price">¥1,760<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥1,760</td></tr></tbody></table>
+      <div class="mat">素材: サクラ</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=119987360" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチン" data-mat="サクラ" data-price="2530" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">キッチン</div>
+    <h3>サクラのカレースプーン</h3>
+    <div class="price">¥2,530<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥2,530</td></tr></tbody></table>
+      <div class="mat">素材: サクラ</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=119949148" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="ブラックチェリー" data-price="31900" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>ブラックチェリーのミニ・テーブル</h3>
+    <div class="price">¥31,900<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥31,900</td></tr></tbody></table>
+      <div class="mat">素材: ブラックチェリー</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=106734892" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インテリア" data-mat="チェリー" data-price="4950" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">インテリア</div>
+    <h3>チェリーのペンケース</h3>
+    <div class="price">¥4,950<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥4,950</td></tr></tbody></table>
+      <div class="mat">素材: チェリー</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=93405906" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="テーブル" data-mat="ブラックウォールナット" data-price="33000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">テーブル</div>
+    <h3>ブラックウォールナットのミニ・テーブル</h3>
+    <div class="price">¥33,000<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥33,000</td></tr></tbody></table>
+      <div class="mat">素材: ブラックウォールナット</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=106734586" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カッティングボード" data-mat="" data-price="4400" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">受注制作</span></div>
+  <div class="body">
+    <div class="cat">カッティングボード</div>
+    <h3>ブラック・プレート(脚付き)</h3>
+    <div class="price">¥4,400<small>(税込)</small></div>
+    <p class="desc">受注制作(ご注文日から2か月程度)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥4,400</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=102774725" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチン" data-mat="オーク" data-price="1650" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">キッチン</div>
+    <h3>オークのピザカッター</h3>
+    <div class="price">¥1,650<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥1,650</td></tr></tbody></table>
+      <div class="mat">素材: オーク</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=101405949" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キッチン" data-mat="ウォールナット" data-price="6600" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">キッチン</div>
+    <h3>ウォールナットのバターケース</h3>
+    <div class="price">¥6,600<small>(税込)</small></div>
+    <p class="desc">現在売り切れ</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥6,600</td></tr></tbody></table>
+      <div class="mat">素材: ウォールナット</div>
+    </div>
+    <a class="more" href="https://kinomono-zakka.com/?pid=101029345" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、Murakami Woodworks(木のモノ雑貨店)様の公式サイト(<a href="https://k-woodcraft.com/" target="_blank" rel="noopener">https://k-woodcraft.com/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
