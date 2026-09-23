@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>革工房futuro｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。革工房futuro様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>革工房futuro</h1>
+  <p class="tagline">リュック・鞄・財布・革小物の38点を、品名と価格(税込)で一枚に並べ、種類・価格順で絞り込めるようにしました。</p>
+  <div class="badges"><span>兵庫県</span><span>掲載 38点</span><span>サイズ・価格から探せます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="リュック">リュック</button><button class="chip" data-k="cat" data-v="鞄・バッグ">鞄・バッグ</button><button class="chip" data-k="cat" data-v="財布">財布</button><button class="chip" data-k="cat" data-v="革小物">革小物</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option><option value="本革">本革</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="リュック" data-mat="本革" data-price="27000" data-w="270">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リュック</div>
+    <h3>tarsio</h3>
+    <div class="price">¥27,000<small>(税込)</small></div>
+    <p class="desc">オレンジのみ在庫あり(ブラック・グリーン・ブラウンは売り切れ)</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:14%"></div></div>
+      <div class="barnote">幅 270mm / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td>W270×D130×H390</td><td class="pr">¥27,000</td></tr></tbody></table>
+      <div class="mat">素材: 本革</div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E3%83%AC%E3%82%B6%E3%83%BC%E3%83%AA%E3%83%A5%E3%83%83%E3%82%AF" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="鞄・バッグ" data-mat="" data-price="10300" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">鞄・バッグ</div>
+    <h3>カルマ</h3>
+    <div class="price">¥10,300<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥10,300</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9E%84-%E3%83%90%E3%83%83%E3%82%B0" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="鞄・バッグ" data-mat="" data-price="25000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">鞄・バッグ</div>
+    <h3>ジォコッソ</h3>
+    <div class="price">¥25,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥25,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9E%84-%E3%83%90%E3%83%83%E3%82%B0" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="鞄・バッグ" data-mat="" data-price="22000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">鞄・バッグ</div>
+    <h3>パーチェ</h3>
+    <div class="price">¥22,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9E%84-%E3%83%90%E3%83%83%E3%82%B0" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="鞄・バッグ" data-mat="" data-price="22000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">鞄・バッグ</div>
+    <h3>Loloco -ロロコ-</h3>
+    <div class="price">¥22,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9E%84-%E3%83%90%E3%83%83%E3%82%B0" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="鞄・バッグ" data-mat="" data-price="5000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">鞄・バッグ</div>
+    <h3>A4帆布トートバッグ</h3>
+    <div class="price">¥5,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥5,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9E%84-%E3%83%90%E3%83%83%E3%82%B0" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="鞄・バッグ" data-mat="" data-price="21000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">鞄・バッグ</div>
+    <h3>アルモニカ</h3>
+    <div class="price">¥21,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥21,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9E%84-%E3%83%90%E3%83%83%E3%82%B0" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="鞄・バッグ" data-mat="" data-price="13000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">鞄・バッグ</div>
+    <h3>ヴィアッジョM</h3>
+    <div class="price">¥13,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥13,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9E%84-%E3%83%90%E3%83%83%E3%82%B0" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="鞄・バッグ" data-mat="" data-price="12000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">鞄・バッグ</div>
+    <h3>ヴィアッジョS</h3>
+    <div class="price">¥12,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥12,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9E%84-%E3%83%90%E3%83%83%E3%82%B0" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="鞄・バッグ" data-mat="" data-price="15000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">鞄・バッグ</div>
+    <h3>フォカッチャ</h3>
+    <div class="price">¥15,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥15,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9E%84-%E3%83%90%E3%83%83%E3%82%B0" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="鞄・バッグ" data-mat="" data-price="12000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">鞄・バッグ</div>
+    <h3>シェデニムL①</h3>
+    <div class="price">¥12,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥12,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9E%84-%E3%83%90%E3%83%83%E3%82%B0" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="鞄・バッグ" data-mat="" data-price="10000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">鞄・バッグ</div>
+    <h3>シェデニムM②</h3>
+    <div class="price">¥10,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥10,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9E%84-%E3%83%90%E3%83%83%E3%82%B0" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="鞄・バッグ" data-mat="" data-price="9300" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">鞄・バッグ</div>
+    <h3>ジョイア</h3>
+    <div class="price">¥9,300<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥9,300</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9E%84-%E3%83%90%E3%83%83%E3%82%B0" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="鞄・バッグ" data-mat="" data-price="18000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">鞄・バッグ</div>
+    <h3>フォカッチャ cornetto</h3>
+    <div class="price">¥18,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥18,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9E%84-%E3%83%90%E3%83%83%E3%82%B0" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="財布" data-mat="" data-price="12000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">財布</div>
+    <h3>ペッゾ</h3>
+    <div class="price">¥12,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥12,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E8%B2%A1%E5%B8%83" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="財布" data-mat="" data-price="3600" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">財布</div>
+    <h3>ビスコッティ</h3>
+    <div class="price">¥3,600<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥3,600</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E8%B2%A1%E5%B8%83" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="財布" data-mat="" data-price="8500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">財布</div>
+    <h3>ピエガ</h3>
+    <div class="price">¥8,500<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥8,500</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E8%B2%A1%E5%B8%83" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="財布" data-mat="" data-price="8600" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">財布</div>
+    <h3>プリモ</h3>
+    <div class="price">¥8,600<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥8,600</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E8%B2%A1%E5%B8%83" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="財布" data-mat="" data-price="6000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">財布</div>
+    <h3>ノーチェ</h3>
+    <div class="price">¥6,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥6,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E8%B2%A1%E5%B8%83" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="財布" data-mat="" data-price="4000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">財布</div>
+    <h3>ミニラウンドファスナー財布</h3>
+    <div class="price">¥4,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥4,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E8%B2%A1%E5%B8%83" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="財布" data-mat="" data-price="2800" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">財布</div>
+    <h3>ミニミニラウンドファスナー財布</h3>
+    <div class="price">¥2,800<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥2,800</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E8%B2%A1%E5%B8%83" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="財布" data-mat="" data-price="6900" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">財布</div>
+    <h3>ワッフェル</h3>
+    <div class="price">¥6,900<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥6,900</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E8%B2%A1%E5%B8%83" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="財布" data-mat="" data-price="6000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">財布</div>
+    <h3>コンパクトウォレット</h3>
+    <div class="price">¥6,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥6,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E8%B2%A1%E5%B8%83" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="財布" data-mat="" data-price="4500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">財布</div>
+    <h3>蛇腹ウォレット</h3>
+    <div class="price">¥4,500<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥4,500</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E8%B2%A1%E5%B8%83" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="財布" data-mat="" data-price="3200" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span><span class="badge">SOLD OUT</span></div>
+  <div class="body">
+    <div class="cat">財布</div>
+    <h3>プレイザ</h3>
+    <div class="price">¥3,200<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥3,200</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E8%B2%A1%E5%B8%83" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="革小物" data-mat="" data-price="1200" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">革小物</div>
+    <h3>木馬キーチャーム</h3>
+    <div class="price">¥1,200<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9D%A9%E5%B0%8F%E7%89%A9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="革小物" data-mat="" data-price="2800" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">革小物</div>
+    <h3>ウチェッロ</h3>
+    <div class="price">¥2,800<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥2,800</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9D%A9%E5%B0%8F%E7%89%A9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="革小物" data-mat="" data-price="1200" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">革小物</div>
+    <h3>アリチェ</h3>
+    <div class="price">¥1,200<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9D%A9%E5%B0%8F%E7%89%A9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="革小物" data-mat="" data-price="3000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">革小物</div>
+    <h3>コモド</h3>
+    <div class="price">¥3,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9D%A9%E5%B0%8F%E7%89%A9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="革小物" data-mat="" data-price="2500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">革小物</div>
+    <h3>バッグインバッグ</h3>
+    <div class="price">¥2,500<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥2,500</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9D%A9%E5%B0%8F%E7%89%A9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="革小物" data-mat="" data-price="2800" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">革小物</div>
+    <h3>手縫い名刺入れ</h3>
+    <div class="price">¥2,800<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥2,800</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9D%A9%E5%B0%8F%E7%89%A9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="革小物" data-mat="" data-price="5000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">革小物</div>
+    <h3>コンパニオ</h3>
+    <div class="price">¥5,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥5,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9D%A9%E5%B0%8F%E7%89%A9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="革小物" data-mat="" data-price="1300" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">革小物</div>
+    <h3>ピーニャ</h3>
+    <div class="price">¥1,300<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥1,300</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9D%A9%E5%B0%8F%E7%89%A9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="革小物" data-mat="" data-price="6000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">革小物</div>
+    <h3>モディカ</h3>
+    <div class="price">¥6,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥6,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9D%A9%E5%B0%8F%E7%89%A9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="革小物" data-mat="" data-price="4500" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">革小物</div>
+    <h3>パニーノ</h3>
+    <div class="price">¥4,500<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥4,500</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9D%A9%E5%B0%8F%E7%89%A9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="革小物" data-mat="" data-price="2200" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">革小物</div>
+    <h3>手縫いペンケース</h3>
+    <div class="price">¥2,200<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥2,200</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9D%A9%E5%B0%8F%E7%89%A9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="革小物" data-mat="" data-price="3000" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">革小物</div>
+    <h3>ポケット付きオレッキーニ</h3>
+    <div class="price">¥3,000<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9D%A9%E5%B0%8F%E7%89%A9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="革小物" data-mat="" data-price="2300" data-w="0">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">革小物</div>
+    <h3>オレッキーニ</h3>
+    <div class="price">¥2,300<small>(税込)</small></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥2,300</td></tr></tbody></table>
+      <div class="mat">素材: </div>
+    </div>
+    <a class="more" href="https://futuro.work/collections/%E9%9D%A9%E5%B0%8F%E7%89%A9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、革工房futuro様の公式サイト(<a href="https://futuro.work/" target="_blank" rel="noopener">https://futuro.work/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
