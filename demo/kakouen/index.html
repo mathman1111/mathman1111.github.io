@@ -1,0 +1,2299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>花香園(かこうえん)｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.stock{font-size:11px;font-weight:700;margin-left:8px;padding:2px 8px;border-radius:20px;vertical-align:middle}
+.stock.in{background:#e9f1e7;color:#4f7a52}.stock.few{background:#fbf0dd;color:#9a6b1f}.stock.out{background:#f2eeea;color:#8b8179}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。花香園(かこうえん)様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>花香園(かこうえん)</h1>
+  <p class="tagline">136点を1枚に並べ、カテゴリと価格帯、在庫で絞り込めるようにしました。</p>
+  <div class="badges"><span></span><span>掲載 136点</span><span>種類・価格帯・在庫で絞り込めます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="ウルシ科（スモークツリー）">ウルシ科（スモークツリー）</button><button class="chip" data-k="cat" data-v="スイカズラ科">スイカズラ科</button><button class="chip" data-k="cat" data-v="マメ科">マメ科</button><button class="chip" data-k="cat" data-v="フトモモ科">フトモモ科</button><button class="chip" data-k="cat" data-v="キンポウゲ科(クリスマスローズ)">キンポウゲ科(クリスマスローズ)</button><button class="chip" data-k="cat" data-v="バラ科(バラ・サクラ・木イチゴ等）">バラ科(バラ・サクラ・木イチゴ等）</button><button class="chip" data-k="cat" data-v="タデ科">タデ科</button><button class="chip" data-k="cat" data-v="ロウバイ科">ロウバイ科</button><button class="chip" data-k="cat" data-v="シソ科">シソ科</button><button class="chip" data-k="cat" data-v="ヒガンバナ科(ネリネ)">ヒガンバナ科(ネリネ)</button><button class="chip" data-k="cat" data-v="アジサイ科">アジサイ科</button><button class="chip" data-k="cat" data-v="ツツジ科">ツツジ科</button><button class="chip" data-k="cat" data-v="クマツヅラ科">クマツヅラ科</button><button class="chip" data-k="cat" data-v="モクセイ科">モクセイ科</button><button class="chip" data-k="cat" data-v="イネ科">イネ科</button><button class="chip" data-k="cat" data-v="カエデ科">カエデ科</button><button class="chip" data-k="cat" data-v="キブシ科">キブシ科</button><button class="chip" data-k="cat" data-v="キョウチクトウ科">キョウチクトウ科</button><button class="chip" data-k="cat" data-v="クワ科">クワ科</button><button class="chip" data-k="cat" data-v="シナノキ科">シナノキ科</button><button class="chip" data-k="cat" data-v="ミカン科">ミカン科</button><button class="chip" data-k="cat" data-v="キジカクシ科">キジカクシ科</button></div>
+    <div class="row"><span class="lbl">価格帯</span><button class="chip active" data-k="price" data-v="">すべて</button><button class="chip" data-k="price" data-v="0-700">〜¥700</button><button class="chip" data-k="price" data-v="700-1000">¥700〜¥1,000</button><button class="chip" data-k="price" data-v="1000-1000000000">¥1,000〜</button></div>
+    <div class="row"><span class="lbl">在庫</span><button class="chip active" data-k="stock" data-v="">すべて</button><button class="chip" data-k="stock" data-v="在庫あり">在庫あり</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・シトロンシュシュ 9cmポット苗</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/431" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・ワインカラー 9cmポット</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/197" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・バイカラー 9cmポット</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/186" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・パステルシュシュ 9cmポット苗</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/408" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スイカズラ科" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スイカズラ科</div>
+    <h3>ツキヌキニンドウ ロニセラ・テルマニアーナ 12cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/406" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・ルージュシュシュ 9cmポット苗</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/401" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・ロゼシュシュ 9cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/400" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・マロンシュシュ 9cmポット苗</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/399" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・スノーパフ 9cmポット苗</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/398" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・ブランシュシュ 9cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/397" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="マメ科" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">マメ科</div>
+    <h3>三角葉ミモザアカシア・カルトリフォラミス 4号（12cm）ポット</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/393" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="マメ科" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">マメ科</div>
+    <h3>赤芽 ミモザアカシア・プルプレア 4号（12cm）ポット</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/392" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="フトモモ科" data-mat="" data-price="1800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">フトモモ科</div>
+    <h3>ユーカリ グニー 5号鉢</h3>
+    <div class="price">¥1,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/390" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="フトモモ科" data-mat="" data-price="1800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">フトモモ科</div>
+    <h3>ユーカリ シルバーダラー 5号鉢</h3>
+    <div class="price">¥1,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/389" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="フトモモ科" data-mat="" data-price="1800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">フトモモ科</div>
+    <h3>ユーカリ ポポラス 5号鉢</h3>
+    <div class="price">¥1,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/388" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>原種クリスマスローズ H.アーグチフォリウス 9cmポット</h3>
+    <div class="price">¥800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/258" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="マメ科" data-mat="" data-price="900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">マメ科</div>
+    <h3>ホタルノキ 10.5cmポット苗</h3>
+    <div class="price">¥900<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/323" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>リキュウバイ4号12cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/369" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タデ科" data-mat="" data-price="1100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タデ科</div>
+    <h3>ナツユキカズラ 9cmポット3鉢セット</h3>
+    <div class="price">¥1,100<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,100</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/106" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スイカズラ科" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スイカズラ科</div>
+    <h3>黄花ツキヌキニンドウ ジョンクレイトン 12cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/194" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スイカズラ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スイカズラ科</div>
+    <h3>オオチョウジガマズミ 9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/307" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スイカズラ科" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スイカズラ科</div>
+    <h3>姫ヤブデマリ 10.5cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/105" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スイカズラ科" data-mat="" data-price="800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スイカズラ科</div>
+    <h3>ビバーナム ピンクビューティ 9cmポット</h3>
+    <div class="price">¥800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/189" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スイカズラ科" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スイカズラ科</div>
+    <h3>ティヌス（トキワガマズミ） 4号12cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/378" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ロウバイ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ロウバイ科</div>
+    <h3>素芯ロウバイ3号ポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/89" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="シソ科" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">シソ科</div>
+    <h3>ウエストリンギア スモーキーホワイト 4号（12cm）ポット</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/366" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スイカズラ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スイカズラ科</div>
+    <h3>ティヌス（トキワガマズミ） 9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/365" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スイカズラ科" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スイカズラ科</div>
+    <h3>寒咲きニンドウ12cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/364" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="3200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ 八重も、一重も、原種も、お買得おみつくろい5ポットセット</h3>
+    <div class="price">¥3,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/256" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="6000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ スーパーミックス 9cmポット×12株</h3>
+    <div class="price">¥6,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/297" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="4000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 開花見込みおみつくろい5ポットセット</h3>
+    <div class="price">¥4,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/211" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アジサイ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アジサイ科</div>
+    <h3>ウズアジサイ9cmポット（3号）</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/334" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アジサイ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アジサイ科</div>
+    <h3>ピラミッドアジサイ ミナヅキ 9cmポット</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/332" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アジサイ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アジサイ科</div>
+    <h3>アジサイ アナベル 9cmポット</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/330" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スイカズラ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スイカズラ科</div>
+    <h3>スノーボール 9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/329" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アジサイ科" data-mat="" data-price="1400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アジサイ科</div>
+    <h3>イワガラミ 15cmポット苗</h3>
+    <div class="price">¥1,400<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,400</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/17" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="1500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>ナニワイバラ 5号鉢</h3>
+    <div class="price">¥1,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/306" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アジサイ科" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アジサイ科</div>
+    <h3>ノリウツギ・ライムライト 12cmポット苗</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/312" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 箱根</h3>
+    <div class="price">¥900<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/218" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="マメ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">マメ科</div>
+    <h3>四季咲雲南ハギ9cmポット</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/303" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ H.アーグチフォリウス パシフィックフロスト9cmポット</h3>
+    <div class="price">¥800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/259" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ツツジ科" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ツツジ科</div>
+    <h3>すずらんの木「ゼノビア・ブルースカイ」 12cmポット</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/237" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アジサイ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アジサイ科</div>
+    <h3>隅田の花火 9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/15" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>原種クリスマスローズ フェチダス9cmポット</h3>
+    <div class="price">¥800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/260" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クマツヅラ科" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クマツヅラ科</div>
+    <h3>西洋ニンジンボク 4号12cmポット苗</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/221" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アジサイ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アジサイ科</div>
+    <h3>奥多摩コアジサイ 9cmポット</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/184" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>横浜緋桜 12cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/239" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="モクセイ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">モクセイ科</div>
+    <h3>なんじゃもんじゃの木 ヒトツバタゴ9cmポット</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/293" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="1500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>原種クリスマスローズ フェチダス12cmロングポット</h3>
+    <div class="price">¥1,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/305" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・グリーンボ－ル 9cmポット苗</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/171" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・ベストピンク 9cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/54" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・リトルルビー(ラブリーレッド) 9cmポット</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/198" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・ルビーハート 9cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/336" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・ラブリーローズ 9cmポット</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/187" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・ベルベットクローク 9cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/248" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・グレース 9cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/172" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="6000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリーおみつくろい4鉢セット 12cmポット苗</h3>
+    <div class="price">¥6,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/158" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="4500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー5品種お見繕いセット 9cmポット苗</h3>
+    <div class="price">¥4,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/56" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="マメ科" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">マメ科</div>
+    <h3>四季咲雲南ハギ12cmポット</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/257" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・ロイヤルパープル 9cmポット苗</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/409" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アジサイ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アジサイ科</div>
+    <h3>八重柏葉アジサイハーモニー 9cmポット</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/311" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アジサイ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アジサイ科</div>
+    <h3>山アジサイ 紅（くれない） 9cmポット</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/8" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アジサイ科" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アジサイ科</div>
+    <h3>八重柏葉アジサイハーモニー 12cmポット</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/308" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アジサイ科" data-mat="" data-price="1300" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アジサイ科</div>
+    <h3>台湾トキワアジサイ12cmポット</h3>
+    <div class="price">¥1,300<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,300</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/267" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="イネ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">イネ科</div>
+    <h3>ベニチガヤ 9cmポット</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/166" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・ホワイトボール 9cmポット</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/247" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・ピンクボール 9ｃｍポット苗</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/157" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ウルシ科（スモークツリー）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ウルシ科（スモークツリー）</div>
+    <h3>スモークツリー・ルブリフォリウス 9cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/236" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="カエデ科" data-mat="" data-price="800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">カエデ科</div>
+    <h3>ネグンドカエデ「フラミンゴ」9cmポット苗</h3>
+    <div class="price">¥800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/270" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キブシ科" data-mat="" data-price="800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キブシ科</div>
+    <h3>斑入りキブシ9cm3号ポット苗</h3>
+    <div class="price">¥800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/433" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キブシ科" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キブシ科</div>
+    <h3>エゾキブシ12cm4号ポット苗</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/418" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キブシ科" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キブシ科</div>
+    <h3>赤花キブシ12cm4号ポット苗</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/417" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キブシ科" data-mat="" data-price="800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キブシ科</div>
+    <h3>エゾキブシ9cm3号ポット苗</h3>
+    <div class="price">¥800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/359" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キョウチクトウ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キョウチクトウ科</div>
+    <h3>白花テイカカズラ3号ポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/357" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ セミダブルホワイト系</h3>
+    <div class="price">¥800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/355" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ セミダブルピンク系</h3>
+    <div class="price">¥800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/354" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ シングルアプリコット系</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/353" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ シングルネクタリー系</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/352" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ シングルグッタータス系</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/351" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ・オリエンタリス ダブルイエロー9cmポット</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/350" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ・オリエンタリス ダブルピコティ9cmポット</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/348" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ・オリエンタリス ダブルレッド9cmポット</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/347" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ・オリエンタリス ダブルピンク9cmポット</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/346" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ シングルピコティ系</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/345" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ オリエンタリス シングル赤花系</h3>
+    <div class="price">¥600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/141" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ シングルピンク系</h3>
+    <div class="price">¥600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/143" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ シングル白花系</h3>
+    <div class="price">¥600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/142" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ シングル黄色系</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/144" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ シングル黒・紫・グレー系</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/145" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ オリエンタリス ダブル白花9cmポット</h3>
+    <div class="price">¥900<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/140" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ H.ステルニー9cmポット</h3>
+    <div class="price">¥600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/340" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ H.ニゲル9cmポット</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/342" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>原種クリスマスローズ H.リビダス9cmポット</h3>
+    <div class="price">¥600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/146" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キンポウゲ科(クリスマスローズ)" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キンポウゲ科(クリスマスローズ)</div>
+    <h3>クリスマスローズ H.ステルニー10.5cmロングポット</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/341" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クワ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クワ科</div>
+    <h3>鈴成りクワ 9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/85" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クワ科" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クワ科</div>
+    <h3>糸クワ 10.5cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/82" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クワ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クワ科</div>
+    <h3>カジノキ 9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/84" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="シナノキ科" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">シナノキ科</div>
+    <h3>スイレンボク 10.5cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/101" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スイカズラ科" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スイカズラ科</div>
+    <h3>ツキヌキニンドウ赤花 ドロップモアスカーレット 12cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/407" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スイカズラ科" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スイカズラ科</div>
+    <h3>大輪ニンドウ ヒコロッティ 12cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/405" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スイカズラ科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スイカズラ科</div>
+    <h3>寒咲きニンドウ9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/325" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>ハトヤバラ 12cmポット苗</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/285" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>丁子咲野バラ9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/95" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>ナニワイバラ 3号9cmポット</h3>
+    <div class="price">¥800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/96" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>ラズベリー「ファールゴールド」9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/372" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>ラズベリー「サマーフェスティバル」9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/371" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>黄金葉木いちご9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/43" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>湘南木いちご（マイラビット）9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/44" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>ラズベリー「インディアンサマー」9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/42" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>斑入りピラカンサ「ハーレクイン」 12cmポット</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/344" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>ミツデイワガサ3.5号10.5cmポット</h3>
+    <div class="price">¥900<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/331" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>リンショウバイ 9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/302" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>赤葉テマリシモツケ【ディアボロ】 12cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/99" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バラ科(バラ・サクラ・木イチゴ等）" data-mat="" data-price="900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バラ科(バラ・サクラ・木イチゴ等）</div>
+    <h3>リンショウバイ 3.5号10.5cmポット苗</h3>
+    <div class="price">¥900<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/23" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 高尾</h3>
+    <div class="price">¥800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/68" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 榛名</h3>
+    <div class="price">¥800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/62" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 天城</h3>
+    <div class="price">¥900<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/322" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 金時</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/70" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 御岳</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/396" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 明神</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/69" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 大山</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/67" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 吉野</h3>
+    <div class="price">¥900<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/66" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 足柄</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/65" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 丹沢</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/64" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 雲取</h3>
+    <div class="price">¥900<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/63" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ かがり火</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/233" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 女峰</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/232" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ ボーデニー</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/230" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 至仏</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/229" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 秩父</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/228" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ヒガンバナ科(ネリネ)" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ヒガンバナ科(ネリネ)</div>
+    <h3>ネリネ 愛宕</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/227" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ミカン科" data-mat="" data-price="700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ミカン科</div>
+    <h3>雲竜カラタチ 9cmポット苗</h3>
+    <div class="price">¥700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/100" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="モクセイ科" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">モクセイ科</div>
+    <h3>雲南黄梅12cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/368" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ロウバイ科" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ロウバイ科</div>
+    <h3>夏ロウバイ12cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/88" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ロウバイ科" data-mat="" data-price="1000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ロウバイ科</div>
+    <h3>黒ロウバイ 12cmポット苗</h3>
+    <div class="price">¥1,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/204" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キジカクシ科" data-mat="" data-price="3500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キジカクシ科</div>
+    <h3>トックリラン7号鉢</h3>
+    <div class="price">¥3,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://kakouen.ocnk.net/product/363" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、花香園(かこうえん)様の公式サイト(<a href="https://kakouen.ocnk.net/" target="_blank" rel="noopener">https://kakouen.ocnk.net/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:"",price:"",stock:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      if(state.price){var q=state.price.split('-'),pv=+c.dataset.price;if(!(pv>0&&pv>=+q[0]&&pv<+q[1]))ok=false;}
+      if(state.stock&&c.dataset.stock!==state.stock)ok=false;
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
