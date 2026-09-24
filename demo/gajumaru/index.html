@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>gajumaru art craft(ガジュマルアートクラフト)｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.stock{font-size:11px;font-weight:700;margin-left:8px;padding:2px 8px;border-radius:20px;vertical-align:middle}
+.stock.in{background:#e9f1e7;color:#4f7a52}.stock.few{background:#fbf0dd;color:#9a6b1f}.stock.out{background:#f2eeea;color:#8b8179}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。gajumaru art craft(ガジュマルアートクラフト)様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>gajumaru art craft(ガジュマルアートクラフト)</h1>
+  <p class="tagline">ピアス・ネックレス・リング・ブレスレットなど120点を1枚に並べ、カテゴリと価格帯、在庫で絞り込めるようにしました。</p>
+  <div class="badges"><span>沖縄県国頭郡恩納村</span><span>掲載 120点</span><span>種類・価格帯・在庫で絞り込めます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="ピアス">ピアス</button><button class="chip" data-k="cat" data-v="ネックレス">ネックレス</button><button class="chip" data-k="cat" data-v="ブレスレット">ブレスレット</button><button class="chip" data-k="cat" data-v="イヤーカフ">イヤーカフ</button><button class="chip" data-k="cat" data-v="リング">リング</button><button class="chip" data-k="cat" data-v="バングル">バングル</button><button class="chip" data-k="cat" data-v="チェーン">チェーン</button></div>
+    <div class="row"><span class="lbl">価格帯</span><button class="chip active" data-k="price" data-v="">すべて</button><button class="chip" data-k="price" data-v="0-20000">〜¥20,000</button><button class="chip" data-k="price" data-v="20000-30000">¥20,000〜¥30,000</button><button class="chip" data-k="price" data-v="30000-1000000000">¥30,000〜</button></div>
+    <div class="row"><span class="lbl">在庫</span><button class="chip active" data-k="stock" data-v="">すべて</button><button class="chip" data-k="stock" data-v="在庫あり">在庫あり</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option><option value="Silver925">Silver925</option><option value="Silver925 サイズ (カフ) : W(横) 17mm">Silver925 サイズ (カフ) : W(横) 17mm</option><option value="H( 高さ) 6mm サイズ (チャーム) : W(横) 5mm">H( 高さ) 6mm サイズ (チャーム) : W(横) 5mm</option><option value="H( 高さ) 26mm">H( 高さ) 26mm</option><option value="Silver925 サイズ(カフ) : W(横) 17mm">Silver925 サイズ(カフ) : W(横) 17mm</option><option value="H( 高さ) 6mm サイズ(チャーム) : W(横) 5.8mm">H( 高さ) 6mm サイズ(チャーム) : W(横) 5.8mm</option><option value="H( 高さ) 23mm">H( 高さ) 23mm</option><option value="Silver925 + K10">Silver925 + K10</option><option value="K18 チェーン幅 : 2.8mm">K18 チェーン幅 : 2.8mm</option><option value="Silver925 リング幅 : 15.5mm">Silver925 リング幅 : 15.5mm</option><option value="Silver925 トップサイズ : W(横) 25mm">Silver925 トップサイズ : W(横) 25mm</option><option value="H(縦) 5.5mm">H(縦) 5.5mm</option><option value="Silver925 トップサイズ : W(横) 11mm">Silver925 トップサイズ : W(横) 11mm</option><option value="H(縦) 6mm">H(縦) 6mm</option><option value="Silver925 バングル幅 : 5mm (最大幅)">Silver925 バングル幅 : 5mm (最大幅)</option><option value="Silver925 , gajumaru wood (天然素材)">Silver925 , gajumaru wood (天然素材)</option><option value="Silver925 リング幅 : 12mm">Silver925 リング幅 : 12mm</option><option value="Silver925 チェーン幅 : 2.8mm">Silver925 チェーン幅 : 2.8mm</option><option value="Silver925 , gajumaru wood (天然素材) トップサイズ : W(横) 23mm">Silver925 , gajumaru wood (天然素材) トップサイズ : W(横) 23mm</option><option value="H(縦) 7mm">H(縦) 7mm</option><option value="K18 , gajumaru wood (天然素材) トップサイズ : W(横) 16mm">K18 , gajumaru wood (天然素材) トップサイズ : W(横) 16mm</option><option value="H(縦) 4mm">H(縦) 4mm</option><option value="Silver925 バングル幅 : 11.5mm (最大幅)">Silver925 バングル幅 : 11.5mm (最大幅)</option><option value="Silver925 , ブラックスピネル トップサイズ : W(横) 17mm">Silver925 , ブラックスピネル トップサイズ : W(横) 17mm</option><option value="H(縦) 25mm">H(縦) 25mm</option><option value="Silver925 トップサイズ : W(横) 38mm">Silver925 トップサイズ : W(横) 38mm</option><option value="Silver925 トップサイズ : W(横) 17mm">Silver925 トップサイズ : W(横) 17mm</option><option value="H(縦) 3.5mm">H(縦) 3.5mm</option><option value="gajumaru wood (天然素材) リング幅 : 13mm">gajumaru wood (天然素材) リング幅 : 13mm</option><option value="Silver925 リング幅 : 15mm">Silver925 リング幅 : 15mm</option><option value="Silver925 , gajumaru wood (天然素材) トップサイズ : W(横) 26mm">Silver925 , gajumaru wood (天然素材) トップサイズ : W(横) 26mm</option><option value="H(縦) 9.5mm">H(縦) 9.5mm</option><option value="K10">K10</option><option value="K18">K18</option><option value="Pt950 リング幅 : 2mm">Pt950 リング幅 : 2mm</option><option value="Pt950 , gajumaru wood (天然素材) リング幅 : 3.8mm">Pt950 , gajumaru wood (天然素材) リング幅 : 3.8mm</option><option value="Pt950 リング幅 : 3mm">Pt950 リング幅 : 3mm</option><option value="Pt950 , gajumaru wood (天然素材) リング幅 : 7mm">Pt950 , gajumaru wood (天然素材) リング幅 : 7mm</option><option value="Pt950 , gajumaru wood (天然素材) リング幅 : 3.2mm">Pt950 , gajumaru wood (天然素材) リング幅 : 3.2mm</option><option value="Pt950 リング幅 : 4mm">Pt950 リング幅 : 4mm</option><option value="6mm">6mm</option><option value="K18 GOLD , gajumaru wood (天然素材) トップサイズ : W(横) 16mm">K18 GOLD , gajumaru wood (天然素材) トップサイズ : W(横) 16mm</option><option value="K18 GOLD トップサイズ : W(横) 19mm">K18 GOLD トップサイズ : W(横) 19mm</option><option value="H(縦) 30mm">H(縦) 30mm</option><option value="K18 GOLD , gajumaru wood (天然素材) トップサイズ : W(横) 14mm">K18 GOLD , gajumaru wood (天然素材) トップサイズ : W(横) 14mm</option><option value="H(縦) 21mm">H(縦) 21mm</option><option value="K18 GOLD トップサイズ : W(横) 1mm">K18 GOLD トップサイズ : W(横) 1mm</option><option value="H(縦) 10mm">H(縦) 10mm</option><option value="K18 GOLD , gajumaru wood (天然素材) トップサイズ : W(横) 9mm">K18 GOLD , gajumaru wood (天然素材) トップサイズ : W(横) 9mm</option><option value="H(縦) 9mm">H(縦) 9mm</option><option value="Silver925 チェーン幅 : 1.8mm 仕様 : 5cmのアジャスター付属">Silver925 チェーン幅 : 1.8mm 仕様 : 5cmのアジャスター付属</option><option value="Silver925 チェーン幅 : 2.4mm 仕様 : 5cmのアジャスター付属">Silver925 チェーン幅 : 2.4mm 仕様 : 5cmのアジャスター付属</option><option value="Silver925 チェーン幅 : 1.2mm 仕様 : 5cmのアジャスター付属">Silver925 チェーン幅 : 1.2mm 仕様 : 5cmのアジャスター付属</option><option value="Silver925 , 本革 トップサイズ : W(横) 22mm">Silver925 , 本革 トップサイズ : W(横) 22mm</option><option value="H(縦) 8mm">H(縦) 8mm</option><option value="H(縦) 15mm">H(縦) 15mm</option><option value="Silver925 , gajumaru wood (天然素材) トップサイズ : W(横) 17mm">Silver925 , gajumaru wood (天然素材) トップサイズ : W(横) 17mm</option><option value="H(縦) 12mm">H(縦) 12mm</option><option value="Silver925 , 本革 トップサイズ : W(横) 26mm">Silver925 , 本革 トップサイズ : W(横) 26mm</option><option value="Silver925 トップサイズ : W(横) 35mm">Silver925 トップサイズ : W(横) 35mm</option><option value="Silver925 バングル幅 : 12mm">Silver925 バングル幅 : 12mm</option><option value="Silver925 バングル幅 : 7mm">Silver925 バングル幅 : 7mm</option><option value="Silver925 トップサイズ 025_1 : W(横) 26mm">Silver925 トップサイズ 025_1 : W(横) 26mm</option><option value="H(縦) 9.5mm 025_2 : W(横) 33mm">H(縦) 9.5mm 025_2 : W(横) 33mm</option><option value="H(縦) 13.5mm">H(縦) 13.5mm</option><option value="Silver925 , 本革 トップサイズ : W(横) 36mm">Silver925 , 本革 トップサイズ : W(横) 36mm</option><option value="H(縦) 28mm">H(縦) 28mm</option><option value="Silver925 , 本革 トップサイズ : W(横) 20mm">Silver925 , 本革 トップサイズ : W(横) 20mm</option><option value="Silver925 , gajumaru wood (天然素材) リング幅 : 3.8mm">Silver925 , gajumaru wood (天然素材) リング幅 : 3.8mm</option><option value="Silver925 リング幅 : 7mm">Silver925 リング幅 : 7mm</option><option value="12.5mm">12.5mm</option><option value="Silver925 リング幅 : 9mm">Silver925 リング幅 : 9mm</option><option value="Silver925 , gajumaru wood (天然素材) リング幅 : 6mm - 12mm(最大幅)">Silver925 , gajumaru wood (天然素材) リング幅 : 6mm - 12mm(最大幅)</option><option value="Silver925 リング幅 : 3mm">Silver925 リング幅 : 3mm</option><option value="Silver925 , gajumaru wood (天然素材) リング幅 : 5.5mm">Silver925 , gajumaru wood (天然素材) リング幅 : 5.5mm</option><option value="7.5mm">7.5mm</option><option value="9.5mm">9.5mm</option><option value="Silver925 リング幅 : 9mm(最大幅)">Silver925 リング幅 : 9mm(最大幅)</option><option value="Silver925 , gajumaru wood (天然素材) リング幅 : 3.2mm">Silver925 , gajumaru wood (天然素材) リング幅 : 3.2mm</option><option value="Silver925 リング幅 : 4mm">Silver925 リング幅 : 4mm</option><option value="Silver925 リング幅 : 4.5mm">Silver925 リング幅 : 4.5mm</option><option value="Silver925 , gajumaru wood (天然素材) リング幅 : 7mm">Silver925 , gajumaru wood (天然素材) リング幅 : 7mm</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk31</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 16.5mm / H( 高さ) 9mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk31" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk30</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 5.5mm / H(縦) 10mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk30" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk29</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 5mm / H( 高さ) 8mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk29" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk28</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 7mm / H(縦) 7mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk28" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk27</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 4.8mm / H( 高さ) 13mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk27" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk26</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 6.5mm / H( 高さ) 6.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk26" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk25</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 5mm / H(縦) 13.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk25" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk24</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 7mm / H( 高さ) 8.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk24" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk23</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 6mm / H(高さ) 6mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk23" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk22</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 7.5mm / H(高さ) 7.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk22" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925 サイズ (カフ) : W(横) 17mm / H( 高さ) 6mm サイズ (チャーム) : W(横) 5mm / H( 高さ) 26mm" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk21</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 サイズ (カフ) : W(横) 17mm / H( 高さ) 6mm サイズ (チャーム) : W(横) 5mm / H( 高さ) 26mm / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk21" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk20</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材:  / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk20" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk19</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 7.5mm / H( 高さ) 12mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk19" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk18</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 20mm / H( 高さ) 8mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk18" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk17</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 5mm / H( 高さ) 26mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk17" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk16</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 25mm / H( 高さ) 7.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk16" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk15</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 5mm / H( 高さ) 24mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk15" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk14</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 24.5mm / H( 高さ) 5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk14" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk13</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 18mm / H(縦) 9mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk13" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk12</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 8mm / H( 高さ) 13.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk12" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk11</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 8mm / H( 高さ) 15mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk11" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk10</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 15mm / H( 高さ) 8mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk10" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk9</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 5.5mm / H( 高さ) 12mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk8</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 16mm / H( 高さ) 7mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk8" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925 サイズ(カフ) : W(横) 17mm / H( 高さ) 6mm サイズ(チャーム) : W(横) 5.8mm / H( 高さ) 23mm" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk7</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 サイズ(カフ) : W(横) 17mm / H( 高さ) 6mm サイズ(チャーム) : W(横) 5.8mm / H( 高さ) 23mm / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk7" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk6</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 17mm / H( 高さ) 6mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk6" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk5</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 9mm / H( 高さ) 13.8mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk5" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk4</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 7.5mm / H( 高さ) 11.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk4" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk3</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 6mm / H(高さ) 23mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk3" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk2</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 17mm / H(高さ) 15mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk2" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>hk1</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 14.5mm / H(高さ) 17.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/hk1" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925 + K10/K18 チェーン幅 : 2.8mm" data-price="67100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.115 Gold &amp; Silver</h3>
+    <div class="price">¥67,100〜¥97,900<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>K10 Gold &amp; SV925 chain</td><td></td><td class="pr">¥67,100</td></tr><tr><td>K18 Gold &amp; SV925 chain</td><td></td><td class="pr">¥97,900</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 + K10/K18 チェーン幅 : 2.8mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-115-sv-gold" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925 リング幅 : 15.5mm" data-price="38500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>No.135</h3>
+    <div class="price">¥38,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>11</td><td></td><td class="pr">¥38,500</td></tr><tr><td>13</td><td></td><td class="pr">¥38,500</td></tr><tr><td>15</td><td></td><td class="pr">¥38,500</td></tr><tr><td>17</td><td></td><td class="pr">¥38,500</td></tr><tr><td>19</td><td></td><td class="pr">¥38,500</td></tr><tr><td>21</td><td></td><td class="pr">¥38,500</td></tr><tr><td>23</td><td></td><td class="pr">¥38,500</td></tr><tr><td>25</td><td></td><td class="pr">¥38,500</td></tr><tr><td>27</td><td></td><td class="pr">¥38,500</td></tr><tr><td>特注サイズ</td><td></td><td class="pr">¥38,500</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 リング幅 : 15.5mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-135" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 トップサイズ : W(横) 25mm / H(縦) 5.5mm" data-price="27500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.238</h3>
+    <div class="price">¥27,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 25mm / H(縦) 5.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S (17cm)</td><td></td><td class="pr">¥27,500</td></tr><tr><td>M (19cm)</td><td></td><td class="pr">¥27,500</td></tr><tr><td>L (21cm)</td><td></td><td class="pr">¥27,500</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 トップサイズ : W(横) 25mm / H(縦) 5.5mm / 塗装: マット仕上げ (チェーン : 鏡面仕上げ)</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-238" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 トップサイズ : W(横) 11mm / H(縦) 6mm" data-price="24200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.214</h3>
+    <div class="price">¥24,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 11mm / H(縦) 6mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S (17cm)</td><td></td><td class="pr">¥24,200</td></tr><tr><td>M (19cm)</td><td></td><td class="pr">¥24,200</td></tr><tr><td>L (21cm)</td><td></td><td class="pr">¥24,200</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 トップサイズ : W(横) 11mm / H(縦) 6mm / 塗装: マット仕上げ (チェーン : 鏡面仕上げ)</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-214" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 バングル幅 : 5mm (最大幅)" data-price="29700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.229</h3>
+    <div class="price">¥29,700〜¥33,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>XS size</td><td></td><td class="pr">¥29,700</td></tr><tr><td>S size</td><td></td><td class="pr">¥33,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 バングル幅 : 5mm (最大幅) / 塗装: マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-229" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925 , gajumaru wood (天然素材)" data-price="28600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.272</h3>
+    <div class="price">¥28,600〜¥36,300<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 15mm / H(縦) 27mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / なし</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Black / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥36,300</td></tr><tr><td>Brown / なし</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Brown / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥36,300</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-272" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925 リング幅 : 12mm" data-price="31900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>No.137</h3>
+    <div class="price">¥31,900<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>11</td><td></td><td class="pr">¥31,900</td></tr><tr><td>13</td><td></td><td class="pr">¥31,900</td></tr><tr><td>15</td><td></td><td class="pr">¥31,900</td></tr><tr><td>17</td><td></td><td class="pr">¥31,900</td></tr><tr><td>19</td><td></td><td class="pr">¥31,900</td></tr><tr><td>21</td><td></td><td class="pr">¥31,900</td></tr><tr><td>23</td><td></td><td class="pr">¥31,900</td></tr><tr><td>25</td><td></td><td class="pr">¥31,900</td></tr><tr><td>27</td><td></td><td class="pr">¥31,900</td></tr><tr><td>特注サイズ</td><td></td><td class="pr">¥31,900</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 リング幅 : 12mm / 塗装: 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-137" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925 , gajumaru wood (天然素材)" data-price="18700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>No.133</h3>
+    <div class="price">¥18,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 17mm / H(縦) 7mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥18,700</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-133" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925 チェーン幅 : 2.8mm" data-price="38500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.115</h3>
+    <div class="price">¥38,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥38,500</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 チェーン幅 : 2.8mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-115" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925" data-price="18700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.113</h3>
+    <div class="price">¥18,700〜¥26,400<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 15mm / H(縦) 16mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / 鏡面仕上げ / なし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>Black / 鏡面仕上げ / Type1 (40+5cm) +¥6600</td><td></td><td class="pr">¥25,300</td></tr><tr><td>Black / 鏡面仕上げ / Type2 (50+5cm) +¥7700</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Black / 鏡面仕上げ / Type3 (50+5cm) +¥7700</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Black / 黒燻仕上げ / なし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>Black / 黒燻仕上げ / Type1 (40+5cm) +¥6600</td><td></td><td class="pr">¥25,300</td></tr><tr><td>Black / 黒燻仕上げ / Type2 (50+5cm) +¥7700</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Black / 黒燻仕上げ / Type3 (50+5cm) +¥7700</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Brown / 鏡面仕上げ / なし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>Brown / 鏡面仕上げ / Type1 (40+5cm) +¥6600</td><td></td><td class="pr">¥25,300</td></tr><tr><td>Brown / 鏡面仕上げ / Type2 (50+5cm) +¥7700</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Brown / 鏡面仕上げ / Type3 (50+5cm) +¥7700</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Brown / 黒燻仕上げ / なし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>Brown / 黒燻仕上げ / Type1 (40+5cm) +¥6600</td><td></td><td class="pr">¥25,300</td></tr><tr><td>Brown / 黒燻仕上げ / Type2 (50+5cm) +¥7700</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Brown / 黒燻仕上げ / Type3 (50+5cm) +¥7700</td><td></td><td class="pr">¥26,400</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: 鏡面 / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-113" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925" data-price="17600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.085</h3>
+    <div class="price">¥17,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 16mm / H(縦) 4mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>鏡面仕上げ / 35+5cm</td><td></td><td class="pr">¥17,600</td></tr><tr><td>鏡面仕上げ / 40+5cm</td><td></td><td class="pr">¥17,600</td></tr><tr><td>鏡面仕上げ / 45+5cm</td><td></td><td class="pr">¥17,600</td></tr><tr><td>黒燻仕上げ / 35+5cm</td><td></td><td class="pr">¥17,600</td></tr><tr><td>黒燻仕上げ / 40+5cm</td><td></td><td class="pr">¥17,600</td></tr><tr><td>黒燻仕上げ / 45+5cm</td><td></td><td class="pr">¥17,600</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: 鏡面 / 黒燻仕上げ ※チェーン付</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-085" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="イヤーカフ" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">イヤーカフ</div>
+    <h3>No.004</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 18mm / H(縦) 9mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-004" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 , gajumaru wood (天然素材) トップサイズ : W(横) 23mm / H(縦) 7mm" data-price="25300" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.219</h3>
+    <div class="price">¥25,300<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 23mm / H(縦) 7mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S (17cm)</td><td></td><td class="pr">¥25,300</td></tr><tr><td>M (19cm)</td><td></td><td class="pr">¥25,300</td></tr><tr><td>L (21cm)</td><td></td><td class="pr">¥25,300</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) トップサイズ : W(横) 23mm / H(縦) 7mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-219" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="7700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>No.111</h3>
+    <div class="price">¥7,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 7mm / H(縦) 7mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>鏡面仕上げ</td><td></td><td class="pr">¥7,700</td></tr><tr><td>黒燻仕上げ</td><td></td><td class="pr">¥7,700</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: 鏡面 / 黒燻仕上げ ※トップ部のみ。ポストとキャッチは黒燻加工はしておりません。</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-111" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 リング幅 : 12mm" data-price="27500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.128</h3>
+    <div class="price">¥27,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>鏡面仕上げ / 13</td><td></td><td class="pr">¥27,500</td></tr><tr><td>鏡面仕上げ / 15</td><td></td><td class="pr">¥27,500</td></tr><tr><td>鏡面仕上げ / 17</td><td></td><td class="pr">¥27,500</td></tr><tr><td>鏡面仕上げ / 19</td><td></td><td class="pr">¥27,500</td></tr><tr><td>鏡面仕上げ / 21</td><td></td><td class="pr">¥27,500</td></tr><tr><td>鏡面仕上げ / 23</td><td></td><td class="pr">¥27,500</td></tr><tr><td>鏡面仕上げ / 25</td><td></td><td class="pr">¥27,500</td></tr><tr><td>鏡面仕上げ / 27</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 13</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 15</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 17</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 19</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 21</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 23</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 25</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 27</td><td></td><td class="pr">¥27,500</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 リング幅 : 12mm / 塗装: 鏡面 / マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-128" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="11000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>No.116</h3>
+    <div class="price">¥11,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 7mm / H(縦) 12mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥11,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-0116" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925 + K10/K18 , gajumaru wood (天然素材) トップサイズ : W(横) 16mm / H(縦) 4mm" data-price="42900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.087 Gold &amp; Silver</h3>
+    <div class="price">¥42,900〜¥79,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 16mm / H(縦) 4mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>K10 Gold &amp; SV925 chain / 35cm(+アジャスター5cm)</td><td></td><td class="pr">¥42,900</td></tr><tr><td>K10 Gold &amp; SV925 chain / 40cm(+アジャスター5cm)</td><td></td><td class="pr">¥42,900</td></tr><tr><td>K10 Gold &amp; SV925 chain / 45cm(+アジャスター5cm)</td><td></td><td class="pr">¥42,900</td></tr><tr><td>K18 Gold &amp; SV925 chain / 35cm(+アジャスター5cm)</td><td></td><td class="pr">¥79,200</td></tr><tr><td>K18 Gold &amp; SV925 chain / 40cm(+アジャスター5cm)</td><td></td><td class="pr">¥79,200</td></tr><tr><td>K18 Gold &amp; SV925 chain / 45cm(+アジャスター5cm)</td><td></td><td class="pr">¥79,200</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 + K10/K18 , gajumaru wood (天然素材) トップサイズ : W(横) 16mm / H(縦) 4mm / 塗装: 鏡面仕上げ ※チェーン付</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-087-gold-silver" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バングル" data-mat="Silver925 バングル幅 : 11.5mm (最大幅)" data-price="51700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バングル</div>
+    <h3>No.121</h3>
+    <div class="price">¥51,700〜¥57,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S size / 鏡面仕上げ</td><td></td><td class="pr">¥51,700</td></tr><tr><td>S size / マット仕上げ</td><td></td><td class="pr">¥51,700</td></tr><tr><td>L size / 鏡面仕上げ</td><td></td><td class="pr">¥57,200</td></tr><tr><td>L size / マット仕上げ</td><td></td><td class="pr">¥57,200</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 バングル幅 : 11.5mm (最大幅) / 塗装: 鏡面 / マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-121" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="イヤーカフ" data-mat="Silver925" data-price="15400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">イヤーカフ</div>
+    <h3>No.126</h3>
+    <div class="price">¥15,400<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 15mm / H(縦) 12mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>鏡面仕上げ</td><td></td><td class="pr">¥15,400</td></tr><tr><td>マット仕上げ</td><td></td><td class="pr">¥15,400</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: 鏡面 / マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-126" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925 , ブラックスピネル トップサイズ : W(横) 17mm / H(縦) 25mm" data-price="23100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.125</h3>
+    <div class="price">¥23,100〜¥30,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 17mm / H(縦) 25mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / なし</td><td></td><td class="pr">¥23,100</td></tr><tr><td>Black / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥30,800</td></tr><tr><td>Brown / なし</td><td></td><td class="pr">¥23,100</td></tr><tr><td>Brown / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥30,800</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , ブラックスピネル トップサイズ : W(横) 17mm / H(縦) 25mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-125" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 トップサイズ : W(横) 38mm / H(縦) 5.5mm" data-price="26400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.127</h3>
+    <div class="price">¥26,400<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 38mm / H(縦) 5.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S (17cm)</td><td></td><td class="pr">¥26,400</td></tr><tr><td>M (19cm)</td><td></td><td class="pr">¥26,400</td></tr><tr><td>L (21cm)</td><td></td><td class="pr">¥26,400</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 トップサイズ : W(横) 38mm / H(縦) 5.5mm / 塗装: 鏡面仕上げ (チェーン : マット仕上げ)</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-127" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925 トップサイズ : W(横) 17mm / H(縦) 3.5mm" data-price="16500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.129</h3>
+    <div class="price">¥16,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 17mm / H(縦) 3.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>35+5cm</td><td></td><td class="pr">¥16,500</td></tr><tr><td>40+5cm</td><td></td><td class="pr">¥16,500</td></tr><tr><td>45+5cm</td><td></td><td class="pr">¥16,500</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 トップサイズ : W(横) 17mm / H(縦) 3.5mm / 塗装: 鏡面仕上げ ※チェーン付</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-129" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 / gajumaru wood (天然素材) リング幅 : 13mm" data-price="34100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.070</h3>
+    <div class="price">¥34,100<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>13</td><td></td><td class="pr">¥34,100</td></tr><tr><td>15</td><td></td><td class="pr">¥34,100</td></tr><tr><td>17</td><td></td><td class="pr">¥34,100</td></tr><tr><td>19</td><td></td><td class="pr">¥34,100</td></tr><tr><td>21</td><td></td><td class="pr">¥34,100</td></tr><tr><td>23</td><td></td><td class="pr">¥34,100</td></tr><tr><td>25</td><td></td><td class="pr">¥34,100</td></tr><tr><td>27</td><td></td><td class="pr">¥34,100</td></tr><tr><td>特注サイズ</td><td></td><td class="pr">¥34,100</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / gajumaru wood (天然素材) リング幅 : 13mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no070" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 リング幅 : 15mm" data-price="46200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.041</h3>
+    <div class="price">¥46,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>15</td><td></td><td class="pr">¥46,200</td></tr><tr><td>19</td><td></td><td class="pr">¥46,200</td></tr><tr><td>23</td><td></td><td class="pr">¥46,200</td></tr><tr><td>27</td><td></td><td class="pr">¥46,200</td></tr><tr><td>特注サイズ</td><td></td><td class="pr">¥46,200</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 リング幅 : 15mm / 塗装: 黒燻仕上げ + 部分鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-041" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 , gajumaru wood (天然素材) トップサイズ : W(横) 26mm / H(縦) 9.5mm" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.026</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 26mm / H(縦) 9.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S (17cm)</td><td></td><td class="pr">¥22,000</td></tr><tr><td>M (19cm)</td><td></td><td class="pr">¥22,000</td></tr><tr><td>L (21cm)</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) トップサイズ : W(横) 26mm / H(縦) 9.5mm / 塗装: 鏡面仕上げ (チェーン : マット仕上げ)</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no026" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="K10 / K18 / Pt950 リング幅 : 2mm" data-price="89100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.100 GOLD &amp; Pt950</h3>
+    <div class="price">¥89,100〜¥170,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>K10 Gold / 文字入れなし</td><td></td><td class="pr">¥89,100</td></tr><tr><td>K10 Gold / レーザー刻印あり</td><td></td><td class="pr">¥89,100</td></tr><tr><td>K10 White Gold / 文字入れなし</td><td></td><td class="pr">¥89,100</td></tr><tr><td>K10 White Gold / レーザー刻印あり</td><td></td><td class="pr">¥89,100</td></tr><tr><td>K18 Gold / 文字入れなし</td><td></td><td class="pr">¥170,500</td></tr><tr><td>K18 Gold / レーザー刻印あり</td><td></td><td class="pr">¥170,500</td></tr><tr><td>K18 White Gold / 文字入れなし</td><td></td><td class="pr">¥170,500</td></tr><tr><td>K18 White Gold / レーザー刻印あり</td><td></td><td class="pr">¥170,500</td></tr><tr><td>Pt950 / 文字入れなし</td><td></td><td class="pr">¥132,000</td></tr><tr><td>Pt950 / レーザー刻印あり</td><td></td><td class="pr">¥132,000</td></tr></tbody></table>
+      <div class="mat">素材: K10 / K18 / Pt950 リング幅 : 2mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no100g" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="K10 / K18 / Pt950 , gajumaru wood (天然素材) リング幅 : 3.8mm" data-price="126500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.120 GOLD &amp; Pt950</h3>
+    <div class="price">¥126,500〜¥247,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>K10 Gold / 文字入れなし</td><td></td><td class="pr">¥126,500</td></tr><tr><td>K10 Gold / レーザー刻印あり</td><td></td><td class="pr">¥126,500</td></tr><tr><td>K18 Gold / 文字入れなし</td><td></td><td class="pr">¥247,500</td></tr><tr><td>K18 Gold / レーザー刻印あり</td><td></td><td class="pr">¥247,500</td></tr><tr><td>Pt950 / 文字入れなし</td><td></td><td class="pr">¥192,500</td></tr><tr><td>Pt950 / レーザー刻印あり</td><td></td><td class="pr">¥192,500</td></tr></tbody></table>
+      <div class="mat">素材: K10 / K18 / Pt950 , gajumaru wood (天然素材) リング幅 : 3.8mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no120g" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="K10 / K18 / Pt950 リング幅 : 3mm" data-price="110000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.018 GOLD &amp; Pt950</h3>
+    <div class="price">¥110,000〜¥231,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>K10 Gold / 文字入れなし</td><td></td><td class="pr">¥110,000</td></tr><tr><td>K10 Gold / レーザー刻印あり</td><td></td><td class="pr">¥110,000</td></tr><tr><td>K10 White Gold / 文字入れなし</td><td></td><td class="pr">¥110,000</td></tr><tr><td>K10 White Gold / レーザー刻印あり</td><td></td><td class="pr">¥110,000</td></tr><tr><td>K18 Gold / 文字入れなし</td><td></td><td class="pr">¥231,000</td></tr><tr><td>K18 Gold / レーザー刻印あり</td><td></td><td class="pr">¥231,000</td></tr><tr><td>Pt950 / 文字入れなし</td><td></td><td class="pr">¥176,000</td></tr><tr><td>Pt950 / レーザー刻印あり</td><td></td><td class="pr">¥176,000</td></tr></tbody></table>
+      <div class="mat">素材: K10 / K18 / Pt950 リング幅 : 3mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no018g" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="K10 / K18 / Pt950 , gajumaru wood (天然素材) リング幅 : 7mm" data-price="330000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.017 GOLD &amp; Pt950</h3>
+    <div class="price">¥330,000〜¥462,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>K10 Gold / 文字入れなし</td><td></td><td class="pr">¥330,000</td></tr><tr><td>K10 Gold / レーザー刻印あり</td><td></td><td class="pr">¥330,000</td></tr><tr><td>Pt950 / 文字入れなし</td><td></td><td class="pr">¥462,000</td></tr><tr><td>Pt950 / レーザー刻印あり</td><td></td><td class="pr">¥462,000</td></tr></tbody></table>
+      <div class="mat">素材: K10 / K18 / Pt950 , gajumaru wood (天然素材) リング幅 : 7mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no017g" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="K10 / K18 / Pt950 , gajumaru wood (天然素材) リング幅 : 3.2mm" data-price="143000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.010 GOLD &amp; Pt950</h3>
+    <div class="price">¥143,000〜¥286,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>K10 Gold / 文字入れなし</td><td></td><td class="pr">¥143,000</td></tr><tr><td>K10 Gold / レーザー刻印あり</td><td></td><td class="pr">¥143,000</td></tr><tr><td>K18 Gold / 文字入れなし</td><td></td><td class="pr">¥286,000</td></tr><tr><td>K18 Gold / レーザー刻印あり</td><td></td><td class="pr">¥286,000</td></tr><tr><td>Pt950 / 文字入れなし</td><td></td><td class="pr">¥220,000</td></tr><tr><td>Pt950 / レーザー刻印あり</td><td></td><td class="pr">¥220,000</td></tr></tbody></table>
+      <div class="mat">素材: K10 / K18 / Pt950 , gajumaru wood (天然素材) リング幅 : 3.2mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no010g" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="K10 / K18 / Pt950 リング幅 : 4mm / 6mm" data-price="165000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.005 GOLD &amp; Pt950</h3>
+    <div class="price">¥165,000〜¥379,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>No.005_1 / K10 Gold / 文字入れなし</td><td></td><td class="pr">¥165,000</td></tr><tr><td>No.005_1 / K10 Gold / レーザー刻印あり</td><td></td><td class="pr">¥165,000</td></tr><tr><td>No.005_1 / K10 White Gold / 文字入れなし</td><td></td><td class="pr">¥165,000</td></tr><tr><td>No.005_1 / K10 White Gold / レーザー刻印あり</td><td></td><td class="pr">¥165,000</td></tr><tr><td>No.005_1 / K18 Gold / 文字入れなし</td><td></td><td class="pr">¥330,000</td></tr><tr><td>No.005_1 / K18 Gold / レーザー刻印あり</td><td></td><td class="pr">¥330,000</td></tr><tr><td>No.005_1 / Pt950 / 文字入れなし</td><td></td><td class="pr">¥264,000</td></tr><tr><td>No.005_1 / Pt950 / レーザー刻印あり</td><td></td><td class="pr">¥264,000</td></tr><tr><td>No.005_2 / K10 Gold / 文字入れなし</td><td></td><td class="pr">¥242,000</td></tr><tr><td>No.005_2 / K10 Gold / レーザー刻印あり</td><td></td><td class="pr">¥242,000</td></tr><tr><td>No.005_2 / K10 White Gold / 文字入れなし</td><td></td><td class="pr">¥242,000</td></tr><tr><td>No.005_2 / K10 White Gold / レーザー刻印あり</td><td></td><td class="pr">¥242,000</td></tr><tr><td>No.005_2 / Pt950 / 文字入れなし</td><td></td><td class="pr">¥379,500</td></tr><tr><td>No.005_2 / Pt950 / レーザー刻印あり</td><td></td><td class="pr">¥379,500</td></tr></tbody></table>
+      <div class="mat">素材: K10 / K18 / Pt950 リング幅 : 4mm / 6mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no005_1g" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="K10 / K18 GOLD , gajumaru wood (天然素材) トップサイズ : W(横) 16mm / H(縦) 4mm" data-price="84700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.087 GOLD</h3>
+    <div class="price">¥84,700〜¥192,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 16mm / H(縦) 4mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>K10 Gold / 35cm(+アジャスター5cm)</td><td></td><td class="pr">¥84,700</td></tr><tr><td>K10 Gold / 40cm(+アジャスター5cm)</td><td></td><td class="pr">¥88,000</td></tr><tr><td>K10 Gold / 45cm(+アジャスター5cm)</td><td></td><td class="pr">¥90,200</td></tr><tr><td>K18 Gold / 35cm(+アジャスター5cm)</td><td></td><td class="pr">¥170,500</td></tr><tr><td>K18 Gold / 40cm(+アジャスター5cm)</td><td></td><td class="pr">¥181,500</td></tr><tr><td>K18 Gold / 45cm(+アジャスター5cm)</td><td></td><td class="pr">¥192,500</td></tr></tbody></table>
+      <div class="mat">素材: K10 / K18 GOLD , gajumaru wood (天然素材) トップサイズ : W(横) 16mm / H(縦) 4mm / 塗装: 鏡面仕上げ ※チェーン付</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no087g" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="K10 / K18 GOLD トップサイズ : W(横) 19mm / H(縦) 30mm" data-price="385000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.036 GOLD</h3>
+    <div class="price">¥385,000〜¥737,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 19mm / H(縦) 30mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>K10 Gold / 45cm(+アジャスター5cm)</td><td></td><td class="pr">¥385,000</td></tr><tr><td>K10 Gold / 55cm(+アジャスター5cm)</td><td></td><td class="pr">¥396,000</td></tr><tr><td>K18 Gold / 45cm(+アジャスター5cm)</td><td></td><td class="pr">¥715,000</td></tr><tr><td>K18 Gold / 55cm(+アジャスター5cm)</td><td></td><td class="pr">¥737,000</td></tr></tbody></table>
+      <div class="mat">素材: K10 / K18 GOLD トップサイズ : W(横) 19mm / H(縦) 30mm / 塗装: マット+鏡面仕上げ ※チェーン付</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no036g" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="K10 / K18 GOLD , gajumaru wood (天然素材) トップサイズ : W(横) 14mm / H(縦) 21mm" data-price="242000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.009 GOLD</h3>
+    <div class="price">¥242,000〜¥462,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 14mm / H(縦) 21mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>K10 Gold / 45cm(+アジャスター5cm)</td><td></td><td class="pr">¥242,000</td></tr><tr><td>K10 Gold / 55cm(+アジャスター5cm)</td><td></td><td class="pr">¥253,000</td></tr><tr><td>K18 Gold / 45cm(+アジャスター5cm)</td><td></td><td class="pr">¥440,000</td></tr><tr><td>K18 Gold / 55cm(+アジャスター5cm)</td><td></td><td class="pr">¥462,000</td></tr></tbody></table>
+      <div class="mat">素材: K10 / K18 GOLD , gajumaru wood (天然素材) トップサイズ : W(横) 14mm / H(縦) 21mm / 塗装: 鏡面仕上げ ※チェーン付</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no009g" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="K10 / K18 GOLD トップサイズ : W(横) 1mm / H(縦) 10mm" data-price="121000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.107 GOLD</h3>
+    <div class="price">¥121,000〜¥275,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 1mm / H(縦) 10mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>K10 Gold / 40cm(+アジャスター5cm)</td><td></td><td class="pr">¥121,000</td></tr><tr><td>K10 Gold / 45cm(+アジャスター5cm)</td><td></td><td class="pr">¥132,000</td></tr><tr><td>K10 Gold / 50cm(+アジャスター5cm)</td><td></td><td class="pr">¥143,000</td></tr><tr><td>K18 Gold / 40cm(+アジャスター5cm)</td><td></td><td class="pr">¥253,000</td></tr><tr><td>K18 Gold / 45cm(+アジャスター5cm)</td><td></td><td class="pr">¥264,000</td></tr><tr><td>K18 Gold / 50cm(+アジャスター5cm)</td><td></td><td class="pr">¥275,000</td></tr></tbody></table>
+      <div class="mat">素材: K10 / K18 GOLD トップサイズ : W(横) 1mm / H(縦) 10mm / 塗装: 鏡面仕上げ ※チェーン付</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no107g" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="K10 / K18 GOLD , gajumaru wood (天然素材) トップサイズ : W(横) 9mm / H(縦) 9mm" data-price="82500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.101 GOLD</h3>
+    <div class="price">¥82,500〜¥187,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 9mm / H(縦) 9mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>K10 Gold / 40cm(+アジャスター5cm)</td><td></td><td class="pr">¥82,500</td></tr><tr><td>K10 Gold / 45cm(+アジャスター5cm)</td><td></td><td class="pr">¥88,000</td></tr><tr><td>K18 Gold / 40cm(+アジャスター5cm)</td><td></td><td class="pr">¥176,000</td></tr><tr><td>K18 Gold / 45cm(+アジャスター5cm)</td><td></td><td class="pr">¥187,000</td></tr></tbody></table>
+      <div class="mat">素材: K10 / K18 GOLD , gajumaru wood (天然素材) トップサイズ : W(横) 9mm / H(縦) 9mm / 塗装: 鏡面仕上げ ※チェーン付</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no101g" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="イヤーカフ" data-mat="Silver925" data-price="11000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">イヤーカフ</div>
+    <h3>No.080</h3>
+    <div class="price">¥11,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 14mm / H (縦) 8mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥11,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: 鏡面 + マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no080" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="イヤーカフ" data-mat="Silver925" data-price="13200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">イヤーカフ</div>
+    <h3>No.078</h3>
+    <div class="price">¥13,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 11mm / H (縦) 11mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥13,200</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no078" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="イヤーカフ" data-mat="Silver925" data-price="12100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">イヤーカフ</div>
+    <h3>No.062</h3>
+    <div class="price">¥12,100<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 11mm / H (縦) 11mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥12,100</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no062" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="8800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>No.057</h3>
+    <div class="price">¥8,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 7mm / H (縦) 7mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥8,800</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no057" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925 , gajumaru wood (天然素材)" data-price="8250" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>No.053</h3>
+    <div class="price">¥8,250<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 6.5mm / H (縦) 9mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥8,250</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no053" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="9900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>No.052</h3>
+    <div class="price">¥9,900<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 6.8mm / H (縦) 26mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥9,900</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no052" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="6600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>No.031</h3>
+    <div class="price">¥6,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 2mm / H (縦) 25.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥6,600</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no031" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ピアス" data-mat="Silver925" data-price="8800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ピアス</div>
+    <h3>No.011</h3>
+    <div class="price">¥8,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 4.5mm / H (縦) 11mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥8,800</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: 鏡面 + マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no011" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェーン" data-mat="Silver925" data-price="8800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェーン</div>
+    <h3>C-05</h3>
+    <div class="price">¥8,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 13mm / H (縦) 14mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥8,800</td></tr></tbody></table>
+      <div class="mat">素材: Silver925</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/c05" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェーン" data-mat="Silver925 チェーン幅 : 1.8mm 仕様 : 5cmのアジャスター付属" data-price="9350" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェーン</div>
+    <h3>C-04</h3>
+    <div class="price">¥9,350<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>40cm(+アジャスター5cm)</td><td></td><td class="pr">¥9,350</td></tr><tr><td>50cm(+アジャスター5cm)</td><td></td><td class="pr">¥9,350</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 チェーン幅 : 1.8mm 仕様 : 5cmのアジャスター付属</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/c04" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェーン" data-mat="Silver925 チェーン幅 : 2.4mm 仕様 : 5cmのアジャスター付属" data-price="7700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェーン</div>
+    <h3>C-02</h3>
+    <div class="price">¥7,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>40cm(+アジャスター5cm)</td><td></td><td class="pr">¥7,700</td></tr><tr><td>50cm(+アジャスター5cm)</td><td></td><td class="pr">¥7,700</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 チェーン幅 : 2.4mm 仕様 : 5cmのアジャスター付属</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/c02" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="チェーン" data-mat="Silver925 チェーン幅 : 1.2mm 仕様 : 5cmのアジャスター付属" data-price="6600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">チェーン</div>
+    <h3>C-01</h3>
+    <div class="price">¥6,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>40cm(+アジャスター5cm)</td><td></td><td class="pr">¥6,600</td></tr><tr><td>50cm(+アジャスター5cm)</td><td></td><td class="pr">¥6,600</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 チェーン幅 : 1.2mm 仕様 : 5cmのアジャスター付属</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/c01" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 , 本革 トップサイズ : W(横) 22mm / H(縦) 8mm" data-price="30800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.076</h3>
+    <div class="price">¥30,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 22mm / H(縦) 8mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S (17cm)</td><td></td><td class="pr">¥30,800</td></tr><tr><td>M (19cm)</td><td></td><td class="pr">¥30,800</td></tr><tr><td>L (21cm)</td><td></td><td class="pr">¥30,800</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , 本革 トップサイズ : W(横) 22mm / H(縦) 8mm / 塗装: 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no076" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 , 本革 トップサイズ : W(横) 22mm / H(縦) 15mm" data-price="38500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.068</h3>
+    <div class="price">¥38,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 22mm / H(縦) 15mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S (17cm)</td><td></td><td class="pr">¥38,500</td></tr><tr><td>M (19cm)</td><td></td><td class="pr">¥38,500</td></tr><tr><td>L (21cm)</td><td></td><td class="pr">¥38,500</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , 本革 トップサイズ : W(横) 22mm / H(縦) 15mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no068" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 , gajumaru wood (天然素材) トップサイズ : W(横) 17mm / H(縦) 12mm" data-price="27500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.047</h3>
+    <div class="price">¥27,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 17mm / H(縦) 12mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S (17cm)</td><td></td><td class="pr">¥27,500</td></tr><tr><td>M (19cm)</td><td></td><td class="pr">¥27,500</td></tr><tr><td>L (21cm)</td><td></td><td class="pr">¥27,500</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) トップサイズ : W(横) 17mm / H(縦) 12mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no047" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 , 本革 トップサイズ : W(横) 26mm / H(縦) 9.5mm" data-price="30800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.038</h3>
+    <div class="price">¥30,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 26mm / H(縦) 9.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S (17cm)</td><td></td><td class="pr">¥30,800</td></tr><tr><td>M (19cm)</td><td></td><td class="pr">¥30,800</td></tr><tr><td>L (21cm)</td><td></td><td class="pr">¥30,800</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , 本革 トップサイズ : W(横) 26mm / H(縦) 9.5mm / 塗装: 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no038" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 トップサイズ : W(横) 35mm / H(縦) 6mm" data-price="30800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.035</h3>
+    <div class="price">¥30,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 35mm / H(縦) 6mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S (17cm)</td><td></td><td class="pr">¥30,800</td></tr><tr><td>M (19cm)</td><td></td><td class="pr">¥30,800</td></tr><tr><td>L (21cm)</td><td></td><td class="pr">¥30,800</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 トップサイズ : W(横) 35mm / H(縦) 6mm / 塗装: マット仕上げ (チェーン : 鏡面仕上げ)</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no035" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バングル" data-mat="Silver925 バングル幅 : 12mm" data-price="62700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バングル</div>
+    <h3>No.032</h3>
+    <div class="price">¥62,700〜¥71,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S size / マット仕上げ</td><td></td><td class="pr">¥62,700</td></tr><tr><td>S size / 黒燻仕上げ</td><td></td><td class="pr">¥62,700</td></tr><tr><td>L size / マット仕上げ</td><td></td><td class="pr">¥71,500</td></tr><tr><td>L size / 黒燻仕上げ</td><td></td><td class="pr">¥71,500</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 バングル幅 : 12mm / 塗装: マット+鏡面仕上げ / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no032" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="バングル" data-mat="Silver925 バングル幅 : 7mm" data-price="46200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">バングル</div>
+    <h3>No.029</h3>
+    <div class="price">¥46,200〜¥52,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S size / マット仕上げ</td><td></td><td class="pr">¥46,200</td></tr><tr><td>S size / 黒燻仕上げ</td><td></td><td class="pr">¥46,200</td></tr><tr><td>L size / マット仕上げ</td><td></td><td class="pr">¥52,800</td></tr><tr><td>L size / 黒燻仕上げ</td><td></td><td class="pr">¥52,800</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 バングル幅 : 7mm / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no029" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 トップサイズ 025_1 : W(横) 26mm / H(縦) 9.5mm 025_2 : W(横) 33mm / H(縦) 13.5mm" data-price="25300" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.025</h3>
+    <div class="price">¥25,300〜¥34,100<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>No.025_1 / S (17cm)</td><td></td><td class="pr">¥25,300</td></tr><tr><td>No.025_1 / M (19cm)</td><td></td><td class="pr">¥25,300</td></tr><tr><td>No.025_1 / L (21cm)</td><td></td><td class="pr">¥25,300</td></tr><tr><td>No.025_2 / S (17cm)</td><td></td><td class="pr">¥34,100</td></tr><tr><td>No.025_2 / M (19cm)</td><td></td><td class="pr">¥34,100</td></tr><tr><td>No.025_2 / L (21cm)</td><td></td><td class="pr">¥34,100</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 トップサイズ 025_1 : W(横) 26mm / H(縦) 9.5mm 025_2 : W(横) 33mm / H(縦) 13.5mm / 塗装: マット仕上げ (チェーン : 鏡面仕上げ)</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no025" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 , 本革 トップサイズ : W(横) 36mm / H(縦) 28mm" data-price="38500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.022</h3>
+    <div class="price">¥38,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 36mm / H(縦) 28mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>—</td><td></td><td class="pr">¥38,500</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , 本革 トップサイズ : W(横) 36mm / H(縦) 28mm / 塗装: マット+鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no022" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 , gajumaru wood (天然素材) トップサイズ : W(横) 23mm / H(縦) 7mm" data-price="27500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.020</h3>
+    <div class="price">¥27,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 23mm / H(縦) 7mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S (17cm)</td><td></td><td class="pr">¥27,500</td></tr><tr><td>M (19cm)</td><td></td><td class="pr">¥27,500</td></tr><tr><td>L (21cm)</td><td></td><td class="pr">¥27,500</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) トップサイズ : W(横) 23mm / H(縦) 7mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no020" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ブレスレット" data-mat="Silver925 , 本革 トップサイズ : W(横) 20mm / H(縦) 9.5mm" data-price="29700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ブレスレット</div>
+    <h3>No.014</h3>
+    <div class="price">¥29,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 20mm / H(縦) 9.5mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>S (17cm)</td><td></td><td class="pr">¥29,700</td></tr><tr><td>M (19cm)</td><td></td><td class="pr">¥29,700</td></tr><tr><td>L (21cm)</td><td></td><td class="pr">¥29,700</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , 本革 トップサイズ : W(横) 20mm / H(縦) 9.5mm / 塗装: 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no014" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925 , gajumaru wood (天然素材)" data-price="19250" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.087</h3>
+    <div class="price">¥19,250<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 16mm / H(縦) 4mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>35+5cm</td><td></td><td class="pr">¥19,250</td></tr><tr><td>40+5cm</td><td></td><td class="pr">¥19,250</td></tr><tr><td>45+5cm</td><td></td><td class="pr">¥19,250</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) / 塗装: 鏡面仕上げ ※ チェーン付</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no087" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925" data-price="25300" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.083</h3>
+    <div class="price">¥25,300〜¥33,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 18mm / H(縦) 18mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / なし</td><td></td><td class="pr">¥25,300</td></tr><tr><td>Black / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥31,900</td></tr><tr><td>Black / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥33,000</td></tr><tr><td>Brown / なし</td><td></td><td class="pr">¥25,300</td></tr><tr><td>Brown / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥31,900</td></tr><tr><td>Brown / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥33,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット+鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no083" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925" data-price="30800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.074</h3>
+    <div class="price">¥30,800〜¥38,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 22mm / H(縦) 27mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / 鏡面仕上げ / なし</td><td></td><td class="pr">¥30,800</td></tr><tr><td>Black / 鏡面仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥37,400</td></tr><tr><td>Black / 鏡面仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥38,500</td></tr><tr><td>Black / 鏡面仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥38,500</td></tr><tr><td>Black / 黒燻仕上げ / なし</td><td></td><td class="pr">¥30,800</td></tr><tr><td>Black / 黒燻仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥37,400</td></tr><tr><td>Black / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥38,500</td></tr><tr><td>Black / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥38,500</td></tr><tr><td>Brown / 鏡面仕上げ / なし</td><td></td><td class="pr">¥30,800</td></tr><tr><td>Brown / 鏡面仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥37,400</td></tr><tr><td>Brown / 鏡面仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥38,500</td></tr><tr><td>Brown / 鏡面仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥38,500</td></tr><tr><td>Brown / 黒燻仕上げ / なし</td><td></td><td class="pr">¥30,800</td></tr><tr><td>Brown / 黒燻仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥37,400</td></tr><tr><td>Brown / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥38,500</td></tr><tr><td>Brown / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥38,500</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: 鏡面 / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no074" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925" data-price="26400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.067</h3>
+    <div class="price">¥26,400〜¥34,100<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 16mm / H(縦) 27mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / マット&amp;鏡面仕上げ / なし</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Black / マット&amp;鏡面仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr><tr><td>Black / マット&amp;鏡面仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr><tr><td>Black / 黒燻仕上げ / なし</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Black / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr><tr><td>Black / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr><tr><td>Brown / マット&amp;鏡面仕上げ / なし</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Brown / マット&amp;鏡面仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr><tr><td>Brown / マット&amp;鏡面仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr><tr><td>Brown / 黒燻仕上げ / なし</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Brown / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr><tr><td>Brown / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット+鏡面 / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no067" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925" data-price="20900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.058</h3>
+    <div class="price">¥20,900〜¥28,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 6mm / H(縦) 35mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / マット仕上げ / なし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>Black / マット仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥27,500</td></tr><tr><td>Black / マット仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Black / マット仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Black / 黒燻仕上げ / なし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>Black / 黒燻仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥27,500</td></tr><tr><td>Black / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Black / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Brown / マット仕上げ / なし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>Brown / マット仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥27,500</td></tr><tr><td>Brown / マット仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Brown / マット仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Brown / 黒燻仕上げ / なし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>Brown / 黒燻仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥27,500</td></tr><tr><td>Brown / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Brown / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥28,600</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no058" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925 , gajumaru wood (天然素材)" data-price="23100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.055</h3>
+    <div class="price">¥23,100〜¥30,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 19mm / H(縦) 19mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / なし</td><td></td><td class="pr">¥23,100</td></tr><tr><td>Black / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Black / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥30,800</td></tr><tr><td>Brown / なし</td><td></td><td class="pr">¥23,100</td></tr><tr><td>Brown / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Brown / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥30,800</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no055" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925" data-price="29700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.054</h3>
+    <div class="price">¥29,700〜¥37,400<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 11.5mm / H(縦) 24mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / マット仕上げ / なし</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Black / マット仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥36,300</td></tr><tr><td>Black / マット仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥37,400</td></tr><tr><td>Black / マット仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥37,400</td></tr><tr><td>Black / 黒燻仕上げ / なし</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Black / 黒燻仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥36,300</td></tr><tr><td>Black / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥37,400</td></tr><tr><td>Black / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥37,400</td></tr><tr><td>Brown / マット仕上げ / なし</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Brown / マット仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥36,300</td></tr><tr><td>Brown / マット仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥37,400</td></tr><tr><td>Brown / マット仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥37,400</td></tr><tr><td>Brown / 黒燻仕上げ / なし</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Brown / 黒燻仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥36,300</td></tr><tr><td>Brown / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥37,400</td></tr><tr><td>Brown / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥37,400</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no054" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925" data-price="33000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.051</h3>
+    <div class="price">¥33,000〜¥40,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 19mm / H(縦) 19mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / なし</td><td></td><td class="pr">¥33,000</td></tr><tr><td>Black / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥40,700</td></tr><tr><td>Brown / なし</td><td></td><td class="pr">¥33,000</td></tr><tr><td>Brown / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥40,700</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no051" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925" data-price="31900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.039</h3>
+    <div class="price">¥31,900〜¥39,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 18mm / H(縦) 32mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / マット&amp;鏡面仕上げ / なし</td><td></td><td class="pr">¥31,900</td></tr><tr><td>Black / マット&amp;鏡面仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥39,600</td></tr><tr><td>Black / マット&amp;鏡面仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥39,600</td></tr><tr><td>Black / 黒燻仕上げ / なし</td><td></td><td class="pr">¥31,900</td></tr><tr><td>Black / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥39,600</td></tr><tr><td>Black / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥39,600</td></tr><tr><td>Brown / マット&amp;鏡面仕上げ / なし</td><td></td><td class="pr">¥31,900</td></tr><tr><td>Brown / マット&amp;鏡面仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥39,600</td></tr><tr><td>Brown / マット&amp;鏡面仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥39,600</td></tr><tr><td>Brown / 黒燻仕上げ / なし</td><td></td><td class="pr">¥31,900</td></tr><tr><td>Brown / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥39,600</td></tr><tr><td>Brown / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥39,600</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット+鏡面 / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no039" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925" data-price="26400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.036</h3>
+    <div class="price">¥26,400〜¥34,100<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 19mm / H(縦) 30mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / マット&amp;鏡面仕上げ / なし</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Black / マット&amp;鏡面仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr><tr><td>Black / マット&amp;鏡面仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr><tr><td>Black / 黒燻仕上げ / なし</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Black / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr><tr><td>Black / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr><tr><td>Brown / マット&amp;鏡面仕上げ / なし</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Brown / マット&amp;鏡面仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr><tr><td>Brown / マット&amp;鏡面仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr><tr><td>Brown / 黒燻仕上げ / なし</td><td></td><td class="pr">¥26,400</td></tr><tr><td>Brown / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr><tr><td>Brown / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥34,100</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット+鏡面 / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no036" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925" data-price="28600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.033</h3>
+    <div class="price">¥28,600〜¥36,300<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 19mm / H(縦) 29mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / マット仕上げ / なし</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Black / マット仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥36,300</td></tr><tr><td>Black / マット仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥36,300</td></tr><tr><td>Black / 黒燻仕上げ / なし</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Black / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥36,300</td></tr><tr><td>Black / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥36,300</td></tr><tr><td>Brown / マット仕上げ / なし</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Brown / マット仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥36,300</td></tr><tr><td>Brown / マット仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥36,300</td></tr><tr><td>Brown / 黒燻仕上げ / なし</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Brown / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥36,300</td></tr><tr><td>Brown / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥36,300</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no033" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925 , gajumaru wood (天然素材)" data-price="20900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.028</h3>
+    <div class="price">¥20,900〜¥28,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 17mm / H(縦) 23mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / なし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>Black / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥27,500</td></tr><tr><td>Black / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Brown / なし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>Brown / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥27,500</td></tr><tr><td>Brown / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥28,600</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no028" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.027</h3>
+    <div class="price">¥22,000〜¥29,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 8.5mm / H(縦) 25mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / 鏡面仕上げ / なし</td><td></td><td class="pr">¥22,000</td></tr><tr><td>Black / 鏡面仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Black / 鏡面仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Black / 鏡面仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Black / 黒燻仕上げ / なし</td><td></td><td class="pr">¥22,000</td></tr><tr><td>Black / 黒燻仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Black / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Black / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Brown / 鏡面仕上げ / なし</td><td></td><td class="pr">¥22,000</td></tr><tr><td>Brown / 鏡面仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Brown / 鏡面仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Brown / 鏡面仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Brown / 黒燻仕上げ / なし</td><td></td><td class="pr">¥22,000</td></tr><tr><td>Brown / 黒燻仕上げ / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Brown / 黒燻仕上げ / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Brown / 黒燻仕上げ / Type3 (50+5cm) +¥7,700</td><td></td><td class="pr">¥29,700</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 / 塗装: 鏡面 / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no027" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925 , gajumaru wood (天然素材)" data-price="20900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.009</h3>
+    <div class="price">¥20,900〜¥28,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 14mm / H(縦) 21mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / なし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>Black / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥27,500</td></tr><tr><td>Black / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥28,600</td></tr><tr><td>Brown / なし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>Brown / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥27,500</td></tr><tr><td>Brown / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥28,600</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no009" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ネックレス" data-mat="Silver925 , gajumaru wood (天然素材)" data-price="23100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ネックレス</div>
+    <h3>No.006</h3>
+    <div class="price">¥23,100〜¥30,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc">W(横) 9mm / H(縦) 28mm</p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>Black / なし</td><td></td><td class="pr">¥23,100</td></tr><tr><td>Black / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Black / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥30,800</td></tr><tr><td>Brown / なし</td><td></td><td class="pr">¥23,100</td></tr><tr><td>Brown / Type1 (40+5cm) +¥6,600</td><td></td><td class="pr">¥29,700</td></tr><tr><td>Brown / Type2 (50+5cm) +¥7,700</td><td></td><td class="pr">¥30,800</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no006" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 , gajumaru wood (天然素材) リング幅 : 3.8mm" data-price="18700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.120</h3>
+    <div class="price">¥18,700〜¥20,900<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>5 / 文字入れなし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>5 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥20,900</td></tr><tr><td>7 / 文字入れなし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>7 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥20,900</td></tr><tr><td>9 / 文字入れなし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>9 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥20,900</td></tr><tr><td>11 / 文字入れなし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>11 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥20,900</td></tr><tr><td>13 / 文字入れなし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>13 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥20,900</td></tr><tr><td>15 / 文字入れなし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>15 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥20,900</td></tr><tr><td>17 / 文字入れなし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>17 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥20,900</td></tr><tr><td>19 / 文字入れなし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>19 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥20,900</td></tr><tr><td>21 / 文字入れなし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>21 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥20,900</td></tr><tr><td>23 / 文字入れなし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>23 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥20,900</td></tr><tr><td>25 / 文字入れなし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>25 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥20,900</td></tr><tr><td>27 / 文字入れなし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>27 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥20,900</td></tr><tr><td>特注サイズ / 文字入れなし</td><td></td><td class="pr">¥18,700</td></tr><tr><td>特注サイズ / 文字入れあり+¥2,200</td><td></td><td class="pr">¥20,900</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) リング幅 : 3.8mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no120" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 リング幅 : 12mm" data-price="33000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.075</h3>
+    <div class="price">¥33,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>11 (S)</td><td></td><td class="pr">¥33,000</td></tr><tr><td>15 (M)</td><td></td><td class="pr">¥33,000</td></tr><tr><td>19 (L)</td><td></td><td class="pr">¥33,000</td></tr><tr><td>23 (XL)</td><td></td><td class="pr">¥33,000</td></tr><tr><td>特注サイズ</td><td></td><td class="pr">¥33,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 リング幅 : 12mm / 塗装: マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no075" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 リング幅 : 7mm / 12.5mm" data-price="26400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.061</h3>
+    <div class="price">¥26,400〜¥36,300<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>No.061_1 / 11</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.061_1 / 13</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.061_1 / 15</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.061_1 / 17</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.061_1 / 19</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.061_1 / 21</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.061_1 / 23</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.061_1 / 25</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.061_1 / 27</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.061_1 / 特注サイズ</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.061_2 / 11</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.061_2 / 13</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.061_2 / 15</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.061_2 / 17</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.061_2 / 19</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.061_2 / 21</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.061_2 / 23</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.061_2 / 25</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.061_2 / 27</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.061_2 / 特注サイズ</td><td></td><td class="pr">¥36,300</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 リング幅 : 7mm / 12.5mm / 塗装: マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no061" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 リング幅 : 7mm / 12.5mm" data-price="26400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.060</h3>
+    <div class="price">¥26,400〜¥36,300<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>No.060_1 / 11</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.060_1 / 13</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.060_1 / 15</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.060_1 / 17</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.060_1 / 19</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.060_1 / 21</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.060_1 / 23</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.060_1 / 25</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.060_1 / 27</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.060_1 / 特注サイズ</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.060_2 / 11</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.060_2 / 13</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.060_2 / 15</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.060_2 / 17</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.060_2 / 19</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.060_2 / 21</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.060_2 / 23</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.060_2 / 25</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.060_2 / 27</td><td></td><td class="pr">¥36,300</td></tr><tr><td>No.060_2 / 特注サイズ</td><td></td><td class="pr">¥36,300</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 リング幅 : 7mm / 12.5mm / 塗装: マット仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no060" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 リング幅 : 9mm" data-price="27500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.037</h3>
+    <div class="price">¥27,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ / 7</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 9</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 11</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 13</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 15</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 17</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 19</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 21</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 23</td><td></td><td class="pr">¥27,500</td></tr><tr><td>マット仕上げ / 特注サイズ</td><td></td><td class="pr">¥27,500</td></tr><tr><td>黒燻仕上げ / 7</td><td></td><td class="pr">¥27,500</td></tr><tr><td>黒燻仕上げ / 9</td><td></td><td class="pr">¥27,500</td></tr><tr><td>黒燻仕上げ / 11</td><td></td><td class="pr">¥27,500</td></tr><tr><td>黒燻仕上げ / 13</td><td></td><td class="pr">¥27,500</td></tr><tr><td>黒燻仕上げ / 15</td><td></td><td class="pr">¥27,500</td></tr><tr><td>黒燻仕上げ / 17</td><td></td><td class="pr">¥27,500</td></tr><tr><td>黒燻仕上げ / 19</td><td></td><td class="pr">¥27,500</td></tr><tr><td>黒燻仕上げ / 21</td><td></td><td class="pr">¥27,500</td></tr><tr><td>黒燻仕上げ / 23</td><td></td><td class="pr">¥27,500</td></tr><tr><td>黒燻仕上げ / 特注サイズ</td><td></td><td class="pr">¥27,500</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 リング幅 : 9mm / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no037" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 , gajumaru wood (天然素材) リング幅 : 6mm - 12mm(最大幅)" data-price="25300" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.023</h3>
+    <div class="price">¥25,300<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>11</td><td></td><td class="pr">¥25,300</td></tr><tr><td>13</td><td></td><td class="pr">¥25,300</td></tr><tr><td>15</td><td></td><td class="pr">¥25,300</td></tr><tr><td>17</td><td></td><td class="pr">¥25,300</td></tr><tr><td>19</td><td></td><td class="pr">¥25,300</td></tr><tr><td>21</td><td></td><td class="pr">¥25,300</td></tr><tr><td>23</td><td></td><td class="pr">¥25,300</td></tr><tr><td>25</td><td></td><td class="pr">¥25,300</td></tr><tr><td>27</td><td></td><td class="pr">¥25,300</td></tr><tr><td>特注サイズ</td><td></td><td class="pr">¥25,300</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) リング幅 : 6mm - 12mm(最大幅) / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no-023" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 リング幅 : 3mm" data-price="15400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.018</h3>
+    <div class="price">¥15,400<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>7</td><td></td><td class="pr">¥15,400</td></tr><tr><td>9</td><td></td><td class="pr">¥15,400</td></tr><tr><td>11</td><td></td><td class="pr">¥15,400</td></tr><tr><td>13</td><td></td><td class="pr">¥15,400</td></tr><tr><td>15</td><td></td><td class="pr">¥15,400</td></tr><tr><td>17</td><td></td><td class="pr">¥15,400</td></tr><tr><td>19</td><td></td><td class="pr">¥15,400</td></tr><tr><td>21</td><td></td><td class="pr">¥15,400</td></tr><tr><td>23</td><td></td><td class="pr">¥15,400</td></tr><tr><td>特注サイズ</td><td></td><td class="pr">¥15,400</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 リング幅 : 3mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no018" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 , gajumaru wood (天然素材) リング幅 : 5.5mm / 7.5mm / 9.5mm" data-price="24200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.016</h3>
+    <div class="price">¥24,200〜¥37,400<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>No.016_1 / 11 (S) / 文字入れなし</td><td></td><td class="pr">¥24,200</td></tr><tr><td>No.016_1 / 11 (S) / 文字入れあり+¥2,200</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.016_1 / 15 (M) / 文字入れなし</td><td></td><td class="pr">¥24,200</td></tr><tr><td>No.016_1 / 15 (M) / 文字入れあり+¥2,200</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.016_1 / 19 (L) / 文字入れなし</td><td></td><td class="pr">¥24,200</td></tr><tr><td>No.016_1 / 19 (L) / 文字入れあり+¥2,200</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.016_1 / 23 (XL) / 文字入れなし</td><td></td><td class="pr">¥24,200</td></tr><tr><td>No.016_1 / 23 (XL) / 文字入れあり+¥2,200</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.016_1 / 特注サイズ / 文字入れなし</td><td></td><td class="pr">¥24,200</td></tr><tr><td>No.016_1 / 特注サイズ / 文字入れあり+¥2,200</td><td></td><td class="pr">¥26,400</td></tr><tr><td>No.016_2 / 11 (S) / 文字入れなし</td><td></td><td class="pr">¥29,700</td></tr><tr><td>No.016_2 / 11 (S) / 文字入れあり+¥2,200</td><td></td><td class="pr">¥31,900</td></tr><tr><td>No.016_2 / 15 (M) / 文字入れなし</td><td></td><td class="pr">¥29,700</td></tr><tr><td>No.016_2 / 15 (M) / 文字入れあり+¥2,200</td><td></td><td class="pr">¥31,900</td></tr><tr><td>No.016_2 / 19 (L) / 文字入れなし</td><td></td><td class="pr">¥29,700</td></tr><tr><td>No.016_2 / 19 (L) / 文字入れあり+¥2,200</td><td></td><td class="pr">¥31,900</td></tr><tr><td>No.016_2 / 23 (XL) / 文字入れなし</td><td></td><td class="pr">¥29,700</td></tr><tr><td>No.016_2 / 23 (XL) / 文字入れあり+¥2,200</td><td></td><td class="pr">¥31,900</td></tr><tr><td>No.016_2 / 特注サイズ / 文字入れなし</td><td></td><td class="pr">¥29,700</td></tr><tr><td>No.016_2 / 特注サイズ / 文字入れあり+¥2,200</td><td></td><td class="pr">¥31,900</td></tr><tr><td>No.016_3 / 11 (S) / 文字入れなし</td><td></td><td class="pr">¥35,200</td></tr><tr><td>No.016_3 / 11 (S) / 文字入れあり+¥2,200</td><td></td><td class="pr">¥37,400</td></tr><tr><td>No.016_3 / 15 (M) / 文字入れなし</td><td></td><td class="pr">¥35,200</td></tr><tr><td>No.016_3 / 15 (M) / 文字入れあり+¥2,200</td><td></td><td class="pr">¥37,400</td></tr><tr><td>No.016_3 / 19 (L) / 文字入れなし</td><td></td><td class="pr">¥35,200</td></tr><tr><td>No.016_3 / 19 (L) / 文字入れあり+¥2,200</td><td></td><td class="pr">¥37,400</td></tr><tr><td>No.016_3 / 23 (XL) / 文字入れなし</td><td></td><td class="pr">¥35,200</td></tr><tr><td>No.016_3 / 23 (XL) / 文字入れあり+¥2,200</td><td></td><td class="pr">¥37,400</td></tr><tr><td>No.016_3 / 特注サイズ / 文字入れなし</td><td></td><td class="pr">¥35,200</td></tr><tr><td>No.016_3 / 特注サイズ / 文字入れあり+¥2,200</td><td></td><td class="pr">¥37,400</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) リング幅 : 5.5mm / 7.5mm / 9.5mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no016" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 リング幅 : 9mm(最大幅)" data-price="18700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.013</h3>
+    <div class="price">¥18,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>7</td><td></td><td class="pr">¥18,700</td></tr><tr><td>9</td><td></td><td class="pr">¥18,700</td></tr><tr><td>11</td><td></td><td class="pr">¥18,700</td></tr><tr><td>13</td><td></td><td class="pr">¥18,700</td></tr><tr><td>15</td><td></td><td class="pr">¥18,700</td></tr><tr><td>17</td><td></td><td class="pr">¥18,700</td></tr><tr><td>19</td><td></td><td class="pr">¥18,700</td></tr><tr><td>21</td><td></td><td class="pr">¥18,700</td></tr><tr><td>23</td><td></td><td class="pr">¥18,700</td></tr><tr><td>特注サイズ</td><td></td><td class="pr">¥18,700</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 リング幅 : 9mm(最大幅) / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no013" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 , gajumaru wood (天然素材) リング幅 : 3.2mm" data-price="20900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.010</h3>
+    <div class="price">¥20,900〜¥23,100<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>5 / 文字入れなし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>5 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥23,100</td></tr><tr><td>7 / 文字入れなし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>7 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥23,100</td></tr><tr><td>9 / 文字入れなし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>9 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥23,100</td></tr><tr><td>11 / 文字入れなし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>11 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥23,100</td></tr><tr><td>13 / 文字入れなし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>13 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥23,100</td></tr><tr><td>15 / 文字入れなし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>15 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥23,100</td></tr><tr><td>17 / 文字入れなし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>17 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥23,100</td></tr><tr><td>19 / 文字入れなし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>19 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥23,100</td></tr><tr><td>21 / 文字入れなし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>21 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥23,100</td></tr><tr><td>23 / 文字入れなし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>23 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥23,100</td></tr><tr><td>25 / 文字入れなし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>25 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥23,100</td></tr><tr><td>27 / 文字入れなし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>27 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥23,100</td></tr><tr><td>特注サイズ / 文字入れなし</td><td></td><td class="pr">¥20,900</td></tr><tr><td>特注サイズ / 文字入れあり+¥2,200</td><td></td><td class="pr">¥23,100</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) リング幅 : 3.2mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no010" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 リング幅 : 9mm" data-price="26400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.007</h3>
+    <div class="price">¥26,400<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>マット仕上げ / 7</td><td></td><td class="pr">¥26,400</td></tr><tr><td>マット仕上げ / 9</td><td></td><td class="pr">¥26,400</td></tr><tr><td>マット仕上げ / 11</td><td></td><td class="pr">¥26,400</td></tr><tr><td>マット仕上げ / 13</td><td></td><td class="pr">¥26,400</td></tr><tr><td>マット仕上げ / 15</td><td></td><td class="pr">¥26,400</td></tr><tr><td>マット仕上げ / 17</td><td></td><td class="pr">¥26,400</td></tr><tr><td>マット仕上げ / 19</td><td></td><td class="pr">¥26,400</td></tr><tr><td>マット仕上げ / 21</td><td></td><td class="pr">¥26,400</td></tr><tr><td>マット仕上げ / 23</td><td></td><td class="pr">¥26,400</td></tr><tr><td>マット仕上げ / 25</td><td></td><td class="pr">¥26,400</td></tr><tr><td>マット仕上げ / 27</td><td></td><td class="pr">¥26,400</td></tr><tr><td>マット仕上げ / 特注サイズ</td><td></td><td class="pr">¥26,400</td></tr><tr><td>黒燻仕上げ / 7</td><td></td><td class="pr">¥26,400</td></tr><tr><td>黒燻仕上げ / 9</td><td></td><td class="pr">¥26,400</td></tr><tr><td>黒燻仕上げ / 11</td><td></td><td class="pr">¥26,400</td></tr><tr><td>黒燻仕上げ / 13</td><td></td><td class="pr">¥26,400</td></tr><tr><td>黒燻仕上げ / 15</td><td></td><td class="pr">¥26,400</td></tr><tr><td>黒燻仕上げ / 17</td><td></td><td class="pr">¥26,400</td></tr><tr><td>黒燻仕上げ / 19</td><td></td><td class="pr">¥26,400</td></tr><tr><td>黒燻仕上げ / 21</td><td></td><td class="pr">¥26,400</td></tr><tr><td>黒燻仕上げ / 23</td><td></td><td class="pr">¥26,400</td></tr><tr><td>黒燻仕上げ / 25</td><td></td><td class="pr">¥26,400</td></tr><tr><td>黒燻仕上げ / 27</td><td></td><td class="pr">¥26,400</td></tr><tr><td>黒燻仕上げ / 特注サイズ</td><td></td><td class="pr">¥26,400</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 リング幅 : 9mm / 塗装: マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no007" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 リング幅 : 4mm / 6mm" data-price="18700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.005</h3>
+    <div class="price">¥18,700〜¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>No.005_1 / 鏡面仕上げ / 7</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 鏡面仕上げ / 9</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 鏡面仕上げ / 11</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 鏡面仕上げ / 13</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 鏡面仕上げ / 15</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 鏡面仕上げ / 17</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 鏡面仕上げ / 19</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 鏡面仕上げ / 21</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 鏡面仕上げ / 23</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 鏡面仕上げ / 25</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 鏡面仕上げ / 27</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 鏡面仕上げ / 特注サイズ</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / マット仕上げ / 7</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / マット仕上げ / 9</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / マット仕上げ / 11</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / マット仕上げ / 13</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / マット仕上げ / 15</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / マット仕上げ / 17</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / マット仕上げ / 19</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / マット仕上げ / 21</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / マット仕上げ / 23</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / マット仕上げ / 25</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / マット仕上げ / 27</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / マット仕上げ / 特注サイズ</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 黒燻仕上げ / 7</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 黒燻仕上げ / 9</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 黒燻仕上げ / 11</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 黒燻仕上げ / 13</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 黒燻仕上げ / 15</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 黒燻仕上げ / 17</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 黒燻仕上げ / 19</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 黒燻仕上げ / 21</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 黒燻仕上げ / 23</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 黒燻仕上げ / 25</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 黒燻仕上げ / 27</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_1 / 黒燻仕上げ / 特注サイズ</td><td></td><td class="pr">¥18,700</td></tr><tr><td>No.005_2 / 鏡面仕上げ / 7</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 鏡面仕上げ / 9</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 鏡面仕上げ / 11</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 鏡面仕上げ / 13</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 鏡面仕上げ / 15</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 鏡面仕上げ / 17</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 鏡面仕上げ / 19</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 鏡面仕上げ / 21</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 鏡面仕上げ / 23</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 鏡面仕上げ / 25</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 鏡面仕上げ / 27</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 鏡面仕上げ / 特注サイズ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / マット仕上げ / 7</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / マット仕上げ / 9</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / マット仕上げ / 11</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / マット仕上げ / 13</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / マット仕上げ / 15</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / マット仕上げ / 17</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / マット仕上げ / 19</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / マット仕上げ / 21</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / マット仕上げ / 23</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / マット仕上げ / 25</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / マット仕上げ / 27</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / マット仕上げ / 特注サイズ</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 黒燻仕上げ / 7</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 黒燻仕上げ / 9</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 黒燻仕上げ / 11</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 黒燻仕上げ / 13</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 黒燻仕上げ / 15</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 黒燻仕上げ / 17</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 黒燻仕上げ / 19</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 黒燻仕上げ / 21</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 黒燻仕上げ / 23</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 黒燻仕上げ / 25</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 黒燻仕上げ / 27</td><td></td><td class="pr">¥22,000</td></tr><tr><td>No.005_2 / 黒燻仕上げ / 特注サイズ</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 リング幅 : 4mm / 6mm / 塗装: 鏡面 / マット / 黒燻仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no005" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 リング幅 : 7mm" data-price="25300" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.003</h3>
+    <div class="price">¥25,300<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>7</td><td></td><td class="pr">¥25,300</td></tr><tr><td>9</td><td></td><td class="pr">¥25,300</td></tr><tr><td>11</td><td></td><td class="pr">¥25,300</td></tr><tr><td>13</td><td></td><td class="pr">¥25,300</td></tr><tr><td>15</td><td></td><td class="pr">¥25,300</td></tr><tr><td>17</td><td></td><td class="pr">¥25,300</td></tr><tr><td>19</td><td></td><td class="pr">¥25,300</td></tr><tr><td>21</td><td></td><td class="pr">¥25,300</td></tr><tr><td>23</td><td></td><td class="pr">¥25,300</td></tr><tr><td>特注サイズ</td><td></td><td class="pr">¥25,300</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 リング幅 : 7mm / 塗装: マット+鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no003" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 リング幅 : 4.5mm" data-price="19800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.001</h3>
+    <div class="price">¥19,800〜¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>7 / 文字入れなし</td><td></td><td class="pr">¥19,800</td></tr><tr><td>7 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥22,000</td></tr><tr><td>9 / 文字入れなし</td><td></td><td class="pr">¥19,800</td></tr><tr><td>9 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥22,000</td></tr><tr><td>11 / 文字入れなし</td><td></td><td class="pr">¥19,800</td></tr><tr><td>11 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥22,000</td></tr><tr><td>13 / 文字入れなし</td><td></td><td class="pr">¥19,800</td></tr><tr><td>13 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥22,000</td></tr><tr><td>15 / 文字入れなし</td><td></td><td class="pr">¥19,800</td></tr><tr><td>15 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥22,000</td></tr><tr><td>17 / 文字入れなし</td><td></td><td class="pr">¥19,800</td></tr><tr><td>17 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥22,000</td></tr><tr><td>19 / 文字入れなし</td><td></td><td class="pr">¥19,800</td></tr><tr><td>19 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥22,000</td></tr><tr><td>21 / 文字入れなし</td><td></td><td class="pr">¥19,800</td></tr><tr><td>21 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥22,000</td></tr><tr><td>23 / 文字入れなし</td><td></td><td class="pr">¥19,800</td></tr><tr><td>23 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥22,000</td></tr><tr><td>特注サイズ / 文字入れなし</td><td></td><td class="pr">¥19,800</td></tr><tr><td>特注サイズ / 文字入れあり+¥2,200</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 リング幅 : 4.5mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no001" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="リング" data-mat="Silver925 , gajumaru wood (天然素材) リング幅 : 7mm" data-price="25300" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">リング</div>
+    <h3>No.017</h3>
+    <div class="price">¥25,300〜¥27,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>7 / 文字入れなし</td><td></td><td class="pr">¥25,300</td></tr><tr><td>7 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥27,500</td></tr><tr><td>9 / 文字入れなし</td><td></td><td class="pr">¥25,300</td></tr><tr><td>9 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥27,500</td></tr><tr><td>11 / 文字入れなし</td><td></td><td class="pr">¥25,300</td></tr><tr><td>11 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥27,500</td></tr><tr><td>13 / 文字入れなし</td><td></td><td class="pr">¥25,300</td></tr><tr><td>13 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥27,500</td></tr><tr><td>15 / 文字入れなし</td><td></td><td class="pr">¥25,300</td></tr><tr><td>15 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥27,500</td></tr><tr><td>17 / 文字入れなし</td><td></td><td class="pr">¥25,300</td></tr><tr><td>17 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥27,500</td></tr><tr><td>19 / 文字入れなし</td><td></td><td class="pr">¥25,300</td></tr><tr><td>19 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥27,500</td></tr><tr><td>21 / 文字入れなし</td><td></td><td class="pr">¥25,300</td></tr><tr><td>21 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥27,500</td></tr><tr><td>23 / 文字入れなし</td><td></td><td class="pr">¥25,300</td></tr><tr><td>23 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥27,500</td></tr><tr><td>25 / 文字入れなし</td><td></td><td class="pr">¥25,300</td></tr><tr><td>25 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥27,500</td></tr><tr><td>27 / 文字入れなし</td><td></td><td class="pr">¥25,300</td></tr><tr><td>27 / 文字入れあり+¥2,200</td><td></td><td class="pr">¥27,500</td></tr><tr><td>特注サイズ / 文字入れなし</td><td></td><td class="pr">¥25,300</td></tr><tr><td>特注サイズ / 文字入れあり+¥2,200</td><td></td><td class="pr">¥27,500</td></tr></tbody></table>
+      <div class="mat">素材: Silver925 , gajumaru wood (天然素材) リング幅 : 7mm / 塗装: 鏡面仕上げ</div>
+    </div>
+    <a class="more" href="https://gajumaru-net.jp/products/no017" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、gajumaru art craft(ガジュマルアートクラフト)様の公式サイト(<a href="https://gajumaru-net.jp/" target="_blank" rel="noopener">https://gajumaru-net.jp/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:"",price:"",stock:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      if(state.price){var q=state.price.split('-'),pv=+c.dataset.price;if(!(pv>0&&pv>=+q[0]&&pv<+q[1]))ok=false;}
+      if(state.stock&&c.dataset.stock!==state.stock)ok=false;
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
