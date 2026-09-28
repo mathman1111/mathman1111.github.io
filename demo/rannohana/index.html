@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>クマサキ洋ラン農園｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.stock{font-size:11px;font-weight:700;margin-left:8px;padding:2px 8px;border-radius:20px;vertical-align:middle}
+.stock.in{background:#e9f1e7;color:#4f7a52}.stock.few{background:#fbf0dd;color:#9a6b1f}.stock.out{background:#f2eeea;color:#8b8179}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。クマサキ洋ラン農園様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>クマサキ洋ラン農園</h1>
+  <p class="tagline">胡蝶蘭59点を1枚に並べ、株数(本立)・価格帯・在庫で絞り込めるようにしました。</p>
+  <div class="badges"><span></span><span>掲載 59点</span><span>種類・価格帯・在庫で絞り込めます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button><button class="chip" data-k="series" data-v="1本立">1本立</button><button class="chip" data-k="series" data-v="2本立">2本立</button><button class="chip" data-k="series" data-v="3本立">3本立</button><button class="chip" data-k="series" data-v="5本立">5本立</button><button class="chip" data-k="series" data-v="資材・小物">資材・小物</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="3本立">3本立</button><button class="chip" data-k="cat" data-v="5本立">5本立</button><button class="chip" data-k="cat" data-v="2本立">2本立</button><button class="chip" data-k="cat" data-v="1本立">1本立</button><button class="chip" data-k="cat" data-v="資材・小物">資材・小物</button></div>
+    <div class="row"><span class="lbl">価格帯</span><button class="chip active" data-k="price" data-v="">すべて</button><button class="chip" data-k="price" data-v="0-15000">〜¥15,000</button><button class="chip" data-k="price" data-v="15000-20000">¥15,000〜¥20,000</button><button class="chip" data-k="price" data-v="20000-1000000000">¥20,000〜</button></div>
+    <div class="row"><span class="lbl">在庫</span><button class="chip active" data-k="stock" data-v="">すべて</button><button class="chip" data-k="stock" data-v="在庫あり">在庫あり</button><button class="chip" data-k="stock" data-v="売切れ">売切れ</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【スタンダード 鳴滝清流胡蝶蘭（なるたきせいりゅうこちょうらん） ３本立て】＊白＊（大輪）＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅６０ｃｍ、奥行き４０ｃｍ〉35-39輪</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/369" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="5本立" data-mat="" data-price="33000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">5本立</div>
+    <h3>【※大型送料3,800円】【スタンダード 鳴滝清流胡蝶蘭（なるたきせいりゅうこちょうらん） ５本立て】＊白＊（大輪）＜７つの特典付き！＞ 〈約高さ９５ｃｍ、横幅８０ｃｍ、奥行き６０ｃｍ〉56輪以上</h3>
+    <div class="price">¥33,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥33,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/373" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="16500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【レギュラー 鳴滝清流胡蝶蘭（なるたきせいりゅうこちょうらん） ３本立て】＊白＊（大輪）＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅５５ｃｍ、奥行き４０ｃｍ〉30輪以上</h3>
+    <div class="price">¥16,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥16,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/700" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="5本立" data-mat="" data-price="29600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">5本立</div>
+    <h3>【※大型送料3,800円】【レギュラー 鳴滝清流胡蝶蘭（なるたきせいりゅうこちょうらん） ５本立て】＊白＊（大輪）＜７つの特典付き！＞〈約高さ９５ｃｍ、横幅７５ｃｍ、奥行き５０ｃｍ〉50輪以上</h3>
+    <div class="price">¥29,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥29,600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/783" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="14980" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【コンパクト 鳴滝清流胡蝶蘭（なるたきせいりゅうこちょうらん） ３本立て】＊白＊（大輪）＜７つの特典付き！＞〈約高さ８０ｃｍ、横幅４５ｃｍ、奥行き３５ｃｍ〉24輪以上</h3>
+    <div class="price">¥14,980<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥14,980</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/914" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>新商品！【紅白胡蝶蘭 (こうはくこちょうらん) ３本立て】＊白・ピンク＊（大輪）＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅５５ｃｍ、奥行き４０ｃｍ〉35輪以上</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/916" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="5本立" data-mat="" data-price="33000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">5本立</div>
+    <h3>【※大型送料3,800円】新商品！【紅白胡蝶蘭 (こうはくこちょうらん) ５本立て】＊白・ピンク＊（大輪）＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅８５ｃｍ、奥行き５０ｃｍ〉56輪以上</h3>
+    <div class="price">¥33,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥33,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/915" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="5本立" data-mat="" data-price="29500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">5本立</div>
+    <h3>【農林水産大臣賞受賞品種】ミディ系ピンク胡蝶蘭！『乙姫（おとひめ）』＊５本立＊＜７つの特典付き！＞〈約高さ８０ｃｍ、横幅５０ｃｍ、奥行き５０ｃｍ〉８０輪以上</h3>
+    <div class="price">¥29,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥29,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/809" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>☆艶やかなピンク☆スタンダード＊姫葵(ヒメアオイ)大輪＊(３本立) ７つの特典付き！〈約高さ９０ｃｍ、横幅６０ｃｍ、奥行き４０ｃｍ〉35輪以上</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/854" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="5本立" data-mat="" data-price="33000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">5本立</div>
+    <h3>【※大型送料3,800円】☆艶やかなピンク☆スタンダード＊姫葵(ヒメアオイ)大輪＊(５本立) ７つの特典付き！〈約高さ９０ｃｍ、横幅８０ｃｍ、奥行き５０ｃｍ〉55輪以上</h3>
+    <div class="price">¥33,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥33,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/855" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="12800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>新品種！スタイリッシュで独創的【パープル・シオン】 ２本立（大輪）＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅４０ｃｍ、奥行き４５ｃｍ〉20輪以上</h3>
+    <div class="price">¥12,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥12,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/895" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="17500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>新品種！スタイリッシュで独創的【パープル・シオン】 ３本立（大輪）＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅５０ｃｍ、奥行き５０ｃｍ〉30輪以上</h3>
+    <div class="price">¥17,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥17,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/893" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="5本立" data-mat="" data-price="30000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">5本立</div>
+    <h3>【※大型送料3,800円】新品種！スタイリッシュで独創的【パープル・シオン】 ５本立（大輪）＜７つの特典付き！＞〈約高さ９５ｃｍ、横幅６５ｃｍ、奥行き５５ｃｍ〉50輪以上</h3>
+    <div class="price">¥30,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥30,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/894" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="14200" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>新商品！赤リップ胡蝶蘭『舞姫（まいひめ）シロアカ』(２本立)＜７つの特典付き！＞〈約高さ８５ｃｍ、横幅４５ｃｍ、奥行き４５ｃｍ〉24輪以上</h3>
+    <div class="price">¥14,200<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥14,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/868" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="22000" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>新商品！赤リップ胡蝶蘭『舞姫（まいひめ）シロアカ』(３本立)＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅５５ｃｍ、奥行き５０ｃｍ〉35輪以上</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/869" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="5本立" data-mat="" data-price="33000" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">5本立</div>
+    <h3>【※大型送料3,800円】新商品！赤リップ胡蝶蘭『舞姫（まいひめ）シロアカ』(５本立)＜７つの特典付き！＞〈約高さ９５ｃｍ、横幅６０ｃｍ、奥行き５５ｃｍ〉55輪以上</h3>
+    <div class="price">¥33,000<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥33,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/870" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="13700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 ピンク大輪×乙姫（薄ピンクミディ）＊（２本立）＊＜７つの特典付き！＞〈約高さ８５ｃｍ、横幅４０ｃｍ、奥行き４０ｃｍ〉</h3>
+    <div class="price">¥13,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥13,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/973" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="14700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 紅白胡蝶蘭 ２本立て＊白・ピンク＊（大輪）＜７つの特典付き！＞〈約高さ８５ｃｍ、横幅４０ｃｍ、奥行き４０ｃｍ〉22輪以上</h3>
+    <div class="price">¥14,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥14,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/963" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 白大輪 ×乙姫（薄ピンクミディ）× 白大輪＊ ３本立て＊白・薄ピンク・白＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅５０ｃｍ、奥行き４０ｃｍ〉</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/965" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="22000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 ピンク大輪 ×乙姫（薄ピンクミディ）× 白大輪＊ ３本立て＊ピンク・薄ピンク・白＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅５０ｃｍ、奥行き４０ｃｍ〉</h3>
+    <div class="price">¥22,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥22,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/959" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="13700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 白大輪×乙姫（薄ピンクミディ）＊（２本立）＊＜７つの特典付き！＞〈約高さ８５ｃｍ、横幅４０ｃｍ、奥行き４０ｃｍ〉</h3>
+    <div class="price">¥13,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥13,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/956" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="23000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 紅白胡蝶蘭 『紅玉』(赤白赤) ３本立て＊白・ピンク＊（大輪）＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅５５ｃｍ、奥行き４０ｃｍ〉33輪以上</h3>
+    <div class="price">¥23,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥23,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/964" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="23000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 紅白胡蝶蘭 『白銀』 (白赤白) ３本立て＊白・ピンク＊（大輪）＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅５５ｃｍ、奥行き４０ｃｍ〉33輪以上</h3>
+    <div class="price">¥23,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥23,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/953" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="1本立" data-mat="" data-price="8980" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">1本立</div>
+    <h3>【送料込み価格】☆鉢も楽しむ！7種の『スクエア鉢』☆純白の白が美しい！定番の白大輪胡蝶蘭＊角鉢＊１本立＊＜７つの特典付き！＞〈約高さ80ｃｍ、横幅25ｃｍ、奥行き35ｃｍ〉11輪以上＜squareシリーズ＞</h3>
+    <div class="price">¥8,980<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥8,980</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/945" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="資材・小物" data-mat="" data-price="460" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">資材・小物</div>
+    <h3>【送料込み＊ポストへお届け】蘭用クリップ(オレンジ)１０コ入り</h3>
+    <div class="price">¥460<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥460</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/934" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="11000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【レギュラー 鳴滝清流胡蝶蘭（なるたきせいりゅうこちょうらん） ２本立て】＊白＊（大輪）＜７つの特典付き！＞〈約高さ８５ｃｍ、横幅４０ｃｍ、奥行き４０ｃｍ〉20輪以上</h3>
+    <div class="price">¥11,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥11,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/724" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="14200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【スタンダード 鳴滝清流胡蝶蘭（なるたきせいりゅうこちょうらん） ２本立て】＊白＊（大輪）＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅５０ｃｍ、奥行き４０ｃｍ〉24-26輪</h3>
+    <div class="price">¥14,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥14,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/367" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="14200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>新商品！【紅白胡蝶蘭 (こうはくこちょうらん) ２本立て】＊白・ピンク＊（大輪）＜７つの特典付き！＞〈約高さ８５ｃｍ、横幅４０ｃｍ、奥行き４０ｃｍ〉24輪以上</h3>
+    <div class="price">¥14,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥14,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/917" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="11000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【農林水産大臣賞受賞品種】ミディ系ピンク胡蝶蘭！『乙姫（おとひめ）』＊２本立＊＜７つの特典付き！＞〈約高さ６５ｃｍ、横幅３０ｃｍ、奥行き４５ｃｍ〉32輪以上</h3>
+    <div class="price">¥11,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥11,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/807" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="16500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【農林水産大臣賞受賞品種】ミディ系ピンク胡蝶蘭！『乙姫（おとひめ）』＊３本立＊＜７つの特典付き！＞〈約高さ７５ｃｍ、横幅４５ｃｍ、奥行き４５ｃｍ〉48輪以上</h3>
+    <div class="price">¥16,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥16,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/808" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="23000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 鳴滝清流胡蝶蘭（なるたきせいりゅうこちょうらん）３本立て＊白＊（大輪）＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅５５ｃｍ、奥行き４０ｃｍ〉33輪以上</h3>
+    <div class="price">¥23,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥23,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/952" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="1本立" data-mat="" data-price="8980" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">1本立</div>
+    <h3>【送料込み価格】☆鉢も楽しむ！7種の『スクエア鉢』☆華やかなピンク大輪胡蝶蘭＊角鉢＊１本立＊＜７つの特典付き！＞〈約高さ80ｃｍ、横幅25ｃｍ、奥行き35ｃｍ〉11輪以上＜squareシリーズ＞</h3>
+    <div class="price">¥8,980<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥8,980</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/944" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="12700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 乙姫(薄ピンクミディ)＊（２本立）＜７つの特典付き！＞〈約高さ６５ｃｍ、横幅３０ｃｍ、奥行き４５ｃｍ〉</h3>
+    <div class="price">¥12,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥12,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/970" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="18400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 乙姫(薄ピンクミディ)＊（３本立）＜７つの特典付き！＞〈約高さ７５ｃｍ、横幅４５ｃｍ、奥行き４５ｃｍ〉</h3>
+    <div class="price">¥18,400<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥18,400</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/968" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="21000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 乙姫（薄ピンクミディ）× 白大輪 × 乙姫（薄ピンクミディ）＊ ３本立て＊ピンク・薄ピンク＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅４５ｃｍ、奥行き４０ｃｍ〉</h3>
+    <div class="price">¥21,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥21,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/967" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="21000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 乙姫（薄ピンクミディ）× ピンク大輪 × 乙姫（薄ピンクミディ）＊ ３本立て＊ピンク・薄ピンク＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅４５ｃｍ、奥行き４０ｃｍ〉</h3>
+    <div class="price">¥21,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥21,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/966" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="14200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>☆艶やかなピンク☆スタンダード＊姫葵(ヒメアオイ)大輪＊(２本立) ７つの特典付き！〈約高さ８５ｃｍ、横幅４０ｃｍ、奥行き４０ｃｍ〉24輪以上</h3>
+    <div class="price">¥14,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥14,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/853" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="23000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 姫葵(ヒメアオイ)大輪＊ピンク＊（３本立）＊（大輪）＜７つの特典付き！＞〈約高さ９０ｃｍ、横幅５５ｃｍ、奥行き４０ｃｍ〉33輪以上</h3>
+    <div class="price">¥23,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥23,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/954" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="1本立" data-mat="" data-price="8980" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">1本立</div>
+    <h3>【送料込み価格】☆鉢も楽しむ！7種の『スクエア鉢』☆スタイリッシュで独創的【パープル・シオン】＊角鉢＊１本立＊＜７つの特典付き！＞〈約高さ80ｃｍ、横幅25ｃｍ、奥行き35ｃｍ〉11輪以上＜squareシリーズ＞</h3>
+    <div class="price">¥8,980<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥8,980</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/946" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="14700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 鳴滝清流胡蝶蘭（なるたきせいりゅうこちょうらん）２本立て＊白＊（大輪）＜７つの特典付き！＞〈約高さ８５ｃｍ、横幅４０ｃｍ、奥行き４０ｃｍ〉22輪以上</h3>
+    <div class="price">¥14,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥14,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/971" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="12700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 乙姫(薄ピンクミディ)×リトルシルキー(白ミディ）＊（２本立）＜７つの特典付き！＞〈約高さ６５ｃｍ、横幅３０ｃｍ、奥行き４５ｃｍ〉</h3>
+    <div class="price">¥12,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥12,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/958" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="13700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 ピンク大輪×リトルシルキー(白ミディ）＊（２本立）＜７つの特典付き！＞〈約高さ８５ｃｍ、横幅４０ｃｍ、奥行き４０ｃｍ〉</h3>
+    <div class="price">¥13,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥13,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/957" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="18400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 乙姫(薄ピンクミディ)×リトルシルキー(白ミディ）×乙姫(薄ピンクミディ)＊（３本立）＜７つの特典付き！＞〈約高さ７５ｃｍ、横幅４５ｃｍ、奥行き４５ｃｍ〉</h3>
+    <div class="price">¥18,400<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥18,400</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/960" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="16500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>【全国洋ラン品評会受賞品種】ミディ系ホワイト胡蝶蘭！『リトルシルキー』＊３本立＊＜７つの特典付き！＞〈約高さ７５ｃｍ、横幅５０ｃｍ、奥行き５０ｃｍ〉５５輪以上</h3>
+    <div class="price">¥16,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥16,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/927" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="11000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【全国洋ラン品評会受賞品種】ミディ系ホワイト胡蝶蘭！『リトルシルキー』＊２本立＊＜７つの特典付き！＞〈約高さ６５ｃｍ、横幅４０ｃｍ、奥行き４５ｃｍ〉３８輪以上</h3>
+    <div class="price">¥11,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥11,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/926" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="5本立" data-mat="" data-price="29500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">5本立</div>
+    <h3>【全国洋ラン品評会受賞品種】ミディ系ホワイト胡蝶蘭！『リトルシルキー』＊５本立＊＜７つの特典付き！＞〈約高さ８０ｃｍ、横幅６０ｃｍ、奥行き５０ｃｍ〉８０輪以上</h3>
+    <div class="price">¥29,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥29,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/928" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="5本立" data-mat="" data-price="28800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">5本立</div>
+    <h3>超希少！イエロー胡蝶蘭‘日の出’ (中) ミディサイズ(５本立)＜７つの特典付き！＞〈約高さ８０ｃｍ、横幅５５ｃｍ、奥行き５０ｃｍ〉58輪以上</h3>
+    <div class="price">¥28,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥28,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/790" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="7700" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>超希少！イエロー胡蝶蘭‘日の出’ (小) ミディサイズ(２本立)＜７つの特典付き！＞〈約高さ６０ｃｍ、横幅３０ｃｍ、奥行き３０ｃｍ〉16輪以上</h3>
+    <div class="price">¥7,700<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/911" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="5本立" data-mat="" data-price="20000" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">5本立</div>
+    <h3>超希少！イエロー胡蝶蘭‘日の出’ (小) ミディサイズ(５本立)＜７つの特典付き！＞〈約高さ７５ｃｍ、横幅５０ｃｍ、奥行き４０ｃｍ〉40輪以上</h3>
+    <div class="price">¥20,000<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥20,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/913" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="12500" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>超希少！イエロー胡蝶蘭‘日の出’ (小) ミディサイズ(３本立)＜７つの特典付き！＞〈約高さ６５ｃｍ、横幅４０ｃｍ、奥行き４０ｃｍ〉24輪以上</h3>
+    <div class="price">¥12,500<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥12,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/912" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="3本立" data-mat="" data-price="19500" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">3本立</div>
+    <h3>さくら色大輪胡蝶蘭＊『ハッピー・ストリーム』Ｍサイズ(３本立)＜７つの特典付き！＞〈約高さ９５ｃｍ、横幅５０ｃｍ、奥行き５０ｃｍ〉40輪以上</h3>
+    <div class="price">¥19,500<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥19,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/955" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="12500" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>さくら色大輪胡蝶蘭＊『ハッピー・ストリーム』Ｍサイズ(２本立)＜７つの特典付き！＞〈約高さ８５ｃｍ、横幅４５ｃｍ、奥行き４５ｃｍ〉24輪以上</h3>
+    <div class="price">¥12,500<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥12,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/865" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="5本立" data-mat="" data-price="29600" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">5本立</div>
+    <h3>【※大型送料3,800円】さくら色大輪胡蝶蘭＊『ハッピー・ストリーム』Ｍサイズ(５本立)＜７つの特典付き！＞〈約高さ１００ｃｍ、横幅７５ｃｍ、奥行き６０ｃｍ〉60輪以上</h3>
+    <div class="price">¥29,600<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥29,600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/888" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="8980" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【送料込み価格】☆ピンクのリップが愛らしいミディ系胡蝶蘭！『コンパクト＊乙姫（おとひめ）』＊２本立＊＜７つの特典付き！＞〈約高さ５５ｃｍ、横幅３５ｃｍ、奥行き３５ｃｍ〉22輪以上</h3>
+    <div class="price">¥8,980<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥8,980</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/806" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="8980" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【送料込み価格】☆鉢も楽しむ！7種の『スクエア鉢』☆スタイリッシュな『乙姫（おとひめ）』＊角鉢＊２本立＊＜７つの特典付き！＞〈約高さ６０ｃｍ、横幅３５ｃｍ、奥行き３５ｃｍ〉22輪以上＜squareシリーズ＞</h3>
+    <div class="price">¥8,980<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥8,980</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/949" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="8980" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【送料込み価格】☆鉢も楽しむ！7種の『スクエア鉢』☆ミディ系ホワイト胡蝶蘭！『リトルシルキー』＊角鉢＊２本立＊＜７つの特典付き！＞〈約高さ60ｃｍ、横幅35ｃｍ、奥行き35ｃｍ〉24輪以上＜squareシリーズ＞</h3>
+    <div class="price">¥8,980<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥8,980</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/948" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="8980" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【送料込み価格】【全国洋ラン品評会受賞品種】ミディ系ホワイト胡蝶蘭！『コンパクト・リトルシルキー』＊２本立＊＜７つの特典付き！＞〈約高さ５５ｃｍ、横幅３５ｃｍ、奥行き３５ｃｍ〉２４輪以上</h3>
+    <div class="price">¥8,980<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥8,980</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/930" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="13700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 白大輪×日の出（イエローミディ）中輪＊（２本立）＊＜７つの特典付き！＞〈約高さ８５ｃｍ、横幅４０ｃｍ、奥行き４０ｃｍ〉</h3>
+    <div class="price">¥13,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥13,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/975" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="2本立" data-mat="" data-price="13700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">2本立</div>
+    <h3>【ＺＥＲＯ胡蝶蘭】 パープル・シオン大輪×日の出（イエローミディ）中輪＊（２本立）＊＜７つの特典付き！＞〈約高さ８５ｃｍ、横幅４０ｃｍ、奥行き４０ｃｍ〉</h3>
+    <div class="price">¥13,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥13,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.rannohana.com/product/974" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、クマサキ洋ラン農園様の公式サイト(<a href="https://www.rannohana.com/" target="_blank" rel="noopener">https://www.rannohana.com/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:"",price:"",stock:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      if(state.price){var q=state.price.split('-'),pv=+c.dataset.price;if(!(pv>0&&pv>=+q[0]&&pv<+q[1]))ok=false;}
+      if(state.stock&&c.dataset.stock!==state.stock)ok=false;
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>

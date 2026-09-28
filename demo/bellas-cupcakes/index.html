@@ -1,0 +1,3115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Bellas Cupcakes(ベラズカップケーキ)｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.stock{font-size:11px;font-weight:700;margin-left:8px;padding:2px 8px;border-radius:20px;vertical-align:middle}
+.stock.in{background:#e9f1e7;color:#4f7a52}.stock.few{background:#fbf0dd;color:#9a6b1f}.stock.out{background:#f2eeea;color:#8b8179}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。Bellas Cupcakes(ベラズカップケーキ)様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>Bellas Cupcakes(ベラズカップケーキ)</h1>
+  <p class="tagline">カップケーキ187点を1枚に並べ、用途・価格帯・在庫で絞り込めるようにしました。</p>
+  <div class="badges"><span></span><span>掲載 187点</span><span>種類・価格帯・在庫で絞り込めます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button><button class="chip" data-k="series" data-v="定番・ティータイム">定番・ティータイム</button><button class="chip" data-k="series" data-v="誕生日・記念日">誕生日・記念日</button><button class="chip" data-k="series" data-v="ハロウィン">ハロウィン</button><button class="chip" data-k="series" data-v="季節限定">季節限定</button><button class="chip" data-k="series" data-v="法人・名入れ">法人・名入れ</button><button class="chip" data-k="series" data-v="資材・オプション">資材・オプション</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="定番・ティータイム">定番・ティータイム</button><button class="chip" data-k="cat" data-v="誕生日・記念日">誕生日・記念日</button><button class="chip" data-k="cat" data-v="季節限定">季節限定</button><button class="chip" data-k="cat" data-v="ハロウィン">ハロウィン</button><button class="chip" data-k="cat" data-v="法人・名入れ">法人・名入れ</button><button class="chip" data-k="cat" data-v="資材・オプション">資材・オプション</button></div>
+    <div class="row"><span class="lbl">価格帯</span><button class="chip active" data-k="price" data-v="">すべて</button><button class="chip" data-k="price" data-v="0-3000">〜¥3,000</button><button class="chip" data-k="price" data-v="3000-6000">¥3,000〜¥6,000</button><button class="chip" data-k="price" data-v="6000-1000000000">¥6,000〜</button></div>
+    <div class="row"><span class="lbl">在庫</span><button class="chip active" data-k="stock" data-v="">すべて</button><button class="chip" data-k="stock" data-v="在庫あり">在庫あり</button><button class="chip" data-k="stock" data-v="売切れ">売切れ</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミニミルクティー＆カフェオレ(12個) おうちカフェにぜひ！</h3>
+    <div class="price">¥3,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/512" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミルクティー＆カフェオレ(6個) おうちカフェにぜひ！</h3>
+    <div class="price">¥3,240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/511" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="6960" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>ご長寿お祝いカップケーキ（抹茶＆藤色ボックス12個）〈敬老の日ディスクなし｜お誕生日仕様も可〉</h3>
+    <div class="price">¥6,960<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,960</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/413" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="3600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>ご長寿お祝いカップケーキ（藤色ボックス6個）〈敬老の日ディスクなし｜お誕生日仕様も可〉</h3>
+    <div class="price">¥3,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/416" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="季節限定" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">季節限定</div>
+    <h3>9/18締切【9/25（金）十五夜】十五夜カップケーキBOX（6個）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/345" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="季節限定" data-mat="" data-price="3420" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">季節限定</div>
+    <h3>【秋冬限定】モンブランカップケーキ(6個)</h3>
+    <div class="price">¥3,420<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,420</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/496" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハロウィン" data-mat="" data-price="11520" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハロウィン</div>
+    <h3>🎃👻🧙‍♀️ ミニハロウィンパーティボックス（48個）</h3>
+    <div class="price">¥11,520<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥11,520</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/300" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハロウィン" data-mat="" data-price="5880" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハロウィン</div>
+    <h3>👻🧙‍♀️ ミニモンスターハロウィンボックス（24個）</h3>
+    <div class="price">¥5,880<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,880</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/299" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハロウィン" data-mat="" data-price="5880" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハロウィン</div>
+    <h3>🎃👻 ミニハッピーハロウィンボックス（24個）</h3>
+    <div class="price">¥5,880<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,880</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/296" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハロウィン" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハロウィン</div>
+    <h3>🧙‍♀️ ミニパープルハロウィンボックス（12個）</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/298" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハロウィン" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハロウィン</div>
+    <h3>👻ミニグリーンハロウィンボックス（12個）</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/297" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハロウィン" data-mat="" data-price="13200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハロウィン</div>
+    <h3>🎃 👻🦇☠️スペシャルハロウィンパーティボックス 24個</h3>
+    <div class="price">¥13,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥13,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/293" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハロウィン" data-mat="" data-price="6840" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハロウィン</div>
+    <h3>🕷🧙‍♀️ ハロウィンパーティボックス12個</h3>
+    <div class="price">¥6,840<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,840</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/510" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハロウィン" data-mat="" data-price="3720" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハロウィン</div>
+    <h3>🕷モンスターハロウィンボックス 6個</h3>
+    <div class="price">¥3,720<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,720</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/290" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハロウィン" data-mat="" data-price="3360" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハロウィン</div>
+    <h3>🦇 フレンドリーハロウィンボックス 6個</h3>
+    <div class="price">¥3,360<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,360</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/288" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="4260" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>フォトアルバムカップケーキ6個セット☆選べる10色【写真/メッセージ/名前入り】</h3>
+    <div class="price">¥4,260<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,260</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/509" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>オータムバースデーボックス（6個）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/250" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="法人・名入れ" data-mat="" data-price="8160" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">法人・名入れ</div>
+    <h3>【オリジナルスイーツ】ロゴ・キャラクタープリンティング（法人・販促・チーム・キッズ・推し活・写真・創業記念）12個</h3>
+    <div class="price">¥8,160<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥8,160</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/29" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="法人・名入れ" data-mat="" data-price="12000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">法人・名入れ</div>
+    <h3>【冷凍便送料無料】【オリジナルスイーツ】ミニロゴ・キャラクタープリンティング（24個）</h3>
+    <div class="price">¥12,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥12,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/130" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="法人・名入れ" data-mat="" data-price="5880" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">法人・名入れ</div>
+    <h3>メッセージボックス（12個｜お誕生日・記念日・入学＆入社式・内々定式・内定式）</h3>
+    <div class="price">¥5,880<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,880</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/28" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="7380" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】アソートセレクション（12種｜18個A / 18個B / 24個）</h3>
+    <div class="price">¥7,380<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,380</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/111" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5760" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ミニアソートメントカップケーキ（6種類｜24個 / 48個）</h3>
+    <div class="price">¥5,760<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,760</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/34" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>ひまわりバースデーボックス（6個｜7月14日は #ひまわりの日）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/342" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハロウィン" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハロウィン</div>
+    <h3>👻 ミニオレンジハロウィンボックス（12個）</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/295" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハロウィン" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハロウィン</div>
+    <h3>🎃ミニチョコハロウィンボックス（12個）</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/294" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6540" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>Happy Bunny Box（12個）│ハッピーバニーボックス（12個）</h3>
+    <div class="price">¥6,540<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,540</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/350" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="2700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミントチョコ（6個）【6月20日 #ペパーミントの日 ｜2月19日#チョコミントの日】</h3>
+    <div class="price">¥2,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/71" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="7200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ミニメッセージボックス（英数字・大文字のみ｜24個）</h3>
+    <div class="price">¥7,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/395" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5040" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料｜人気No.1】アソートセレクション（12個）</h3>
+    <div class="price">¥5,040<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,040</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/3" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>フローラルバースデーボックス（6個｜名入れ有）※Happy BirthdayプレートはThank youに変更可能</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/19" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>マリンバースデーボックス（6個）#海の日</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/247" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="13200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】パーティー・アンダー・ザ・シー・ボックス（24個｜PARTY UNDER THE SEA 海の中のパーティー｜7月31日は #ビーチの日）</h3>
+    <div class="price">¥13,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥13,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/402" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>バースデーボックス（ピンク｜6個）</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/177" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="6677" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>＜ご予約終了しました＞【現役保育士VTuber 卯月るな】Runa's Celebration Box 2026（6個入り）｜購入者限定お茶会（9月23日15時）へご招待｜最短9月18日にお渡し</h3>
+    <div class="price">¥6,677<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,677</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/507" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>マーメイドカップケーキボックス（6個｜ピンク・ブルー・グリーン・パープル）</h3>
+    <div class="price">¥3,400<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,400</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/396" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="季節限定" data-mat="" data-price="6300" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">季節限定</div>
+    <h3>【冷凍便送料無料】サマー♡フルーツパーティーボックス（12個）</h3>
+    <div class="price">¥6,300<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,300</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/391" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="410" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【当日テイクアウェイ】レギュラーカップケーキメニュー 1個から</h3>
+    <div class="price">¥410<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥410</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/194" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="3200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>シトラス♡バースデーボックス（6個）</h3>
+    <div class="price">¥3,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/390" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="24000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】カラフルカップケーキボックス48個セット（6色 | カラーチョコスプレー＆シルバーアラザン）</h3>
+    <div class="price">¥24,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥24,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/353" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ジューシー♡ピンクグレープフルーツボックス（6個）</h3>
+    <div class="price">¥3,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/389" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="2800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>チョコミントパーティー（6個）【6月20日 #ペパーミントの日 ｜2月19日#チョコミントの日】</h3>
+    <div class="price">¥2,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/411" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="資材・オプション" data-mat="" data-price="600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">資材・オプション</div>
+    <h3>レギュラー1個用トレー（12個セット）【冷凍配送と同梱できません】</h3>
+    <div class="price">¥600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/497" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="16560" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミニスペシャルチョコボックス（72個）</h3>
+    <div class="price">¥16,560<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥16,560</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/448" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6360" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>キャットカップケーキボックス（キュート｜12個｜バニラ＆チョコ）【2月22日猫の日｜8月8日世界猫の日】</h3>
+    <div class="price">¥6,360<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,360</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/454" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="2880" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>レッドベルベットカップケーキ（6個）</h3>
+    <div class="price">¥2,880<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,880</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/14" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="9120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】バニラ【キッズ人気No.1】24個｜セット特別価格</h3>
+    <div class="price">¥9,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥9,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/368" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】祝 エディブルプリント</h3>
+    <div class="price">¥200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/226" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="7200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>【冷凍便送料無料】ミニバースデーボックス(24個)</h3>
+    <div class="price">¥7,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/139" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3300" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>Happy Bunny Box（6個）│ハッピーバニーボックス（6個）</h3>
+    <div class="price">¥3,300<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,300</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/302" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5760" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ミニキャットボックス（バニラ＆チョコ24個）</h3>
+    <div class="price">¥5,760<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,760</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/451" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="11280" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミニスペシャルチョコボックス（48個）</h3>
+    <div class="price">¥11,280<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥11,280</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/447" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="2880" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>キャロット（6個）★Ra*bits賞採用/ダンナの昼顔・ぐらんざWEBで紹介されました</h3>
+    <div class="price">¥2,880<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,880</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/13" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3420" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ドッグカップケーキボックス（6個）【11月1日は犬の日｜ブリーダーナビ掲載】</h3>
+    <div class="price">¥3,420<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,420</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/208" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="7200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>【冷凍便送料無料】ミニフローラルバースデーボックス(24個)</h3>
+    <div class="price">¥7,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/138" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6720" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【感謝祭 10/12｜11/26】ハッピーサンクスギビングボックス(12個)</h3>
+    <div class="price">¥6,720<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,720</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/253" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3480" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【感謝祭 10/12｜11/26】サンクスギビングボックス(6個)</h3>
+    <div class="price">¥3,480<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,480</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/73" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>七五三カップケーキボックス(6個)【セレクト制・名入れディスクあり】</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/202" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="6700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>【冷凍便送料無料】マーメイドバースデーボックス（ピンク＆パープル｜12個 ｜7月31日は #ビーチの日）</h3>
+    <div class="price">¥6,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/400" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="6700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>【冷凍便送料無料】シーバースデーボックス（ライトブルー＆グリーン｜12個｜7月31日は #ビーチの日）</h3>
+    <div class="price">¥6,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/401" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>あじさいカップケーキBOX（6個）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/173" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>LOVE SWEET BOX （6個）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/438" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>CHOCO！CHOCO！CHOCO！BOX （6個）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/439" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>LOVE LOVE CHOCO BOX （12個）</h3>
+    <div class="price">¥6,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/440" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>再販予定【開運祈願スイーツ】鏡もちカップケーキBOX（6個） ｜BSフジ のミニ番組「開運！時代堂」2025年Xプレゼント企画に採用</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/375" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>節分カップケーキBOX （バニラ&amp;チョコ｜12個｜2月3日｜1月26日締切）</h3>
+    <div class="price">¥6,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/437" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3420" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>節分カップケーキBOX （チョコ｜6個｜2月3日｜1月26日締切）</h3>
+    <div class="price">¥3,420<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,420</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/436" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3420" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>節分カップケーキBOX （バニラ｜6個｜2月3日｜1月26日締切）</h3>
+    <div class="price">¥3,420<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,420</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/435" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>スノーバースデーボックス（ピンク｜6個）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/432" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>スノーバースデーボックス（ライトブルー｜6個｜成人式）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/431" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="5800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>ハッピーウィンターバースデーボックス(12個)</h3>
+    <div class="price">¥5,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/274" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>ウィンターバースデーボックス(6個)</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/272" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>雪うさぎバースデーボックス(6個)</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/273" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ひなまつりBOX（6個）【3月3日】</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/156" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="資材・オプション" data-mat="" data-price="11800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">資材・オプション</div>
+    <h3>スペシャルSAKURA満開ボックス（レギュラー12個＆ミニ24個｜同梱）</h3>
+    <div class="price">¥11,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥11,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/471" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="季節限定" data-mat="" data-price="6240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">季節限定</div>
+    <h3>ミニSAKURA満開ボックス（24個｜さくら＆春色）</h3>
+    <div class="price">¥6,240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/468" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3360" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【イースター】Happy Easter BOX（6個）</h3>
+    <div class="price">¥3,360<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,360</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/116" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【イースター】Easter Special BOX（12個）</h3>
+    <div class="price">¥6,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/232" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミニSAKURA満開ボックス（24個｜さくら色）</h3>
+    <div class="price">¥6,240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/469" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>SAKURA満開ボックス｜バニラ＆チョコ｜12個</h3>
+    <div class="price">¥6,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/465" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>SAKURA満開ボックス｜6個（バニラ/チョコ）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/464" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>こどもの日カップケーキBOX（ピンク・6個）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/333" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>こどもの日カップケーキBOX（ブルー・6個）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/117" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>こどもの日カップケーキBOX(12個)</h3>
+    <div class="price">¥6,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/334" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>母の日スペシャルサンクスボックス</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/303" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3360" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>カーネーションカップケーキボックス(6個)</h3>
+    <div class="price">¥3,360<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,360</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/277" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3360" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【父の日】お父さんありがとう！ カップケーキ</h3>
+    <div class="price">¥3,360<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,360</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/99" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【父の日】父の日スペシャルサンクスボックス</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/242" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>七夕カップケーキBOX(6個 | ピンク)</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/343" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>七夕カップケーキBOX(6個 | ライトブルーor ピンク)</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/344" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="2520" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ライトブルーチョコ（6個）</h3>
+    <div class="price">¥2,520<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,520</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/281" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="2520" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ライトブルーバニラ（6個）</h3>
+    <div class="price">¥2,520<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,520</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/280" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="2580" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>アソートセレクション（6個｜A / B）【men's FUDGE VOL.171 2025 MAYに掲載いただきました】</h3>
+    <div class="price">¥2,580<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,580</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/2" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5140" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】【MEICAカード付】アソートセレクション（12個）</h3>
+    <div class="price">¥5,140<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,140</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/501" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="2680" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【MEICAカード付】アソートセレクション（6個｜A / B）</h3>
+    <div class="price">¥2,680<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,680</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/500" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="2460" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>バニラ【キッズ人気No.1】（６個）</h3>
+    <div class="price">¥2,460<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,460</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/4" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>バースデーボックス（ライトブルー｜6個）</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/18" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>バースデーボックス（グリーン｜6個）</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/178" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="3600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>ご長寿お祝いカップケーキ（抹茶ボックス6個）〈敬老の日ディスクなし｜お誕生日仕様も可〉</h3>
+    <div class="price">¥3,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/415" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>キャットカップケーキボックス（キュート｜6個｜バニラ）【2月22日猫の日｜8月8日世界猫の日】</h3>
+    <div class="price">¥3,240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/452" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>キャットカップケーキボックス（キュート｜6個｜チョコ）【2月22日猫の日｜8月8日世界猫の日】</h3>
+    <div class="price">¥3,240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/453" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>フラワーカップケーキボックス（6個）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/337" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ハッピースマイリーボックス（6個） | 2月5日は笑顔の日・11月25日はいいえがおの日</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/21" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>Gender Reveal Cupcakes Box（6個｜ジェンダー リビール）</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/191" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5880" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>Gender Reveal Cupcakes Box（12個｜ジェンダー リビール）</h3>
+    <div class="price">¥5,880<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,880</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/179" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ボーイズベビーシャワー（12個）</h3>
+    <div class="price">¥6,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/22" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ガールズベビーシャワー（12個）</h3>
+    <div class="price">¥6,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/23" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>合格カップケーキボックス（6個）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/381" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ボーイズボックス（+It's a Boy）12個</h3>
+    <div class="price">¥6,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/24" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ガールズボックス（+It's a Girl）12個</h3>
+    <div class="price">¥6,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/25" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】It's a Girl</h3>
+    <div class="price">¥240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/176" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】It's a Boy</h3>
+    <div class="price">¥240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/175" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="12360" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ガーリーカップケーキ♡パーティーセット（ピンク＆ブルー｜レギュラー12個＆ミニ24個｜名入れ可）</h3>
+    <div class="price">¥12,360<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥12,360</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/461" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6000" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ガーリーカップケーキボックス（ピンク＆ブルー｜12個｜名入れ可）</h3>
+    <div class="price">¥6,000<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/457" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ガーリーカップケーキボックス（ブルー｜6個｜名入れ可）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/456" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3120" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ガーリーカップケーキボックス（ピンク｜6個｜名入れ可）</h3>
+    <div class="price">¥3,120<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,120</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/455" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="7480" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】【MEICAカード付】アソートセレクション（12種｜18個A / 18個B / 24個）</h3>
+    <div class="price">¥7,480<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,480</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/502" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="24000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>カラフルカップケーキボックス48個セット（6色 | シルバーアラザン）</h3>
+    <div class="price">¥24,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥24,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/352" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="24000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>カラフルカップケーキボックス48個セット（6色 | チョコカラースプレー）</h3>
+    <div class="price">¥24,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥24,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/351" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="5280" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>紅白カップケーキ （2個6セット計12個｜箱つき｜卒園・卒業・入園・入学・お祝い）</h3>
+    <div class="price">¥5,280<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,280</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/481" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="資材・オプション" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">資材・オプション</div>
+    <h3>【オーダー限定】レギュラー1個包装（12個セット）【冷凍配送と同梱できません】</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/256" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="資材・オプション" data-mat="" data-price="2400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">資材・オプション</div>
+    <h3>【オーダー限定】ミニ1個包装（24個セット）【冷凍配送と同梱できません】</h3>
+    <div class="price">¥2,400<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,400</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/271" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【ピンクリボン月間】ピンクリボンカップケーキ (12個)｜企業様・団体様向け</h3>
+    <div class="price">¥6,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/363" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="13680" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>Mimosa Box（24個）【ミモザの日 | 3月8日 | 国際女性デー】</h3>
+    <div class="price">¥13,680<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥13,680</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/330" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="季節限定" data-mat="" data-price="6360" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">季節限定</div>
+    <h3>パープルバニラ＆チョコ（12個）【国際女性デー｜3月8日｜季節限定】</h3>
+    <div class="price">¥6,360<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,360</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/384" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="季節限定" data-mat="" data-price="350" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">季節限定</div>
+    <h3>【オプション | 9月21日敬老の日】いつまでも元気でいてね（レッド or グリーン）エディブルプリント</h3>
+    <div class="price">¥350<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥350</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/199" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="季節限定" data-mat="" data-price="350" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">季節限定</div>
+    <h3>【オプション | 9月21日敬老の日】いつもありがとう（レッド or グリーン）エディブルプリント</h3>
+    <div class="price">¥350<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥350</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/198" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="資材・オプション" data-mat="" data-price="240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">資材・オプション</div>
+    <h3>【オプション】Thanks Dad ディスク</h3>
+    <div class="price">¥240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/163" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="資材・オプション" data-mat="" data-price="240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">資材・オプション</div>
+    <h3>【母の日ギフト】【オプション】Thanks mom ディスク</h3>
+    <div class="price">¥240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/160" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】クローバーデザイン エディブルプリント（Happy Birthday / Happy Anniversary / Congratulations / Thank you / おめでとうございます｜※お選びいただいたカップケーキの上におのせします）</h3>
+    <div class="price">¥200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/480" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】ありがとう エディブルプリント</h3>
+    <div class="price">¥200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/227" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="390" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】for you &amp; Thank you エディブルプリントセット</h3>
+    <div class="price">¥390<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥390</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/216" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】卒園・卒業・Congratulations! 2026・祝卒業 2026エディブルプリント※カップケーキは別で選んでください</h3>
+    <div class="price">¥200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/228" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】Thank you エディブルプリント</h3>
+    <div class="price">¥200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/215" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】合格祈願 （POP）エディブルプリント</h3>
+    <div class="price">¥200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/328" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】入園・入学おめでとう・おめでとう エディブルプリント</h3>
+    <div class="price">¥200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/233" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】祝 （POP）エディブルプリント</h3>
+    <div class="price">¥200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/327" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】Happy Birthday エディブルプリント（店頭当日購入可能）</h3>
+    <div class="price">¥200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/161" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="資材・オプション" data-mat="" data-price="240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">資材・オプション</div>
+    <h3>【オプション】Happy Birthday or Thank youディスク</h3>
+    <div class="price">¥240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/164" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="資材・オプション" data-mat="" data-price="240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">資材・オプション</div>
+    <h3>【オプション】お名前ディスク or メッセージ</h3>
+    <div class="price">¥240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/166" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="誕生日・記念日" data-mat="" data-price="240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">誕生日・記念日</div>
+    <h3>【オプション】数字ディスク | 5色からセレクト | 年齢・背番号・記念日</h3>
+    <div class="price">¥240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/278" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】Happy Birthday Bellasオリジナルスタンプ（3色）</h3>
+    <div class="price">¥240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/392" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="340" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】 I ♡</h3>
+    <div class="price">¥340<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥340</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/279" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="資材・オプション" data-mat="" data-price="240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">資材・オプション</div>
+    <h3>【オプション】Loveハートディスク</h3>
+    <div class="price">¥240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/251" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】ひまわり シュガークラフト（7月14日は #ひまわりの日）</h3>
+    <div class="price">¥240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/162" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【オプション】#推し</h3>
+    <div class="price">¥200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/304" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="資材・オプション" data-mat="" data-price="240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">資材・オプション</div>
+    <h3>【オプション】Enjoy! ふきだしディスク</h3>
+    <div class="price">¥240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/240" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="資材・オプション" data-mat="" data-price="240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">資材・オプション</div>
+    <h3>【オプション】Welcomeディスク</h3>
+    <div class="price">¥240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/239" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【当日テイクアウェイ】3月-5月｜1個から</h3>
+    <div class="price">¥500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/434" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ミニ4カラーセレクション（3色セレクト）24個</h3>
+    <div class="price">¥6,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/133" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミニキャロット&amp;バニー（12個）</h3>
+    <div class="price">¥3,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/462" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5280" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】【キッズ・学校で人気】ミニバニラ(24個)</h3>
+    <div class="price">¥5,280<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,280</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/31" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6240" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】【大人向け】ミニレッドベルベット(24個)</h3>
+    <div class="price">¥6,240<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/30" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5760" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ミニプレミアムラブボックス（24個）</h3>
+    <div class="price">¥5,760<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,760</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/443" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5760" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ミニプレミアムチョコボックス（24個）</h3>
+    <div class="price">¥5,760<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,760</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/446" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミニミックスラブボックス（12個）</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/441" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミニストロベリーチョコボックス（12個）</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/442" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミニミントチョコチョコボックス（12個）</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/444" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミニバニラチョコハートボックス（12個）</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/445" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミニキャットボックス（バニラ12個）</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/449" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミニキャットボックス（ダブルチョコ12個）</h3>
+    <div class="price">¥3,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/450" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5760" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ミニレモン(24個)</h3>
+    <div class="price">¥5,760<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,760</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/134" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5760" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ミニミントチョコ(24個) 【6月20日 #ペパーミントの日 ｜2月19日#チョコミントの日】</h3>
+    <div class="price">¥5,760<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,760</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/137" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5520" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ミニピンクバニラ(24個)</h3>
+    <div class="price">¥5,520<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,520</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/146" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5520" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ミニバニラチョコ(24個)</h3>
+    <div class="price">¥5,520<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,520</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/33" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5520" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ミニダブルチョコ(24個)</h3>
+    <div class="price">¥5,520<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,520</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/32" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5280" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ミニチョコバニラ(24個)</h3>
+    <div class="price">¥5,280<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,280</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/135" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="5520" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ミニピンクチョコ(24個)</h3>
+    <div class="price">¥5,520<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,520</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/136" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6720" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>【冷凍便送料無料】ミニガーリーカップケーキボックス（ピンク＆ブルー｜24個）</h3>
+    <div class="price">¥6,720<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,720</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/460" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3480" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミニガーリーカップケーキボックス（ピンク｜12個）</h3>
+    <div class="price">¥3,480<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,480</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/458" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="3480" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>ミニガーリーカップケーキボックス（ブルー｜12個）</h3>
+    <div class="price">¥3,480<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,480</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/459" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="4800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>パーティーケーキ（12/15/18/21/24cm｜バタークリーム）</h3>
+    <div class="price">¥4,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/42" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="4800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>フローラルパーティーケーキ（12/15/18/21/24cm｜バタークリーム）</h3>
+    <div class="price">¥4,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/201" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="6300" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>レッドベルベットケーキ（ホール 12/15/18/21/24cm）</h3>
+    <div class="price">¥6,300<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,300</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/41" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="9600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>フォトイメージバタークリームケーキ（15/18/21/24cm｜バタークリーム）</h3>
+    <div class="price">¥9,600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥9,600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/140" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>Bellasオリジナル5.7cm缶バッチ（キャロット）</h3>
+    <div class="price">¥400<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥400</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/364" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="1100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>推しいろバルーンガーランド プチ ブルー</h3>
+    <div class="price">¥1,100<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,100</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/425" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="1100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>推しいろバルーンガーランド プチ ピンク</h3>
+    <div class="price">¥1,100<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,100</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/424" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="1500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>推しいろバルーンガーランド ナチュラル</h3>
+    <div class="price">¥1,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/423" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="1500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>推しいろバルーンガーランド ピンク</h3>
+    <div class="price">¥1,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/422" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="季節限定" data-mat="" data-price="200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">季節限定</div>
+    <h3>【冷凍便限定オプション】12個ギフト袋（シール＋for youタグ）セット</h3>
+    <div class="price">¥200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/356" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="20" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>袋（12個箱用／ケーキ12cm〜18cmまで）</h3>
+    <div class="price">¥20<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥20</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/196" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>Bellas Cupcakes オリジナルメッセージカード（封筒つき）</h3>
+    <div class="price">¥500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/312" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="610" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>Bellas Cupcakes オリジナルポストカード（ウィンターバージョン・5枚セット）</h3>
+    <div class="price">¥610<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥610</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/311" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="150" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>Bellas Cupcakes オリジナルポストカード（ウィンターバージョン）</h3>
+    <div class="price">¥150<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥150</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/310" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="定番・ティータイム" data-mat="" data-price="610" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">定番・ティータイム</div>
+    <h3>Bellas Cupcakes オリジナルポストカード（5枚セット）</h3>
+    <div class="price">¥610<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥610</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/309" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="資材・オプション" data-mat="" data-price="600" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">資材・オプション</div>
+    <h3>レギュラー1個包装（6個セット）【冷凍配送と同梱できません】</h3>
+    <div class="price">¥600<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/269" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="資材・オプション" data-mat="" data-price="1200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">資材・オプション</div>
+    <h3>【オーダー限定】ミニ1個包装（12個セット）【冷凍配送と同梱できません】</h3>
+    <div class="price">¥1,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.bellas-cupcakes.jp/product/270" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、Bellas Cupcakes(ベラズカップケーキ)様の公式サイト(<a href="https://www.bellas-cupcakes.jp/" target="_blank" rel="noopener">https://www.bellas-cupcakes.jp/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:"",price:"",stock:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      if(state.price){var q=state.price.split('-'),pv=+c.dataset.price;if(!(pv>0&&pv>=+q[0]&&pv<+q[1]))ok=false;}
+      if(state.stock&&c.dataset.stock!==state.stock)ok=false;
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
