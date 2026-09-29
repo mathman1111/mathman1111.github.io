@@ -1,0 +1,2795 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>電信堂｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.stock{font-size:11px;font-weight:700;margin-left:8px;padding:2px 8px;border-radius:20px;vertical-align:middle}
+.stock.in{background:#e9f1e7;color:#4f7a52}.stock.few{background:#fbf0dd;color:#9a6b1f}.stock.out{background:#f2eeea;color:#8b8179}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。電信堂様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>電信堂</h1>
+  <p class="tagline">167点を1枚に並べ、カテゴリと価格帯、在庫で絞り込めるようにしました。</p>
+  <div class="badges"><span></span><span>掲載 167点</span><span>種類・価格帯・在庫で絞り込めます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="タイヤ Tires/Tubes">タイヤ Tires/Tubes</button><button class="chip" data-k="cat" data-v="キャスター Casters">キャスター Casters</button><button class="chip" data-k="cat" data-v="生活用品 Daily Necessities">生活用品 Daily Necessities</button><button class="chip" data-k="cat" data-v="車いす スポーツ用品 Sports Goods">車いす スポーツ用品 Sports Goods</button><button class="chip" data-k="cat" data-v="アクセサリ Accessories">アクセサリ Accessories</button><button class="chip" data-k="cat" data-v="ハンドリム Handrims">ハンドリム Handrims</button><button class="chip" data-k="cat" data-v="ホイール Rear Wheels">ホイール Rear Wheels</button><button class="chip" data-k="cat" data-v="生活用 車いす Wheelchair (Everyday)">生活用 車いす Wheelchair (Everyday)</button><button class="chip" data-k="cat" data-v="スポーツ用 車いす Wheelchair (Sports)">スポーツ用 車いす Wheelchair (Sports)</button><button class="chip" data-k="cat" data-v="クッション Cushion">クッション Cushion</button><button class="chip" data-k="cat" data-v="車いす トレーニング用品 Roller">車いす トレーニング用品 Roller</button><button class="chip" data-k="cat" data-v="空気入れ Compressor">空気入れ Compressor</button><button class="chip" data-k="cat" data-v="その他">その他</button></div>
+    <div class="row"><span class="lbl">価格帯</span><button class="chip active" data-k="price" data-v="">すべて</button><button class="chip" data-k="price" data-v="0-6000">〜¥6,000</button><button class="chip" data-k="price" data-v="6000-15000">¥6,000〜¥15,000</button><button class="chip" data-k="price" data-v="15000-80000">¥15,000〜¥80,000</button><button class="chip" data-k="price" data-v="80000-1000000000">¥80,000〜</button></div>
+    <div class="row"><span class="lbl">在庫</span><button class="chip active" data-k="stock" data-v="">すべて</button><button class="chip" data-k="stock" data-v="在庫あり">在庫あり</button><button class="chip" data-k="stock" data-v="売切れ">売切れ</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="14520" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>IRC EXERACER PRO RISE</h3>
+    <div class="price">¥14,520<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥14,520</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/886" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャスター Casters" data-mat="" data-price="3080" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャスター Casters</div>
+    <h3>インドア用ハイパフォーマンスキャスター</h3>
+    <div class="price">¥3,080<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,080</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/838" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="13200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>IRC EXERACER PRO</h3>
+    <div class="price">¥13,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥13,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/71" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="生活用品 Daily Necessities" data-mat="" data-price="440" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">生活用品 Daily Necessities</div>
+    <h3>ビニール袋</h3>
+    <div class="price">¥440<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥440</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/551" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="11000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>レース用グローブお試しセット!</h3>
+    <div class="price">¥11,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥11,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/786" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アクセサリ Accessories" data-mat="" data-price="5500" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アクセサリ Accessories</div>
+    <h3>MAX PLEASURE フロントキャリー</h3>
+    <div class="price">¥5,500<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/221" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アクセサリ Accessories" data-mat="" data-price="6160" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アクセサリ Accessories</div>
+    <h3>アンダーネット</h3>
+    <div class="price">¥6,160<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,160</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/869" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="13420" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>IRC EXERACER PRO folding</h3>
+    <div class="price">¥13,420<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥13,420</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/884" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="8690" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>IRC EXERACER（車椅子生活用タイヤ）24&quot;</h3>
+    <div class="price">¥8,690<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥8,690</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/572" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="7260" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>Panaracer Neutron Spec S 2（車椅子生活用タイヤ）24&quot;</h3>
+    <div class="price">¥7,260<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,260</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/697" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="10296" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>SCHWALBE RightRun 22&quot;/24&quot;</h3>
+    <div class="price">¥10,296<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥10,296</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/75" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="7260" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>Panaracer Neutron Spec Active 24&quot;（車椅子生活用タイヤ）</h3>
+    <div class="price">¥7,260<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,260</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/671" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="13500" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>KENDA Black Court タイヤ（車椅子生活用タイヤ）</h3>
+    <div class="price">¥13,500<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥13,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/101" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="14850" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>SHOX Solid Colored Tires （車椅子生活用ノーパンクタイヤ）</h3>
+    <div class="price">¥14,850<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥14,850</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/4" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="17226" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>SCHWALBE MARATHON PLUS</h3>
+    <div class="price">¥17,226<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥17,226</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/165" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="17622" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>SCHWALBE MARATHON PLUS EVOLUTION REFLEX</h3>
+    <div class="price">¥17,622<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥17,622</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/167" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="23760" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>SCHWALBE ワン (24&quot;)</h3>
+    <div class="price">¥23,760<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥23,760</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/764" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="11880" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>SCHWALBE DownTown</h3>
+    <div class="price">¥11,880<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥11,880</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/170" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="88000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>車いす用オールテレーンタイヤ（ホイール・ハンドリム込み）</h3>
+    <div class="price">¥88,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥88,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/688" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="7997" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>Panaracer Neutron V1</h3>
+    <div class="price">¥7,997<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,997</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/708" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="8800" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>Panaracer Neutron Spec RIII（車椅子スポーツ用タイヤ）</h3>
+    <div class="price">¥8,800<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥8,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/118" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="6325" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>Panaracer Rapide Plus 20&quot; （車椅子レース用タイヤ）</h3>
+    <div class="price">¥6,325<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,325</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/6" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="7700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>Vittoria JUNIORES 20&quot;（車椅子レース用タイヤ）</h3>
+    <div class="price">¥7,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/732" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="14355" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>TUFO S3 Lite 20&quot; 100g</h3>
+    <div class="price">¥14,355<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥14,355</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/723" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="6985" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>Panaracer Ultima Marathon Plus 230g （車椅子レース用タイヤ）</h3>
+    <div class="price">¥6,985<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,985</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/2" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="26950" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>Panaracer Ultima Marathon Plus 1 セット（4本）</h3>
+    <div class="price">¥26,950<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥26,950</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/449" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="9086" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>TUFO S3-27&quot; Lite＜215g</h3>
+    <div class="price">¥9,086<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥9,086</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/861" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="10600" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>TUFO Elite S3 23＜225g</h3>
+    <div class="price">¥10,600<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥10,600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/865" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="1430" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>Panaracer パナセメント（チューブラタイヤ専用リムセメント缶/ハケ付）</h3>
+    <div class="price">¥1,430<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,430</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/637" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="583" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>Panaracer パナセメント（チューブラータイヤ専用リムセメント）</h3>
+    <div class="price">¥583<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥583</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/130" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="1870" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>グルーイングテープ （ロード用）</h3>
+    <div class="price">¥1,870<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,870</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/791" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="11500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>IRC EXERACER PRO</h3>
+    <div class="price">¥11,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥11,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/823" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="8800" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>Panaracer Neutron V1</h3>
+    <div class="price">¥8,800<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥8,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/836" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="11500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>IRC EXERACER PRO</h3>
+    <div class="price">¥11,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥11,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/824" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="1100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>チューブ（米式バルブ）</h3>
+    <div class="price">¥1,100<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,100</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/874" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="1287" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>チューブ（米式バルブ）</h3>
+    <div class="price">¥1,287<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,287</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/83" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="1100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>チューブ（仏式バルブ）700ｃ</h3>
+    <div class="price">¥1,100<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,100</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/881" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="1364" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>SCHWALBE チューブ（米式）</h3>
+    <div class="price">¥1,364<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,364</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/540" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="1100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>チューブ（英式バルブ）</h3>
+    <div class="price">¥1,100<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,100</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/84" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="396" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>SCHWALBE ハイプレッシャーリムテープ</h3>
+    <div class="price">¥396<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥396</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/542" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="タイヤ Tires/Tubes" data-mat="" data-price="1540" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">タイヤ Tires/Tubes</div>
+    <h3>Spinergy リムバンド</h3>
+    <div class="price">¥1,540<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,540</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/882" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャスター Casters" data-mat="" data-price="14300" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャスター Casters</div>
+    <h3>Jagar 2.0 アルミワイドキャスター</h3>
+    <div class="price">¥14,300<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥14,300</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/789" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャスター Casters" data-mat="" data-price="2860" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャスター Casters</div>
+    <h3>B-MAX / T-MAX / U-MAX 用キャスター</h3>
+    <div class="price">¥2,860<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,860</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/844" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャスター Casters" data-mat="" data-price="12100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャスター Casters</div>
+    <h3>ライトニングキャスター（光る車椅子用キャスター）</h3>
+    <div class="price">¥12,100<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥12,100</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/876" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャスター Casters" data-mat="" data-price="10800" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャスター Casters</div>
+    <h3>Frog Legs ワイドキャスター プラスチックコア（ブラック）</h3>
+    <div class="price">¥10,800<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥10,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/230" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャスター Casters" data-mat="" data-price="1540" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャスター Casters</div>
+    <h3>MIKI・日進製車いす用キャスターカラー</h3>
+    <div class="price">¥1,540<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,540</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/283" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャスター Casters" data-mat="" data-price="1540" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャスター Casters</div>
+    <h3>松永製車いす用キャスターカラー</h3>
+    <div class="price">¥1,540<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,540</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/286" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャスター Casters" data-mat="" data-price="1540" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャスター Casters</div>
+    <h3>OX製車いす用キャスターカラー（ワイドタイプ）</h3>
+    <div class="price">¥1,540<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,540</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/281" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="キャスター Casters" data-mat="" data-price="1540" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">キャスター Casters</div>
+    <h3>OX製車いす用キャスターカラー（ナロータイプ）</h3>
+    <div class="price">¥1,540<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,540</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/282" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="62700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>Carbon フラットフェイスハンドリム 24&quot;</h3>
+    <div class="price">¥62,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥62,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/851" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="53900" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>CARBO LIFE ハンドリム カーブ L</h3>
+    <div class="price">¥53,900<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥53,900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/805" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="52300" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>CARBO LIFE ハンドリム（カーブ L グリップ）</h3>
+    <div class="price">¥52,300<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥52,300</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/804" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="66000" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>CARBO LIFE ハンドリム（ゲッコ S）</h3>
+    <div class="price">¥66,000<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥66,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/812" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="52300" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>CARBO LIFE ハンドリム（ゲッコ）</h3>
+    <div class="price">¥52,300<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥52,300</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/803" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="52300" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>CARBO LIFE ハンドリム クアドロ</h3>
+    <div class="price">¥52,300<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥52,300</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/807" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="56100" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>チタンオーバルハンドリム 24&quot;</h3>
+    <div class="price">¥56,100<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥56,100</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/748" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="39600" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>Q-グリップハンドリム</h3>
+    <div class="price">¥39,600<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥39,600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/766" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="51480" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>Natural Fit ハンドリム</h3>
+    <div class="price">¥51,480<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥51,480</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/813" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="75240" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>Natural Fit SURGE</h3>
+    <div class="price">¥75,240<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥75,240</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/769" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="15400" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>アルミハードアルマイトハンドリム</h3>
+    <div class="price">¥15,400<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥15,400</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/749" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="46200" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>チタンエンボスハンドリム</h3>
+    <div class="price">¥46,200<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥46,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/750" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="18700" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>車椅子レース用ハンドリム（アルミ）※Corimaホイール用</h3>
+    <div class="price">¥18,700<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥18,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/120" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="6050" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>レース用ハンドリムコーティングチューブ</h3>
+    <div class="price">¥6,050<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,050</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/864" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="7920" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>Vittoria Rally 21-28&quot;</h3>
+    <div class="price">¥7,920<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,920</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/843" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="3300" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>松ヤニ(チューブ式)</h3>
+    <div class="price">¥3,300<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,300</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/795" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="26400" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>27&quot; (700c) アルミハードアルマイトハンドリム</h3>
+    <div class="price">¥26,400<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥26,400</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/800" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="19800" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>チタンプレーンハンドリム</h3>
+    <div class="price">¥19,800<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥19,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/755" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ハンドリム Handrims" data-mat="" data-price="41800" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ハンドリム Handrims</div>
+    <h3>27&quot;(700c) チタンハンドリム (SPINERGY 用)</h3>
+    <div class="price">¥41,800<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥41,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/801" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="187440" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>OX TT-3R カーボンホイール（生活用ホイール）</h3>
+    <div class="price">¥187,440<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥187,440</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/256" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="203830" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Corima 4 Cross Carbon Wheel （ハンドリム一体型）</h3>
+    <div class="price">¥203,830<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥203,830</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/16" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="77000" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>X-Core 5スポークホイール</h3>
+    <div class="price">¥77,000<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥77,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/186" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="97900" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy SPOX Everyday（TYPE2 生活用ホイール）</h3>
+    <div class="price">¥97,900<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥97,900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/802" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="112860" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy B.LXL（生活用）</h3>
+    <div class="price">¥112,860<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥112,860</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/873" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="114950" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>SPINERGY Extra Lite 24&quot;</h3>
+    <div class="price">¥114,950<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥114,950</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/675" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="124740" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy XLX X-Laced（生活用）</h3>
+    <div class="price">¥124,740<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥124,740</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/689" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="192000" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy CLX Blade（生活用）</h3>
+    <div class="price">¥192,000<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥192,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/754" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="110000" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Dino ホイール 24&quot;(Type 2)</h3>
+    <div class="price">¥110,000<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥110,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/767" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="297000" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Y-360 Mod Style Wheels with Inserts</h3>
+    <div class="price">¥297,000<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥297,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/11" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="118800" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy SLX X-Laced Sport 25&quot; 在庫限り！</h3>
+    <div class="price">¥118,800<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥118,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/888" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="118800" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy Sport Light Extream</h3>
+    <div class="price">¥118,800<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥118,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/718" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="123200" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy Sport Light Extream 5/8&quot;</h3>
+    <div class="price">¥123,200<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥123,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/849" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="31900" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>ノーマルスポーク レース用フロントホイール</h3>
+    <div class="price">¥31,900<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥31,900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/128" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="94600" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Corima 20&quot;(500c) エアロホイール</h3>
+    <div class="price">¥94,600<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥94,600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/846" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="321750" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Corima Rear 4 Spoke ホイール （2023 モデル）</h3>
+    <div class="price">¥321,750<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥321,750</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/730" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="321750" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Corima Rear ディスクホイール 27&quot; (2023 モデル)</h3>
+    <div class="price">¥321,750<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥321,750</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/147" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="451000" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>CORIMA DISC Carbon wheel （ハンドリム 5 ヶ所固定）</h3>
+    <div class="price">¥451,000<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥451,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/784" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="97900" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy SPOX Sports</h3>
+    <div class="price">¥97,900<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥97,900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/741" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="103400" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy SPOX Sport X-Laced</h3>
+    <div class="price">¥103,400<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥103,400</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/742" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="117700" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy Sport Light Extream（TYPE3）</h3>
+    <div class="price">¥117,700<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥117,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/818" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="123200" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy SLX X-Laced Sport</h3>
+    <div class="price">¥123,200<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥123,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/760" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="118800" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy SLX X-Laced Sports Special (25&quot;/26&quot;)</h3>
+    <div class="price">¥118,800<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥118,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/746" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="104940" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy SPOX Sport X-Laced</h3>
+    <div class="price">¥104,940<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥104,940</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/827" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="118800" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy Sport Light Extream（TYPE3）</h3>
+    <div class="price">¥118,800<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥118,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/826" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="124740" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy SLX X-Laced Sport</h3>
+    <div class="price">¥124,740<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥124,740</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/828" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="118800" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy SLX X-Laced Sports Special (25&quot;/26&quot;)</h3>
+    <div class="price">¥118,800<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥118,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/829" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="118800" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy Sport Light Extream</h3>
+    <div class="price">¥118,800<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥118,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/822" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="128700" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>Spinergy SLX R-10 X-Laced</h3>
+    <div class="price">¥128,700<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥128,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/747" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="1150" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>スピナジーホイール 交換用スポーク（車いす用）</h3>
+    <div class="price">¥1,150<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,150</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/80" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="1320" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>スピナジー用スポーク調整工具</h3>
+    <div class="price">¥1,320<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,320</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/817" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="3740" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>ワンタッチ式シャフト</h3>
+    <div class="price">¥3,740<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,740</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/209" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="17600" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>SPINERGY ワンタッチ式シャフト φ (5/8&quot;)</h3>
+    <div class="price">¥17,600<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥17,600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/808" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="39930" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>SPINERGY製ワンタッチ式チタンシャフト</h3>
+    <div class="price">¥39,930<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥39,930</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/768" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ホイール Rear Wheels" data-mat="" data-price="520" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ホイール Rear Wheels</div>
+    <h3>ワンタッチシャフトカラー</h3>
+    <div class="price">¥520<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥520</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/772" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="生活用 車いす Wheelchair (Everyday)" data-mat="" data-price="458000" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">生活用 車いす Wheelchair (Everyday)</div>
+    <h3>TIG TITAN R（チタン製車椅子）</h3>
+    <div class="price">¥458,000<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥458,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/35" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スポーツ用 車いす Wheelchair (Sports)" data-mat="" data-price="300000" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スポーツ用 車いす Wheelchair (Sports)</div>
+    <h3>SPEED KING_NITRO</h3>
+    <div class="price">¥300,000<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥300,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/28" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スポーツ用 車いす Wheelchair (Sports)" data-mat="" data-price="583000" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スポーツ用 車いす Wheelchair (Sports)</div>
+    <h3>バイユニーク バイスキー</h3>
+    <div class="price">¥583,000<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥583,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/262" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="スポーツ用 車いす Wheelchair (Sports)" data-mat="" data-price="93500" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">スポーツ用 車いす Wheelchair (Sports)</div>
+    <h3>スーパーライト アウトリガー</h3>
+    <div class="price">¥93,500<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥93,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/774" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="72820" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>ロホクッション（車いす用床ずれ予防クッション）</h3>
+    <div class="price">¥72,820<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥72,820</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/174" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="69960" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>ロホ・クァドトロセレクト（車椅子用クッション）</h3>
+    <div class="price">¥69,960<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥69,960</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/69" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="71830" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>ロホ・ミニマックス（多目的クッション）</h3>
+    <div class="price">¥71,830<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥71,830</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/68" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="71830" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>ロホ・エンハンサー</h3>
+    <div class="price">¥71,830<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥71,830</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/183" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="68860" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>ロホ・コンツァーセレクト</h3>
+    <div class="price">¥68,860<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥68,860</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/182" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="69960" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>ロホ・ハイブリッドエリート</h3>
+    <div class="price">¥69,960<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥69,960</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/450" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="15400" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>ロホクッション用カバー（ウェットスーツ地）日本製</h3>
+    <div class="price">¥15,400<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥15,400</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/242" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="15675" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>VARILITE クッションカバー</h3>
+    <div class="price">¥15,675<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥15,675</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/670" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="44935" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>VARILITE Reflex</h3>
+    <div class="price">¥44,935<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥44,935</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/162" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="51205" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>VARILITE STRATUS</h3>
+    <div class="price">¥51,205<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥51,205</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/171" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="72105" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>VARILITE ゾイド</h3>
+    <div class="price">¥72,105<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥72,105</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/892" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="67925" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>VARILITE ソロ PSV</h3>
+    <div class="price">¥67,925<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥67,925</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/891" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="82555" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>VARILITE EVOLUTION</h3>
+    <div class="price">¥82,555<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥82,555</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/237" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="76285" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>VARILITE Meridian</h3>
+    <div class="price">¥76,285<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥76,285</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/163" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="89870" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>VARILITE Meridian Wave</h3>
+    <div class="price">¥89,870<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥89,870</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/29" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="クッション Cushion" data-mat="" data-price="91960" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">クッション Cushion</div>
+    <h3>VARILITE プロフォーム NX</h3>
+    <div class="price">¥91,960<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥91,960</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/893" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アクセサリ Accessories" data-mat="" data-price="9900" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アクセサリ Accessories</div>
+    <h3>デラックス バックパック</h3>
+    <div class="price">¥9,900<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥9,900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/346" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アクセサリ Accessories" data-mat="" data-price="7700" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アクセサリ Accessories</div>
+    <h3>スポーツ バックパック</h3>
+    <div class="price">¥7,700<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,700</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/313" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アクセサリ Accessories" data-mat="" data-price="3850" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アクセサリ Accessories</div>
+    <h3>アンダーシート オーガナイザー</h3>
+    <div class="price">¥3,850<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,850</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/314" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アクセサリ Accessories" data-mat="" data-price="2750" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アクセサリ Accessories</div>
+    <h3>モビリティラップ オーガナイザー</h3>
+    <div class="price">¥2,750<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,750</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/315" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アクセサリ Accessories" data-mat="" data-price="3672" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アクセサリ Accessories</div>
+    <h3>車輪カバー</h3>
+    <div class="price">¥3,672<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,672</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/455" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="アクセサリ Accessories" data-mat="" data-price="3132" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">アクセサリ Accessories</div>
+    <h3>ホイルソックス（車椅子タイヤカバー）</h3>
+    <div class="price">¥3,132<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,132</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/454" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="1540" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>アクアプラストペレット（熱可塑性樹脂ペレット）</h3>
+    <div class="price">¥1,540<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,540</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/82" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="7920" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>車椅子レース用グローブラバー</h3>
+    <div class="price">¥7,920<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,920</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/890" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="4950" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>アクアプラストシート</h3>
+    <div class="price">¥4,950<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,950</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/92" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="53900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>Harness レーシンググローブ（2本指分割タイプ）</h3>
+    <div class="price">¥53,900<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥53,900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/63" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="53900" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>Harness レーシンググローブ（ミトンタイプ）</h3>
+    <div class="price">¥53,900<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥53,900</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/62" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="5500" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>エラスティックベルト</h3>
+    <div class="price">¥5,500<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/870" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="11990" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>m2 ベルト</h3>
+    <div class="price">¥11,990<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥11,990</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/845" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="10780" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>ラチェットベルト</h3>
+    <div class="price">¥10,780<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥10,780</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/765" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="28710" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>車いすスポーツ用ニーベルト シングル</h3>
+    <div class="price">¥28,710<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥28,710</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/752" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="27170" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>ペルベスベルト（センターラダー）アクティブ</h3>
+    <div class="price">¥27,170<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥27,170</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/880" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="56950" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>車いすスポーツ用ニーベルト ダブル</h3>
+    <div class="price">¥56,950<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥56,950</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/751" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="1254" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>ラチェット</h3>
+    <div class="price">¥1,254<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,254</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/479" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="1100" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>ラダーベルト</h3>
+    <div class="price">¥1,100<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,100</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/483" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="1320" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>クリックストラップ用取り付けクランプ（ボルト付き）</h3>
+    <div class="price">¥1,320<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,320</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/883" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす スポーツ用品 Sports Goods" data-mat="" data-price="1430" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす スポーツ用品 Sports Goods</div>
+    <h3>ペルビス用装着金具</h3>
+    <div class="price">¥1,430<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,430</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/879" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす トレーニング用品 Roller" data-mat="" data-price="434500" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす トレーニング用品 Roller</div>
+    <h3>屋内専用本格ローラー</h3>
+    <div class="price">¥434,500<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥434,500</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/878" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="車いす トレーニング用品 Roller" data-mat="" data-price="200200" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">車いす トレーニング用品 Roller</div>
+    <h3>Passion（持運びタイプ）</h3>
+    <div class="price">¥200,200<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥200,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/841" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="空気入れ Compressor" data-mat="" data-price="17820" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">空気入れ Compressor</div>
+    <h3>モバイルエアポンプ _MF</h3>
+    <div class="price">¥17,820<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥17,820</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/867" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="空気入れ Compressor" data-mat="" data-price="5143" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">空気入れ Compressor</div>
+    <h3>HIRAME ポンプヘッド（縦）</h3>
+    <div class="price">¥5,143<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,143</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/721" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="空気入れ Compressor" data-mat="" data-price="6078" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">空気入れ Compressor</div>
+    <h3>HIRAME ポンプヘッド（横）</h3>
+    <div class="price">¥6,078<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,078</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/720" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="空気入れ Compressor" data-mat="" data-price="660" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">空気入れ Compressor</div>
+    <h3>バルブアダプター（HIRAME ポンプヘッド用）</h3>
+    <div class="price">¥660<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥660</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/64" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="空気入れ Compressor" data-mat="" data-price="528" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">空気入れ Compressor</div>
+    <h3>HIRAME ホースバンド</h3>
+    <div class="price">¥528<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥528</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/65" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="空気入れ Compressor" data-mat="" data-price="980" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">空気入れ Compressor</div>
+    <h3>ディスクホイール用バルブアダプター（仏式）</h3>
+    <div class="price">¥980<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥980</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/724" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="空気入れ Compressor" data-mat="" data-price="350" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">空気入れ Compressor</div>
+    <h3>バルブホルダー</h3>
+    <div class="price">¥350<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥350</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/273" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="空気入れ Compressor" data-mat="" data-price="880" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">空気入れ Compressor</div>
+    <h3>コリマ純正アダプター</h3>
+    <div class="price">¥880<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥880</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/274" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="生活用品 Daily Necessities" data-mat="" data-price="56133" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">生活用品 Daily Necessities</div>
+    <h3>カーボン製 スライディングボード</h3>
+    <div class="price">¥56,133<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥56,133</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/871" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="生活用品 Daily Necessities" data-mat="" data-price="73150" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">生活用品 Daily Necessities</div>
+    <h3>車椅子家庭用体重計</h3>
+    <div class="price">¥73,150<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥73,150</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/866" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="生活用品 Daily Necessities" data-mat="" data-price="9405" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">生活用品 Daily Necessities</div>
+    <h3>車椅子グローブ</h3>
+    <div class="price">¥9,405<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥9,405</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/776" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="1980" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>airbone クイックリリースバルブヘッド</h3>
+    <div class="price">¥1,980<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,980</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/855" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="756" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>TRI SPORTS ハンディ７ マルチツール</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/66" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="6930" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>KENDA KALIENTE</h3>
+    <div class="price">¥6,930<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,930</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/853" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="117800" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>Spinergy XLX X-Laced Black（生活用）</h3>
+    <div class="price">¥117,800<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥117,800</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/863" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="13200" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>スピナジーホイール交換用ハブ XLX X-Laced</h3>
+    <div class="price">¥13,200<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥13,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/810" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="9970" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>スピナジーホイール交換用ハブTYPE3（生活用）</h3>
+    <div class="price">¥9,970<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥9,970</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/811" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="13200" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>スピナジーホイール交換用ハブTYPE3（スポーツ）</h3>
+    <div class="price">¥13,200<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥13,200</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/247" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="12960" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>スピナジーホイール交換用リム（TYPE3）</h3>
+    <div class="price">¥12,960<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥12,960</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/248" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="8208" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>車椅子グローブ</h3>
+    <div class="price">¥8,208<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥8,208</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/777" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="129600" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>【セット】 Spinergy Sport Light Extream ＆ Natural-Fitハンドリム</h3>
+    <div class="price">¥129,600<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥129,600</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.den-shin-doh.com/product/142" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、電信堂様の公式サイト(<a href="https://www.den-shin-doh.com/" target="_blank" rel="noopener">https://www.den-shin-doh.com/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:"",price:"",stock:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      if(state.price){var q=state.price.split('-'),pv=+c.dataset.price;if(!(pv>0&&pv>=+q[0]&&pv<+q[1]))ok=false;}
+      if(state.stock&&c.dataset.stock!==state.stock)ok=false;
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
