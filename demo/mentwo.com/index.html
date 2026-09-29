@@ -1,0 +1,2315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ラーメン通ドットコム｜商品一覧ページ(試作)</title>
+<style>
+:root{--bg:#f7f3ec;--card:#fff;--border:#e6ddc9;--text:#2b2621;--sub:#7d7266;--accent:#b3652f;--accent-dark:#8f4f22;--soft:#f1e2c9;--radius:12px}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3{margin:0}button{font-family:inherit}
+.notice{background:#2b2621;color:#f7f3ec;font-size:12.5px;line-height:1.7;padding:10px 16px;text-align:center}
+.notice b{color:#f1c98a}
+.hero{background:linear-gradient(160deg,#eee0c6,#f7f3ec 70%);padding:48px 16px 34px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:720px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif;font-size:30px;line-height:1.4;margin:0 0 14px}
+.tagline{font-size:14px;color:var(--sub);line-height:1.9;margin:0 0 18px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badges span{font-size:11.5px;background:#fff;border:1px solid var(--border);padding:6px 13px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+.filter{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row .lbl{font-size:11px;color:var(--sub);width:100%}
+.chip{border:1px solid var(--border);background:#fff;color:var(--sub);border-radius:20px;padding:6px 13px;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text)}
+.count{font-size:12px;color:var(--sub);margin:12px 2px 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(43,38,33,.05)}
+.card.hide{display:none}
+.photo{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#efe6d3 0 10px,#f5eee0 10px 20px);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px;text-align:center;line-height:1.6}
+.photo small{font-size:11px}
+.badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#e9f1e7;color:#4f7a52}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:11px;color:var(--accent-dark);font-weight:700}
+.body h3{margin:3px 0 0;font-size:16.5px;font-family:"游明朝","Hiragino Mincho ProN","Yu Mincho",serif}
+.price{font-size:18px;font-weight:700;margin:4px 0 6px}.price small{font-size:11px;font-weight:400;color:var(--sub);margin-left:4px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.65;margin:0}
+.spec{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.bar{height:8px;border-radius:4px;background:#efe6d3;overflow:hidden;background-image:repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 25%)}
+.fill{height:100%;background:var(--accent);border-radius:4px}
+.barnote{font-size:10.5px;color:var(--sub);margin:4px 0 8px}
+.sizes{width:100%;border-collapse:collapse;font-size:12px}
+.sizes th{text-align:left;font-weight:600;color:var(--sub);border-bottom:1px solid var(--border);padding:3px 4px}
+.sizes td{padding:4px 4px;border-bottom:1px solid #f1ebe0;vertical-align:top}
+.sizes .pr{text-align:right;white-space:nowrap;font-weight:700}
+.mat{font-size:11.5px;color:var(--sub);margin-top:8px}
+.stock{font-size:11px;font-weight:700;margin-left:8px;padding:2px 8px;border-radius:20px;vertical-align:middle}
+.stock.in{background:#e9f1e7;color:#4f7a52}.stock.few{background:#fbf0dd;color:#9a6b1f}.stock.out{background:#f2eeea;color:#8b8179}
+.more{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--accent-dark);text-decoration:none;font-weight:700}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--sub);line-height:1.8}
+.foot h2{font-size:14px;color:var(--text);margin:24px 0 8px}
+@media (max-width:480px){.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="notice"><b>試作ページ</b>です。ラーメン通ドットコム様の公式サイトに掲載されている品名・サイズ・価格をそのまま並べました。写真は入れていません(御社の画像を入れる欄だけ用意しています)。不要でしたらすぐに削除します。</div>
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">PRODUCTS</p>
+  <h1>ラーメン通ドットコム</h1>
+  <p class="tagline">137点を1枚に並べ、カテゴリと価格帯、在庫で絞り込めるようにしました。</p>
+  <div class="badges"><span></span><span>掲載 137点</span><span>種類・価格帯・在庫で絞り込めます</span></div>
+</div></header>
+<main class="container">
+  <div class="filter">
+    <div class="row"><span class="lbl">シリーズ</span><button class="chip active" data-k="series" data-v="">すべて</button></div>
+    <div class="row"><span class="lbl">種類</span><button class="chip active" data-k="cat" data-v="">すべて</button><button class="chip" data-k="cat" data-v="通常ラーメンセット">通常ラーメンセット</button><button class="chip" data-k="cat" data-v="醤油ラーメン">醤油ラーメン</button><button class="chip" data-k="cat" data-v="ゆうパケット（送料込み）">ゆうパケット（送料込み）</button><button class="chip" data-k="cat" data-v="ラーメンの具トッピング">ラーメンの具トッピング</button><button class="chip" data-k="cat" data-v="豚骨ラーメン">豚骨ラーメン</button><button class="chip" data-k="cat" data-v="豚骨醤油ラーメン">豚骨醤油ラーメン</button><button class="chip" data-k="cat" data-v="レトルトカレー">レトルトカレー</button><button class="chip" data-k="cat" data-v="ラーメンギフト箱入セット（贈答品、景品、記念品）">ラーメンギフト箱入セット（贈答品、景品、記念品）</button><button class="chip" data-k="cat" data-v="つけ麺セット">つけ麺セット</button><button class="chip" data-k="cat" data-v="ご当地インスタントラーメン だし麺">ご当地インスタントラーメン だし麺</button><button class="chip" data-k="cat" data-v="味噌ラーメン">味噌ラーメン</button><button class="chip" data-k="cat" data-v="塩ラーメン">塩ラーメン</button><button class="chip" data-k="cat" data-v="個性派麺">個性派麺</button><button class="chip" data-k="cat" data-v="インスタントラーメン">インスタントラーメン</button><button class="chip" data-k="cat" data-v="レトルトお惣菜">レトルトお惣菜</button><button class="chip" data-k="cat" data-v="その他">その他</button></div>
+    <div class="row"><span class="lbl">価格帯</span><button class="chip active" data-k="price" data-v="">すべて</button><button class="chip" data-k="price" data-v="0-600">〜¥600</button><button class="chip" data-k="price" data-v="600-800">¥600〜¥800</button><button class="chip" data-k="price" data-v="800-2000">¥800〜¥2,000</button><button class="chip" data-k="price" data-v="2000-1000000000">¥2,000〜</button></div>
+    <div class="row"><span class="lbl">在庫</span><button class="chip active" data-k="stock" data-v="">すべて</button><button class="chip" data-k="stock" data-v="在庫あり">在庫あり</button><button class="chip" data-k="stock" data-v="売切れ">売切れ</button></div>
+    <div class="row">
+      <label style="font-size:12px;color:var(--sub)">素材 <select id="mat"><option value="">すべて</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">幅 <select id="wsel"><option value="">すべて</option><option value="0-600">〜600mm(1人用・小物)</option><option value="600-1300">600〜1300mm</option><option value="1300-9999">1300mm〜(大型)</option></select></label>
+      <label style="font-size:12px;color:var(--sub)">並び <select id="sort"><option value="">掲載順</option><option value="asc">価格が安い順</option><option value="desc">価格が高い順</option></select></label>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid">
+<article class="card" data-series="" data-cat="通常ラーメンセット" data-mat="" data-price="4980" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">通常ラーメンセット</div>
+    <h3>ご当地ラーメン 味かぶりなし 6店舗12食セット（味噌・塩・醤油・背脂・つけ麺・豚骨） 札幌桑名 函館一文字 喜多方はせ川 東京ホープ軒 千葉とみ田 博多だるま 味噌 塩 醤油 豚骨 つけ麺 生麺 半生麺 常温保存 送料無料</h3>
+    <div class="price">¥4,980<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,980</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1521" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>喜多方ラーメン はせ川 2食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1515" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="498" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>【訳あり】喜多方ラーメン はせ川 2食入 ご当地ラーメン 【賞味期限：2026年9月30日】</h3>
+    <div class="price">¥498<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥498</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1522" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ゆうパケット（送料込み）" data-mat="" data-price="274" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ゆうパケット（送料込み）</div>
+    <h3>【グルテンフリー・ヴィーガン】とんこつ風ラーメンスープ 2食入 | 小麦不使用・動物性不使用 | 東亜食品工業</h3>
+    <div class="price">¥274<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥274</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1520" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンの具トッピング" data-mat="" data-price="648" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンの具トッピング</div>
+    <h3>京都 新福菜館 本店の焼飯の素 （30gｘ4袋入）名店のサイドメニュー</h3>
+    <div class="price">¥648<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥648</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1519" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨ラーメン</div>
+    <h3>博多ラーメン だるま らーめん 豚骨ラーメン2食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/839" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ゆうパケット（送料込み）" data-mat="" data-price="2000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ゆうパケット（送料込み）</div>
+    <h3>【送料無料】博多ラーメンだるま 博多ラーメン秀ちゃん ご当地ラーメン お試し 2種4食 詰め合わせ 豚骨ラーメン 食べ比べ セット 九州 お土産 お取り寄せ【ゆうパケット便】</h3>
+    <div class="price">¥2,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1502" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ゆうパケット（送料込み）" data-mat="" data-price="2000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ゆうパケット（送料込み）</div>
+    <h3>【送料無料】旭川ラーメン青葉 横浜ラーメン支那そばや ご当地ラーメン 2種4食 詰め合わせ 醤油 食べ比べ セット 常温保存 お土産 お取り寄せ【ゆうパケット便】</h3>
+    <div class="price">¥2,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1501" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ゆうパケット（送料込み）" data-mat="" data-price="2000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ゆうパケット（送料込み）</div>
+    <h3>【送料無料】天理スタミナラーメン と 京都ラーメン天天有 ご当地ラーメン 2種4食 詰め合わせ セット 鶏ガラ 食べ比べ セット 常温保存 お土産 お取り寄せ【ゆうパケット便】</h3>
+    <div class="price">¥2,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1500" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ゆうパケット（送料込み）" data-mat="" data-price="2000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ゆうパケット（送料込み）</div>
+    <h3>【送料無料】札幌ラーメン桑名 と 函館ラーメン一文字 ご当地ラーメン お試し 2種4食詰め合わせ 味噌ラーメン 塩ラーメン 食べ比べ セット 常温保存 お土産 お取り寄せ【ゆうパケット便】</h3>
+    <div class="price">¥2,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1499" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨醤油ラーメン" data-mat="" data-price="1188" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨醤油ラーメン</div>
+    <h3>家系ラーメン 吉村家 3食入 横浜ラーメン ご当地ラーメン 常温保存 半生麺 お土産 ギフト プレゼント</h3>
+    <div class="price">¥1,188<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,188</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1239" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨醤油ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨醤油ラーメン</div>
+    <h3>和歌山ラーメン井出商店（豚骨醤油・２食入り）ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/6" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="702" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>大阪ラーメン 麺屋丈六２食入 高井田系ラーメン 有名店ラーメン常温保存 半生麺</h3>
+    <div class="price">¥702<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥702</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1288" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="レトルトカレー" data-mat="" data-price="490" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">レトルトカレー</div>
+    <h3>食物繊維豊富 大豆ミートのキーマ風カレー 180ｇ たけのこ れんこん入りレトルトカレー</h3>
+    <div class="price">¥490<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥490</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1459" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンギフト箱入セット（贈答品、景品、記念品）" data-mat="" data-price="5346" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンギフト箱入セット（贈答品、景品、記念品）</div>
+    <h3>【ギフトボックス】ご当地ラーメン 東日本6店舗12食セット</h3>
+    <div class="price">¥5,346<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,346</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1481" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンギフト箱入セット（贈答品、景品、記念品）" data-mat="" data-price="5346" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンギフト箱入セット（贈答品、景品、記念品）</div>
+    <h3>【ギフトボックス】ご当地ラーメン北海道 有名店 厳選詰め合わせ 3店舗12食セット</h3>
+    <div class="price">¥5,346<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,346</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1382" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンギフト箱入セット（贈答品、景品、記念品）" data-mat="" data-price="5670" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンギフト箱入セット（贈答品、景品、記念品）</div>
+    <h3>【ギフトボックス】ご当地ラーメン 西日本 有名店 厳選詰め合わせ 6店舗12食セット 常温保存 半生麺</h3>
+    <div class="price">¥5,670<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,670</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1363" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンギフト箱入セット（贈答品、景品、記念品）" data-mat="" data-price="5670" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンギフト箱入セット（贈答品、景品、記念品）</div>
+    <h3>【ギフトボックス】ご当地ラーメン 西日本セレクション 有名店 厳選詰め合わせ 6店舗12食セット</h3>
+    <div class="price">¥5,670<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,670</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1381" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="つけ麺セット" data-mat="" data-price="5092" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">つけ麺セット</div>
+    <h3>つけ麺 濃厚極太 ２種類12食セット（千葉 とみ田・埼玉 頑者） ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥5,092<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,092</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1105" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="通常ラーメンセット" data-mat="" data-price="4266" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">通常ラーメンセット</div>
+    <h3>ご当地ラーメンセット 激戦区関東の厳選 5店舗10食セット 常温 半生麺スープセット</h3>
+    <div class="price">¥4,266<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,266</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1372" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="通常ラーメンセット" data-mat="" data-price="8424" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">通常ラーメンセット</div>
+    <h3>名店監修 ご当地ラーメン 10種類20食セット｜札幌・博多・熊本・京都など全国の人気店が自宅で楽しめる 常温保存 ギフト対応</h3>
+    <div class="price">¥8,424<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥8,424</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1235" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="通常ラーメンセット" data-mat="" data-price="8478" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">通常ラーメンセット</div>
+    <h3>古今東西 名店監修 ご当地ラーメン 詰め合わせ10店舗20食セット 常温 半生麺</h3>
+    <div class="price">¥8,478<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥8,478</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1368" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="7036" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 西日本 ご当地インスタントラーメン 6種30食セット 袋麺 国分 tabete 常温</h3>
+    <div class="price">¥7,036<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,036</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1450" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="通常ラーメンセット" data-mat="" data-price="5076" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">通常ラーメンセット</div>
+    <h3>ご当地ラーメン 九州＆北海道ご当地ラーメン6店舗12食セット 常温保存 半生麺</h3>
+    <div class="price">¥5,076<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,076</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1287" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="7036" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 東日本 ご当地インスタントラーメン 6種30食詰め合わせセット 袋麺 国分 tabete 常温</h3>
+    <div class="price">¥7,036<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,036</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1449" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="通常ラーメンセット" data-mat="" data-price="4320" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">通常ラーメンセット</div>
+    <h3>ご当地ラーメン 激戦区九州の厳選 5店舗10食セット 常温保存 半生麺</h3>
+    <div class="price">¥4,320<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,320</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1285" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="通常ラーメンセット" data-mat="" data-price="6804" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">通常ラーメンセット</div>
+    <h3>全国8名店 ご当地ラーメン 詰め合わせ 8箱16食 セット｜常温保存 ギフト・プレゼント・仕送り・景品に人気</h3>
+    <div class="price">¥6,804<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,804</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1462" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンギフト箱入セット（贈答品、景品、記念品）" data-mat="" data-price="4999" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンギフト箱入セット（贈答品、景品、記念品）</div>
+    <h3>ギフトボックス入 人気 ご当地 ラーメン 西日本ラーメン(3) 6種12食 詰め合わせ セット 熊本ラーメン大黒 博多ラーメン秀ちゃん 鹿児島ラーメンくろいわ 博多ラーメンだるま 京都ラーメン来来亭 徳島ラーメンふく利</h3>
+    <div class="price">¥4,999<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,999</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1494" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="通常ラーメンセット" data-mat="" data-price="2987" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">通常ラーメンセット</div>
+    <h3>ご当地ラーメン 3 種 6 食食べ比べセット 醤油 味噌 豚骨 常温保存（半生麺・スープ） お取り寄せ</h3>
+    <div class="price">¥2,987<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,987</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1516" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="通常ラーメンセット" data-mat="" data-price="5076" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">通常ラーメンセット</div>
+    <h3>北海道ご当地ラーメンセット 食べ比べ 3種類12食お試しセット 常温保存（半生麺・スープ） お取り寄せ</h3>
+    <div class="price">¥5,076<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥5,076</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1375" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="通常ラーメンセット" data-mat="" data-price="4320" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">通常ラーメンセット</div>
+    <h3>全国 ご当地 こだわり素材 ラーメン 10種類20食セット（乾麺） ご当地ラーメン 常温保存</h3>
+    <div class="price">¥4,320<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,320</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1096" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="通常ラーメンセット" data-mat="" data-price="4320" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">通常ラーメンセット</div>
+    <h3>ガチンコ勝負！ 関東選抜有名店ラーメン5店舗（各1箱2食入）計10食入セット ご当地ラーメン（常温保存）</h3>
+    <div class="price">¥4,320<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,320</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1236" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="通常ラーメンセット" data-mat="" data-price="7884" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">通常ラーメンセット</div>
+    <h3>リピーター続出！ご当地ラーメン5種20食ご当地ラーメン（常温保存）</h3>
+    <div class="price">¥7,884<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,884</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1234" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="通常ラーメンセット" data-mat="" data-price="4536" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">通常ラーメンセット</div>
+    <h3>家系ラーメン吉村家、大阪ラーメン カドヤ食堂、和歌山ラーメン 玉林園てんかけ 3店舗9食 詰め合わせセットご当地 有名店 ラーメン</h3>
+    <div class="price">¥4,536<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,536</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1492" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="通常ラーメンセット" data-mat="" data-price="594" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">通常ラーメンセット</div>
+    <h3>北海道ラーメン 競演名店三品 3人前 青葉 桑名 一文字 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥594<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥594</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1489" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ゆうパケット（送料込み）" data-mat="" data-price="2690" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ゆうパケット（送料込み）</div>
+    <h3>グルテンフリー アニマルフリー 国産米粉麺 ラーメンヌードル 142g（2人前）ｘ6袋 東亜食品 小麦・食塩不使用【ゆうパケット便】</h3>
+    <div class="price">¥2,690<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,690</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1503" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="つけ麺セット" data-mat="" data-price="3688" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">つけ麺セット</div>
+    <h3>濃厚極太つけ麺2店舗8食セット（千葉 とみ田・埼玉 頑者） ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥3,688<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,688</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/990" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="味噌ラーメン" data-mat="" data-price="2000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">味噌ラーメン</div>
+    <h3>北海道 みそ ラーメン 札幌ラーメン 桑名 4食（2食入X2箱） 生麺 行列が絶えない札幌の名店「桑名」の味を自宅で。本格ご当地ラーメンセット。【ゆうパケット】</h3>
+    <div class="price">¥2,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/14" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="味噌ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">味噌ラーメン</div>
+    <h3>札幌らーめん焙煎ごまみそ 吉山商店2食入り ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1251" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="味噌ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">味噌ラーメン</div>
+    <h3>札幌ラーメン桑名 味噌らーめん2食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="味噌ラーメン" data-mat="" data-price="7560" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">味噌ラーメン</div>
+    <h3>札幌ラーメン桑名 20食 （味噌・2食入X10箱）常温保存 半生麺</h3>
+    <div class="price">¥7,560<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥7,560</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1243" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="951" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>勝浦タンタンメン（３人前）Ｂ1グランプリ公認 千葉県 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥951<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥951</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1480" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>来来亭 2食入り 常温保存 半生麺 京都風醤油の鶏ガラスープ 有名店ラーメン</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1477" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>新福菜館本店 京都ラーメン 醤油ラーメン ２食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1474" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="702" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>東京ラーメンせたが屋2食入（化粧箱入り）ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥702<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥702</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/125" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>高山ラーメン 中華そば 麺屋しらかわ 2食入 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1338" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>支那そばや 佐野実完全監修 2食入り 横濱戸塚 常温保存 半生麺 有名店ラーメン</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1337" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>来来亭 2食入り 常温保存 半生麺 京都風醤油の鶏ガラスープ 有名店ラーメン</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1335" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="702" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>金澤濃厚中華そば 神仙 金沢ラーメン 2食入 淡麗系ラーメン 常温保存 石川県ご当地ラーメン 半生麺</h3>
+    <div class="price">¥702<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥702</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1257" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="951" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>勝浦タンタンメン（３人前）Ｂ1グランプリ公認 千葉県 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥951<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥951</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/880" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="702" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>尾道ラーメン 味平２食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥702<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥702</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1018" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="702" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>大阪 ブラックラーメン 金久右衛門２食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥702<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥702</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1006" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>新福菜館本店 京都ラーメン 醤油ラーメン ２食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/240" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="702" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>富山ブラックラーメン誠や 濃厚しょうゆラーメン 極太ちぢれ麺２食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥702<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥702</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/216" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="702" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>高山ラーメン 桔梗屋（ききょうや）2食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥702<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥702</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/124" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>尾道ラーメン東珍康２食箱入 醤油ラーメン ストレート平麺 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/70" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>旭川ラーメン青葉（醤油・２食入）ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/8" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>佐野ラーメン万里 醤油ラーメン ２食入 ご当地ラーメン 半生麺 常温保存</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/7" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="648" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>大阪ラーメン カドヤ食堂 3食入り 中華そば 常温保存 半生麺</h3>
+    <div class="price">¥648<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥648</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1491" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="2000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>京都ラーメン新福菜館本店2食×2箱（醤油・4食入、生麺）【ご当地ラーメン】送料無料ゆうパケット</h3>
+    <div class="price">¥2,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/241" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="醤油ラーメン" data-mat="" data-price="2000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">醤油ラーメン</div>
+    <h3>旭川ラーメン青葉 醤油ラーメン４食（2食入X2箱）生麺 超人気名店ラーメン 【送料無料・ゆうパケット】</h3>
+    <div class="price">¥2,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/16" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨ラーメン" data-mat="" data-price="702" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨ラーメン</div>
+    <h3>和歌山ラーメン 和歌山中華そば 正善 和歌山ラーメン 2食入 常温保存 半生麺</h3>
+    <div class="price">¥702<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥702</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1256" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨ラーメン" data-mat="" data-price="702" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨ラーメン</div>
+    <h3>福岡 久留米ラーメン モヒカンらーめん 味壱家２食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥702<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥702</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1016" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨ラーメン</div>
+    <h3>鹿児島ラーメンくろいわ 豚骨ラーメン ２食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/603" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨ラーメン" data-mat="" data-price="1188" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨ラーメン</div>
+    <h3>鹿児島ラーメンくろいわ 4人前 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥1,188<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,188</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1238" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨ラーメン</div>
+    <h3>天理ラーメン 天理スタミナラーメン２食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/524" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨ラーメン</div>
+    <h3>博多ラーメン秀ちゃん 濃厚豚骨ラーメン ２食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/186" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨ラーメン</div>
+    <h3>東京ラーメン吉祥寺ホープ軒本舗 豚骨ラーメン２食入 背脂チャッチャ系ラーメン 豚骨ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/74" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨ラーメン</div>
+    <h3>熊本ラーメン大黒 ニンニク入豚骨 ２食入り ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/5" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨醤油ラーメン" data-mat="" data-price="2000" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨醤油ラーメン</div>
+    <h3>【送料無料】和歌山ラーメン井出商店 4食（２食入X2箱）豚骨醤油ラーメン ご当地名店ラーメン 常温保存 半生麺【ゆうパケット便】</h3>
+    <div class="price">¥2,000<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,000</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1505" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨醤油ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨醤油ラーメン</div>
+    <h3>和歌山ラーメン井出商店（豚骨醤油・２食入り）和歌山中華そば 常温保存 極細ストレート麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1479" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨醤油ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨醤油ラーメン</div>
+    <h3>徳島ラーメン ふく利 中華そば2食入・豚骨醤油 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/852" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨醤油ラーメン" data-mat="" data-price="1188" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨醤油ラーメン</div>
+    <h3>千葉中華そば・とみ田ラーメン３食入・濃厚和風とんこつ醤油スープ ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥1,188<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,188</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/631" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨醤油ラーメン" data-mat="" data-price="702" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨醤油ラーメン</div>
+    <h3>家系ラーメン侍(さむらい)(豚骨醤油極太麺・2食) 横浜ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥702<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥702</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/492" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨醤油ラーメン" data-mat="" data-price="6490" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨醤油ラーメン</div>
+    <h3>家系ラーメン 吉村家 15食（3食入X5箱）横浜ラーメン ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥6,490<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,490</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1245" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="豚骨醤油ラーメン" data-mat="" data-price="1188" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">豚骨醤油ラーメン</div>
+    <h3>徳島ラーメン 麺王3食入 醤油豚骨 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥1,188<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,188</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1488" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="塩ラーメン" data-mat="" data-price="2470" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">塩ラーメン</div>
+    <h3>グルテンフリーラーメン5食セット 常温保存 米粉半生ラーメンとグルテンフリースープ</h3>
+    <div class="price">¥2,470<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,470</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1431" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="塩ラーメン" data-mat="" data-price="702" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">塩ラーメン</div>
+    <h3>東京ラーメン 麺屋 宗 ２食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥702<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥702</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1014" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="塩ラーメン" data-mat="" data-price="702" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">塩ラーメン</div>
+    <h3>東京ラーメンひるがお 塩ラーメン２食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥702<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥702</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/126" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="塩ラーメン" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">塩ラーメン</div>
+    <h3>函館ラーメン一文字 塩ラーメン２食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/9" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="個性派麺" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">個性派麺</div>
+    <h3>つけ麺 松戸 中華蕎麦 とみ田 ２食入 極太麺 豚骨魚介つけだれ ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1475" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="個性派麺" data-mat="" data-price="1188" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">個性派麺</div>
+    <h3>東京ラーメン 創作麺工房 鳴龍 担担麺 2食入 常温保存 半生麺</h3>
+    <div class="price">¥1,188<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,188</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1255" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="個性派麺" data-mat="" data-price="1296" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">個性派麺</div>
+    <h3>高知須崎 鍋焼きラーメン 専門店 橋本食堂４人前・スープ付 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥1,296<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,296</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/253" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="個性派麺" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">個性派麺</div>
+    <h3>高知須崎鍋焼きラーメン 橋本食堂 2人前 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/282" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="個性派麺" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">個性派麺</div>
+    <h3>つけ麺 松戸 中華蕎麦 とみ田 ２食入 極太麺 豚骨魚介つけだれ ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/989" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="個性派麺" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">個性派麺</div>
+    <h3>頑者つけ麺2食入 埼玉ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/129" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="個性派麺" data-mat="" data-price="756" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">個性派麺</div>
+    <h3>京都ラーメン天天有 鶏の白濁スープ ２食入 ご当地ラーメン 常温保存 半生麺</h3>
+    <div class="price">¥756<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥756</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/3" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="206" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 千葉県産 はまぐりだし塩らーめん 1食入 インスタントラーメン袋麺 国分 tabete 常温</h3>
+    <div class="price">¥206<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥206</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1484" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="6055" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 日本一周 ご当地インスタントラーメン12種24食セット 袋麺 国分 tabete 常温</h3>
+    <div class="price">¥6,055<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,055</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1476" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="4768" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 ご当地インスタントラーメン 海鮮系6種18食詰め合わせセット 袋麺 国分</h3>
+    <div class="price">¥4,768<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,768</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1454" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="6055" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 日本一周 ご当地インスタントラーメン12種24食セット 袋麺 国分 tabete 常温</h3>
+    <div class="price">¥6,055<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥6,055</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1451" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="206" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 北海道産 甘海老だし味噌らーめん 1食入 インスタントラーメン 袋麺 国分 tabete 常温</h3>
+    <div class="price">¥206<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥206</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1446" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="206" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 名古屋コーチン鶏塩白湯らーめん 1食入 インスタントラーメン袋麺 国分 tabete 常温</h3>
+    <div class="price">¥206<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥206</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1445" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="206" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 宮城県産 わたり蟹だし塩らーめん 1食入 インスタントラーメン袋麺 国分 tabete 常温</h3>
+    <div class="price">¥206<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥206</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1444" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="206" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 千葉県産 はまぐりだし塩らーめん 1食入 インスタントラーメン袋麺 国分 tabete 常温</h3>
+    <div class="price">¥206<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥206</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1443" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="206" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 京鴨だし鴨白湯らーめん 1食入 インスタントラーメン袋麺 国分 tabete 常温</h3>
+    <div class="price">¥206<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥206</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1442" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="206" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 霧島黒豚だし豚骨らーめん 1食入 インスタントラーメン袋麺 国分 tabete 常温</h3>
+    <div class="price">¥206<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥206</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1441" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="206" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 長崎県炭焼きあごだし醤油らーめん 1食入 インスタントラーメン袋麺 国分 tabete 常温</h3>
+    <div class="price">¥206<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥206</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1440" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="206" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 高知県産 柚子だし塩らーめん 1食入 インスタントラーメン袋麺 国分 tabete 常温</h3>
+    <div class="price">¥206<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥206</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1439" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="206" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 三重県産 真鯛だし塩らーめん 1食入 インスタントラーメン袋麺 国分 tabete 常温</h3>
+    <div class="price">¥206<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥206</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1438" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="206" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 近江牛骨だし醤油らーめん 1食入 インスタントラーメン袋麺 国分 tabete 常温</h3>
+    <div class="price">¥206<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥206</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1437" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="206" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 比内地鶏だし醤油らーめん 1食入 インスタントラーメン袋麺 国分 tabete 常温</h3>
+    <div class="price">¥206<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥206</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1434" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ご当地インスタントラーメン だし麺" data-mat="" data-price="206" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ご当地インスタントラーメン だし麺</div>
+    <h3>だし麺 北海道産 帆立貝柱だし塩らーめん 1食入 インスタントラーメン袋麺 国分 tabete 常温保存</h3>
+    <div class="price">¥206<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥206</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1436" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インスタントラーメン" data-mat="" data-price="2980" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">インスタントラーメン</div>
+    <h3>米粉麺 グルテンフリー麺 米粉うどん142gX6個 詰め合わせ セット 東亜食品 乾麺 常温 長期保存 アニマルフリー麺 袋麺 無塩 食塩不使用</h3>
+    <div class="price">¥2,980<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,980</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1510" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インスタントラーメン" data-mat="" data-price="4039" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">インスタントラーメン</div>
+    <h3>グルテンフリー麺 米粉麺 インスタントラーメン 2種12食 ベジタリアン ラーメンセット 国産 東亜食品 しょうゆ 豚骨風</h3>
+    <div class="price">¥4,039<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,039</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1509" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インスタントラーメン" data-mat="" data-price="2092" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">インスタントラーメン</div>
+    <h3>フリーズドライ 和風カレー喜養麺 袋 67g×４袋（にゅうめん・手延べ素麺） 坂利製麺所</h3>
+    <div class="price">¥2,092<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,092</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1508" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インスタントラーメン" data-mat="" data-price="1740" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">インスタントラーメン</div>
+    <h3>フリーズドライ 喜養麺 袋 63g×４袋 にゅうめんセット 素麺 坂利製麺所</h3>
+    <div class="price">¥1,740<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥1,740</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1507" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インスタントラーメン" data-mat="" data-price="2376" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">インスタントラーメン</div>
+    <h3>フリーズドライ 鳥菜にゅう麺 袋 66g×４袋（にゅうめん） 坂利製麺所</h3>
+    <div class="price">¥2,376<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,376</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1506" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インスタントラーメン" data-mat="" data-price="4018" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">インスタントラーメン</div>
+    <h3>アニマルフリー ラーメン2種類計20食入りセット とんこつ風 しょうゆ</h3>
+    <div class="price">¥4,018<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥4,018</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1302" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インスタントラーメン" data-mat="" data-price="402" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">インスタントラーメン</div>
+    <h3>アニマルフリー とんこつ風ラーメン 2食入</h3>
+    <div class="price">¥402<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥402</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1299" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インスタントラーメン" data-mat="" data-price="402" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">インスタントラーメン</div>
+    <h3>アニマルフリー しょうゆラーメン 2食入</h3>
+    <div class="price">¥402<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥402</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1298" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インスタントラーメン" data-mat="" data-price="198" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">インスタントラーメン</div>
+    <h3>創健社 有機ラーメン ノンフライ麺 醤油ラーメン 110g 無添加（常温保存）</h3>
+    <div class="price">¥198<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥198</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1091" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インスタントラーメン" data-mat="" data-price="204" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">インスタントラーメン</div>
+    <h3>創健社 有機ラーメン ノンフライラーメン（スープなし） 75g 無添加（常温保存）</h3>
+    <div class="price">¥204<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥204</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1094" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インスタントラーメン" data-mat="" data-price="238" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">インスタントラーメン</div>
+    <h3>グルテンフリーヌードル ウェーブラーメン 128g （白米）米粉麺（常温保存）</h3>
+    <div class="price">¥238<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥238</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1229" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インスタントラーメン" data-mat="" data-price="198" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">インスタントラーメン</div>
+    <h3>創健社 有機ラーメン ノンフライ麺 塩ラーメン 110g 無添加 （常温保存）</h3>
+    <div class="price">¥198<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥198</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1093" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="インスタントラーメン" data-mat="" data-price="198" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">インスタントラーメン</div>
+    <h3>創健社 有機ラーメン ノンフライ麺 味噌ラーメン 121g 無添加（常温保存）</h3>
+    <div class="price">¥198<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥198</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1092" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンの具トッピング" data-mat="" data-price="513" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンの具トッピング</div>
+    <h3>トッピング おつまみに 味付玉子 5個入り ネオフーズ</h3>
+    <div class="price">¥513<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥513</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1297" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンの具トッピング" data-mat="" data-price="972" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンの具トッピング</div>
+    <h3>乾燥野菜 国産 九州産 にんじん 140ｇ</h3>
+    <div class="price">¥972<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥972</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1211" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンの具トッピング" data-mat="" data-price="972" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンの具トッピング</div>
+    <h3>乾燥野菜 国産 九州産 キャベツ 125ｇ</h3>
+    <div class="price">¥972<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥972</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1210" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンの具トッピング" data-mat="" data-price="972" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンの具トッピング</div>
+    <h3>乾燥野菜 国産 九州産 玉ねぎ 60ｇ</h3>
+    <div class="price">¥972<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥972</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1209" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンの具トッピング" data-mat="" data-price="972" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンの具トッピング</div>
+    <h3>乾燥野菜 国産 九州産 ほうれん草 95ｇ</h3>
+    <div class="price">¥972<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥972</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1208" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンの具トッピング" data-mat="" data-price="972" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンの具トッピング</div>
+    <h3>乾燥野菜 国産 山口県産 れんこん 60ｇ</h3>
+    <div class="price">¥972<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥972</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1207" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンの具トッピング" data-mat="" data-price="972" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンの具トッピング</div>
+    <h3>乾燥野菜 国産 九州産 ねぎ 30ｇ</h3>
+    <div class="price">¥972<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥972</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1206" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンの具トッピング" data-mat="" data-price="972" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンの具トッピング</div>
+    <h3>乾燥野菜 国産 九州産 ごぼう 千切 100ｇ</h3>
+    <div class="price">¥972<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥972</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1205" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="ラーメンの具トッピング" data-mat="" data-price="972" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">ラーメンの具トッピング</div>
+    <h3>乾燥野菜 国産 九州産 大根葉 100ｇ</h3>
+    <div class="price">¥972<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥972</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1204" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="レトルトカレー" data-mat="" data-price="2400" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">レトルトカレー</div>
+    <h3>【送料無料】 減塩 レトルト 本枯鰹の和風だし香るチキンカレー 180ｇX 6個 但馬すこやか地どり 本枯鰹 常温保存 塩分控えめ</h3>
+    <div class="price">¥2,400<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥2,400</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1498" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="レトルトカレー" data-mat="" data-price="345" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">レトルトカレー</div>
+    <h3>減塩 レトルト 本枯鰹の和風だし香るチキンカレー 180ｇ但馬すこやか地どり 本枯鰹 常温保存 塩分控えめ</h3>
+    <div class="price">¥345<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥345</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1457" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="レトルトカレー" data-mat="" data-price="432" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">レトルトカレー</div>
+    <h3>低糖質食品 本枯鰹の和風チキンレトルトカレー 180g 兵庫県ご当地カレー 但馬すこやかどり 糖質制限</h3>
+    <div class="price">¥432<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥432</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1353" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="レトルトお惣菜" data-mat="" data-price="3838" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">レトルトお惣菜</div>
+    <h3>常温保存 レトルト 国産 うなぎ蒲焼き 110ｇ プレゼント・ギフトにも</h3>
+    <div class="price">¥3,838<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥3,838</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1504" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="432" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>ベトナム ブン・ボー・フエ400ｇ ライスヌードル グルテンフリーの麺 米粉麺 ベトナム料理</h3>
+    <div class="price">¥432<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥432</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1514" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="823" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>インスタント・フォー（チキン味）5袋お試しセット グルテンフリー麺 米粉麺 ベトナム料理</h3>
+    <div class="price">¥823<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥823</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1513" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="324" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>ベトナム フォーガーの素 4キューブ・75g 業務用にも、ベトナム料理</h3>
+    <div class="price">¥324<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥324</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1512" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="449" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>ハラル認証 ビッチ・ベトナムフォー 3.5ｍm 400g（お米のうどん・ライスヌードル)グルテンフリー・アレルギー対応食品</h3>
+    <div class="price">¥449<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥449</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1511" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="432" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>ビッチ・ベトナムフォー 2.5mm 400g （米麺・ライスヌードル）</h3>
+    <div class="price">¥432<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥432</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1156" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="216" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>ベトナムフォー ４mm 200g（米麺・ライスヌードル）（ベトナム料理）</h3>
+    <div class="price">¥216<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥216</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1155" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="432" data-w="0" data-stock="売切れ">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>ベトナム ビーフン400ｇ（フォー・細麺タイプ・ライスヌードル・お米の麺）bun gao【Trung Tin】 ベトナム料理に。</h3>
+    <div class="price">¥432<small>(税込)</small><span class="stock out">売切れ</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥432</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/679" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article>
+<article class="card" data-series="" data-cat="その他" data-mat="" data-price="702" data-w="0" data-stock="在庫あり">
+  <div class="photo"><span>写真の置き場<br><small>(御社の画像を入れる欄)</small></span></div>
+  <div class="body">
+    <div class="cat">その他</div>
+    <h3>山下うどん ぶっかけうどん 讃岐うどん2食入（半生麺、箱）</h3>
+    <div class="price">¥702<small>(税込)</small><span class="stock in">在庫あり</span></div>
+    <p class="desc"></p>
+    <div class="spec">
+      <div class="bar"><div class="fill" style="width:0%"></div></div>
+      <div class="barnote">幅 — / 基準 1900mm</div>
+      <table class="sizes"><thead><tr><th>仕様</th><th>サイズ(mm)</th><th>価格</th></tr></thead><tbody><tr><td>税込</td><td></td><td class="pr">¥702</td></tr></tbody></table>
+      <div class="mat">素材: —</div>
+    </div>
+    <a class="more" href="https://www.mentwo.com/product/1137" target="_blank" rel="noopener">公式サイトで見る →</a>
+  </div>
+</article></div>
+</main>
+<footer class="foot">
+  <h2>この試作について</h2>
+  このページは 橘 健太(fukurou design)(jakusan2333@gmail.com)が、ラーメン通ドットコム様の公式サイト(<a href="https://www.mentwo.com/" target="_blank" rel="noopener">https://www.mentwo.com/</a>)に公開されている情報だけを使って作った試作です。
+  検索エンジンには載せていません。正式に作る場合は、写真の追加・在庫や受注状況の表示・新作の追加更新までこちらで行います。
+  掲載を望まれない場合は同じメールアドレスに一言いただければ、すぐに削除します。
+</footer>
+<script>
+(function(){
+  var state={series:"",cat:"",mat:"",w:"",sort:"",price:"",stock:""};
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var grid=document.getElementById('grid');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(state.series&&c.dataset.series!==state.series)ok=false;
+      if(state.cat&&c.dataset.cat!==state.cat)ok=false;
+      if(state.mat&&c.dataset.mat.indexOf(state.mat)<0)ok=false;
+      if(state.w){var r=state.w.split('-'),w=+c.dataset.w;if(!(w>=+r[0]&&w<+r[1]))ok=false;}
+      if(state.price){var q=state.price.split('-'),pv=+c.dataset.price;if(!(pv>0&&pv>=+q[0]&&pv<+q[1]))ok=false;}
+      if(state.stock&&c.dataset.stock!==state.stock)ok=false;
+      c.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    if(state.sort){
+      var s=cards.slice().sort(function(a,b){var d=(+a.dataset.price)-(+b.dataset.price);return state.sort==='asc'?d:-d;});
+      s.forEach(function(c){grid.appendChild(c);});
+    }else{cards.forEach(function(c){grid.appendChild(c);});}
+    document.getElementById('count').textContent=n+'点を表示中';
+  }
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k; state[k]=b.dataset.v;
+      document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(x){x.classList.toggle('active',x===b);});
+      apply();
+    });
+  });
+  document.getElementById('mat').addEventListener('change',function(e){state.mat=e.target.value;apply();});
+  document.getElementById('wsel').addEventListener('change',function(e){state.w=e.target.value;apply();});
+  document.getElementById('sort').addEventListener('change',function(e){state.sort=e.target.value;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>
